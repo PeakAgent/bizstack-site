@@ -1,0 +1,2450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BizStack.ai — Everything Your Business Needs to Run Better</title>
+  <meta name="description" content="Professional websites, CRM, lead automation, and AI tools — all in one affordable subscription. Built in 48 hours, not months.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ═══════════════════════════════════════════
+       TOKENS & RESET
+    ═══════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0F172A;
+      --bg2:     #1E293B;
+      --bg3:     #334155;
+      --blue:    #3B82F6;
+      --blue2:   #2563EB;
+      --blue3:   #1D4ED8;
+      --purple:  #8B5CF6;
+      --purple2: #7C3AED;
+      --green:   #10B981;
+      --gold:    #F59E0B;
+      --red:     #EF4444;
+      --white:   #FFFFFF;
+      --w90: rgba(255,255,255,.9);
+      --w80: rgba(255,255,255,.8);
+      --w70: rgba(255,255,255,.7);
+      --w60: rgba(255,255,255,.6);
+      --w50: rgba(255,255,255,.5);
+      --w40: rgba(255,255,255,.4);
+      --w30: rgba(255,255,255,.3);
+      --w20: rgba(255,255,255,.2);
+      --w10: rgba(255,255,255,.1);
+      --w05: rgba(255,255,255,.05);
+      --border: rgba(255,255,255,.08);
+      --display: 'Space Grotesk', system-ui, sans-serif;
+      --body:    'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--body);
+      background: var(--bg);
+      color: var(--white);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--display);
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ═══════════════════════════════════════════
+       LAYOUT
+    ═══════════════════════════════════════════ */
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    .wrap-narrow { max-width: 860px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ═══════════════════════════════════════════
+       UTILITY COMPONENTS
+    ═══════════════════════════════════════════ */
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 1.25rem;
+    }
+    .chip::before {
+      content: '';
+      width: 22px; height: 2px;
+      background: currentColor;
+      flex-shrink: 0;
+    }
+    .chip.purple { color: var(--purple); }
+    .chip.green  { color: var(--green); }
+    .chip.gold   { color: var(--gold); }
+    .chip.center { justify-content: center; }
+    .chip.center::before { display: none; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .8rem 1.75rem;
+      border-radius: 8px;
+      font-family: var(--body);
+      font-size: .875rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all .25s;
+      white-space: nowrap;
+    }
+    .btn-blue {
+      background: var(--blue);
+      color: var(--white);
+    }
+    .btn-blue:hover {
+      background: var(--blue2);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(59,130,246,.4);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid var(--w30);
+    }
+    .btn-outline:hover {
+      border-color: var(--w70);
+      background: var(--w05);
+      transform: translateY(-2px);
+    }
+    .btn-gradient {
+      background: linear-gradient(90deg, var(--blue), var(--purple));
+      color: var(--white);
+    }
+    .btn-gradient:hover {
+      opacity: .9;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(100,100,246,.4);
+    }
+    .btn-lg { padding: 1rem 2.5rem; font-size: 1rem; }
+
+    /* Scroll-reveal */
+    .rev {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .75s ease, transform .75s ease;
+    }
+    .rev.in { opacity: 1; transform: translateY(0); }
+    .rev-left  { opacity: 0; transform: translateX(-30px); transition: opacity .75s ease, transform .75s ease; }
+    .rev-right { opacity: 0; transform: translateX(30px);  transition: opacity .75s ease, transform .75s ease; }
+    .rev-left.in, .rev-right.in { opacity: 1; transform: translateX(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .rev, .rev-left, .rev-right {
+        opacity: 1; transform: none; transition: none;
+      }
+    }
+
+    /* ═══════════════════════════════════════════
+       NAVIGATION
+    ═══════════════════════════════════════════ */
+    #nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 999;
+      padding: 1.25rem 0;
+      transition: background .4s, padding .4s, border .4s;
+      border-bottom: 1px solid transparent;
+    }
+    #nav.solid {
+      background: rgba(15,23,42,.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: .875rem 0;
+      border-bottom-color: var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .nav-logo {
+      font-family: var(--display);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--white);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .nav-logo .ai { color: var(--blue); }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2.25rem;
+      margin-left: auto;
+    }
+    .nav-menu a {
+      font-size: .845rem;
+      font-weight: 500;
+      color: rgba(255,255,255,.88);
+      transition: color .2s;
+      letter-spacing: .01em;
+    }
+    .nav-menu a:hover { color: var(--white); }
+
+    .nav-actions { display: flex; align-items: center; gap: .75rem; margin-left: 1rem; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-left: auto;
+      padding: 4px;
+      flex-shrink: 0;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--white);
+      transition: all .3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15,23,42,.98);
+      backdrop-filter: blur(20px);
+      z-index: 998;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--display);
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--white);
+      transition: color .2s;
+    }
+    .mobile-menu a:hover { color: var(--blue); }
+    .mobile-menu .btn { font-size: 1rem; padding: .85rem 2.25rem; }
+
+    /* ═══════════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════════ */
+    #hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #07090f;
+      padding-top: 80px; /* keep content below fixed nav */
+    }
+
+    /* Thin gradient shadow at very top — keeps nav links readable */
+    #hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 140px;
+      background: linear-gradient(to bottom, rgba(5,8,18,.65) 0%, transparent 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Deep vignette base */
+    .hero-bg-base {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 100% 80% at 50% 50%,  rgba(10,20,45,.95) 0%, transparent 70%),
+        radial-gradient(ellipse 150% 120% at 50% 100%, rgba(5,8,18,1)    0%, transparent 60%),
+        linear-gradient(160deg, #05080e 0%, #07090f 50%, #060810 100%);
+    }
+
+    /* ── Bokeh orbs ── */
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      will-change: transform;
+    }
+    /* Large blue corona — top right */
+    .hero-orb-1 {
+      width: 720px; height: 720px;
+      background: radial-gradient(circle, rgba(59,130,246,.24) 0%, rgba(59,130,246,.06) 45%, transparent 70%);
+      filter: blur(90px);
+      top: -260px; right: -120px;
+      animation: orbDrift 15s ease-in-out infinite;
+    }
+    /* Large purple corona — bottom left */
+    .hero-orb-2 {
+      width: 620px; height: 620px;
+      background: radial-gradient(circle, rgba(139,92,246,.22) 0%, rgba(139,92,246,.05) 45%, transparent 70%);
+      filter: blur(90px);
+      bottom: -220px; left: -130px;
+      animation: orbDrift 18s ease-in-out infinite reverse;
+    }
+    /* Soft center glow — makes text feel illuminated */
+    .hero-orb-3 {
+      width: 560px; height: 560px;
+      background: radial-gradient(circle, rgba(59,130,246,.12) 0%, rgba(80,100,200,.04) 50%, transparent 70%);
+      filter: blur(70px);
+      top: calc(50% - 280px);
+      left: calc(50% - 280px);
+      animation: orbBreath 11s ease-in-out infinite;
+    }
+    /* Small bright bokeh — top center-left */
+    .hero-orb-4 {
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(100,160,255,.5) 0%, rgba(59,130,246,.12) 45%, transparent 70%);
+      filter: blur(28px);
+      top: 14%; left: 38%;
+      animation: orbDrift 8s ease-in-out infinite 1.2s;
+    }
+    /* Small purple bokeh — right mid */
+    .hero-orb-5 {
+      width: 260px; height: 260px;
+      background: radial-gradient(circle, rgba(168,110,255,.42) 0%, rgba(139,92,246,.1) 45%, transparent 70%);
+      filter: blur(34px);
+      top: 38%; right: 10%;
+      animation: orbDrift 10s ease-in-out infinite reverse 2.5s;
+    }
+    /* Subtle warm accent — bottom right */
+    .hero-orb-6 {
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(99,102,241,.12) 0%, transparent 70%);
+      filter: blur(60px);
+      bottom: 8%; right: 20%;
+      animation: orbBreath 14s ease-in-out infinite 4s;
+    }
+
+    @keyframes orbDrift {
+      0%   { transform: translate(0px, 0px)   scale(1); }
+      33%  { transform: translate(18px, -22px) scale(1.05); }
+      66%  { transform: translate(-12px, 12px) scale(.96); }
+      100% { transform: translate(0px, 0px)   scale(1); }
+    }
+    @keyframes orbBreath {
+      0%, 100% { opacity: .85; transform: scale(1); }
+      50%       { opacity: 1;   transform: scale(1.1); }
+    }
+
+    /* ── Centered content block ── */
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 920px;
+      width: 100%;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    /* ── Pill badge with soft glow pulse ── */
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      background: rgba(59,130,246,.1);
+      border: 1px solid rgba(59,130,246,.32);
+      border-radius: 100px;
+      padding: .44rem 1.1rem .44rem .7rem;
+      font-size: .78rem;
+      font-weight: 500;
+      color: #7eb8ff;
+      margin-bottom: 2.75rem;
+      animation: pillGlow 3.5s ease-in-out infinite;
+    }
+    @keyframes pillGlow {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(59,130,246,0),
+                    0 0 10px rgba(59,130,246,.08);
+      }
+      50% {
+        box-shadow: 0 0 0 6px rgba(59,130,246,.07),
+                    0 0 32px rgba(59,130,246,.22),
+                    0 0 60px rgba(59,130,246,.08);
+      }
+    }
+    .pill-dot {
+      width: 7px; height: 7px;
+      background: var(--blue);
+      border-radius: 50%;
+      animation: pillDot 2.2s ease-in-out infinite;
+    }
+    @keyframes pillDot {
+      0%, 100% { opacity: 1;   transform: scale(1);   box-shadow: 0 0 0 0 rgba(59,130,246,.5); }
+      50%       { opacity: .65; transform: scale(.75); box-shadow: 0 0 0 4px rgba(59,130,246,.12); }
+    }
+
+    /* ── Headline ── */
+    .hero-h1 {
+      font-size: clamp(2.6rem, 6.5vw, 5.2rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 2rem;
+      letter-spacing: -0.03em;
+      line-height: 1.07;
+    }
+    .hero-h1 .hl {
+      color: #6fb3ff;
+      animation: hlGlow 4s ease-in-out infinite;
+    }
+    @keyframes hlGlow {
+      0%, 100% {
+        text-shadow:
+          0 0 18px rgba(59,130,246,.75),
+          0 0 45px rgba(59,130,246,.45),
+          0 0 85px rgba(59,130,246,.2);
+      }
+      50% {
+        text-shadow:
+          0 0 28px rgba(100,170,255,.95),
+          0 0 70px rgba(59,130,246,.65),
+          0 0 130px rgba(59,130,246,.3),
+          0 0 220px rgba(59,130,246,.1);
+      }
+    }
+
+    /* ── Subheading ── */
+    .hero-sub {
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      color: rgba(255,255,255,.58);
+      line-height: 1.85;
+      max-width: 580px;
+      margin: 0 auto 3.25rem;
+      font-weight: 300;
+    }
+
+    /* ── CTA row — centered ── */
+    .hero-ctas {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 3.75rem;
+    }
+
+    /* Primary hero button — gradient with glow on hover */
+    .hero-btn-primary {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: 1.1rem 2.75rem;
+      border-radius: 10px;
+      font-family: var(--body);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, #3b82f6 0%, #6366f1 55%, #8b5cf6 100%);
+      transition: transform .25s, box-shadow .3s;
+      white-space: nowrap;
+      text-decoration: none;
+      overflow: hidden;
+      letter-spacing: .01em;
+    }
+    /* Inner shimmer overlay */
+    .hero-btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,.18) 0%, transparent 55%);
+      border-radius: inherit;
+      pointer-events: none;
+    }
+    .hero-btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        0 16px 50px rgba(59,130,246,.55),
+        0 0   90px rgba(139,92,246,.22),
+        inset 0 1px 0 rgba(255,255,255,.15);
+    }
+    .hero-btn-primary:active { transform: translateY(-1px); }
+
+    /* Secondary hero button — frosted glass */
+    .hero-btn-glass {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: 1.1rem 2.25rem;
+      border-radius: 10px;
+      font-family: var(--body);
+      font-size: 1rem;
+      font-weight: 600;
+      color: rgba(255,255,255,.88);
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      cursor: pointer;
+      transition: background .25s, border-color .25s, transform .25s, box-shadow .25s;
+      white-space: nowrap;
+      text-decoration: none;
+      letter-spacing: .01em;
+    }
+    .hero-btn-glass:hover {
+      background: rgba(255,255,255,.1);
+      border-color: rgba(255,255,255,.32);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.28);
+    }
+    .hero-btn-glass:active { transform: translateY(-1px); }
+
+    /* ── Trust badges ── */
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .tbadge {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .75rem;
+      color: rgba(255,255,255,.38);
+      padding: 0 1.5rem;
+      border-right: 1px solid rgba(255,255,255,.07);
+    }
+    .tbadge:first-child { padding-left: 0; }
+    .tbadge:last-child  { border-right: none; padding-right: 0; }
+    .tbadge-check { color: rgba(16,185,129,.85); font-size: .85rem; }
+
+    /* ── Scroll indicator ── */
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .7rem;
+      animation: fadeInScroll 1s ease 1.8s both;
+    }
+    @keyframes fadeInScroll {
+      from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+      to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
+    .hero-scroll-label {
+      font-size: .58rem;
+      font-weight: 600;
+      letter-spacing: .34em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.25);
+    }
+    .hero-scroll-track {
+      width: 1.5px;
+      height: 54px;
+      background: rgba(255,255,255,.07);
+      border-radius: 2px;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-scroll-thumb {
+      position: absolute;
+      top: -55px;
+      left: 0; right: 0;
+      height: 54px;
+      background: linear-gradient(to bottom, transparent, rgba(99,130,246,.9), rgba(139,92,246,.6), transparent);
+      border-radius: 2px;
+      animation: scrollSlide 2.4s cubic-bezier(.4,0,.2,1) infinite;
+    }
+    @keyframes scrollSlide {
+      0%   { top: -55px; opacity: 0; }
+      15%  { opacity: 1; }
+      85%  { opacity: 1; }
+      100% { top: 55px; opacity: 0; }
+    }
+
+    /* ═══════════════════════════════════════════
+       PROBLEM SECTION
+    ═══════════════════════════════════════════ */
+    #problem {
+      padding: 7rem 0;
+      background: var(--bg2);
+    }
+    .problem-head {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .problem-head h2 {
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      margin-bottom: .75rem;
+    }
+    .problem-head p { font-size: 1.05rem; color: var(--w60); }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 5rem;
+    }
+    .pain-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem 1.75rem;
+      transition: border-color .3s, transform .3s;
+    }
+    .pain-card:hover {
+      border-color: rgba(239,68,68,.3);
+      transform: translateY(-4px);
+    }
+    .pain-icon-wrap {
+      width: 52px; height: 52px;
+      background: rgba(239,68,68,.1);
+      border: 1px solid rgba(239,68,68,.2);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--red);
+      margin-bottom: 1.25rem;
+    }
+    .pain-icon-wrap svg { width: 24px; height: 24px; }
+    .pain-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: .6rem;
+      color: var(--white);
+    }
+    .pain-card p {
+      font-size: .855rem;
+      color: var(--w60);
+      line-height: 1.75;
+    }
+
+    .problem-bridge {
+      text-align: center;
+    }
+    .bridge-eyebrow {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--w40);
+      margin-bottom: 1.25rem;
+    }
+    .problem-bridge h3 {
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      margin-bottom: 1rem;
+      color: var(--white);
+    }
+    .problem-bridge p {
+      font-size: 1rem;
+      color: var(--w60);
+      max-width: 480px;
+      margin: 0 auto 2rem;
+    }
+
+    /* ═══════════════════════════════════════════
+       SERVICES — ALTERNATING LAYOUT
+    ═══════════════════════════════════════════ */
+    #services { padding: 7rem 0; }
+
+    .services-head {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+    .services-head h2 {
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      margin-bottom: 1rem;
+    }
+    .services-head p {
+      font-size: 1.05rem;
+      color: var(--w60);
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    .svc-rows { display: flex; flex-direction: column; }
+    .svc-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      padding: 4.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .svc-row:last-child { border-bottom: none; }
+    /* Even rows flip (visual left, text right) */
+    .svc-row:nth-child(even) .svc-text  { order: 2; }
+    .svc-row:nth-child(even) .svc-visual { order: 1; }
+
+    .svc-row-num {
+      font-family: var(--display);
+      font-size: 5rem;
+      font-weight: 800;
+      color: var(--w05);
+      line-height: 1;
+      margin-bottom: -.5rem;
+    }
+    .svc-text .chip { margin-bottom: .5rem; }
+    .svc-text h3 {
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      margin-bottom: 1rem;
+    }
+    .svc-text p {
+      font-size: .875rem;
+      color: var(--w60);
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+    }
+    .svc-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+      margin-bottom: 1.75rem;
+    }
+    .svc-bullets li {
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+      font-size: .845rem;
+      color: var(--w70);
+    }
+    .svc-bullets li .bcheck {
+      width: 18px; height: 18px;
+      color: var(--green);
+      flex-shrink: 0;
+    }
+    .svc-link {
+      font-size: .845rem;
+      font-weight: 600;
+      color: var(--blue);
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      transition: gap .2s;
+    }
+    .svc-link:hover { gap: .7rem; }
+
+    /* Service visual / screen mockup */
+    .svc-visual { position: relative; }
+    .svc-glow {
+      position: absolute;
+      inset: -30%;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: .7;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .svc-screen {
+      position: relative;
+      z-index: 1;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--bg2);
+      box-shadow: 0 24px 64px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.04);
+    }
+    .svc-screen-bar {
+      background: var(--bg3);
+      padding: .65rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .sdot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .sdot-r { background: #EF4444; }
+    .sdot-y { background: #F59E0B; }
+    .sdot-g { background: #10B981; }
+    .svc-url-bar {
+      flex: 1;
+      height: 20px;
+      background: rgba(255,255,255,.06);
+      border-radius: 4px;
+      margin: 0 .75rem;
+    }
+    .svc-screen img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+      opacity: .7;
+    }
+    .svc-screen-foot {
+      padding: .9rem 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border);
+    }
+    .svc-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      font-size: .68rem;
+      font-weight: 700;
+      padding: .3rem .8rem;
+      border-radius: 100px;
+      background: rgba(59,130,246,.12);
+      border: 1px solid rgba(59,130,246,.2);
+      color: var(--blue);
+      letter-spacing: .05em;
+    }
+    .svc-badge.purple {
+      background: rgba(139,92,246,.12);
+      border-color: rgba(139,92,246,.2);
+      color: var(--purple);
+    }
+    .svc-badge.green {
+      background: rgba(16,185,129,.12);
+      border-color: rgba(16,185,129,.2);
+      color: var(--green);
+    }
+    .svc-badge.gold {
+      background: rgba(245,158,11,.12);
+      border-color: rgba(245,158,11,.2);
+      color: var(--gold);
+    }
+    .svc-status {
+      font-size: .7rem;
+      color: var(--w40);
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+    }
+    .svc-status::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 6px var(--green);
+    }
+
+    /* ═══════════════════════════════════════════
+       PRICING
+    ═══════════════════════════════════════════ */
+    #pricing {
+      padding: 7rem 0;
+      background: var(--bg2);
+    }
+    .pricing-head {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .pricing-head h2 {
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      margin-bottom: 1rem;
+    }
+    .pricing-head p { font-size: 1.05rem; color: var(--w60); }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      align-items: start;
+      margin-bottom: 2.5rem;
+    }
+
+    .pcard {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.75rem;
+      transition: transform .3s, box-shadow .3s;
+      position: relative;
+    }
+    .pcard:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(0,0,0,.4);
+    }
+    .pcard.popular {
+      border-color: var(--blue);
+      background: linear-gradient(160deg, rgba(59,130,246,.09), rgba(139,92,246,.05));
+    }
+    .pcard.enterprise {
+      border-color: rgba(245,158,11,.25);
+    }
+
+    .pop-badge {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, var(--blue), var(--purple));
+      color: var(--white);
+      font-size: .65rem;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .28rem .9rem;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    .pcard-tier {
+      font-size: .65rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: .9rem;
+    }
+    .pcard.popular .pcard-tier { color: var(--blue); }
+    .pcard.enterprise .pcard-tier { color: var(--gold); }
+
+    .pcard-price {
+      font-family: var(--display);
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: .3rem;
+      display: flex;
+      align-items: flex-start;
+      gap: .1rem;
+    }
+    .pcard-price sup { font-size: 1.3rem; margin-top: .4rem; }
+    .pcard-price sub {
+      font-family: var(--body);
+      font-size: .8rem;
+      font-weight: 400;
+      color: var(--w50);
+      align-self: flex-end;
+      margin-bottom: .3rem;
+    }
+    .pcard-tagline {
+      font-size: .78rem;
+      color: var(--w50);
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+    .pcard-divider { height: 1px; background: var(--border); margin: 1.25rem 0; }
+
+    .pfeatures {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .7rem;
+      margin-bottom: 1.75rem;
+    }
+    .pfeatures li {
+      display: flex;
+      align-items: flex-start;
+      gap: .6rem;
+      font-size: .8rem;
+      color: var(--w80);
+      line-height: 1.45;
+    }
+    .pcheck {
+      flex-shrink: 0;
+      width: 16px; height: 16px;
+      color: var(--green);
+      margin-top: .1rem;
+    }
+
+    .pcard .btn { width: 100%; justify-content: center; }
+    .pcard.popular .btn {
+      background: linear-gradient(90deg, var(--blue), var(--purple));
+    }
+    .pcard.popular .btn:hover {
+      opacity: .9;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(100,80,246,.4);
+    }
+    .pcard.enterprise .btn {
+      background: rgba(245,158,11,.1);
+      color: var(--gold);
+      border: 1px solid rgba(245,158,11,.25);
+    }
+    .pcard.enterprise .btn:hover {
+      background: rgba(245,158,11,.18);
+      transform: translateY(-2px);
+    }
+
+    .pricing-footer {
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      font-size: .875rem;
+      color: var(--w50);
+    }
+    .pricing-footer .dot { color: var(--green); font-size: 1.2rem; line-height: 1; }
+
+    /* ═══════════════════════════════════════════
+       HOW IT WORKS
+    ═══════════════════════════════════════════ */
+    #how { padding: 7rem 0; }
+
+    .how-head {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+    .how-head h2 {
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      margin-bottom: 1rem;
+    }
+    .how-head p { font-size: 1.05rem; color: var(--w60); max-width: 480px; margin: 0 auto; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      position: relative;
+    }
+    /* Gradient connector line */
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 31px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--blue), var(--purple));
+    }
+
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 1.5rem;
+    }
+    .step-circle {
+      position: relative;
+      z-index: 1;
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--display);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 1.75rem;
+      flex-shrink: 0;
+      /* "Cut out" the connector line */
+      box-shadow: 0 0 0 5px var(--bg);
+    }
+    .step:nth-child(1) .step-circle { background: var(--blue); }
+    .step:nth-child(4) .step-circle { background: var(--purple); }
+
+    .step h3 { font-size: 1rem; margin-bottom: .6rem; }
+    .step p { font-size: .825rem; color: var(--w60); line-height: 1.7; }
+    .step-tag {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      background: rgba(59,130,246,.1);
+      border: 1px solid rgba(59,130,246,.2);
+      padding: .25rem .7rem;
+      border-radius: 100px;
+    }
+
+    /* ═══════════════════════════════════════════
+       RESULTS / TESTIMONIALS
+    ═══════════════════════════════════════════ */
+    #results {
+      padding: 7rem 0;
+      background: var(--bg2);
+    }
+    .results-head {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .results-head h2 {
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      margin-bottom: 1rem;
+    }
+    .results-head p { font-size: 1.05rem; color: var(--w60); }
+
+    .tgrid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+    .tcard {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: border-color .3s, transform .3s;
+      display: flex;
+      flex-direction: column;
+    }
+    .tcard:hover {
+      border-color: rgba(59,130,246,.3);
+      transform: translateY(-4px);
+    }
+    .tcard-stars {
+      color: var(--gold);
+      letter-spacing: .06em;
+      margin-bottom: 1.1rem;
+      font-size: .95rem;
+    }
+    .tcard-quote {
+      font-size: .875rem;
+      color: var(--w80);
+      line-height: 1.85;
+      font-style: italic;
+      margin-bottom: 1.75rem;
+      flex: 1;
+    }
+    .tcard-author {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+    }
+    .tcard-avatar {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--border);
+      flex-shrink: 0;
+    }
+    .tcard-name { font-weight: 600; font-size: .875rem; }
+    .tcard-biz  { font-size: .75rem; color: var(--w50); margin-top: .1rem; }
+
+    /* Stats strip */
+    .stats-strip {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      display: flex;
+      align-items: stretch;
+      overflow: hidden;
+    }
+    .stat-block {
+      flex: 1;
+      text-align: center;
+      padding: 2.75rem 1.5rem;
+      border-right: 1px solid var(--border);
+    }
+    .stat-block:last-child { border-right: none; }
+    .stat-num {
+      font-family: var(--display);
+      font-size: 2.75rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: .5rem;
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: .1rem;
+    }
+    .stat-sfx { font-size: 1.5rem; color: var(--blue); }
+    .stat-label {
+      font-size: .72rem;
+      color: var(--w50);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    /* ═══════════════════════════════════════════
+       ASSESSMENT CTA
+    ═══════════════════════════════════════════ */
+    #assessment {
+      padding: 8rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .assess-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(59,130,246,.18) 0%, rgba(15,23,42,1) 45%, rgba(139,92,246,.15) 100%);
+    }
+    .assess-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(59,130,246,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59,130,246,.05) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .assess-orb-1 {
+      position: absolute;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: rgba(59,130,246,.12);
+      filter: blur(80px);
+      top: -100px; left: -50px;
+    }
+    .assess-orb-2 {
+      position: absolute;
+      width: 350px; height: 350px;
+      border-radius: 50%;
+      background: rgba(139,92,246,.1);
+      filter: blur(80px);
+      bottom: -80px; right: -30px;
+    }
+    .assess-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .assess-inner .chip { justify-content: center; margin-bottom: 1.5rem; }
+    .assess-inner .chip::before { display: none; }
+    .assess-inner h2 {
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      margin-bottom: 1.25rem;
+    }
+    .assess-inner > p {
+      font-size: 1.05rem;
+      color: var(--w70);
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .assess-note {
+      font-size: .78rem;
+      color: var(--w40);
+      margin-top: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .4rem;
+    }
+    .assess-note::before { content: '⏱'; font-size: 1rem; }
+
+    /* ═══════════════════════════════════════════
+       FAQ
+    ═══════════════════════════════════════════ */
+    #faq { padding: 7rem 0; }
+
+    .faq-head {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .faq-head h2 {
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      margin-bottom: 1rem;
+    }
+    .faq-head p { font-size: 1.05rem; color: var(--w60); }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+    }
+    .faq-item {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color .3s;
+    }
+    .faq-item.open { border-color: rgba(59,130,246,.4); }
+
+    .faq-q {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      padding: 1.25rem 1.5rem;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-family: var(--body);
+      font-size: .925rem;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+      transition: color .2s;
+    }
+    .faq-q:hover { color: var(--blue); }
+    .faq-icon {
+      width: 20px; height: 20px;
+      color: var(--w40);
+      flex-shrink: 0;
+      transition: transform .35s, color .3s;
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      color: var(--blue);
+    }
+
+    .faq-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .4s cubic-bezier(.4,0,.2,1);
+    }
+    .faq-body-inner {
+      padding: 0 1.5rem 1.5rem;
+      font-size: .875rem;
+      color: var(--w70);
+      line-height: 1.85;
+    }
+    .faq-item.open .faq-body { max-height: 400px; }
+
+    /* ═══════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════ */
+    #footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 5rem 0 0;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 4rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .footer-brand .nav-logo { display: inline-block; margin-bottom: 1rem; }
+    .footer-brand p {
+      font-size: .82rem;
+      color: var(--w50);
+      line-height: 1.8;
+      max-width: 240px;
+    }
+    .footer-col h4 {
+      font-family: var(--body);
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--w50);
+      margin-bottom: 1.25rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .75rem; }
+    .footer-col ul a {
+      font-size: .82rem;
+      color: var(--w60);
+      transition: color .2s;
+    }
+    .footer-col ul a:hover { color: var(--white); }
+
+    .footer-bottom {
+      padding: 1.5rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-bottom p { font-size: .75rem; color: var(--w30); }
+    .social-row {
+      display: flex;
+      gap: 1.25rem;
+    }
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .75rem;
+      color: var(--w40);
+      transition: color .2s;
+    }
+    .social-link:hover { color: var(--white); }
+    .social-link svg { width: 16px; height: 16px; }
+
+    /* ═══════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════ */
+    @media (max-width: 1100px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+      .footer-brand { grid-column: span 2; }
+      .pricing-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .pcard.popular { transform: none; }
+    }
+    @media (max-width: 900px) {
+      .pain-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
+      .tgrid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
+      .steps { grid-template-columns: 1fr 1fr; gap: 3rem; }
+      .steps::before { display: none; }
+    }
+    @media (max-width: 768px) {
+      .nav-menu, .nav-actions { display: none; }
+      .hamburger { display: flex; }
+
+      #hero { padding-top: 70px; }
+      .hero-trust { display: none; }
+      .hero-ctas { flex-direction: column; align-items: center; }
+      .hero-scroll { display: none; }
+
+      .svc-row {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        padding: 3.5rem 0;
+      }
+      .svc-row:nth-child(even) .svc-text  { order: 1; }
+      .svc-row:nth-child(even) .svc-visual { order: 2; }
+
+      .pricing-grid { grid-template-columns: 1fr; max-width: 380px; margin-left: auto; margin-right: auto; }
+
+      .steps { grid-template-columns: 1fr; gap: 2.5rem; }
+      .step { flex-direction: row; text-align: left; gap: 1.25rem; align-items: flex-start; }
+      .step-circle { margin-bottom: 0; }
+
+      .stats-strip { flex-direction: column; }
+      .stat-block { border-right: none; border-bottom: 1px solid var(--border); }
+      .stat-block:last-child { border-bottom: none; }
+
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: span 2; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-brand { grid-column: span 1; }
+      .steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════════ -->
+<nav id="nav">
+  <div class="wrap nav-inner">
+    <a href="#hero" class="nav-logo">BizStack<span class="ai">.ai</span></a>
+    <ul class="nav-menu">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#results">Results</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="#assessment" class="btn btn-blue">Get Free Assessment</a>
+    </div>
+    <button class="hamburger" id="burger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services"   class="mm-link">Services</a>
+  <a href="#pricing"    class="mm-link">Pricing</a>
+  <a href="#how"        class="mm-link">How It Works</a>
+  <a href="#results"    class="mm-link">Results</a>
+  <a href="#faq"        class="mm-link">FAQ</a>
+  <a href="#assessment" class="btn btn-blue">Get Free Assessment</a>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg-base"></div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-orb hero-orb-3"></div>
+  <div class="hero-orb hero-orb-4"></div>
+  <div class="hero-orb hero-orb-5"></div>
+  <div class="hero-orb hero-orb-6"></div>
+
+  <div class="hero-content">
+    <div class="hero-pill">
+      <div class="pill-dot"></div>
+      Trusted by 200+ small businesses across the US
+    </div>
+
+    <h1 class="hero-h1">
+      Stop Overpaying for Business Tools<br>
+      <span class="hl">You Barely Use</span>
+    </h1>
+
+    <p class="hero-sub">
+      Professional websites, CRM, lead automation, and AI — all in one
+      affordable subscription. Built in days, not months.
+    </p>
+
+    <div class="hero-ctas">
+      <a href="#pricing"    class="hero-btn-glass">See Pricing</a>
+      <a href="#assessment" class="hero-btn-primary">Take the Free Assessment →</a>
+    </div>
+
+    <div class="hero-trust">
+      <div class="tbadge">
+        <span class="tbadge-check">✓</span>
+        Websites Built in 48 Hours
+      </div>
+      <div class="tbadge">
+        <span class="tbadge-check">✓</span>
+        No Contracts
+      </div>
+      <div class="tbadge">
+        <span class="tbadge-check">✓</span>
+        Cancel Anytime
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span class="hero-scroll-label">Scroll</span>
+    <div class="hero-scroll-track">
+      <div class="hero-scroll-thumb"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PROBLEM — "SOUND FAMILIAR?"
+═══════════════════════════════════════════ -->
+<section id="problem">
+  <div class="wrap">
+    <div class="problem-head rev">
+      <div class="chip center">The Problem</div>
+      <h2>Sound Familiar?</h2>
+      <p>You're not alone. These are the three things killing small business growth right now.</p>
+    </div>
+
+    <div class="pain-grid">
+      <div class="pain-card rev">
+        <div class="pain-icon-wrap">
+          <!-- Monitor / outdated website icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <path d="M8 21h8M12 17v4"/>
+            <path d="M2 7h20"/>
+          </svg>
+        </div>
+        <h3>"Your website looks like it was built in 2015."</h3>
+        <p>Slow, outdated, not mobile-friendly — and your competitors just got a shiny new site. First impressions are everything, and right now you're losing customers before they even call.</p>
+      </div>
+
+      <div class="pain-card rev" style="transition-delay:.1s">
+        <div class="pain-icon-wrap">
+          <!-- Funnel / leads icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/>
+          </svg>
+        </div>
+        <h3>"Leads come in but nobody follows up fast enough."</h3>
+        <p>Studies show 78% of customers buy from whoever responds first. If you're getting back to leads the next day (or the next week), you're handing money directly to your competition.</p>
+      </div>
+
+      <div class="pain-card rev" style="transition-delay:.2s">
+        <div class="pain-icon-wrap">
+          <!-- Broken link / disconnected tools icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 15L15 9"/>
+            <path d="M7 10L5 12a4 4 0 005.657 5.657L13 15"/>
+            <path d="M17 14l2-2a4 4 0 00-5.657-5.657L11 9"/>
+            <path d="M8 8L6 6M18 18l-2-2"/>
+          </svg>
+        </div>
+        <h3>"You're paying for 6 different tools that don't talk to each other."</h3>
+        <p>Website here, CRM there, scheduling somewhere else, email marketing from another vendor… You're spending $600+/month on a patchwork of software that creates more work than it saves.</p>
+      </div>
+    </div>
+
+    <div class="problem-bridge rev">
+      <p class="bridge-eyebrow">There's a better way.</p>
+      <h3>One platform. Everything connected. One low monthly price.</h3>
+      <p>BizStack.ai replaces all of it — built, managed, and running in 48 hours or less.</p>
+      <a href="#services" class="btn btn-blue">See What's Included →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SERVICES — ALTERNATING ROWS
+═══════════════════════════════════════════ -->
+<section id="services">
+  <div class="wrap">
+    <div class="services-head rev">
+      <div class="chip center">Our Services</div>
+      <h2>One Subscription. Everything You Need.</h2>
+      <p>Every service is built, hosted, and maintained by our team. No tech skills required — ever.</p>
+    </div>
+
+    <div class="svc-rows">
+
+      <!-- Row 1: Website Design — text left, visual right -->
+      <div class="svc-row">
+        <div class="svc-text rev-left">
+          <div class="svc-row-num">01</div>
+          <div class="chip">Website Design &amp; Hosting</div>
+          <h3>A Website That Actually Wins Business</h3>
+          <p>Your site is your #1 salesperson and it works 24/7. We build fast, modern, mobile-first websites that convert browsers into paying customers — then we host, maintain, and update it for you forever.</p>
+          <ul class="svc-bullets">
+            <li>
+              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              5-page to unlimited pages, mobile-responsive design
+            </li>
+            <li>
+              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Hosting, SSL, domain, and free lifetime updates
+            </li>
+            <li>
+              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              SEO-optimized and Google Analytics connected from day one
+            </li>
+          </ul>
+          <a href="#pricing" class="svc-link">Available in all plans →</a>
+        </div>
+        <div class="svc-visual rev-right">
+          <div class="svc-glow" style="background: radial-gradient(ellipse, rgba(59,130,246,.15) 0%, transparent 70%);"></div>
+          <div class="svc-screen">
+            <div class="svc-screen-bar">
+              <div class="sdot sdot-r"></div>
+              <div class="sdot sdot-y"></div>
+              <div class="sdot sdot-g"></div>
+              <div class="svc-url-bar"></div>
+            </div>
+            <img src="https://picsum.photos/seed/bizweb-01/640/360" alt="Website Design Preview">
+            <div class="svc-screen-foot">
+              <span class="svc-badge">Website Design</span>
+              <span class="svc-status">Live &amp; Running</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: CRM — visual left, text right -->
+      <div class="svc-row">
+        <div class="svc-text rev-right">
+          <div class="svc-row-num">02</div>
+          <div class="chip purple">Lead Capture &amp; CRM</div>
+          <h3>Know Every Lead. Miss None of Them.</h3>
+          <p>We build smart lead capture forms, landing pages, and connect them directly to your CRM pipeline — so every lead is tracked, tagged, and ready for follow-up the moment it comes in.</p>
+          <ul class="svc-bullets">
+            <li>
+              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Visual pipeline &amp; deal tracking from 500 to unlimited contacts
+            </li>
+            <li>
+              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Smart forms that capture name, phone, email, and intent
+            </li>
+            <li>
+              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Real-time notifications so you know the second a lead arrives
+            </li>
+          </ul>
+          <a href="#pricing" class="svc-link" style="color: var(--purple)">Included in Growth+ →</a>
+        </div>
+        <div class="svc-visual rev-left">
+          <div class="svc-glow" style="background: radial-gradient(ellipse, rgba(139,92,246,.15) 0%, transparent 70%);"></div>
+          <div class="svc-screen">
+            <div class="svc-screen-bar">
+              <div class="sdot sdot-r"></div>
+              <div class="sdot sdot-y"></div>
+              <div class="sdot sdot-g"></div>
+              <div class="svc-url-bar"></div>
+            </div>
+            <img src="https://picsum.photos/seed/bizcrm-02/640/360" alt="CRM Dashboard">
+            <div class="svc-screen-foot">
+              <span class="svc-badge purple">CRM Pipeline</span>
+              <span class="svc-status">12 Active Leads</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 3: Automated Follow-Up — text left, visual right -->
+      <div class="svc-row">
+        <div class="svc-text rev-left">
+          <div class="svc-row-num">03</div>
+          <div class="chip green">Automated Follow-Up</div>
+          <h3>Follow Up Like You Have a Full Sales Team</h3>
+          <p>The money is in the follow-up — and most small businesses never do it. We build automated email and SMS sequences that reach out to leads 3, 5, 10+ times on autopilot while you focus on the work you love.</p>
+          <ul class="svc-bullets">
+            <li>
+              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Email &amp; SMS sequences triggered by lead behavior
+            </li>
+            <li>
+              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Appointment reminders, re-engagement, and review requests
+            </li>
+            <li>
+              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Written by our team — personalized, on-brand, ready to send
+            </li>
+          </ul>
+          <a href="#pricing" class="svc-link" style="color: var(--green)">Included in Growth+ →</a>
+        </div>
+        <div class="svc-visual rev-right">
+          <div class="svc-glow" style="background: radial-gradient(ellipse, rgba(16,185,129,.12) 0%, transparent 70%);"></div>
+          <div class="svc-screen">
+            <div class="svc-screen-bar">
+              <div class="sdot sdot-r"></div>
+              <div class="sdot sdot-y"></div>
+              <div class="sdot sdot-g"></div>
+              <div class="svc-url-bar"></div>
+            </div>
+            <img src="https://picsum.photos/seed/bizauto-03/640/360" alt="Automation Sequences">
+            <div class="svc-screen-foot">
+              <span class="svc-badge green">Automation Active</span>
+              <span class="svc-status">3 Sequences Running</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 4: AI Chatbot — visual left, text right -->
+      <div class="svc-row">
+        <div class="svc-text rev-right">
+          <div class="svc-row-num">04</div>
+          <div class="chip purple">AI Chatbot &amp; Voice Agent</div>
+          <h3>Answer Every Lead. Even at 2am.</h3>
+          <p>Your AI chatbot lives on your website, qualifies leads, answers questions, and books appointments — 24/7 without a salary. Upgrade to the voice agent and your AI actually answers phone calls too.</p>
+          <ul class="svc-bullets">
+            <li>
+              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Website chatbot trained on your business and services
+            </li>
+            <li>
+              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Qualifies leads, answers FAQs, and books appointments automatically
+            </li>
+            <li>
+              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              AI voice agent answers inbound calls (Enterprise tier)
+            </li>
+          </ul>
+          <a href="#pricing" class="svc-link" style="color: var(--purple)">Included in Scale+ →</a>
+        </div>
+        <div class="svc-visual rev-left">
+          <div class="svc-glow" style="background: radial-gradient(ellipse, rgba(139,92,246,.15) 0%, transparent 70%);"></div>
+          <div class="svc-screen">
+            <div class="svc-screen-bar">
+              <div class="sdot sdot-r"></div>
+              <div class="sdot sdot-y"></div>
+              <div class="sdot sdot-g"></div>
+              <div class="svc-url-bar"></div>
+            </div>
+            <img src="https://picsum.photos/seed/bizai-04/640/360" alt="AI Chatbot Interface">
+            <div class="svc-screen-foot">
+              <span class="svc-badge purple">AI Chatbot</span>
+              <span class="svc-status">Online 24/7</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 5: Payment Processing — text left, visual right -->
+      <div class="svc-row">
+        <div class="svc-text rev-left">
+          <div class="svc-row-num">05</div>
+          <div class="chip gold">Payment Processing</div>
+          <h3>Get Paid Faster. Look More Professional.</h3>
+          <p>Online invoicing, recurring billing, and a branded payment page — all connected to your CRM so you know exactly who has paid and who hasn't. No more chasing checks or playing phone tag.</p>
+          <ul class="svc-bullets">
+            <li>
+              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Online invoicing with automatic payment reminders
+            </li>
+            <li>
+              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Recurring subscriptions and payment plans for your clients
+            </li>
+            <li>
+              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Syncs directly with your CRM — no manual bookkeeping
+            </li>
+          </ul>
+          <a href="#pricing" class="svc-link" style="color: var(--gold)">Included in Growth+ →</a>
+        </div>
+        <div class="svc-visual rev-right">
+          <div class="svc-glow" style="background: radial-gradient(ellipse, rgba(245,158,11,.12) 0%, transparent 70%);"></div>
+          <div class="svc-screen">
+            <div class="svc-screen-bar">
+              <div class="sdot sdot-r"></div>
+              <div class="sdot sdot-y"></div>
+              <div class="sdot sdot-g"></div>
+              <div class="svc-url-bar"></div>
+            </div>
+            <img src="https://picsum.photos/seed/bizpay-05/640/360" alt="Payment Processing">
+            <div class="svc-screen-foot">
+              <span class="svc-badge gold">Payments</span>
+              <span class="svc-status">$4,280 This Month</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 6: Marketing — visual left, text right -->
+      <div class="svc-row">
+        <div class="svc-text rev-right">
+          <div class="svc-row-num">06</div>
+          <div class="chip green">Marketing &amp; Content</div>
+          <h3>Show Up Online. Every Single Week.</h3>
+          <p>Consistent content is how you win the long game. Our team writes your blog posts, social media captions, and manages your Google Business Profile — so you stay visible without spending hours on it yourself.</p>
+          <ul class="svc-bullets">
+            <li>
+              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              2–4 SEO blog posts per month written for your business
+            </li>
+            <li>
+              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Social media captions &amp; Google Business Profile management
+            </li>
+            <li>
+              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Paid ad campaign setup &amp; management (Scale+)
+            </li>
+          </ul>
+          <a href="#pricing" class="svc-link" style="color: var(--green)">Included in Scale+ →</a>
+        </div>
+        <div class="svc-visual rev-left">
+          <div class="svc-glow" style="background: radial-gradient(ellipse, rgba(16,185,129,.12) 0%, transparent 70%);"></div>
+          <div class="svc-screen">
+            <div class="svc-screen-bar">
+              <div class="sdot sdot-r"></div>
+              <div class="sdot sdot-y"></div>
+              <div class="sdot sdot-g"></div>
+              <div class="svc-url-bar"></div>
+            </div>
+            <img src="https://picsum.photos/seed/bizmkt-06/640/360" alt="Marketing Dashboard">
+            <div class="svc-screen-foot">
+              <span class="svc-badge green">Content &amp; SEO</span>
+              <span class="svc-status">4 Posts Scheduled</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.svc-rows -->
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PRICING
+═══════════════════════════════════════════ -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="pricing-head rev">
+      <div class="chip center">Pricing</div>
+      <h2>Simple Pricing. Serious Value.</h2>
+      <p>Pick a plan and go live in 48 hours. Upgrade or downgrade anytime, no questions asked.</p>
+    </div>
+
+    <div class="pricing-grid">
+
+      <!-- STARTER -->
+      <div class="pcard rev">
+        <p class="pcard-tier">Starter</p>
+        <div class="pcard-price"><sup>$</sup>99<sub>/mo</sub></div>
+        <p class="pcard-tagline">Get found, get organized.</p>
+        <div class="pcard-divider"></div>
+        <ul class="pfeatures">
+          <li>
+            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            5-page professional website
+          </li>
+          <li>
+            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Mobile responsive design
+          </li>
+          <li>
+            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Hosting, SSL &amp; domain connection
+          </li>
+          <li>
+            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Contact form + email notifications
+          </li>
+          <li>
+            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Google Analytics setup
+          </li>
+          <li>
+            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Basic CRM (up to 500 contacts)
+          </li>
+          <li>
+            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Email support
+          </li>
+        </ul>
+        <a href="#assessment" class="btn btn-outline">Get Started</a>
+      </div>
+
+      <!-- GROWTH — MOST POPULAR -->
+      <div class="pcard popular rev" style="transition-delay:.08s">
+        <div class="pop-badge">⚡ Most Popular</div>
+        <p class="pcard-tier">Growth</p>
+        <div class="pcard-price"><sup>$</sup>299<sub>/mo</sub></div>
+        <p class="pcard-tagline">More leads, better follow-up.</p>
+        <div class="pcard-divider"></div>
+        <ul class="pfeatures">
+          <li>
+            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Everything in Starter
+          </li>
+          <li>
+            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Unlimited website pages
+          </li>
+          <li>
+            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Lead capture forms &amp; landing pages
+          </li>
+          <li>
+            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            CRM pipeline (up to 5,000 contacts)
+          </li>
+          <li>
+            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            3 automated email follow-up sequences
+          </li>
+          <li>
+            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            2 blog posts/month + Google Business
+          </li>
+          <li>
+            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Priority support
+          </li>
+        </ul>
+        <a href="#assessment" class="btn btn-gradient">Get Started</a>
+      </div>
+
+      <!-- SCALE -->
+      <div class="pcard rev" style="transition-delay:.16s">
+        <p class="pcard-tier">Scale</p>
+        <div class="pcard-price"><sup>$</sup>499<sub>/mo</sub></div>
+        <p class="pcard-tagline">Automate and grow.</p>
+        <div class="pcard-divider"></div>
+        <ul class="pfeatures">
+          <li>
+            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Everything in Growth
+          </li>
+          <li>
+            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            AI chatbot on your website
+          </li>
+          <li>
+            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            SMS automation sequences
+          </li>
+          <li>
+            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Unlimited CRM contacts
+          </li>
+          <li>
+            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            4 blog posts + social captions/month
+          </li>
+          <li>
+            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Paid ad campaign management
+          </li>
+          <li>
+            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Dedicated account manager
+          </li>
+        </ul>
+        <a href="#assessment" class="btn btn-blue">Get Started</a>
+      </div>
+
+      <!-- ENTERPRISE -->
+      <div class="pcard enterprise rev" style="transition-delay:.24s">
+        <p class="pcard-tier">Enterprise</p>
+        <div class="pcard-price"><sup>$</sup>999<sub style="color:var(--gold)">+/mo</sub></div>
+        <p class="pcard-tagline">Your virtual AI department.</p>
+        <div class="pcard-divider"></div>
+        <ul class="pfeatures">
+          <li>
+            <svg class="pcheck" style="color:var(--gold)" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Everything in Scale
+          </li>
+          <li>
+            <svg class="pcheck" style="color:var(--gold)" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            AI voice agent for inbound calls
+          </li>
+          <li>
+            <svg class="pcheck" style="color:var(--gold)" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Custom third-party integrations
+          </li>
+          <li>
+            <svg class="pcheck" style="color:var(--gold)" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Advanced analytics dashboard
+          </li>
+          <li>
+            <svg class="pcheck" style="color:var(--gold)" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Custom automation workflows
+          </li>
+          <li>
+            <svg class="pcheck" style="color:var(--gold)" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Weekly strategy calls
+          </li>
+          <li>
+            <svg class="pcheck" style="color:var(--gold)" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            First access to new AI features
+          </li>
+        </ul>
+        <a href="#assessment" class="btn">Let's Talk</a>
+      </div>
+
+    </div><!-- /.pricing-grid -->
+
+    <div class="pricing-footer rev">
+      <span class="dot">●</span>
+      No contracts &nbsp;·&nbsp; No setup fees &nbsp;·&nbsp; Cancel anytime &nbsp;·&nbsp; First month prorated
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     HOW IT WORKS
+═══════════════════════════════════════════ -->
+<section id="how">
+  <div class="wrap">
+    <div class="how-head rev">
+      <div class="chip center">Process</div>
+      <h2>Live in 48 Hours. Seriously.</h2>
+      <p>We move fast because your business can't afford to wait. Here's exactly how it works.</p>
+    </div>
+
+    <div class="steps rev">
+      <div class="step">
+        <div class="step-circle">1</div>
+        <h3>Take Our Free Assessment</h3>
+        <p>5 minutes online. Tell us about your business, your goals, and your current tools. Our system analyzes your needs and recommends the perfect plan instantly.</p>
+        <span class="step-tag">5 minutes</span>
+      </div>
+      <div class="step">
+        <div class="step-circle">2</div>
+        <h3>We Build Your Stack</h3>
+        <p>Our AI-powered team gets to work immediately. We design your website, configure your CRM, set up automations, and wire everything together into one seamless system.</p>
+        <span class="step-tag">24–48 hours</span>
+      </div>
+      <div class="step">
+        <div class="step-circle">3</div>
+        <h3>You Review &amp; Approve</h3>
+        <p>We send you a private preview link. You review everything, request any changes, and we iterate fast — usually within the same business day. Your input, your brand.</p>
+        <span class="step-tag">Same day revisions</span>
+      </div>
+      <div class="step">
+        <div class="step-circle">4</div>
+        <h3>Go Live. Start Growing.</h3>
+        <p>We flip the switch, your new digital presence goes live, and leads start flowing. We stay on to support, update, and improve your stack every single month.</p>
+        <span class="step-tag" style="color:var(--green); background:rgba(16,185,129,.1); border-color:rgba(16,185,129,.2)">Ongoing support</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     RESULTS / TESTIMONIALS
+═══════════════════════════════════════════ -->
+<section id="results">
+  <div class="wrap">
+    <div class="results-head rev">
+      <div class="chip center">Client Results</div>
+      <h2>What Our Clients Say</h2>
+      <p>Real businesses. Real results. No fluff.</p>
+    </div>
+
+    <div class="tgrid">
+      <div class="tcard rev">
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-quote">"Before BizStack, I had a terrible website from 2018 and was losing leads to competitors every single day. They built me a new site in less than 48 hours and set up automated texts that follow up with every inquiry automatically. I've had my best two quarters in 12 years of business."</p>
+        <div class="tcard-author">
+          <img class="tcard-avatar" src="https://picsum.photos/seed/plumber-mt/80/80" alt="Mike Torres">
+          <div>
+            <p class="tcard-name">Mike Torres</p>
+            <p class="tcard-biz">Mike's Plumbing &amp; Heating · Houston, TX</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tcard rev" style="transition-delay:.1s">
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-quote">"I was paying over $800/month across four different services that barely talked to each other. BizStack replaced all of them for $299/month and added an AI chatbot that schedules appointments even at 2am. My no-show rate dropped 40% in the first 60 days."</p>
+        <div class="tcard-author">
+          <img class="tcard-avatar" src="https://picsum.photos/seed/dentist-sk/80/80" alt="Dr. Sarah Kim">
+          <div>
+            <p class="tcard-name">Dr. Sarah Kim</p>
+            <p class="tcard-biz">Kim Family Dental · Austin, TX</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tcard rev" style="transition-delay:.2s">
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-quote">"I didn't think I needed any of this until I realized I was losing $3,000/month in missed calls and leads that went cold. The automated follow-up alone paid for three full years of the subscription in its very first month. I wish I'd done this two years ago."</p>
+        <div class="tcard-author">
+          <img class="tcard-avatar" src="https://picsum.photos/seed/salon-jr/80/80" alt="Jennifer Reyes">
+          <div>
+            <p class="tcard-name">Jennifer Reyes</p>
+            <p class="tcard-biz">Salon Reyes · Dallas, TX</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats strip -->
+    <div class="stats-strip rev">
+      <div class="stat-block">
+        <div class="stat-num">
+          <span class="ctr" data-target="200">0</span>
+          <span class="stat-sfx">+</span>
+        </div>
+        <p class="stat-label">Businesses Served</p>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">
+          <span class="ctr" data-target="48">0</span>
+          <span class="stat-sfx">hr</span>
+        </div>
+        <p class="stat-label">Average Delivery Time</p>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">
+          <span class="ctr" data-target="97">0</span>
+          <span class="stat-sfx">%</span>
+        </div>
+        <p class="stat-label">Client Retention Rate</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     ASSESSMENT CTA
+═══════════════════════════════════════════ -->
+<section id="assessment">
+  <div class="assess-bg"></div>
+  <div class="assess-orb-1"></div>
+  <div class="assess-orb-2"></div>
+  <div class="wrap">
+    <div class="assess-inner rev">
+      <div class="chip center purple">Free Assessment</div>
+      <h2>Not Sure Which Plan You Need?</h2>
+      <p>Take our free 3-minute business assessment. We'll analyze your current setup, identify your biggest gaps, and recommend the perfect plan — no pressure, no commitment, no sales call required.</p>
+      <a href="#" class="btn btn-gradient btn-lg">Start Your Free Assessment →</a>
+      <p class="assess-note">Takes less than 3 minutes. Your custom recommendation is instant.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FAQ
+═══════════════════════════════════════════ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="faq-head rev">
+      <div class="chip center">FAQ</div>
+      <h2>Questions? We've Got Answers.</h2>
+      <p>Straight talk. No jargon. If you still have questions, email us at hello@bizstack.ai</p>
+    </div>
+
+    <div class="wrap-narrow">
+      <div class="faq-list">
+
+        <div class="faq-item rev">
+          <button class="faq-q" aria-expanded="false">
+            What exactly do I get for $99/month?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq-body">
+            <div class="faq-body-inner">
+              The Starter plan includes a professionally designed, 5-page mobile-responsive website, hosting, SSL, domain connection, a contact form that emails you in real-time, Google Analytics setup, and a basic CRM to manage up to 500 contacts. You get everything a small business needs to have a credible, functional online presence — without the $3,000–$5,000 upfront agency fee. We build it, we host it, we maintain it.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item rev">
+          <button class="faq-q" aria-expanded="false">
+            How fast can you really build a website?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq-body">
+            <div class="faq-body-inner">
+              Seriously fast. After you complete your onboarding assessment (5 minutes), our team gets to work immediately. Most websites are fully built and live within 48 hours. Complex sites with custom features may take 3–5 business days. We've built a plumber's website, connected it to their CRM, and had automated follow-up sequences running — all in the same week. Speed is not a marketing claim. It's how we operate.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item rev">
+          <button class="faq-q" aria-expanded="false">
+            Do I need to be technical to use this?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq-body">
+            <div class="faq-body-inner">
+              Not even a little bit. If you can send an email and describe your business, you can work with BizStack.ai. We handle every technical detail — hosting, domains, SSL certificates, DNS records, CRM configuration, automation workflows, AI chatbot training, and more. You tell us what you need, you approve the final product, and we handle everything under the hood. Our clients range from 24-year-old e-commerce owners to 65-year-old contractors who've never logged into a CRM in their lives. They all love it.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item rev">
+          <button class="faq-q" aria-expanded="false">
+            What if I want to cancel?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq-body">
+            <div class="faq-body-inner">
+              Cancel anytime with no penalty, no fees, and zero guilt. Just email us or click cancel in your dashboard. We'll keep everything live until the end of your current billing period. You own your domain and your contacts — we export everything for you when you leave, neatly packaged. We'd rather earn your business month after month by being genuinely good at what we do than by trapping you in a contract.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item rev">
+          <button class="faq-q" aria-expanded="false">
+            Can I upgrade or downgrade my plan?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq-body">
+            <div class="faq-body-inner">
+              Absolutely. You can change your plan at any time through your dashboard. Upgrades take effect immediately and we begin building your new features right away. Downgrades take effect at the start of your next billing cycle. We prorate everything so you're never double-paying. And if you're not sure which plan to upgrade to, just email your account manager — that's literally what they're there for.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item rev">
+          <button class="faq-q" aria-expanded="false">
+            Do you work with businesses outside of Texas?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq-body">
+            <div class="faq-body-inner">
+              Yes — we're headquartered in Texas but we serve small businesses across all 50 states. The vast majority of our work is done remotely, so location is never a limitation. We've built websites and systems for businesses from California to Florida to New York. If you're outside the US, reach out and we'll let you know on a case-by-case basis. Send a message to hello@bizstack.ai and we'll get back to you within one business day.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item rev">
+          <button class="faq-q" aria-expanded="false">
+            What makes you different from Squarespace or Wix?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq-body">
+            <div class="faq-body-inner">
+              Squarespace and Wix are DIY tools — great if you have 40+ hours and enjoy learning software. BizStack.ai is a done-for-you service. We build it, host it, update it, and make it actually generate business for you. But the bigger difference? We don't just build websites. We connect your website to a real CRM, automated follow-up, AI tools, payment processing, and content marketing. Squarespace is a blank canvas. BizStack is a complete revenue engine. You're not buying software. You're buying a team that wants your business to grow.
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.faq-list -->
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<footer id="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#hero" class="nav-logo">BizStack<span class="ai">.ai</span></a>
+        <p>Everything your business needs to run better. Built for small business owners who are tired of overpaying for tech that doesn't work together.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Partner Program</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Website Design</a></li>
+          <li><a href="#services">Lead Capture &amp; CRM</a></li>
+          <li><a href="#services">Automated Follow-Up</a></li>
+          <li><a href="#services">AI Chatbot &amp; Voice</a></li>
+          <li><a href="#services">Payment Processing</a></li>
+          <li><a href="#services">Marketing &amp; Content</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#assessment">Free Assessment</a></li>
+          <li><a href="#">Case Studies</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 BizStack.ai — Everything your business needs to run better.</p>
+      <div class="social-row">
+        <a href="#" class="social-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zm-5 3h-2.5A1.5 1.5 0 0010 7.5V9H8v2.5h2V19h2.5v-7.5H15l.5-2.5h-2.5V7.75c0-.414.336-.75.75-.75H15V6z"/></svg>
+          LinkedIn
+        </a>
+        <a href="#" class="social-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" fill="none" stroke="currentColor" stroke-width="2"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          Instagram
+        </a>
+        <a href="#" class="social-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          X (Twitter)
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════
+   NAV — SCROLL SOLID + HAMBURGER
+═══════════════════════════════════════════ */
+const nav    = document.getElementById('nav');
+const burger = document.getElementById('burger');
+const mMenu  = document.getElementById('mobileMenu');
+
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('solid', window.scrollY > 60);
+}, { passive: true });
+
+burger.addEventListener('click', () => {
+  const open = burger.classList.toggle('open');
+  mMenu.classList.toggle('open', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+
+mMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    burger.classList.remove('open');
+    mMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+
+/* ═══════════════════════════════════════════
+   SMOOTH SCROLL (offset 80px for sticky nav)
+═══════════════════════════════════════════ */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href');
+    const el = document.querySelector(id);
+    if (el && id !== '#') {
+      e.preventDefault();
+      window.scrollTo({
+        top: el.getBoundingClientRect().top + window.scrollY - 80,
+        behavior: 'smooth'
+      });
+    }
+  });
+});
+
+/* ═══════════════════════════════════════════
+   PARALLAX — HERO (bg base drifts on scroll)
+═══════════════════════════════════════════ */
+const heroBgBase = document.querySelector('.hero-bg-base');
+window.addEventListener('scroll', () => {
+  const s = window.scrollY;
+  if (s < window.innerHeight && heroBgBase) {
+    heroBgBase.style.transform = `translateY(${s * 0.18}px)`;
+  }
+}, { passive: true });
+
+/* ═══════════════════════════════════════════
+   REVEAL ON SCROLL
+═══════════════════════════════════════════ */
+const revEls = document.querySelectorAll('.rev, .rev-left, .rev-right');
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+      revObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+revEls.forEach(el => revObs.observe(el));
+
+/* ═══════════════════════════════════════════
+   COUNTER ANIMATION
+═══════════════════════════════════════════ */
+function runCounter(el, target, duration = 1800) {
+  const t0 = performance.now();
+  function step(now) {
+    const progress = Math.min((now - t0) / duration, 1);
+    const ease = 1 - Math.pow(2, -10 * progress);
+    el.textContent = Math.round(ease * target);
+    if (progress < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+const ctrObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      runCounter(el, parseInt(el.dataset.target, 10));
+      ctrObs.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.ctr').forEach(el => ctrObs.observe(el));
+
+/* ═══════════════════════════════════════════
+   FAQ ACCORDION
+═══════════════════════════════════════════ */
+document.querySelectorAll('.faq-item').forEach(item => {
+  const btn  = item.querySelector('.faq-q');
+  const body = item.querySelector('.faq-body');
+
+  btn.addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+
+    // Close all items
+    document.querySelectorAll('.faq-item').forEach(other => {
+      other.classList.remove('open');
+      other.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+    });
+
+    // Toggle clicked
+    if (!isOpen) {
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
+</script>
+</body>
+</html>
