@@ -694,7 +694,9 @@ const QUESTIONS = [
       "Hard to manage customer follow-up",
       "No CRM or client tracking system",
       "Weak social media presence",
-      "Struggling to scale operations"
+      "Struggling to scale operations",
+      "I don't have time to create content or send newsletters",
+      "I have manual processes that should be automated"
     ],
     required: true
   },
@@ -771,12 +773,13 @@ const TIER_PRICING = [
       { name: 'SMS Automation Platform', price: '$300 – $1,200', freq: '/year' },
       { name: 'Appointment Booking System', price: '$180 – $600', freq: '/year' },
       { name: '2 Blog Posts/Mo + GBP Management', price: '$4,800 – $12,000', freq: '/year' },
+      { name: 'Newsletter & Email Marketing (2/month)', price: '$2,400 – $6,000', freq: '/year' },
     ],
-    retailTotal: '$15,830 – $42,400+',
+    retailTotal: '$18,230 – $48,400+',
     retailSub: 'And you\'d still manage it all yourself.',
     ownPrice: '$7,499',
     ownNote: 'one-time · no recurring fees',
-    ownSavings: 'You save $8,331 – $34,901+ vs. retail Year 1',
+    ownSavings: 'You save $10,731 – $40,901+ vs. retail Year 1',
     payMonthly: '$299',
     payTotal: '$10,764 total ($0 interest)',
     payNote: '× 36 months = $10,764 total · $0 interest · $0 setup fees',
@@ -784,19 +787,22 @@ const TIER_PRICING = [
   {
     name: 'Scale',
     retailItems: [
-      { name: 'Everything in Growth (Year 1)', price: '$15,830 – $42,400+', freq: 'Year 1' },
+      { name: 'Everything in Growth (Year 1)', price: '$18,230 – $48,400+', freq: 'Year 1' },
       { name: 'AI Chatbot (custom-trained)', price: '$3,000 – $10,000', freq: 'setup +/yr' },
       { name: 'Unlimited CRM Contacts', price: '$1,200 – $6,000', freq: '/year' },
       { name: '4 Blog Posts + Social Captions/Mo', price: '$9,600 – $24,000', freq: '/year' },
       { name: 'Paid Ad Campaign Management', price: '$6,000 – $18,000', freq: '/year' },
       { name: 'Stripe Payment Integration', price: '$500 – $1,500', freq: 'setup' },
       { name: 'Dedicated Account Manager', price: '$12,000 – $24,000', freq: '/year' },
+      { name: 'Newsletter & Email Marketing (4/month)', price: '$4,800 – $12,000', freq: '/year' },
+      { name: 'Workflow Automation (up to 3 custom)', price: '$3,000 – $15,000', freq: 'setup + maint.' },
+      { name: 'Analytics Dashboard', price: '$3,000 – $10,000', freq: 'setup + /year' },
     ],
-    retailTotal: '$49,330 – $128,300+',
+    retailTotal: '$61,830 – $170,900+',
     retailSub: 'And you\'d still manage it all yourself.',
     ownPrice: '$14,999',
     ownNote: 'one-time · no recurring fees',
-    ownSavings: 'You save $34,331 – $113,301+ vs. retail Year 1',
+    ownSavings: 'You save $46,831 – $155,901+ vs. retail Year 1',
     payMonthly: '$499',
     payTotal: '$17,964 total ($0 interest)',
     payNote: '× 36 months = $17,964 total · $0 interest · $0 setup fees',
@@ -804,18 +810,20 @@ const TIER_PRICING = [
   {
     name: 'Enterprise',
     retailItems: [
-      { name: 'Everything in Scale (Year 1)', price: '$49,330 – $128,300+', freq: 'Year 1' },
-      { name: 'AI Voice Agent (custom)', price: '$5,000 – $25,000', freq: 'setup +/yr' },
+      { name: 'Everything in Scale (Year 1)', price: '$61,830 – $170,900+', freq: 'Year 1' },
+      { name: 'Newsletter & Email Marketing (unlimited)', price: '$12,000 – $30,000', freq: '/year' },
+      { name: 'AI Voice Agent (custom-trained)', price: '$5,000 – $25,000', freq: 'setup + $1.2K–$6K/yr' },
       { name: 'Custom Third-Party Integrations', price: '$5,000 – $20,000+', freq: 'per project' },
-      { name: 'Advanced Analytics Dashboard', price: '$3,000 – $10,000', freq: 'setup' },
+      { name: 'Advanced Analytics Dashboard', price: '$3,000 – $10,000', freq: 'setup + $2.4K–$6K/yr' },
       { name: 'Weekly Strategy Sessions', price: '$12,000 – $30,000', freq: '/year' },
       { name: 'Unlimited Custom Automation Builds', price: '$10,000 – $50,000+', freq: '/year' },
+      { name: 'White-Glove Onboarding', price: '$2,000 – $5,000', freq: 'one-time' },
     ],
-    retailTotal: '$86,530 – $274,300+',
+    retailTotal: '$110,830 – $347,900+',
     retailSub: 'And you\'d still manage it all yourself.',
     ownPrice: '$29,999+',
     ownNote: 'custom quote · fully bespoke',
-    ownSavings: 'You save $56,531 – $244,301+ vs. retail Year 1',
+    ownSavings: 'You save $80,831 – $317,901+ vs. retail Year 1',
     payMonthly: '$999+',
     payTotal: '$35,964+ total ($0 interest)',
     payNote: 'starting price × 36 months · $0 interest · $0 setup fees',
@@ -928,6 +936,16 @@ const CH_EXP = {
     name: "Operations Infrastructure",
     desc: "Growth breaks things. We'll audit your current processes and implement scalable systems — from project management to team communication to client onboarding — built to grow with you without falling apart.",
     pill: "Systems + Infrastructure"
+  },
+  "I don't have time to create content or send newsletters": {
+    name: "Content & Newsletter Automation",
+    desc: "Staying top-of-mind requires consistent content — but creating it takes hours you don't have. We research, write, design, and send your branded newsletters and content on autopilot, so your audience hears from you every week without you lifting a finger.",
+    pill: "Newsletter + Content Marketing"
+  },
+  "I have manual processes that should be automated": {
+    name: "Process Automation",
+    desc: "If you're doing the same task more than twice, it's costing you real money. We'll identify your biggest time drains and build custom automated workflows that handle them 24/7 — from invoice generation to lead routing to appointment reminders.",
+    pill: "Workflow Automation + AI"
   }
 };
 

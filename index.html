@@ -890,6 +890,59 @@
     .ill-mkt-stat { height: 30px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.05); border-radius: 5px; display: flex; align-items: center; justify-content: center; }
     .ill-mkt-stat-num { font-family: var(--mono); font-size: .65rem; font-weight: 700; color: var(--green); }
 
+    /* Additional chip + badge colors for new services */
+    .chip.orange { color: #F97316; }
+    .chip.cyan   { color: var(--cyan); }
+    .svc-badge.orange { background: rgba(249,115,22,.12); border-color: rgba(249,115,22,.2); color: #F97316; }
+    .svc-badge.cyan   { background: rgba(6,182,212,.12);  border-color: rgba(6,182,212,.2);  color: var(--cyan); }
+
+    /* Newsletter illustration */
+    .ill-newsletter { flex-direction: column; gap: .45rem; align-items: stretch; }
+    .ill-news-banner { height: 14px; background: linear-gradient(90deg, rgba(249,115,22,.35), rgba(249,115,22,.1)); border-radius: 4px; }
+    .ill-news-preview { background: rgba(249,115,22,.04); border: 1px solid rgba(249,115,22,.1); border-radius: 6px; padding: .5rem .625rem; display: flex; flex-direction: column; gap: .3rem; }
+    .ill-news-pr-line { height: 5px; background: rgba(255,255,255,.08); border-radius: 2px; }
+    .ill-news-pr-line.short { width: 60%; }
+    .ill-news-infographic { height: 38px; background: rgba(249,115,22,.05); border: 1px solid rgba(249,115,22,.1); border-radius: 5px; display: flex; align-items: flex-end; gap: .25rem; padding: .3rem .4rem; }
+    .ill-news-ig-bar { background: rgba(249,115,22,.35); border-radius: 2px 2px 0 0; flex: 1; }
+    .ill-news-cta { height: 22px; background: rgba(249,115,22,.2); border-radius: 4px; }
+
+    /* Workflow illustration */
+    .ill-workflow { flex-direction: column; gap: 0; align-items: center; justify-content: center; }
+    .ill-wf-row { display: flex; align-items: center; gap: .375rem; }
+    .ill-wf-node { width: 54px; height: 30px; background: rgba(6,182,212,.08); border: 1px solid rgba(6,182,212,.2); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .ill-wf-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); opacity: .8; }
+    .ill-wf-arr { width: 20px; height: 2px; background: rgba(6,182,212,.3); position: relative; flex-shrink: 0; }
+    .ill-wf-arr::after { content: ''; position: absolute; right: -4px; top: -3px; border-left: 5px solid rgba(6,182,212,.5); border-top: 4px solid transparent; border-bottom: 4px solid transparent; }
+    .ill-wf-vline { width: 2px; height: 16px; background: rgba(6,182,212,.2); margin: 0 auto; }
+    .ill-wf-split { display: flex; gap: 1.25rem; align-items: center; }
+    .ill-wf-node-sm { width: 42px; height: 26px; background: rgba(6,182,212,.06); border: 1px solid rgba(6,182,212,.15); border-radius: 5px; display: flex; align-items: center; justify-content: center; }
+
+    /* Voice Agent illustration */
+    .ill-voice { align-items: center; justify-content: center; gap: 1.25rem; }
+    .ill-voice-phone { width: 48px; height: 68px; background: rgba(245,158,11,.08); border: 1.5px solid rgba(245,158,11,.25); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: .4rem; flex-shrink: 0; }
+    .ill-voice-speaker { width: 18px; height: 3px; background: rgba(245,158,11,.35); border-radius: 2px; }
+    .ill-voice-mic { width: 10px; height: 10px; border-radius: 50%; background: rgba(245,158,11,.3); border: 1.5px solid rgba(245,158,11,.5); }
+    .ill-voice-home { width: 12px; height: 4px; background: rgba(245,158,11,.2); border-radius: 2px; }
+    .ill-voice-waves { display: flex; flex-direction: column; gap: .5rem; justify-content: center; align-items: flex-start; }
+    .ill-voice-wave { height: 2px; background: rgba(245,158,11,.2); border-radius: 2px; }
+    .ill-voice-wave:nth-child(1) { width: 36px; }
+    .ill-voice-wave:nth-child(2) { width: 26px; }
+    .ill-voice-wave:nth-child(3) { width: 16px; }
+    .ill-voice-waveform { display: flex; align-items: center; gap: 3px; }
+    .ill-voice-bar { background: rgba(245,158,11,.4); border-radius: 1px 1px 0 0; width: 4px; }
+
+    /* Analytics illustration */
+    .ill-analytics { flex-direction: column; gap: .45rem; align-items: stretch; }
+    .ill-ana-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: .375rem; }
+    .ill-ana-stat { height: 30px; background: rgba(139,92,246,.06); border: 1px solid rgba(139,92,246,.12); border-radius: 5px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; }
+    .ill-ana-num { font-family: var(--mono); font-size: .6rem; font-weight: 700; color: var(--purple); }
+    .ill-ana-lbl { height: 4px; background: rgba(255,255,255,.07); border-radius: 2px; width: 55%; }
+    .ill-ana-chart { height: 46px; background: rgba(139,92,246,.04); border: 1px solid rgba(139,92,246,.1); border-radius: 6px; display: flex; align-items: flex-end; gap: .25rem; padding: .375rem .5rem; }
+    .ill-ana-bar { background: rgba(139,92,246,.3); border-radius: 2px 2px 0 0; flex: 1; }
+    .ill-ana-bar.hi { background: rgba(139,92,246,.55); }
+    .ill-ana-integrations { display: grid; grid-template-columns: repeat(4, 1fr); gap: .3rem; }
+    .ill-ana-int { height: 18px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.06); border-radius: 4px; }
+
     /* ═══════════════════════════════════════════
        PRICING — NEW 3-COLUMN TRANSPARENCY MODEL
     ═══════════════════════════════════════════ */
@@ -2175,6 +2228,226 @@
         </div>
       </div>
 
+      <!-- Row 7: Newsletter & Email Marketing -->
+      <div class="svc-row">
+        <div class="svc-text rev-left">
+          <div class="svc-row-num">07</div>
+          <div class="chip orange">Newsletter &amp; Email Marketing</div>
+          <h3>Stay Top of Mind. Every Single Week.</h3>
+          <p>We research, write, design, and send branded newsletters and email campaigns for your business — complete with AI-generated infographics and professional formatting. Your clients stay engaged, your brand stays visible, and you never have to write a single word.</p>
+          <ul class="svc-bullets">
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Branded newsletter designed to match your business identity</li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>AI-researched content with data-backed insights for your industry</li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Custom infographics generated for every issue</li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Delivered via email to your contact list on a set schedule</li>
+          </ul>
+          <a href="#pricing" class="svc-link" style="color:#F97316">Included in Growth+ →</a>
+        </div>
+        <div class="svc-visual rev-right">
+          <div class="svc-glow" style="background: radial-gradient(ellipse, rgba(249,115,22,.13) 0%, transparent 70%);"></div>
+          <div class="svc-screen">
+            <div class="svc-screen-bar">
+              <div class="sdot sdot-r"></div>
+              <div class="sdot sdot-y"></div>
+              <div class="sdot sdot-g"></div>
+              <div class="svc-url-bar"></div>
+            </div>
+            <div class="svc-illustration ill-newsletter">
+              <div class="ill-news-banner"></div>
+              <div class="ill-news-preview">
+                <div class="ill-news-pr-line"></div>
+                <div class="ill-news-pr-line short"></div>
+                <div class="ill-news-pr-line" style="width:80%"></div>
+              </div>
+              <div class="ill-news-infographic">
+                <div class="ill-news-ig-bar" style="height:55%"></div>
+                <div class="ill-news-ig-bar" style="height:80%"></div>
+                <div class="ill-news-ig-bar" style="height:65%"></div>
+                <div class="ill-news-ig-bar" style="height:95%"></div>
+                <div class="ill-news-ig-bar" style="height:70%"></div>
+              </div>
+              <div class="ill-news-preview">
+                <div class="ill-news-pr-line" style="width:85%"></div>
+                <div class="ill-news-pr-line short"></div>
+              </div>
+              <div class="ill-news-cta"></div>
+            </div>
+            <div class="svc-screen-foot">
+              <span class="svc-badge orange">Newsletter</span>
+              <span class="svc-status">Sent to 847 Subscribers</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 8: Workflow & Process Automation -->
+      <div class="svc-row">
+        <div class="svc-text rev-right">
+          <div class="svc-row-num">08</div>
+          <div class="chip cyan">Workflow &amp; Process Automation</div>
+          <h3>Stop Doing Repetitive Work. Let Your Systems Handle It.</h3>
+          <p>We identify the repetitive, manual processes eating your time — then build automated workflows that handle them 24/7. From invoice generation to lead routing to appointment reminders, if it's a process you do more than twice, we automate it.</p>
+          <ul class="svc-bullets">
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Custom automated workflows tailored to your business operations</li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Connects your existing tools (email, calendar, CRM, payments)</li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Runs 24/7 in the background — no manual intervention needed</li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Up to 3 custom workflows (Scale), unlimited (Enterprise)</li>
+          </ul>
+          <a href="#pricing" class="svc-link" style="color:var(--cyan)">Included in Scale+ →</a>
+        </div>
+        <div class="svc-visual rev-left">
+          <div class="svc-glow" style="background: radial-gradient(ellipse, rgba(6,182,212,.12) 0%, transparent 70%);"></div>
+          <div class="svc-screen">
+            <div class="svc-screen-bar">
+              <div class="sdot sdot-r"></div>
+              <div class="sdot sdot-y"></div>
+              <div class="sdot sdot-g"></div>
+              <div class="svc-url-bar"></div>
+            </div>
+            <div class="svc-illustration ill-workflow">
+              <div class="ill-wf-row">
+                <div class="ill-wf-node"><div class="ill-wf-dot"></div></div>
+                <div class="ill-wf-arr"></div>
+                <div class="ill-wf-node"><div class="ill-wf-dot"></div></div>
+                <div class="ill-wf-arr"></div>
+                <div class="ill-wf-node"><div class="ill-wf-dot"></div></div>
+              </div>
+              <div class="ill-wf-vline"></div>
+              <div class="ill-wf-split">
+                <div class="ill-wf-node-sm"><div class="ill-wf-dot"></div></div>
+                <div class="ill-wf-node-sm"><div class="ill-wf-dot"></div></div>
+                <div class="ill-wf-node-sm"><div class="ill-wf-dot"></div></div>
+              </div>
+              <div class="ill-wf-vline"></div>
+              <div class="ill-wf-row">
+                <div class="ill-wf-node" style="width:80px;"><div class="ill-wf-dot" style="background:rgba(16,185,129,.8)"></div></div>
+              </div>
+            </div>
+            <div class="svc-screen-foot">
+              <span class="svc-badge cyan">Automation</span>
+              <span class="svc-status">5 Workflows Active</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 9: AI Voice Agent -->
+      <div class="svc-row">
+        <div class="svc-text rev-left">
+          <div class="svc-row-num">09</div>
+          <div class="chip gold">AI Voice Agent</div>
+          <h3>Never Miss a Call. Even at 3am.</h3>
+          <p>Your AI voice agent answers inbound phone calls, qualifies leads, answers frequently asked questions, and books appointments — all in a natural, conversational voice customized to your brand. It's like hiring a receptionist that never sleeps, never calls in sick, and never puts anyone on hold.</p>
+          <ul class="svc-bullets">
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Natural-sounding AI voice trained on your business and services</li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Handles inbound calls: qualifies leads, answers FAQs, books appointments</li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Transfers to a live person when the situation requires it</li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Works 24/7/365 with call recordings and transcripts available</li>
+          </ul>
+          <a href="#pricing" class="svc-link" style="color:var(--gold)">Enterprise Only →</a>
+        </div>
+        <div class="svc-visual rev-right">
+          <div class="svc-glow" style="background: radial-gradient(ellipse, rgba(245,158,11,.12) 0%, transparent 70%);"></div>
+          <div class="svc-screen">
+            <div class="svc-screen-bar">
+              <div class="sdot sdot-r"></div>
+              <div class="sdot sdot-y"></div>
+              <div class="sdot sdot-g"></div>
+              <div class="svc-url-bar"></div>
+            </div>
+            <div class="svc-illustration ill-voice">
+              <div class="ill-voice-waves">
+                <div class="ill-voice-wave"></div>
+                <div class="ill-voice-wave"></div>
+                <div class="ill-voice-wave"></div>
+                <div class="ill-voice-waveform">
+                  <div class="ill-voice-bar" style="height:8px"></div>
+                  <div class="ill-voice-bar" style="height:16px"></div>
+                  <div class="ill-voice-bar" style="height:10px"></div>
+                  <div class="ill-voice-bar" style="height:22px"></div>
+                  <div class="ill-voice-bar" style="height:12px"></div>
+                </div>
+              </div>
+              <div class="ill-voice-phone">
+                <div class="ill-voice-speaker"></div>
+                <div class="ill-voice-mic"></div>
+                <div class="ill-voice-home"></div>
+              </div>
+              <div class="ill-voice-waves" style="align-items:flex-end">
+                <div class="ill-voice-wave"></div>
+                <div class="ill-voice-wave"></div>
+                <div class="ill-voice-wave"></div>
+                <div class="ill-voice-waveform" style="flex-direction:row-reverse">
+                  <div class="ill-voice-bar" style="height:8px"></div>
+                  <div class="ill-voice-bar" style="height:18px"></div>
+                  <div class="ill-voice-bar" style="height:11px"></div>
+                  <div class="ill-voice-bar" style="height:24px"></div>
+                  <div class="ill-voice-bar" style="height:14px"></div>
+                </div>
+              </div>
+            </div>
+            <div class="svc-screen-foot">
+              <span class="svc-badge gold">AI Voice</span>
+              <span class="svc-status">On Call 24/7/365</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 10: Custom Integrations & Analytics -->
+      <div class="svc-row">
+        <div class="svc-text rev-right">
+          <div class="svc-row-num">10</div>
+          <div class="chip purple">Custom Integrations &amp; Analytics</div>
+          <h3>See Everything. Connect Everything.</h3>
+          <p>We connect your existing business tools into one unified system and build custom analytics dashboards so you can see exactly what's working, what's not, and where your revenue is coming from — all in one place. No more logging into 6 different apps to figure out how your business is doing.</p>
+          <ul class="svc-bullets">
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Connect any third-party tools you're already using (QuickBooks, Calendly, Mailchimp, etc.)</li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Custom analytics dashboard showing leads, revenue, conversion rates, and more</li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Automated reporting — delivered to your inbox weekly or monthly</li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Full data ownership — export everything anytime</li>
+          </ul>
+          <a href="#pricing" class="svc-link" style="color:var(--purple)">Enterprise Only (Custom Integrations) →</a>
+        </div>
+        <div class="svc-visual rev-left">
+          <div class="svc-glow" style="background: radial-gradient(ellipse, rgba(139,92,246,.15) 0%, transparent 70%);"></div>
+          <div class="svc-screen">
+            <div class="svc-screen-bar">
+              <div class="sdot sdot-r"></div>
+              <div class="sdot sdot-y"></div>
+              <div class="sdot sdot-g"></div>
+              <div class="svc-url-bar"></div>
+            </div>
+            <div class="svc-illustration ill-analytics">
+              <div class="ill-ana-stats">
+                <div class="ill-ana-stat"><div class="ill-ana-num">+34%</div><div class="ill-ana-lbl"></div></div>
+                <div class="ill-ana-stat"><div class="ill-ana-num">$18K</div><div class="ill-ana-lbl"></div></div>
+                <div class="ill-ana-stat"><div class="ill-ana-num">94%</div><div class="ill-ana-lbl"></div></div>
+              </div>
+              <div class="ill-ana-chart">
+                <div class="ill-ana-bar" style="height:45%"></div>
+                <div class="ill-ana-bar" style="height:60%"></div>
+                <div class="ill-ana-bar" style="height:55%"></div>
+                <div class="ill-ana-bar hi" style="height:80%"></div>
+                <div class="ill-ana-bar" style="height:65%"></div>
+                <div class="ill-ana-bar hi" style="height:95%"></div>
+                <div class="ill-ana-bar" style="height:75%"></div>
+              </div>
+              <div class="ill-ana-integrations">
+                <div class="ill-ana-int"></div>
+                <div class="ill-ana-int" style="background:rgba(139,92,246,.06)"></div>
+                <div class="ill-ana-int"></div>
+                <div class="ill-ana-int" style="background:rgba(139,92,246,.06)"></div>
+              </div>
+            </div>
+            <div class="svc-screen-foot">
+              <span class="svc-badge purple">Analytics</span>
+              <span class="svc-status">All Systems Connected</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div><!-- /.svc-rows -->
   </div>
 </section>
@@ -2297,10 +2570,11 @@
             <div class="retail-item"><span class="ri-name">Review Generation Automation</span><div><div class="ri-price">$600 – $2,400</div><div class="ri-freq">/year</div></div></div>
             <div class="retail-item"><span class="ri-name">2 Blog Posts/Mo + Google Business Mgmt</span><div><div class="ri-price">$4,800 – $12,000</div><div class="ri-freq">/year</div></div></div>
             <div class="retail-item"><span class="ri-name">Monthly Performance Reporting</span><div><div class="ri-price">$1,200 – $3,600</div><div class="ri-freq">/year</div></div></div>
+            <div class="retail-item"><span class="ri-name">Newsletter &amp; Email Marketing (2/month)</span><div><div class="ri-price">$2,400 – $6,000</div><div class="ri-freq">/year</div></div></div>
           </div>
           <div class="col-total">
             <div class="col-total-label">Total Year 1</div>
-            <div class="col-total-price">$15,830 – $42,400+</div>
+            <div class="col-total-price">$18,230 – $48,400+</div>
             <div class="col-total-sub">And you'd still have to manage it all yourself.</div>
           </div>
         </div>
@@ -2311,7 +2585,7 @@
           <div class="col-sub">We build, deploy, and hand it to you — you own everything from Day 1</div>
           <div class="col-price-big">$7,499</div>
           <div class="col-price-note">one-time · no recurring fees</div>
-          <div class="col-savings">✓ You save $8,331 – $34,901+ vs. retail Year 1</div>
+          <div class="col-savings">✓ You save $10,731 – $40,901+ vs. retail Year 1</div>
           <ul class="col-includes">
             <li><span class="ci-check">•</span> Full Growth stack built &amp; deployed in 48 hours</li>
             <li><span class="ci-check">•</span> 90 days of managed support post-launch</li>
@@ -2351,7 +2625,7 @@
           <div class="col-title">What You'd Pay at Retail</div>
           <div class="col-sub">Market rates for each tool or service, purchased individually from different vendors</div>
           <div class="retail-items">
-            <div class="retail-item"><span class="ri-name">Everything in Growth (Year 1)</span><div><div class="ri-price">$15,830 – $42,400+</div><div class="ri-freq">Year 1</div></div></div>
+            <div class="retail-item"><span class="ri-name">Everything in Growth (Year 1)</span><div><div class="ri-price">$18,230 – $48,400+</div><div class="ri-freq">Year 1</div></div></div>
             <div class="retail-item"><span class="ri-name">AI Chatbot (custom-trained)</span><div><div class="ri-price">$3,000 – $10,000</div><div class="ri-freq">setup + $600–$6K/yr</div></div></div>
             <div class="retail-item"><span class="ri-name">SMS Automation Sequences</span><div><div class="ri-price">$600 – $2,400</div><div class="ri-freq">/year</div></div></div>
             <div class="retail-item"><span class="ri-name">Unlimited CRM Contacts</span><div><div class="ri-price">$1,200 – $6,000</div><div class="ri-freq">/year</div></div></div>
@@ -2359,10 +2633,13 @@
             <div class="retail-item"><span class="ri-name">Paid Ad Campaign Management</span><div><div class="ri-price">$6,000 – $18,000</div><div class="ri-freq">/year</div></div></div>
             <div class="retail-item"><span class="ri-name">Stripe Payment Integration</span><div><div class="ri-price">$500 – $1,500</div><div class="ri-freq">setup</div></div></div>
             <div class="retail-item"><span class="ri-name">Dedicated Account Manager</span><div><div class="ri-price">$12,000 – $24,000</div><div class="ri-freq">/year</div></div></div>
+            <div class="retail-item"><span class="ri-name">Newsletter &amp; Email Marketing (4/month)</span><div><div class="ri-price">$4,800 – $12,000</div><div class="ri-freq">/year</div></div></div>
+            <div class="retail-item"><span class="ri-name">Workflow Automation (up to 3 custom)</span><div><div class="ri-price">$3,000 – $15,000</div><div class="ri-freq">setup + maint.</div></div></div>
+            <div class="retail-item"><span class="ri-name">Analytics Dashboard</span><div><div class="ri-price">$3,000 – $10,000</div><div class="ri-freq">setup + /year</div></div></div>
           </div>
           <div class="col-total">
             <div class="col-total-label">Total Year 1</div>
-            <div class="col-total-price">$49,330 – $128,300+</div>
+            <div class="col-total-price">$61,830 – $170,900+</div>
             <div class="col-total-sub">And you'd still have to manage it all yourself.</div>
           </div>
         </div>
@@ -2373,7 +2650,7 @@
           <div class="col-sub">We build, deploy, and hand it to you — you own everything from Day 1</div>
           <div class="col-price-big">$14,999</div>
           <div class="col-price-note">one-time · no recurring fees</div>
-          <div class="col-savings">✓ You save $34,331 – $113,301+ vs. retail Year 1</div>
+          <div class="col-savings">✓ You save $46,831 – $155,901+ vs. retail Year 1</div>
           <ul class="col-includes">
             <li><span class="ci-check">•</span> Full Scale stack built &amp; deployed in 48 hours</li>
             <li><span class="ci-check">•</span> 90 days of managed support post-launch</li>
@@ -2413,17 +2690,18 @@
           <div class="col-title">What You'd Pay at Retail</div>
           <div class="col-sub">Market rates for each tool or service, purchased individually from different vendors</div>
           <div class="retail-items">
-            <div class="retail-item"><span class="ri-name">Everything in Scale (Year 1)</span><div><div class="ri-price">$49,330 – $128,300+</div><div class="ri-freq">Year 1</div></div></div>
-            <div class="retail-item"><span class="ri-name">AI Voice Agent (custom)</span><div><div class="ri-price">$5,000 – $25,000</div><div class="ri-freq">setup + $1.2K–$6K/yr</div></div></div>
+            <div class="retail-item"><span class="ri-name">Everything in Scale (Year 1)</span><div><div class="ri-price">$61,830 – $170,900+</div><div class="ri-freq">Year 1</div></div></div>
+            <div class="retail-item"><span class="ri-name">Newsletter &amp; Email Marketing (unlimited)</span><div><div class="ri-price">$12,000 – $30,000</div><div class="ri-freq">/year</div></div></div>
+            <div class="retail-item"><span class="ri-name">AI Voice Agent (custom-trained)</span><div><div class="ri-price">$5,000 – $25,000</div><div class="ri-freq">setup + $1.2K–$6K/yr</div></div></div>
             <div class="retail-item"><span class="ri-name">Custom Third-Party Integrations</span><div><div class="ri-price">$5,000 – $20,000+</div><div class="ri-freq">per project</div></div></div>
-            <div class="retail-item"><span class="ri-name">Advanced Analytics Dashboard</span><div><div class="ri-price">$3,000 – $10,000</div><div class="ri-freq">setup</div></div></div>
+            <div class="retail-item"><span class="ri-name">Advanced Analytics Dashboard</span><div><div class="ri-price">$3,000 – $10,000</div><div class="ri-freq">setup + $2.4K–$6K/yr</div></div></div>
             <div class="retail-item"><span class="ri-name">Weekly Strategy Sessions</span><div><div class="ri-price">$12,000 – $30,000</div><div class="ri-freq">/year</div></div></div>
             <div class="retail-item"><span class="ri-name">Unlimited Custom Automation Builds</span><div><div class="ri-price">$10,000 – $50,000+</div><div class="ri-freq">/year</div></div></div>
             <div class="retail-item"><span class="ri-name">White-Glove Onboarding</span><div><div class="ri-price">$2,000 – $5,000</div><div class="ri-freq">one-time</div></div></div>
           </div>
           <div class="col-total">
             <div class="col-total-label">Total Year 1</div>
-            <div class="col-total-price">$86,530 – $274,300+</div>
+            <div class="col-total-price">$110,830 – $347,900+</div>
             <div class="col-total-sub">And you'd still have to manage it all yourself.</div>
           </div>
         </div>
@@ -2434,7 +2712,7 @@
           <div class="col-sub">We build, deploy, and hand it to you — you own everything from Day 1</div>
           <div class="col-price-big">$29,999<span class="price-mo">+</span></div>
           <div class="col-price-note">custom quote · no recurring fees · fully bespoke</div>
-          <div class="col-savings">✓ You save $56,531 – $244,301+ vs. retail Year 1</div>
+          <div class="col-savings">✓ You save $80,831 – $317,901+ vs. retail Year 1</div>
           <ul class="col-includes">
             <li><span class="ci-check">•</span> Full Enterprise stack — completely custom-built</li>
             <li><span class="ci-check">•</span> AI voice agent + all integrations configured</li>
@@ -2772,6 +3050,10 @@
           <li><a href="#services">AI Chatbot &amp; Voice</a></li>
           <li><a href="#services">Payment Processing</a></li>
           <li><a href="#services">Marketing &amp; Content</a></li>
+          <li><a href="#services">Newsletter &amp; Email</a></li>
+          <li><a href="#services">Workflow Automation</a></li>
+          <li><a href="#services">AI Voice Agent</a></li>
+          <li><a href="#services">Integrations &amp; Analytics</a></li>
         </ul>
       </div>
       <div class="footer-col">
