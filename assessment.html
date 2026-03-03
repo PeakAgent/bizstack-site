@@ -6,7 +6,7 @@
   <title>Business Assessment — BizStack.ai</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #0F172A;
@@ -466,6 +466,80 @@
       .res-ctas { flex-direction: column; }
       #stage { padding: 2.5rem 1rem 5rem; }
     }
+
+    /* ── PRICING COMPARISON TABLE (results) ── */
+    .res-pricing-wrap { margin-top: 2rem; margin-bottom: 1.5rem; }
+    .res-pricing-title {
+      font-family: var(--display);
+      font-size: 1.05rem; font-weight: 700;
+      margin-bottom: 1rem;
+      display: flex; align-items: center; gap: .75rem;
+    }
+    .res-pricing-title::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,.07); }
+
+    .rpt-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px;
+      overflow: hidden;
+      font-size: .8rem;
+    }
+    .rpt-col { padding: 1.25rem; display: flex; flex-direction: column; }
+    .rpt-col-retail { background: rgba(239,68,68,.04); border-right: 1px solid rgba(255,255,255,.06); }
+    .rpt-col-own    { background: rgba(245,158,11,.04); border-right: 1px solid rgba(255,255,255,.06); position: relative; }
+    .rpt-col-own::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, #F59E0B, #F97316); }
+    .rpt-col-pay    { background: rgba(59,130,246,.04); position: relative; }
+    .rpt-col-pay::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, #3B82F6, #06B6D4); }
+
+    .rpt-tag {
+      font-size: .58rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      margin-bottom: .5rem;
+    }
+    .rpt-col-retail .rpt-tag { color: rgba(239,68,68,.7); }
+    .rpt-col-own    .rpt-tag { color: rgba(245,158,11,.8); }
+    .rpt-col-pay    .rpt-tag { color: rgba(59,130,246,.8); }
+
+    .rpt-badge {
+      font-size: .6rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+      padding: .2rem .6rem; border-radius: 100px; margin-bottom: .625rem; display: inline-flex;
+    }
+    .rpt-badge-gold { background: rgba(245,158,11,.12); border: 1px solid rgba(245,158,11,.22); color: #F59E0B; }
+    .rpt-badge-blue { background: rgba(59,130,246,.12); border: 1px solid rgba(59,130,246,.22); color: #3B82F6; }
+
+    .rpt-items { display: flex; flex-direction: column; gap: .5rem; flex: 1; }
+    .rpt-item { display: flex; justify-content: space-between; align-items: flex-start; gap: .375rem; padding-bottom: .5rem; border-bottom: 1px solid rgba(255,255,255,.04); }
+    .rpt-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .rpt-name { color: rgba(255,255,255,.6); line-height: 1.4; flex: 1; font-size: .73rem; }
+    .rpt-price { color: rgba(239,68,68,.85); font-family: 'JetBrains Mono', monospace; font-size: .68rem; white-space: nowrap; text-align: right; }
+
+    .rpt-total { margin-top: 1rem; padding-top: .875rem; border-top: 1px solid rgba(239,68,68,.15); }
+    .rpt-total-label { font-size: .58rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(239,68,68,.6); margin-bottom: .25rem; }
+    .rpt-total-price { font-family: 'JetBrains Mono', monospace; font-size: .95rem; font-weight: 700; color: rgba(239,68,68,.9); }
+
+    .rpt-big-price { font-family: 'JetBrains Mono', monospace; font-size: 1.6rem; font-weight: 700; color: #fff; line-height: 1; margin-bottom: .25rem; }
+    .rpt-big-price .mo { font-size: .8rem; color: var(--w40); font-weight: 400; }
+    .rpt-price-note { font-size: .72rem; color: var(--w40); margin-bottom: .875rem; line-height: 1.45; }
+    .rpt-savings { font-size: .72rem; color: #10B981; margin-bottom: .875rem; }
+
+    .rpt-includes { list-style: none; display: flex; flex-direction: column; gap: .375rem; flex: 1; margin-bottom: .875rem; }
+    .rpt-includes li { display: flex; gap: .375rem; font-size: .73rem; color: var(--w70); line-height: 1.4; }
+    .rpt-ci-gold { color: #F59E0B; flex-shrink: 0; }
+    .rpt-ci-blue { color: #3B82F6; flex-shrink: 0; }
+
+    .rpt-cancel-note { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06); border-radius: 8px; padding: .75rem; font-size: .72rem; color: var(--w50); line-height: 1.55; margin-bottom: .875rem; }
+    .rpt-cancel-note strong { color: var(--w80); display: block; margin-bottom: .25rem; font-size: .73rem; }
+
+    .btn-rpt-gold { background: linear-gradient(135deg,#F59E0B,#F97316); color: #fff; border: none; border-radius: 8px; padding: .7rem 1rem; font-family: var(--body); font-size: .8rem; font-weight: 700; cursor: pointer; width: 100%; text-align: center; text-decoration: none; display: flex; align-items: center; justify-content: center; transition: opacity .2s, transform .2s; }
+    .btn-rpt-gold:hover { opacity: .9; transform: translateY(-1px); }
+    .btn-rpt-blue { background: linear-gradient(135deg,#3B82F6,#06B6D4); color: #fff; border: none; border-radius: 8px; padding: .7rem 1rem; font-family: var(--body); font-size: .8rem; font-weight: 700; cursor: pointer; width: 100%; text-align: center; text-decoration: none; display: flex; align-items: center; justify-content: center; transition: opacity .2s, transform .2s; }
+    .btn-rpt-blue:hover { opacity: .9; transform: translateY(-1px); }
+
+    @media (max-width: 640px) {
+      .rpt-grid { grid-template-columns: 1fr; }
+      .rpt-col-retail { border-right: none; border-bottom: 1px solid rgba(255,255,255,.06); }
+      .rpt-col-own { border-right: none; border-bottom: 1px solid rgba(255,255,255,.06); }
+    }
   </style>
 </head>
 <body>
@@ -661,6 +735,91 @@ const QUESTIONS = [
     ],
     required: false
   }
+];
+
+// ── TIER PRICING DATA (3-column transparency model) ──────────────────────
+const TIER_PRICING = [
+  {
+    name: 'Starter',
+    retailItems: [
+      { name: 'Professional Website (5-page, custom)', price: '$3,000 – $5,000', freq: 'one-time' },
+      { name: 'Hosting, SSL & Domain', price: '$360 – $600', freq: '/year' },
+      { name: 'Google Business Profile Setup', price: '$200 – $500', freq: 'one-time' },
+      { name: 'SEO Foundation (on-page + technical)', price: '$500 – $1,500', freq: 'one-time' },
+      { name: 'Contact Forms + Email Notifications', price: '$100 – $300', freq: '/year' },
+      { name: 'Google Analytics Setup', price: '$150 – $300', freq: 'one-time' },
+      { name: 'Basic CRM (up to 500 contacts)', price: '$240 – $600', freq: '/year' },
+      { name: 'Monthly Website Maintenance', price: '$600 – $1,200', freq: '/year' },
+    ],
+    retailTotal: '$5,150 – $10,000+',
+    retailSub: 'Annual ongoing: $1,300 – $2,700/yr',
+    ownPrice: '$2,999',
+    ownNote: 'one-time · no recurring fees',
+    ownSavings: 'You save $2,151 – $7,001+ vs. retail Year 1',
+    payMonthly: '$99',
+    payTotal: '$3,564 total ($0 interest)',
+    payNote: '× 36 months = $3,564 total · $0 interest · $0 setup fees',
+  },
+  {
+    name: 'Growth',
+    retailItems: [
+      { name: 'Everything in Starter (Year 1)', price: '$5,150 – $10,000+', freq: 'Year 1' },
+      { name: 'Unlimited Website Pages', price: '+$1,000 – $3,000', freq: 'design' },
+      { name: 'Lead Capture Landing Pages', price: '$500 – $2,000', freq: 'each' },
+      { name: 'CRM Pipeline (5,000 contacts)', price: '$600 – $3,600', freq: '/year' },
+      { name: '3 Automated Email Sequences', price: '$1,500 – $4,000', freq: 'to set up' },
+      { name: 'SMS Automation Platform', price: '$300 – $1,200', freq: '/year' },
+      { name: 'Appointment Booking System', price: '$180 – $600', freq: '/year' },
+      { name: '2 Blog Posts/Mo + GBP Management', price: '$4,800 – $12,000', freq: '/year' },
+    ],
+    retailTotal: '$15,830 – $42,400+',
+    retailSub: 'And you\'d still manage it all yourself.',
+    ownPrice: '$7,499',
+    ownNote: 'one-time · no recurring fees',
+    ownSavings: 'You save $8,331 – $34,901+ vs. retail Year 1',
+    payMonthly: '$299',
+    payTotal: '$10,764 total ($0 interest)',
+    payNote: '× 36 months = $10,764 total · $0 interest · $0 setup fees',
+  },
+  {
+    name: 'Scale',
+    retailItems: [
+      { name: 'Everything in Growth (Year 1)', price: '$15,830 – $42,400+', freq: 'Year 1' },
+      { name: 'AI Chatbot (custom-trained)', price: '$3,000 – $10,000', freq: 'setup +/yr' },
+      { name: 'Unlimited CRM Contacts', price: '$1,200 – $6,000', freq: '/year' },
+      { name: '4 Blog Posts + Social Captions/Mo', price: '$9,600 – $24,000', freq: '/year' },
+      { name: 'Paid Ad Campaign Management', price: '$6,000 – $18,000', freq: '/year' },
+      { name: 'Stripe Payment Integration', price: '$500 – $1,500', freq: 'setup' },
+      { name: 'Dedicated Account Manager', price: '$12,000 – $24,000', freq: '/year' },
+    ],
+    retailTotal: '$49,330 – $128,300+',
+    retailSub: 'And you\'d still manage it all yourself.',
+    ownPrice: '$14,999',
+    ownNote: 'one-time · no recurring fees',
+    ownSavings: 'You save $34,331 – $113,301+ vs. retail Year 1',
+    payMonthly: '$499',
+    payTotal: '$17,964 total ($0 interest)',
+    payNote: '× 36 months = $17,964 total · $0 interest · $0 setup fees',
+  },
+  {
+    name: 'Enterprise',
+    retailItems: [
+      { name: 'Everything in Scale (Year 1)', price: '$49,330 – $128,300+', freq: 'Year 1' },
+      { name: 'AI Voice Agent (custom)', price: '$5,000 – $25,000', freq: 'setup +/yr' },
+      { name: 'Custom Third-Party Integrations', price: '$5,000 – $20,000+', freq: 'per project' },
+      { name: 'Advanced Analytics Dashboard', price: '$3,000 – $10,000', freq: 'setup' },
+      { name: 'Weekly Strategy Sessions', price: '$12,000 – $30,000', freq: '/year' },
+      { name: 'Unlimited Custom Automation Builds', price: '$10,000 – $50,000+', freq: '/year' },
+    ],
+    retailTotal: '$86,530 – $274,300+',
+    retailSub: 'And you\'d still manage it all yourself.',
+    ownPrice: '$29,999+',
+    ownNote: 'custom quote · fully bespoke',
+    ownSavings: 'You save $56,531 – $244,301+ vs. retail Year 1',
+    payMonthly: '$999+',
+    payTotal: '$35,964+ total ($0 interest)',
+    payNote: 'starting price × 36 months · $0 interest · $0 setup fees',
+  },
 ];
 
 // ── TIER DEFINITIONS ──────────────────────────────────────────────────────
@@ -1122,6 +1281,61 @@ function showResults() {
       </div>
     </div>`;
   }
+
+  // ── 3-column pricing comparison ──
+  const tp = TIER_PRICING[rec];
+  html += `<div class="res-pricing-wrap">
+    <div class="res-pricing-title">Your Pricing Breakdown — Full Transparency</div>
+    <div class="rpt-grid">
+      <!-- Column 1: Retail -->
+      <div class="rpt-col rpt-col-retail">
+        <div class="rpt-tag">If You Bought It Separately</div>
+        <div class="rpt-items">
+          ${tp.retailItems.map(item => `<div class="rpt-item">
+            <span class="rpt-name">${item.name}</span>
+            <div style="text-align:right;flex-shrink:0">
+              <div class="rpt-price">${item.price}</div>
+              <div style="font-size:.6rem;color:rgba(255,255,255,.28)">${item.freq}</div>
+            </div>
+          </div>`).join('')}
+        </div>
+        <div class="rpt-total">
+          <div class="rpt-total-label">Total Year 1</div>
+          <div class="rpt-total-price">${tp.retailTotal}</div>
+          <div style="font-size:.7rem;color:rgba(255,255,255,.3);margin-top:.2rem">${tp.retailSub}</div>
+        </div>
+      </div>
+      <!-- Column 2: Own It -->
+      <div class="rpt-col rpt-col-own">
+        <div class="rpt-badge rpt-badge-gold">★ Best Value</div>
+        <div class="rpt-tag">Own It Outright</div>
+        <div class="rpt-big-price">${tp.ownPrice}</div>
+        <div class="rpt-price-note">${tp.ownNote}</div>
+        <div class="rpt-savings">✓ ${tp.ownSavings}</div>
+        <ul class="rpt-includes">
+          <li><span class="rpt-ci-gold">•</span> Full build &amp; deployment in 48 hours</li>
+          <li><span class="rpt-ci-gold">•</span> 90 days of managed support post-launch</li>
+          <li><span class="rpt-ci-gold">•</span> All source files &amp; credentials — yours forever</li>
+          <li><span class="rpt-ci-gold">•</span> Migration guide included if you ever switch</li>
+        </ul>
+        <a href="mailto:hello@bizstack.ai?subject=Own It Outright — ${tp.name} Plan&body=I'd like to get started with the ${tp.name} Own It Outright option." class="btn-rpt-gold">Get Started →</a>
+      </div>
+      <!-- Column 3: Pay Over Time -->
+      <div class="rpt-col rpt-col-pay">
+        <div class="rpt-badge rpt-badge-blue">★ Most Flexible</div>
+        <div class="rpt-tag">Pay Over Time</div>
+        <div class="rpt-big-price">${tp.payMonthly}<span class="mo">/mo</span></div>
+        <div class="rpt-price-note">${tp.payNote}</div>
+        <ul class="rpt-includes">
+          <li><span class="rpt-ci-blue">•</span> Same complete build as column 2</li>
+          <li><span class="rpt-ci-blue">•</span> Includes ongoing updates &amp; support</li>
+          <li><span class="rpt-ci-blue">•</span> No contract — cancel anytime</li>
+        </ul>
+        <div class="rpt-cancel-note"><strong>If you cancel:</strong> Pay remaining balance to keep everything, OR stop and lose access — we export all your files either way.</div>
+        <a href="mailto:hello@bizstack.ai?subject=Monthly Plan — ${tp.name}&body=I'd like to start the ${tp.name} monthly plan." class="btn-rpt-blue">Get Started →</a>
+      </div>
+    </div>
+  </div>`;
 
   if (challenges.length > 0) {
     html += `<div class="sec-title">How We'll Address Your Challenges</div>

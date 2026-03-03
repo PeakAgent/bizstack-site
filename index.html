@@ -7,7 +7,7 @@
   <meta name="description" content="Professional websites, CRM, lead automation, and AI tools — all in one affordable subscription. Built in 48 hours, not months.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     /* ═══════════════════════════════════════════
        TOKENS & RESET
@@ -25,6 +25,7 @@
       --purple2: #7C3AED;
       --green:   #10B981;
       --gold:    #F59E0B;
+      --cyan:    #06B6D4;
       --red:     #EF4444;
       --white:   #FFFFFF;
       --w90: rgba(255,255,255,.9);
@@ -40,6 +41,7 @@
       --border: rgba(255,255,255,.08);
       --display: 'Space Grotesk', system-ui, sans-serif;
       --body:    'Inter', system-ui, sans-serif;
+      --mono:    'JetBrains Mono', monospace;
     }
 
     html { scroll-behavior: smooth; }
@@ -156,6 +158,42 @@
     }
 
     /* ═══════════════════════════════════════════
+       48HR TOP BANNER
+    ═══════════════════════════════════════════ */
+    .top-banner {
+      background: linear-gradient(90deg, rgba(59,130,246,.12), rgba(139,92,246,.12));
+      border-bottom: 1px solid rgba(59,130,246,.18);
+      padding: .55rem 3rem;
+      text-align: center;
+      font-size: .78rem;
+      font-weight: 500;
+      color: var(--w80);
+      position: relative;
+      z-index: 1001;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+    }
+    .top-banner.hidden { display: none; }
+    .tb-icon { color: var(--blue); font-size: .9rem; }
+    .tb-dismiss {
+      position: absolute;
+      right: 1.25rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--w40);
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+      padding: .25rem;
+      transition: color .2s;
+    }
+    .tb-dismiss:hover { color: var(--w80); }
+
+    /* ═══════════════════════════════════════════
        NAVIGATION
     ═══════════════════════════════════════════ */
     #nav {
@@ -260,10 +298,9 @@
       justify-content: center;
       overflow: hidden;
       background: #07090f;
-      padding-top: 80px; /* keep content below fixed nav */
+      padding-top: 80px;
     }
 
-    /* Thin gradient shadow at very top — keeps nav links readable */
     #hero::after {
       content: '';
       position: absolute;
@@ -274,7 +311,6 @@
       pointer-events: none;
     }
 
-    /* Deep vignette base */
     .hero-bg-base {
       position: absolute;
       inset: 0;
@@ -284,14 +320,12 @@
         linear-gradient(160deg, #05080e 0%, #07090f 50%, #060810 100%);
     }
 
-    /* ── Bokeh orbs ── */
     .hero-orb {
       position: absolute;
       border-radius: 50%;
       pointer-events: none;
       will-change: transform;
     }
-    /* Large blue corona — top right */
     .hero-orb-1 {
       width: 720px; height: 720px;
       background: radial-gradient(circle, rgba(59,130,246,.24) 0%, rgba(59,130,246,.06) 45%, transparent 70%);
@@ -299,7 +333,6 @@
       top: -260px; right: -120px;
       animation: orbDrift 15s ease-in-out infinite;
     }
-    /* Large purple corona — bottom left */
     .hero-orb-2 {
       width: 620px; height: 620px;
       background: radial-gradient(circle, rgba(139,92,246,.22) 0%, rgba(139,92,246,.05) 45%, transparent 70%);
@@ -307,7 +340,6 @@
       bottom: -220px; left: -130px;
       animation: orbDrift 18s ease-in-out infinite reverse;
     }
-    /* Soft center glow — makes text feel illuminated */
     .hero-orb-3 {
       width: 560px; height: 560px;
       background: radial-gradient(circle, rgba(59,130,246,.12) 0%, rgba(80,100,200,.04) 50%, transparent 70%);
@@ -316,7 +348,6 @@
       left: calc(50% - 280px);
       animation: orbBreath 11s ease-in-out infinite;
     }
-    /* Small bright bokeh — top center-left */
     .hero-orb-4 {
       width: 200px; height: 200px;
       background: radial-gradient(circle, rgba(100,160,255,.5) 0%, rgba(59,130,246,.12) 45%, transparent 70%);
@@ -324,7 +355,6 @@
       top: 14%; left: 38%;
       animation: orbDrift 8s ease-in-out infinite 1.2s;
     }
-    /* Small purple bokeh — right mid */
     .hero-orb-5 {
       width: 260px; height: 260px;
       background: radial-gradient(circle, rgba(168,110,255,.42) 0%, rgba(139,92,246,.1) 45%, transparent 70%);
@@ -332,7 +362,6 @@
       top: 38%; right: 10%;
       animation: orbDrift 10s ease-in-out infinite reverse 2.5s;
     }
-    /* Subtle warm accent — bottom right */
     .hero-orb-6 {
       width: 320px; height: 320px;
       background: radial-gradient(circle, rgba(99,102,241,.12) 0%, transparent 70%);
@@ -352,7 +381,6 @@
       50%       { opacity: 1;   transform: scale(1.1); }
     }
 
-    /* ── Centered content block ── */
     .hero-content {
       position: relative;
       z-index: 2;
@@ -362,7 +390,6 @@
       padding: 3rem 1.5rem 5rem;
     }
 
-    /* ── Pill badge with soft glow pulse ── */
     .hero-pill {
       display: inline-flex;
       align-items: center;
@@ -378,15 +405,8 @@
       animation: pillGlow 3.5s ease-in-out infinite;
     }
     @keyframes pillGlow {
-      0%, 100% {
-        box-shadow: 0 0 0 0 rgba(59,130,246,0),
-                    0 0 10px rgba(59,130,246,.08);
-      }
-      50% {
-        box-shadow: 0 0 0 6px rgba(59,130,246,.07),
-                    0 0 32px rgba(59,130,246,.22),
-                    0 0 60px rgba(59,130,246,.08);
-      }
+      0%, 100% { box-shadow: 0 0 0 0 rgba(59,130,246,0), 0 0 10px rgba(59,130,246,.08); }
+      50%       { box-shadow: 0 0 0 6px rgba(59,130,246,.07), 0 0 32px rgba(59,130,246,.22), 0 0 60px rgba(59,130,246,.08); }
     }
     .pill-dot {
       width: 7px; height: 7px;
@@ -399,7 +419,6 @@
       50%       { opacity: .65; transform: scale(.75); box-shadow: 0 0 0 4px rgba(59,130,246,.12); }
     }
 
-    /* ── Headline ── */
     .hero-h1 {
       font-size: clamp(2.6rem, 6.5vw, 5.2rem);
       font-weight: 800;
@@ -413,22 +432,10 @@
       animation: hlGlow 4s ease-in-out infinite;
     }
     @keyframes hlGlow {
-      0%, 100% {
-        text-shadow:
-          0 0 18px rgba(59,130,246,.75),
-          0 0 45px rgba(59,130,246,.45),
-          0 0 85px rgba(59,130,246,.2);
-      }
-      50% {
-        text-shadow:
-          0 0 28px rgba(100,170,255,.95),
-          0 0 70px rgba(59,130,246,.65),
-          0 0 130px rgba(59,130,246,.3),
-          0 0 220px rgba(59,130,246,.1);
-      }
+      0%, 100% { text-shadow: 0 0 18px rgba(59,130,246,.75), 0 0 45px rgba(59,130,246,.45), 0 0 85px rgba(59,130,246,.2); }
+      50%       { text-shadow: 0 0 28px rgba(100,170,255,.95), 0 0 70px rgba(59,130,246,.65), 0 0 130px rgba(59,130,246,.3), 0 0 220px rgba(59,130,246,.1); }
     }
 
-    /* ── Subheading ── */
     .hero-sub {
       font-size: clamp(1rem, 1.8vw, 1.2rem);
       color: rgba(255,255,255,.58);
@@ -438,7 +445,6 @@
       font-weight: 300;
     }
 
-    /* ── CTA row — centered ── */
     .hero-ctas {
       display: flex;
       align-items: center;
@@ -448,7 +454,6 @@
       margin-bottom: 3.75rem;
     }
 
-    /* Primary hero button — gradient with glow on hover */
     .hero-btn-primary {
       position: relative;
       display: inline-flex;
@@ -469,7 +474,6 @@
       overflow: hidden;
       letter-spacing: .01em;
     }
-    /* Inner shimmer overlay */
     .hero-btn-primary::before {
       content: '';
       position: absolute;
@@ -480,14 +484,10 @@
     }
     .hero-btn-primary:hover {
       transform: translateY(-3px);
-      box-shadow:
-        0 16px 50px rgba(59,130,246,.55),
-        0 0   90px rgba(139,92,246,.22),
-        inset 0 1px 0 rgba(255,255,255,.15);
+      box-shadow: 0 16px 50px rgba(59,130,246,.55), 0 0 90px rgba(139,92,246,.22), inset 0 1px 0 rgba(255,255,255,.15);
     }
     .hero-btn-primary:active { transform: translateY(-1px); }
 
-    /* Secondary hero button — frosted glass */
     .hero-btn-glass {
       display: inline-flex;
       align-items: center;
@@ -516,7 +516,6 @@
     }
     .hero-btn-glass:active { transform: translateY(-1px); }
 
-    /* ── Trust badges ── */
     .hero-trust {
       display: flex;
       align-items: center;
@@ -536,7 +535,6 @@
     .tbadge:last-child  { border-right: none; padding-right: 0; }
     .tbadge-check { color: rgba(16,185,129,.85); font-size: .85rem; }
 
-    /* ── Scroll indicator ── */
     .hero-scroll {
       position: absolute;
       bottom: 2.5rem;
@@ -694,14 +692,13 @@
       border-bottom: 1px solid var(--border);
     }
     .svc-row:last-child { border-bottom: none; }
-    /* Even rows flip (visual left, text right) */
     .svc-row:nth-child(even) .svc-text  { order: 2; }
     .svc-row:nth-child(even) .svc-visual { order: 1; }
 
     .svc-row-num {
-      font-family: var(--display);
-      font-size: 5rem;
-      font-weight: 800;
+      font-family: var(--mono);
+      font-size: 4rem;
+      font-weight: 700;
       color: var(--w05);
       line-height: 1;
       margin-bottom: -.5rem;
@@ -747,7 +744,6 @@
     }
     .svc-link:hover { gap: .7rem; }
 
-    /* Service visual / screen mockup */
     .svc-visual { position: relative; }
     .svc-glow {
       position: absolute;
@@ -786,13 +782,6 @@
       border-radius: 4px;
       margin: 0 .75rem;
     }
-    .svc-screen img {
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-      display: block;
-      opacity: .7;
-    }
     .svc-screen-foot {
       padding: .9rem 1.1rem;
       display: flex;
@@ -813,21 +802,9 @@
       color: var(--blue);
       letter-spacing: .05em;
     }
-    .svc-badge.purple {
-      background: rgba(139,92,246,.12);
-      border-color: rgba(139,92,246,.2);
-      color: var(--purple);
-    }
-    .svc-badge.green {
-      background: rgba(16,185,129,.12);
-      border-color: rgba(16,185,129,.2);
-      color: var(--green);
-    }
-    .svc-badge.gold {
-      background: rgba(245,158,11,.12);
-      border-color: rgba(245,158,11,.2);
-      color: var(--gold);
-    }
+    .svc-badge.purple { background: rgba(139,92,246,.12); border-color: rgba(139,92,246,.2); color: var(--purple); }
+    .svc-badge.green  { background: rgba(16,185,129,.12);  border-color: rgba(16,185,129,.2);  color: var(--green); }
+    .svc-badge.gold   { background: rgba(245,158,11,.12);  border-color: rgba(245,158,11,.2);  color: var(--gold); }
     .svc-status {
       font-size: .7rem;
       color: var(--w40);
@@ -843,8 +820,78 @@
       box-shadow: 0 0 6px var(--green);
     }
 
+    /* CSS-only service illustrations */
+    .svc-illustration {
+      height: 240px;
+      position: relative;
+      overflow: hidden;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    /* Website illustration */
+    .ill-website { flex-direction: column; gap: .625rem; align-items: stretch; }
+    .ill-web-header { height: 32px; background: linear-gradient(90deg, var(--blue), var(--purple)); border-radius: 6px; opacity: .8; }
+    .ill-web-hero { height: 56px; background: rgba(59,130,246,.08); border: 1px solid rgba(59,130,246,.12); border-radius: 6px; display: flex; align-items: center; justify-content: center; gap: .5rem; }
+    .ill-web-hero-line { height: 8px; border-radius: 4px; background: rgba(255,255,255,.1); }
+    .ill-web-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .5rem; }
+    .ill-web-card { height: 48px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.06); border-radius: 6px; }
+    .ill-web-footer { height: 20px; background: rgba(255,255,255,.03); border-radius: 4px; }
+
+    /* CRM illustration */
+    .ill-crm { gap: .5rem; }
+    .ill-crm-col { display: flex; flex-direction: column; gap: .375rem; flex: 1; }
+    .ill-crm-label { height: 18px; border-radius: 4px; background: rgba(255,255,255,.06); margin-bottom: .25rem; }
+    .ill-crm-card { height: 36px; border-radius: 6px; border: 1px solid rgba(255,255,255,.06); display: flex; align-items: center; padding: 0 .5rem; }
+    .ill-crm-dot { width: 8px; height: 8px; border-radius: 50%; margin-right: .375rem; flex-shrink: 0; }
+    .ill-crm-line { height: 6px; background: rgba(255,255,255,.07); border-radius: 3px; flex: 1; }
+
+    /* Follow-up illustration */
+    .ill-followup { flex-direction: column; gap: .5rem; align-items: stretch; }
+    .ill-msg { display: flex; align-items: center; gap: .5rem; padding: .5rem .75rem; border-radius: 8px; border: 1px solid rgba(255,255,255,.06); }
+    .ill-msg-icon { width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: .75rem; flex-shrink: 0; }
+    .ill-msg-body { flex: 1; }
+    .ill-msg-title { height: 7px; background: rgba(255,255,255,.12); border-radius: 3px; margin-bottom: .25rem; width: 60%; }
+    .ill-msg-sub   { height: 5px; background: rgba(255,255,255,.06); border-radius: 3px; width: 40%; }
+    .ill-msg-badge { font-size: .6rem; font-weight: 700; padding: .15rem .4rem; border-radius: 100px; white-space: nowrap; }
+
+    /* AI Chatbot illustration */
+    .ill-chat { flex-direction: column; gap: .5rem; align-items: stretch; }
+    .ill-bubble { padding: .5rem .75rem; border-radius: 10px; max-width: 80%; font-size: .72rem; color: var(--w70); line-height: 1.4; }
+    .ill-bubble-ai   { background: rgba(139,92,246,.12); border: 1px solid rgba(139,92,246,.15); align-self: flex-start; }
+    .ill-bubble-user { background: rgba(59,130,246,.12); border: 1px solid rgba(59,130,246,.15); align-self: flex-end; }
+    .ill-chat-input  { display: flex; gap: .5rem; margin-top: .25rem; }
+    .ill-chat-inp-bar { flex: 1; height: 28px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 6px; }
+    .ill-chat-send { width: 28px; height: 28px; background: var(--blue); border-radius: 6px; }
+
+    /* Payment illustration */
+    .ill-payment { flex-direction: column; gap: .5rem; align-items: stretch; }
+    .ill-inv-head { display: flex; justify-content: space-between; align-items: center; padding-bottom: .5rem; border-bottom: 1px solid rgba(255,255,255,.06); margin-bottom: .25rem; }
+    .ill-inv-title { height: 10px; background: rgba(245,158,11,.3); border-radius: 3px; width: 80px; }
+    .ill-inv-amount { font-family: var(--mono); font-size: .9rem; font-weight: 700; color: var(--gold); }
+    .ill-inv-row { display: flex; justify-content: space-between; align-items: center; padding: .3rem 0; border-bottom: 1px solid rgba(255,255,255,.04); }
+    .ill-inv-service { height: 6px; background: rgba(255,255,255,.07); border-radius: 3px; width: 55%; }
+    .ill-inv-price   { height: 6px; background: rgba(255,255,255,.1); border-radius: 3px; width: 20%; }
+    .ill-pay-btn { height: 32px; background: linear-gradient(90deg, var(--gold), #F97316); border-radius: 6px; margin-top: .5rem; opacity: .85; }
+
+    /* Marketing illustration */
+    .ill-marketing { flex-direction: column; gap: .5rem; align-items: stretch; }
+    .ill-mkt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .375rem; }
+    .ill-mkt-post { height: 52px; border-radius: 6px; border: 1px solid rgba(255,255,255,.06); position: relative; overflow: hidden; }
+    .ill-mkt-post::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; }
+    .ill-mkt-p1 { background: rgba(59,130,246,.08); } .ill-mkt-p1::after { background: var(--blue); }
+    .ill-mkt-p2 { background: rgba(16,185,129,.08); } .ill-mkt-p2::after { background: var(--green); }
+    .ill-mkt-p3 { background: rgba(139,92,246,.08); } .ill-mkt-p3::after { background: var(--purple); }
+    .ill-mkt-p4 { background: rgba(245,158,11,.08); } .ill-mkt-p4::after { background: var(--gold); }
+    .ill-mkt-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .375rem; }
+    .ill-mkt-stat { height: 30px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.05); border-radius: 5px; display: flex; align-items: center; justify-content: center; }
+    .ill-mkt-stat-num { font-family: var(--mono); font-size: .65rem; font-weight: 700; color: var(--green); }
+
     /* ═══════════════════════════════════════════
-       PRICING
+       PRICING — NEW 3-COLUMN TRANSPARENCY MODEL
     ═══════════════════════════════════════════ */
     #pricing {
       padding: 7rem 0;
@@ -852,148 +899,389 @@
     }
     .pricing-head {
       text-align: center;
-      margin-bottom: 4rem;
+      margin-bottom: 3rem;
     }
     .pricing-head h2 {
       font-size: clamp(2rem, 4vw, 3.25rem);
       margin-bottom: 1rem;
     }
-    .pricing-head p { font-size: 1.05rem; color: var(--w60); }
+    .pricing-head p { font-size: 1.05rem; color: var(--w60); max-width: 600px; margin: 0 auto; }
 
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.25rem;
-      align-items: start;
+    /* Tier selector tabs */
+    .tier-tabs {
+      display: flex;
+      gap: .375rem;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 14px;
+      padding: .375rem;
       margin-bottom: 2.5rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
-
-    .pcard {
+    .tier-tab {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .2rem;
+      padding: .875rem 1rem;
+      border-radius: 10px;
+      border: 1.5px solid transparent;
+      background: transparent;
+      cursor: pointer;
+      transition: background .2s, border-color .2s;
+      white-space: nowrap;
+      min-width: 120px;
+    }
+    .tier-tab:hover { background: rgba(255,255,255,.05); }
+    .tier-tab.active {
       background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 1.75rem;
-      transition: transform .3s, box-shadow .3s;
-      position: relative;
+      border-color: rgba(59,130,246,.3);
+      box-shadow: 0 4px 16px rgba(0,0,0,.2);
     }
-    .pcard:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 50px rgba(0,0,0,.4);
-    }
-    .pcard.popular {
-      border-color: var(--blue);
-      background: linear-gradient(160deg, rgba(59,130,246,.09), rgba(139,92,246,.05));
-    }
-    .pcard.enterprise {
-      border-color: rgba(245,158,11,.25);
-    }
-
-    .pop-badge {
-      position: absolute;
-      top: -13px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: linear-gradient(90deg, var(--blue), var(--purple));
-      color: var(--white);
-      font-size: .65rem;
-      font-weight: 800;
+    .tier-tab.active.gold-tab { border-color: rgba(245,158,11,.3); }
+    .tt-pop {
+      font-size: .58rem;
+      font-weight: 700;
       letter-spacing: .1em;
       text-transform: uppercase;
-      padding: .28rem .9rem;
-      border-radius: 100px;
-      white-space: nowrap;
-    }
-
-    .pcard-tier {
-      font-size: .65rem;
-      font-weight: 800;
-      letter-spacing: .14em;
-      text-transform: uppercase;
       color: var(--blue);
-      margin-bottom: .9rem;
+      height: 14px;
     }
-    .pcard.popular .pcard-tier { color: var(--blue); }
-    .pcard.enterprise .pcard-tier { color: var(--gold); }
-
-    .pcard-price {
+    .tt-name {
       font-family: var(--display);
-      font-size: 2.6rem;
-      font-weight: 800;
+      font-size: .95rem;
+      font-weight: 700;
       color: var(--white);
-      line-height: 1;
-      margin-bottom: .3rem;
-      display: flex;
-      align-items: flex-start;
-      gap: .1rem;
     }
-    .pcard-price sup { font-size: 1.3rem; margin-top: .4rem; }
-    .pcard-price sub {
-      font-family: var(--body);
-      font-size: .8rem;
-      font-weight: 400;
+    .tt-price {
+      font-family: var(--mono);
+      font-size: .75rem;
       color: var(--w50);
-      align-self: flex-end;
-      margin-bottom: .3rem;
     }
-    .pcard-tagline {
+    .tier-tab.active .tt-price { color: var(--blue); }
+    .tier-tab.active.gold-tab .tt-price { color: var(--gold); }
+
+    /* Pricing tables container */
+    .price-table { display: none; }
+    .price-table.active { display: block; }
+
+    /* 3-column grid */
+    .pt-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    /* ── Column 1: Retail (warm/reddish) ── */
+    .col-retail {
+      background: rgba(239,68,68,.04);
+      border-right: 1px solid rgba(255,255,255,.07);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .col-tag {
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      margin-bottom: .625rem;
+    }
+    .col-retail .col-tag { color: rgba(239,68,68,.7); }
+    .col-title {
+      font-family: var(--display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: .375rem;
+    }
+    .col-sub {
       font-size: .78rem;
       color: var(--w50);
-      margin-bottom: 1.5rem;
-      font-style: italic;
+      line-height: 1.55;
+      margin-bottom: 1.25rem;
     }
-    .pcard-divider { height: 1px; background: var(--border); margin: 1.25rem 0; }
+    .retail-items {
+      display: flex;
+      flex-direction: column;
+      gap: .625rem;
+      flex: 1;
+    }
+    .retail-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: .5rem;
+      padding-bottom: .625rem;
+      border-bottom: 1px solid rgba(255,255,255,.04);
+    }
+    .retail-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .ri-name { font-size: .77rem; color: var(--w60); flex: 1; line-height: 1.4; }
+    .ri-price {
+      font-family: var(--mono);
+      font-size: .7rem;
+      color: rgba(239,68,68,.85);
+      text-align: right;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .ri-freq {
+      font-size: .62rem;
+      color: var(--w30);
+      text-align: right;
+      white-space: nowrap;
+    }
+    .col-total {
+      margin-top: 1.25rem;
+      padding-top: 1.125rem;
+      border-top: 1px solid rgba(239,68,68,.15);
+    }
+    .col-total-label {
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(239,68,68,.6);
+      margin-bottom: .375rem;
+    }
+    .col-total-price {
+      font-family: var(--mono);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: rgba(239,68,68,.9);
+      margin-bottom: .25rem;
+    }
+    .col-total-sub { font-size: .72rem; color: var(--w40); line-height: 1.45; }
 
-    .pfeatures {
+    /* ── Column 2: Own It (gold) ── */
+    .col-own {
+      background: rgba(245,158,11,.035);
+      border-right: 1px solid rgba(255,255,255,.07);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .col-own::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), #F97316);
+    }
+    .best-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      background: rgba(245,158,11,.12);
+      border: 1px solid rgba(245,158,11,.25);
+      color: var(--gold);
+      border-radius: 100px;
+      padding: .25rem .8rem;
+      font-size: .63rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: .875rem;
+      align-self: flex-start;
+    }
+    .col-own .col-tag { color: rgba(245,158,11,.8); }
+    .col-price-big {
+      font-family: var(--mono);
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: .375rem;
+    }
+    .col-price-big .price-mo {
+      font-size: .95rem;
+      color: var(--w50);
+      font-weight: 400;
+    }
+    .col-price-note {
+      font-size: .78rem;
+      color: var(--w50);
+      margin-bottom: 1rem;
+      line-height: 1.45;
+    }
+    .col-savings {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      background: rgba(16,185,129,.08);
+      border: 1px solid rgba(16,185,129,.18);
+      color: var(--green);
+      border-radius: 8px;
+      padding: .4rem .875rem;
+      font-size: .78rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      align-self: flex-start;
+    }
+    .col-includes {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: .7rem;
-      margin-bottom: 1.75rem;
+      gap: .625rem;
+      margin-bottom: 1.5rem;
+      flex: 1;
     }
-    .pfeatures li {
+    .col-includes li {
       display: flex;
       align-items: flex-start;
-      gap: .6rem;
+      gap: .5rem;
       font-size: .8rem;
-      color: var(--w80);
+      color: var(--w70);
       line-height: 1.45;
     }
-    .pcheck {
-      flex-shrink: 0;
-      width: 16px; height: 16px;
-      color: var(--green);
-      margin-top: .1rem;
-    }
+    .ci-check { color: var(--gold); flex-shrink: 0; font-size: .85rem; margin-top: .05rem; }
 
-    .pcard .btn { width: 100%; justify-content: center; }
-    .pcard.popular .btn {
-      background: linear-gradient(90deg, var(--blue), var(--purple));
+    .btn-gold {
+      background: linear-gradient(135deg, #F59E0B, #F97316);
+      color: var(--white);
+      font-weight: 700;
+      width: 100%;
+      justify-content: center;
     }
-    .pcard.popular .btn:hover {
+    .btn-gold:hover {
       opacity: .9;
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(100,80,246,.4);
-    }
-    .pcard.enterprise .btn {
-      background: rgba(245,158,11,.1);
-      color: var(--gold);
-      border: 1px solid rgba(245,158,11,.25);
-    }
-    .pcard.enterprise .btn:hover {
-      background: rgba(245,158,11,.18);
-      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(245,158,11,.35);
     }
 
-    .pricing-footer {
-      text-align: center;
+    /* ── Column 3: Pay Over Time (blue/cyan) ── */
+    .col-pay {
+      background: rgba(59,130,246,.035);
+      padding: 1.75rem;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: .5rem;
-      font-size: .875rem;
-      color: var(--w50);
+      flex-direction: column;
+      position: relative;
     }
-    .pricing-footer .dot { color: var(--green); font-size: 1.2rem; line-height: 1; }
+    .col-pay::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--cyan));
+    }
+    .flex-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      background: rgba(59,130,246,.12);
+      border: 1px solid rgba(59,130,246,.25);
+      color: var(--blue);
+      border-radius: 100px;
+      padding: .25rem .8rem;
+      font-size: .63rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: .875rem;
+      align-self: flex-start;
+    }
+    .col-pay .col-tag { color: rgba(59,130,246,.8); }
+
+    .cancel-box {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    .cancel-box-title {
+      font-size: .75rem;
+      font-weight: 700;
+      color: var(--w80);
+      margin-bottom: .5rem;
+    }
+    .cancel-box-body {
+      font-size: .75rem;
+      color: var(--w50);
+      line-height: 1.6;
+    }
+
+    .btn-pay {
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      color: var(--white);
+      font-weight: 700;
+      width: 100%;
+      justify-content: center;
+    }
+    .btn-pay:hover {
+      opacity: .9;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(59,130,246,.4);
+    }
+
+    /* ── Pricing trust strip ── */
+    .pt-trust {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+    .pt-trust-item {
+      text-align: center;
+      padding: 1.5rem 1.25rem;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 12px;
+    }
+    .pt-trust-icon { font-size: 1.5rem; margin-bottom: .625rem; }
+    .pt-trust-title {
+      font-family: var(--display);
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: .375rem;
+    }
+    .pt-trust-desc { font-size: .775rem; color: var(--w50); line-height: 1.6; }
+
+    /* ── No Fine Print section ── */
+    .no-fine-print {
+      background: rgba(59,130,246,.05);
+      border: 1px solid rgba(59,130,246,.13);
+      border-radius: 14px;
+      padding: 2rem 2.5rem;
+      margin-top: 2rem;
+    }
+    .nfp-title {
+      font-family: var(--display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1.125rem;
+    }
+    .nfp-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .625rem;
+      margin-bottom: 1.125rem;
+    }
+    .nfp-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: .625rem;
+      font-size: .875rem;
+      color: var(--w70);
+      line-height: 1.55;
+    }
+    .nfp-arrow { color: var(--blue); flex-shrink: 0; font-weight: 700; }
+    .nfp-note {
+      font-size: .8rem;
+      color: var(--w40);
+      font-style: italic;
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding-top: 1.125rem;
+      line-height: 1.7;
+    }
 
     /* ═══════════════════════════════════════════
        HOW IT WORKS
@@ -1015,7 +1303,6 @@
       grid-template-columns: repeat(4, 1fr);
       position: relative;
     }
-    /* Gradient connector line */
     .steps::before {
       content: '';
       position: absolute;
@@ -1042,13 +1329,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: var(--display);
+      font-family: var(--mono);
       font-size: 1.1rem;
-      font-weight: 800;
+      font-weight: 700;
       color: var(--white);
       margin-bottom: 1.75rem;
       flex-shrink: 0;
-      /* "Cut out" the connector line */
       box-shadow: 0 0 0 5px var(--bg);
     }
     .step:nth-child(1) .step-circle { background: var(--blue); }
@@ -1125,12 +1411,18 @@
       align-items: center;
       gap: .85rem;
     }
-    .tcard-avatar {
+    /* Initial circle avatars */
+    .tcard-initial {
       width: 46px; height: 46px;
       border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid var(--border);
       flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--display);
+      font-size: .85rem;
+      font-weight: 700;
+      color: var(--white);
     }
     .tcard-name { font-weight: 600; font-size: .875rem; }
     .tcard-biz  { font-size: .75rem; color: var(--w50); margin-top: .1rem; }
@@ -1152,9 +1444,9 @@
     }
     .stat-block:last-child { border-right: none; }
     .stat-num {
-      font-family: var(--display);
+      font-family: var(--mono);
       font-size: 2.75rem;
-      font-weight: 800;
+      font-weight: 700;
       color: var(--white);
       line-height: 1;
       margin-bottom: .5rem;
@@ -1270,7 +1562,7 @@
       overflow: hidden;
       transition: border-color .3s;
     }
-    .faq-item.open { border-color: rgba(59,130,246,.4); }
+    .faq-item.open { border-color: rgba(59,130,246,.4); border-left: 3px solid var(--blue); }
 
     .faq-q {
       width: 100%;
@@ -1312,7 +1604,7 @@
       color: var(--w70);
       line-height: 1.85;
     }
-    .faq-item.open .faq-body { max-height: 400px; }
+    .faq-item.open .faq-body { max-height: 500px; }
 
     /* ═══════════════════════════════════════════
        FOOTER
@@ -1365,6 +1657,7 @@
     .social-row {
       display: flex;
       gap: 1.25rem;
+      flex-wrap: wrap;
     }
     .social-link {
       display: flex;
@@ -1383,14 +1676,16 @@
     @media (max-width: 1100px) {
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
       .footer-brand { grid-column: span 2; }
-      .pricing-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
-      .pcard.popular { transform: none; }
     }
     @media (max-width: 900px) {
       .pain-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
       .tgrid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
       .steps { grid-template-columns: 1fr 1fr; gap: 3rem; }
       .steps::before { display: none; }
+      .pt-grid { grid-template-columns: 1fr; }
+      .col-retail { border-right: none; border-bottom: 1px solid rgba(255,255,255,.07); }
+      .col-own    { border-right: none; border-bottom: 1px solid rgba(255,255,255,.07); }
+      .pt-trust { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
       .nav-menu, .nav-actions { display: none; }
@@ -1409,8 +1704,6 @@
       .svc-row:nth-child(even) .svc-text  { order: 1; }
       .svc-row:nth-child(even) .svc-visual { order: 2; }
 
-      .pricing-grid { grid-template-columns: 1fr; max-width: 380px; margin-left: auto; margin-right: auto; }
-
       .steps { grid-template-columns: 1fr; gap: 2.5rem; }
       .step { flex-direction: row; text-align: left; gap: 1.25rem; align-items: flex-start; }
       .step-circle { margin-bottom: 0; }
@@ -1422,6 +1715,9 @@
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .footer-brand { grid-column: span 2; }
       .footer-bottom { flex-direction: column; text-align: center; }
+
+      .tier-tabs { flex-wrap: nowrap; }
+      .no-fine-print { padding: 1.5rem; }
     }
     @media (max-width: 480px) {
       .footer-grid { grid-template-columns: 1fr; }
@@ -1431,6 +1727,15 @@
   </style>
 </head>
 <body>
+
+<!-- ═══════════════════════════════════════════
+     48HR TOP BANNER
+═══════════════════════════════════════════ -->
+<div class="top-banner" id="topBanner">
+  <span class="tb-icon">⚡</span>
+  Every stack is built and deployed in <strong>48 hours or less</strong> — guaranteed.
+  <button class="tb-dismiss" id="tbDismiss" aria-label="Dismiss banner">×</button>
+</div>
 
 <!-- ═══════════════════════════════════════════
      NAVIGATION
@@ -1446,7 +1751,7 @@
       <li><a href="#faq">FAQ</a></li>
     </ul>
     <div class="nav-actions">
-      <a href="assessment.html" class="btn btn-blue">Get Free Assessment</a>
+      <a href="assessment.html" class="btn btn-blue">Get Free Assessment →</a>
     </div>
     <button class="hamburger" id="burger" aria-label="Open menu">
       <span></span><span></span><span></span>
@@ -1461,7 +1766,7 @@
   <a href="#how"        class="mm-link">How It Works</a>
   <a href="#results"    class="mm-link">Results</a>
   <a href="#faq"        class="mm-link">FAQ</a>
-  <a href="assessment.html" class="btn btn-blue">Get Free Assessment</a>
+  <a href="assessment.html" class="btn btn-blue">Get Free Assessment →</a>
 </div>
 
 <!-- ═══════════════════════════════════════════
@@ -1489,18 +1794,18 @@
 
     <p class="hero-sub">
       Professional websites, CRM, lead automation, and AI — all in one
-      affordable subscription. Built in days, not months.
+      affordable subscription. Built in 48 hours, not 48 days.
     </p>
 
     <div class="hero-ctas">
-      <a href="#pricing"    class="hero-btn-glass">See Pricing</a>
+      <a href="#pricing" class="hero-btn-glass">See What's Included ↓</a>
       <a href="assessment.html" class="hero-btn-primary">Take the Free Assessment →</a>
     </div>
 
     <div class="hero-trust">
       <div class="tbadge">
         <span class="tbadge-check">✓</span>
-        Websites Built in 48 Hours
+        Live in 48 Hours
       </div>
       <div class="tbadge">
         <span class="tbadge-check">✓</span>
@@ -1535,7 +1840,6 @@
     <div class="pain-grid">
       <div class="pain-card rev">
         <div class="pain-icon-wrap">
-          <!-- Monitor / outdated website icon -->
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <rect x="2" y="3" width="20" height="14" rx="2"/>
             <path d="M8 21h8M12 17v4"/>
@@ -1548,7 +1852,6 @@
 
       <div class="pain-card rev" style="transition-delay:.1s">
         <div class="pain-icon-wrap">
-          <!-- Funnel / leads icon -->
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/>
           </svg>
@@ -1559,7 +1862,6 @@
 
       <div class="pain-card rev" style="transition-delay:.2s">
         <div class="pain-icon-wrap">
-          <!-- Broken link / disconnected tools icon -->
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M9 15L15 9"/>
             <path d="M7 10L5 12a4 4 0 005.657 5.657L13 15"/>
@@ -1594,7 +1896,7 @@
 
     <div class="svc-rows">
 
-      <!-- Row 1: Website Design — text left, visual right -->
+      <!-- Row 1: Website Design -->
       <div class="svc-row">
         <div class="svc-text rev-left">
           <div class="svc-row-num">01</div>
@@ -1602,18 +1904,9 @@
           <h3>A Website That Actually Wins Business</h3>
           <p>Your site is your #1 salesperson and it works 24/7. We build fast, modern, mobile-first websites that convert browsers into paying customers — then we host, maintain, and update it for you forever.</p>
           <ul class="svc-bullets">
-            <li>
-              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              5-page to unlimited pages, mobile-responsive design
-            </li>
-            <li>
-              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Hosting, SSL, domain, and free lifetime updates
-            </li>
-            <li>
-              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              SEO-optimized and Google Analytics connected from day one
-            </li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>5-page to unlimited pages, mobile-responsive design</li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Hosting, SSL, domain, and free lifetime updates</li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>SEO-optimized and Google Analytics connected from day one</li>
           </ul>
           <a href="#pricing" class="svc-link">Available in all plans →</a>
         </div>
@@ -1626,7 +1919,24 @@
               <div class="sdot sdot-g"></div>
               <div class="svc-url-bar"></div>
             </div>
-            <img src="https://picsum.photos/seed/bizweb-01/640/360" alt="Website Design Preview">
+            <div class="svc-illustration ill-website">
+              <div class="ill-web-header"></div>
+              <div class="ill-web-hero">
+                <div class="ill-web-hero-line" style="width:45%"></div>
+                <div class="ill-web-hero-line" style="width:30%"></div>
+              </div>
+              <div class="ill-web-cols">
+                <div class="ill-web-card"></div>
+                <div class="ill-web-card" style="background:rgba(59,130,246,.06)"></div>
+                <div class="ill-web-card"></div>
+              </div>
+              <div class="ill-web-cols">
+                <div class="ill-web-card" style="height:36px"></div>
+                <div class="ill-web-card" style="height:36px;background:rgba(139,92,246,.06)"></div>
+                <div class="ill-web-card" style="height:36px"></div>
+              </div>
+              <div class="ill-web-footer"></div>
+            </div>
             <div class="svc-screen-foot">
               <span class="svc-badge">Website Design</span>
               <span class="svc-status">Live &amp; Running</span>
@@ -1635,7 +1945,7 @@
         </div>
       </div>
 
-      <!-- Row 2: CRM — visual left, text right -->
+      <!-- Row 2: CRM -->
       <div class="svc-row">
         <div class="svc-text rev-right">
           <div class="svc-row-num">02</div>
@@ -1643,20 +1953,11 @@
           <h3>Know Every Lead. Miss None of Them.</h3>
           <p>We build smart lead capture forms, landing pages, and connect them directly to your CRM pipeline — so every lead is tracked, tagged, and ready for follow-up the moment it comes in.</p>
           <ul class="svc-bullets">
-            <li>
-              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Visual pipeline &amp; deal tracking from 500 to unlimited contacts
-            </li>
-            <li>
-              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Smart forms that capture name, phone, email, and intent
-            </li>
-            <li>
-              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Real-time notifications so you know the second a lead arrives
-            </li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Visual pipeline &amp; deal tracking from 500 to unlimited contacts</li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Smart forms that capture name, phone, email, and intent</li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Real-time notifications so you know the second a lead arrives</li>
           </ul>
-          <a href="#pricing" class="svc-link" style="color: var(--purple)">Included in Growth+ →</a>
+          <a href="#pricing" class="svc-link" style="color:var(--purple)">Included in Growth+ →</a>
         </div>
         <div class="svc-visual rev-left">
           <div class="svc-glow" style="background: radial-gradient(ellipse, rgba(139,92,246,.15) 0%, transparent 70%);"></div>
@@ -1667,7 +1968,25 @@
               <div class="sdot sdot-g"></div>
               <div class="svc-url-bar"></div>
             </div>
-            <img src="https://picsum.photos/seed/bizcrm-02/640/360" alt="CRM Dashboard">
+            <div class="svc-illustration ill-crm" style="gap:.5rem">
+              <div class="ill-crm-col">
+                <div class="ill-crm-label" style="background:rgba(59,130,246,.15)"></div>
+                <div class="ill-crm-card" style="background:rgba(59,130,246,.07)"><div class="ill-crm-dot" style="background:var(--blue)"></div><div class="ill-crm-line"></div></div>
+                <div class="ill-crm-card" style="background:rgba(59,130,246,.07)"><div class="ill-crm-dot" style="background:var(--blue)"></div><div class="ill-crm-line"></div></div>
+                <div class="ill-crm-card" style="background:rgba(59,130,246,.07)"><div class="ill-crm-dot" style="background:var(--blue)"></div><div class="ill-crm-line"></div></div>
+              </div>
+              <div class="ill-crm-col">
+                <div class="ill-crm-label" style="background:rgba(245,158,11,.15)"></div>
+                <div class="ill-crm-card" style="background:rgba(245,158,11,.07)"><div class="ill-crm-dot" style="background:var(--gold)"></div><div class="ill-crm-line"></div></div>
+                <div class="ill-crm-card" style="background:rgba(245,158,11,.07)"><div class="ill-crm-dot" style="background:var(--gold)"></div><div class="ill-crm-line"></div></div>
+              </div>
+              <div class="ill-crm-col">
+                <div class="ill-crm-label" style="background:rgba(16,185,129,.15)"></div>
+                <div class="ill-crm-card" style="background:rgba(16,185,129,.07)"><div class="ill-crm-dot" style="background:var(--green)"></div><div class="ill-crm-line"></div></div>
+                <div class="ill-crm-card" style="background:rgba(16,185,129,.07)"><div class="ill-crm-dot" style="background:var(--green)"></div><div class="ill-crm-line"></div></div>
+                <div class="ill-crm-card" style="background:rgba(16,185,129,.07)"><div class="ill-crm-dot" style="background:var(--green)"></div><div class="ill-crm-line"></div></div>
+              </div>
+            </div>
             <div class="svc-screen-foot">
               <span class="svc-badge purple">CRM Pipeline</span>
               <span class="svc-status">12 Active Leads</span>
@@ -1676,7 +1995,7 @@
         </div>
       </div>
 
-      <!-- Row 3: Automated Follow-Up — text left, visual right -->
+      <!-- Row 3: Automated Follow-Up -->
       <div class="svc-row">
         <div class="svc-text rev-left">
           <div class="svc-row-num">03</div>
@@ -1684,20 +2003,11 @@
           <h3>Follow Up Like You Have a Full Sales Team</h3>
           <p>The money is in the follow-up — and most small businesses never do it. We build automated email and SMS sequences that reach out to leads 3, 5, 10+ times on autopilot while you focus on the work you love.</p>
           <ul class="svc-bullets">
-            <li>
-              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Email &amp; SMS sequences triggered by lead behavior
-            </li>
-            <li>
-              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Appointment reminders, re-engagement, and review requests
-            </li>
-            <li>
-              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Written by our team — personalized, on-brand, ready to send
-            </li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Email &amp; SMS sequences triggered by lead behavior</li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Appointment reminders, re-engagement, and review requests</li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Written by our team — personalized, on-brand, ready to send</li>
           </ul>
-          <a href="#pricing" class="svc-link" style="color: var(--green)">Included in Growth+ →</a>
+          <a href="#pricing" class="svc-link" style="color:var(--green)">Included in Growth+ →</a>
         </div>
         <div class="svc-visual rev-right">
           <div class="svc-glow" style="background: radial-gradient(ellipse, rgba(16,185,129,.12) 0%, transparent 70%);"></div>
@@ -1708,7 +2018,28 @@
               <div class="sdot sdot-g"></div>
               <div class="svc-url-bar"></div>
             </div>
-            <img src="https://picsum.photos/seed/bizauto-03/640/360" alt="Automation Sequences">
+            <div class="svc-illustration ill-followup">
+              <div class="ill-msg" style="background:rgba(59,130,246,.06)">
+                <div class="ill-msg-icon" style="background:rgba(59,130,246,.15)">✉️</div>
+                <div class="ill-msg-body"><div class="ill-msg-title"></div><div class="ill-msg-sub"></div></div>
+                <span class="ill-msg-badge" style="background:rgba(16,185,129,.15);color:var(--green)">Sent</span>
+              </div>
+              <div class="ill-msg" style="background:rgba(16,185,129,.06)">
+                <div class="ill-msg-icon" style="background:rgba(16,185,129,.15)">💬</div>
+                <div class="ill-msg-body"><div class="ill-msg-title"></div><div class="ill-msg-sub"></div></div>
+                <span class="ill-msg-badge" style="background:rgba(16,185,129,.15);color:var(--green)">Sent</span>
+              </div>
+              <div class="ill-msg" style="background:rgba(245,158,11,.06)">
+                <div class="ill-msg-icon" style="background:rgba(245,158,11,.15)">📞</div>
+                <div class="ill-msg-body"><div class="ill-msg-title"></div><div class="ill-msg-sub"></div></div>
+                <span class="ill-msg-badge" style="background:rgba(245,158,11,.15);color:var(--gold)">Day 3</span>
+              </div>
+              <div class="ill-msg" style="background:rgba(139,92,246,.06)">
+                <div class="ill-msg-icon" style="background:rgba(139,92,246,.15)">✉️</div>
+                <div class="ill-msg-body"><div class="ill-msg-title"></div><div class="ill-msg-sub"></div></div>
+                <span class="ill-msg-badge" style="background:rgba(139,92,246,.15);color:var(--purple)">Day 7</span>
+              </div>
+            </div>
             <div class="svc-screen-foot">
               <span class="svc-badge green">Automation Active</span>
               <span class="svc-status">3 Sequences Running</span>
@@ -1717,7 +2048,7 @@
         </div>
       </div>
 
-      <!-- Row 4: AI Chatbot — visual left, text right -->
+      <!-- Row 4: AI Chatbot -->
       <div class="svc-row">
         <div class="svc-text rev-right">
           <div class="svc-row-num">04</div>
@@ -1725,20 +2056,11 @@
           <h3>Answer Every Lead. Even at 2am.</h3>
           <p>Your AI chatbot lives on your website, qualifies leads, answers questions, and books appointments — 24/7 without a salary. Upgrade to the voice agent and your AI actually answers phone calls too.</p>
           <ul class="svc-bullets">
-            <li>
-              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Website chatbot trained on your business and services
-            </li>
-            <li>
-              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Qualifies leads, answers FAQs, and books appointments automatically
-            </li>
-            <li>
-              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              AI voice agent answers inbound calls (Enterprise tier)
-            </li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Website chatbot trained on your business and services</li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Qualifies leads, answers FAQs, and books appointments automatically</li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>AI voice agent answers inbound calls (Enterprise tier)</li>
           </ul>
-          <a href="#pricing" class="svc-link" style="color: var(--purple)">Included in Scale+ →</a>
+          <a href="#pricing" class="svc-link" style="color:var(--purple)">Included in Scale+ →</a>
         </div>
         <div class="svc-visual rev-left">
           <div class="svc-glow" style="background: radial-gradient(ellipse, rgba(139,92,246,.15) 0%, transparent 70%);"></div>
@@ -1749,7 +2071,16 @@
               <div class="sdot sdot-g"></div>
               <div class="svc-url-bar"></div>
             </div>
-            <img src="https://picsum.photos/seed/bizai-04/640/360" alt="AI Chatbot Interface">
+            <div class="svc-illustration ill-chat">
+              <div class="ill-bubble ill-bubble-ai">Hi! I'm the BizStack AI. How can I help you today?</div>
+              <div class="ill-bubble ill-bubble-user">What are your hours?</div>
+              <div class="ill-bubble ill-bubble-ai">We're open Mon–Fri 8am–6pm. Want me to book you an appointment?</div>
+              <div class="ill-bubble ill-bubble-user">Yes please!</div>
+              <div class="ill-chat-input">
+                <div class="ill-chat-inp-bar"></div>
+                <div class="ill-chat-send"></div>
+              </div>
+            </div>
             <div class="svc-screen-foot">
               <span class="svc-badge purple">AI Chatbot</span>
               <span class="svc-status">Online 24/7</span>
@@ -1758,7 +2089,7 @@
         </div>
       </div>
 
-      <!-- Row 5: Payment Processing — text left, visual right -->
+      <!-- Row 5: Payment Processing -->
       <div class="svc-row">
         <div class="svc-text rev-left">
           <div class="svc-row-num">05</div>
@@ -1766,20 +2097,11 @@
           <h3>Get Paid Faster. Look More Professional.</h3>
           <p>Online invoicing, recurring billing, and a branded payment page — all connected to your CRM so you know exactly who has paid and who hasn't. No more chasing checks or playing phone tag.</p>
           <ul class="svc-bullets">
-            <li>
-              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Online invoicing with automatic payment reminders
-            </li>
-            <li>
-              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Recurring subscriptions and payment plans for your clients
-            </li>
-            <li>
-              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Syncs directly with your CRM — no manual bookkeeping
-            </li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Online invoicing with automatic payment reminders</li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Recurring subscriptions and payment plans for your clients</li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Syncs directly with your CRM — no manual bookkeeping</li>
           </ul>
-          <a href="#pricing" class="svc-link" style="color: var(--gold)">Included in Growth+ →</a>
+          <a href="#pricing" class="svc-link" style="color:var(--gold)">Included in Growth+ →</a>
         </div>
         <div class="svc-visual rev-right">
           <div class="svc-glow" style="background: radial-gradient(ellipse, rgba(245,158,11,.12) 0%, transparent 70%);"></div>
@@ -1790,7 +2112,17 @@
               <div class="sdot sdot-g"></div>
               <div class="svc-url-bar"></div>
             </div>
-            <img src="https://picsum.photos/seed/bizpay-05/640/360" alt="Payment Processing">
+            <div class="svc-illustration ill-payment">
+              <div class="ill-inv-head">
+                <div class="ill-inv-title"></div>
+                <div class="ill-inv-amount">$2,400</div>
+              </div>
+              <div class="ill-inv-row"><div class="ill-inv-service"></div><div class="ill-inv-price"></div></div>
+              <div class="ill-inv-row"><div class="ill-inv-service" style="width:40%"></div><div class="ill-inv-price"></div></div>
+              <div class="ill-inv-row"><div class="ill-inv-service" style="width:50%"></div><div class="ill-inv-price"></div></div>
+              <div class="ill-inv-row" style="border-bottom:none"><div class="ill-inv-service" style="width:35%"></div><div class="ill-inv-price"></div></div>
+              <div class="ill-pay-btn"></div>
+            </div>
             <div class="svc-screen-foot">
               <span class="svc-badge gold">Payments</span>
               <span class="svc-status">$4,280 This Month</span>
@@ -1799,7 +2131,7 @@
         </div>
       </div>
 
-      <!-- Row 6: Marketing — visual left, text right -->
+      <!-- Row 6: Marketing -->
       <div class="svc-row">
         <div class="svc-text rev-right">
           <div class="svc-row-num">06</div>
@@ -1807,20 +2139,11 @@
           <h3>Show Up Online. Every Single Week.</h3>
           <p>Consistent content is how you win the long game. Our team writes your blog posts, social media captions, and manages your Google Business Profile — so you stay visible without spending hours on it yourself.</p>
           <ul class="svc-bullets">
-            <li>
-              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              2–4 SEO blog posts per month written for your business
-            </li>
-            <li>
-              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Social media captions &amp; Google Business Profile management
-            </li>
-            <li>
-              <svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Paid ad campaign setup &amp; management (Scale+)
-            </li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>2–4 SEO blog posts per month written for your business</li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Social media captions &amp; Google Business Profile management</li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Paid ad campaign setup &amp; management (Scale+)</li>
           </ul>
-          <a href="#pricing" class="svc-link" style="color: var(--green)">Included in Scale+ →</a>
+          <a href="#pricing" class="svc-link" style="color:var(--green)">Included in Scale+ →</a>
         </div>
         <div class="svc-visual rev-left">
           <div class="svc-glow" style="background: radial-gradient(ellipse, rgba(16,185,129,.12) 0%, transparent 70%);"></div>
@@ -1831,7 +2154,19 @@
               <div class="sdot sdot-g"></div>
               <div class="svc-url-bar"></div>
             </div>
-            <img src="https://picsum.photos/seed/bizmkt-06/640/360" alt="Marketing Dashboard">
+            <div class="svc-illustration ill-marketing">
+              <div class="ill-mkt-grid">
+                <div class="ill-mkt-post ill-mkt-p1"></div>
+                <div class="ill-mkt-post ill-mkt-p2"></div>
+                <div class="ill-mkt-post ill-mkt-p3"></div>
+                <div class="ill-mkt-post ill-mkt-p4"></div>
+              </div>
+              <div class="ill-mkt-stats">
+                <div class="ill-mkt-stat"><span class="ill-mkt-stat-num">+47%</span></div>
+                <div class="ill-mkt-stat"><span class="ill-mkt-stat-num">2.1K</span></div>
+                <div class="ill-mkt-stat"><span class="ill-mkt-stat-num">98↑</span></div>
+              </div>
+            </div>
             <div class="svc-screen-foot">
               <span class="svc-badge green">Content &amp; SEO</span>
               <span class="svc-status">4 Posts Scheduled</span>
@@ -1845,181 +2180,324 @@
 </section>
 
 <!-- ═══════════════════════════════════════════
-     PRICING
+     PRICING — TRANSPARENT 3-COLUMN MODEL
 ═══════════════════════════════════════════ -->
 <section id="pricing">
   <div class="wrap">
     <div class="pricing-head rev">
       <div class="chip center">Pricing</div>
-      <h2>Simple Pricing. Serious Value.</h2>
-      <p>Pick a plan and go live in 48 hours. Upgrade or downgrade anytime, no questions asked.</p>
+      <h2>Transparent Pricing. No Surprises. Ever.</h2>
+      <p>See exactly what you're getting, what it costs everywhere else, and how much you save with BizStack. We believe you deserve to know.</p>
     </div>
 
-    <div class="pricing-grid">
-
-      <!-- STARTER -->
-      <div class="pcard rev">
-        <p class="pcard-tier">Starter</p>
-        <div class="pcard-price"><sup>$</sup>99<sub>/mo</sub></div>
-        <p class="pcard-tagline">Get found, get organized.</p>
-        <div class="pcard-divider"></div>
-        <ul class="pfeatures">
-          <li>
-            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            5-page professional website
-          </li>
-          <li>
-            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Mobile responsive design
-          </li>
-          <li>
-            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Hosting, SSL &amp; domain connection
-          </li>
-          <li>
-            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Contact form + email notifications
-          </li>
-          <li>
-            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Google Analytics setup
-          </li>
-          <li>
-            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Basic CRM (up to 500 contacts)
-          </li>
-          <li>
-            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Email support
-          </li>
-        </ul>
-        <a href="assessment.html" class="btn btn-outline">Get Started</a>
-      </div>
-
-      <!-- GROWTH — MOST POPULAR -->
-      <div class="pcard popular rev" style="transition-delay:.08s">
-        <div class="pop-badge">⚡ Most Popular</div>
-        <p class="pcard-tier">Growth</p>
-        <div class="pcard-price"><sup>$</sup>299<sub>/mo</sub></div>
-        <p class="pcard-tagline">More leads, better follow-up.</p>
-        <div class="pcard-divider"></div>
-        <ul class="pfeatures">
-          <li>
-            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Everything in Starter
-          </li>
-          <li>
-            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Unlimited website pages
-          </li>
-          <li>
-            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Lead capture forms &amp; landing pages
-          </li>
-          <li>
-            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            CRM pipeline (up to 5,000 contacts)
-          </li>
-          <li>
-            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            3 automated email follow-up sequences
-          </li>
-          <li>
-            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            2 blog posts/month + Google Business
-          </li>
-          <li>
-            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Priority support
-          </li>
-        </ul>
-        <a href="assessment.html" class="btn btn-gradient">Get Started</a>
-      </div>
-
-      <!-- SCALE -->
-      <div class="pcard rev" style="transition-delay:.16s">
-        <p class="pcard-tier">Scale</p>
-        <div class="pcard-price"><sup>$</sup>499<sub>/mo</sub></div>
-        <p class="pcard-tagline">Automate and grow.</p>
-        <div class="pcard-divider"></div>
-        <ul class="pfeatures">
-          <li>
-            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Everything in Growth
-          </li>
-          <li>
-            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            AI chatbot on your website
-          </li>
-          <li>
-            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            SMS automation sequences
-          </li>
-          <li>
-            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Unlimited CRM contacts
-          </li>
-          <li>
-            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            4 blog posts + social captions/month
-          </li>
-          <li>
-            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Paid ad campaign management
-          </li>
-          <li>
-            <svg class="pcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Dedicated account manager
-          </li>
-        </ul>
-        <a href="assessment.html" class="btn btn-blue">Get Started</a>
-      </div>
-
-      <!-- ENTERPRISE -->
-      <div class="pcard enterprise rev" style="transition-delay:.24s">
-        <p class="pcard-tier">Enterprise</p>
-        <div class="pcard-price"><sup>$</sup>999<sub style="color:var(--gold)">+/mo</sub></div>
-        <p class="pcard-tagline">Your virtual AI department.</p>
-        <div class="pcard-divider"></div>
-        <ul class="pfeatures">
-          <li>
-            <svg class="pcheck" style="color:var(--gold)" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Everything in Scale
-          </li>
-          <li>
-            <svg class="pcheck" style="color:var(--gold)" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            AI voice agent for inbound calls
-          </li>
-          <li>
-            <svg class="pcheck" style="color:var(--gold)" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Custom third-party integrations
-          </li>
-          <li>
-            <svg class="pcheck" style="color:var(--gold)" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Advanced analytics dashboard
-          </li>
-          <li>
-            <svg class="pcheck" style="color:var(--gold)" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Custom automation workflows
-          </li>
-          <li>
-            <svg class="pcheck" style="color:var(--gold)" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Weekly strategy calls
-          </li>
-          <li>
-            <svg class="pcheck" style="color:var(--gold)" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            First access to new AI features
-          </li>
-        </ul>
-        <a href="assessment.html" class="btn">Let's Talk</a>
-      </div>
-
-    </div><!-- /.pricing-grid -->
-
-    <div class="pricing-footer rev">
-      <span class="dot">●</span>
-      No contracts &nbsp;·&nbsp; No setup fees &nbsp;·&nbsp; Cancel anytime &nbsp;·&nbsp; First month prorated
+    <!-- Tier selector tabs -->
+    <div class="tier-tabs rev">
+      <button class="tier-tab" data-tier="0">
+        <span class="tt-pop">&nbsp;</span>
+        <span class="tt-name">Starter</span>
+        <span class="tt-price">$99/mo</span>
+      </button>
+      <button class="tier-tab active" data-tier="1">
+        <span class="tt-pop">⚡ Most Popular</span>
+        <span class="tt-name">Growth</span>
+        <span class="tt-price">$299/mo</span>
+      </button>
+      <button class="tier-tab" data-tier="2">
+        <span class="tt-pop">&nbsp;</span>
+        <span class="tt-name">Scale</span>
+        <span class="tt-price">$499/mo</span>
+      </button>
+      <button class="tier-tab gold-tab" data-tier="3">
+        <span class="tt-pop">&nbsp;</span>
+        <span class="tt-name">Enterprise</span>
+        <span class="tt-price">$999+/mo</span>
+      </button>
     </div>
+
+    <!-- ── STARTER TABLE ── -->
+    <div class="price-table rev" id="pt-0">
+      <div class="pt-grid">
+        <!-- Column 1: Retail -->
+        <div class="col-retail">
+          <div class="col-tag">If You Bought It Separately</div>
+          <div class="col-title">What You'd Pay at Retail</div>
+          <div class="col-sub">Market rates for each tool or service, purchased individually from different vendors</div>
+          <div class="retail-items">
+            <div class="retail-item"><span class="ri-name">Professional Website (5-page, custom)</span><div><div class="ri-price">$3,000 – $5,000</div><div class="ri-freq">one-time</div></div></div>
+            <div class="retail-item"><span class="ri-name">Hosting, SSL &amp; Domain</span><div><div class="ri-price">$360 – $600</div><div class="ri-freq">/year</div></div></div>
+            <div class="retail-item"><span class="ri-name">Google Business Profile Setup &amp; Optimization</span><div><div class="ri-price">$200 – $500</div><div class="ri-freq">one-time</div></div></div>
+            <div class="retail-item"><span class="ri-name">SEO Foundation (on-page + technical)</span><div><div class="ri-price">$500 – $1,500</div><div class="ri-freq">one-time</div></div></div>
+            <div class="retail-item"><span class="ri-name">Contact Forms + Email Notifications</span><div><div class="ri-price">$100 – $300</div><div class="ri-freq">/year</div></div></div>
+            <div class="retail-item"><span class="ri-name">Google Analytics Setup</span><div><div class="ri-price">$150 – $300</div><div class="ri-freq">one-time</div></div></div>
+            <div class="retail-item"><span class="ri-name">Basic CRM (up to 500 contacts)</span><div><div class="ri-price">$240 – $600</div><div class="ri-freq">/year</div></div></div>
+            <div class="retail-item"><span class="ri-name">Monthly Website Maintenance &amp; Updates</span><div><div class="ri-price">$600 – $1,200</div><div class="ri-freq">/year</div></div></div>
+          </div>
+          <div class="col-total">
+            <div class="col-total-label">Total Year 1</div>
+            <div class="col-total-price">$5,150 – $10,000+</div>
+            <div class="col-total-sub">Annual ongoing: $1,300 – $2,700/yr<br>And you manage it all yourself.</div>
+          </div>
+        </div>
+        <!-- Column 2: Own It -->
+        <div class="col-own">
+          <div class="best-badge">★ Best Value</div>
+          <div class="col-tag">Own It Outright</div>
+          <div class="col-title">One-Time Investment</div>
+          <div class="col-sub">We build, deploy, and hand it to you — you own everything from Day 1</div>
+          <div class="col-price-big">$2,999</div>
+          <div class="col-price-note">one-time · no recurring fees</div>
+          <div class="col-savings">✓ You save $2,151 – $7,001+ vs. retail Year 1</div>
+          <ul class="col-includes">
+            <li><span class="ci-check">•</span> Full build, config &amp; deployment in 48 hours</li>
+            <li><span class="ci-check">•</span> 90 days of managed support post-launch</li>
+            <li><span class="ci-check">•</span> All source files &amp; credentials — yours forever</li>
+            <li><span class="ci-check">•</span> Domain, hosting account, CRM data — all in your name</li>
+            <li><span class="ci-check">•</span> Migration guide included if you ever switch providers</li>
+            <li><span class="ci-check">•</span> You own it all from Day 1 — no strings attached</li>
+          </ul>
+          <a href="assessment.html" class="btn btn-gold btn-lg">Get Started →</a>
+        </div>
+        <!-- Column 3: Pay Over Time -->
+        <div class="col-pay">
+          <div class="flex-badge">★ Most Flexible</div>
+          <div class="col-tag">Pay Over Time</div>
+          <div class="col-title">Same Build, Spread Out</div>
+          <div class="col-sub">Identical complete build as Column 2 — split into 36 interest-free monthly payments</div>
+          <div class="col-price-big">$99<span class="price-mo">/mo</span></div>
+          <div class="col-price-note">× 36 months = $3,564 total · $0 interest · $0 setup fees</div>
+          <div class="col-savings" style="background:rgba(59,130,246,.08);border-color:rgba(59,130,246,.18);color:var(--blue)">⚡ Up and running in 48 hours</div>
+          <ul class="col-includes" style="margin-top:.75rem">
+            <li><span class="ci-check" style="color:var(--blue)">•</span> Includes ongoing updates &amp; support while subscribed</li>
+            <li><span class="ci-check" style="color:var(--blue)">•</span> No contract — cancel anytime, no penalties</li>
+          </ul>
+          <div class="cancel-box">
+            <div class="cancel-box-title">If you cancel:</div>
+            <div class="cancel-box-body">Pay the remaining balance to keep everything, OR simply stop and lose access at the end of your billing period. Either way, we package up all your files and credentials — free of charge.</div>
+          </div>
+          <a href="assessment.html" class="btn btn-pay btn-lg">Get Started →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── GROWTH TABLE ── -->
+    <div class="price-table active rev" id="pt-1">
+      <div class="pt-grid">
+        <div class="col-retail">
+          <div class="col-tag">If You Bought It Separately</div>
+          <div class="col-title">What You'd Pay at Retail</div>
+          <div class="col-sub">Market rates for each tool or service, purchased individually from different vendors</div>
+          <div class="retail-items">
+            <div class="retail-item"><span class="ri-name">Everything in Starter (Year 1)</span><div><div class="ri-price">$5,150 – $10,000+</div><div class="ri-freq">Year 1</div></div></div>
+            <div class="retail-item"><span class="ri-name">Unlimited Website Pages</span><div><div class="ri-price">+$1,000 – $3,000</div><div class="ri-freq">design cost</div></div></div>
+            <div class="retail-item"><span class="ri-name">Lead Capture Landing Pages (custom)</span><div><div class="ri-price">$500 – $2,000</div><div class="ri-freq">each</div></div></div>
+            <div class="retail-item"><span class="ri-name">CRM Pipeline (5,000 contacts)</span><div><div class="ri-price">$600 – $3,600</div><div class="ri-freq">/year</div></div></div>
+            <div class="retail-item"><span class="ri-name">3 Automated Email Follow-Up Sequences</span><div><div class="ri-price">$1,500 – $4,000</div><div class="ri-freq">to set up</div></div></div>
+            <div class="retail-item"><span class="ri-name">SMS Automation Platform</span><div><div class="ri-price">$300 – $1,200</div><div class="ri-freq">/year</div></div></div>
+            <div class="retail-item"><span class="ri-name">Appointment Booking System</span><div><div class="ri-price">$180 – $600</div><div class="ri-freq">/year</div></div></div>
+            <div class="retail-item"><span class="ri-name">Review Generation Automation</span><div><div class="ri-price">$600 – $2,400</div><div class="ri-freq">/year</div></div></div>
+            <div class="retail-item"><span class="ri-name">2 Blog Posts/Mo + Google Business Mgmt</span><div><div class="ri-price">$4,800 – $12,000</div><div class="ri-freq">/year</div></div></div>
+            <div class="retail-item"><span class="ri-name">Monthly Performance Reporting</span><div><div class="ri-price">$1,200 – $3,600</div><div class="ri-freq">/year</div></div></div>
+          </div>
+          <div class="col-total">
+            <div class="col-total-label">Total Year 1</div>
+            <div class="col-total-price">$15,830 – $42,400+</div>
+            <div class="col-total-sub">And you'd still have to manage it all yourself.</div>
+          </div>
+        </div>
+        <div class="col-own">
+          <div class="best-badge">★ Best Value</div>
+          <div class="col-tag">Own It Outright</div>
+          <div class="col-title">One-Time Investment</div>
+          <div class="col-sub">We build, deploy, and hand it to you — you own everything from Day 1</div>
+          <div class="col-price-big">$7,499</div>
+          <div class="col-price-note">one-time · no recurring fees</div>
+          <div class="col-savings">✓ You save $8,331 – $34,901+ vs. retail Year 1</div>
+          <ul class="col-includes">
+            <li><span class="ci-check">•</span> Full Growth stack built &amp; deployed in 48 hours</li>
+            <li><span class="ci-check">•</span> 90 days of managed support post-launch</li>
+            <li><span class="ci-check">•</span> All source files &amp; credentials — yours forever</li>
+            <li><span class="ci-check">•</span> All automations, sequences, and CRM — in your account</li>
+            <li><span class="ci-check">•</span> Migration guide included if you ever switch providers</li>
+            <li><span class="ci-check">•</span> You own it all from Day 1 — no strings attached</li>
+          </ul>
+          <a href="assessment.html" class="btn btn-gold btn-lg">Get Started →</a>
+        </div>
+        <div class="col-pay">
+          <div class="flex-badge">★ Most Flexible</div>
+          <div class="col-tag">Pay Over Time</div>
+          <div class="col-title">Same Build, Spread Out</div>
+          <div class="col-sub">Identical complete build as Column 2 — split into 36 interest-free monthly payments</div>
+          <div class="col-price-big">$299<span class="price-mo">/mo</span></div>
+          <div class="col-price-note">× 36 months = $10,764 total · $0 interest · $0 setup fees</div>
+          <div class="col-savings" style="background:rgba(59,130,246,.08);border-color:rgba(59,130,246,.18);color:var(--blue)">⚡ Up and running in 48 hours</div>
+          <ul class="col-includes" style="margin-top:.75rem">
+            <li><span class="ci-check" style="color:var(--blue)">•</span> Includes ongoing updates &amp; support while subscribed</li>
+            <li><span class="ci-check" style="color:var(--blue)">•</span> No contract — cancel anytime, no penalties</li>
+          </ul>
+          <div class="cancel-box">
+            <div class="cancel-box-title">If you cancel:</div>
+            <div class="cancel-box-body">Pay the remaining balance to keep everything, OR simply stop and lose access at the end of your billing period. Either way, we package up all your files and credentials — free of charge.</div>
+          </div>
+          <a href="assessment.html" class="btn btn-pay btn-lg">Get Started →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SCALE TABLE ── -->
+    <div class="price-table rev" id="pt-2">
+      <div class="pt-grid">
+        <div class="col-retail">
+          <div class="col-tag">If You Bought It Separately</div>
+          <div class="col-title">What You'd Pay at Retail</div>
+          <div class="col-sub">Market rates for each tool or service, purchased individually from different vendors</div>
+          <div class="retail-items">
+            <div class="retail-item"><span class="ri-name">Everything in Growth (Year 1)</span><div><div class="ri-price">$15,830 – $42,400+</div><div class="ri-freq">Year 1</div></div></div>
+            <div class="retail-item"><span class="ri-name">AI Chatbot (custom-trained)</span><div><div class="ri-price">$3,000 – $10,000</div><div class="ri-freq">setup + $600–$6K/yr</div></div></div>
+            <div class="retail-item"><span class="ri-name">SMS Automation Sequences</span><div><div class="ri-price">$600 – $2,400</div><div class="ri-freq">/year</div></div></div>
+            <div class="retail-item"><span class="ri-name">Unlimited CRM Contacts</span><div><div class="ri-price">$1,200 – $6,000</div><div class="ri-freq">/year</div></div></div>
+            <div class="retail-item"><span class="ri-name">4 Blog Posts + Social Captions/Mo</span><div><div class="ri-price">$9,600 – $24,000</div><div class="ri-freq">/year</div></div></div>
+            <div class="retail-item"><span class="ri-name">Paid Ad Campaign Management</span><div><div class="ri-price">$6,000 – $18,000</div><div class="ri-freq">/year</div></div></div>
+            <div class="retail-item"><span class="ri-name">Stripe Payment Integration</span><div><div class="ri-price">$500 – $1,500</div><div class="ri-freq">setup</div></div></div>
+            <div class="retail-item"><span class="ri-name">Dedicated Account Manager</span><div><div class="ri-price">$12,000 – $24,000</div><div class="ri-freq">/year</div></div></div>
+          </div>
+          <div class="col-total">
+            <div class="col-total-label">Total Year 1</div>
+            <div class="col-total-price">$49,330 – $128,300+</div>
+            <div class="col-total-sub">And you'd still have to manage it all yourself.</div>
+          </div>
+        </div>
+        <div class="col-own">
+          <div class="best-badge">★ Best Value</div>
+          <div class="col-tag">Own It Outright</div>
+          <div class="col-title">One-Time Investment</div>
+          <div class="col-sub">We build, deploy, and hand it to you — you own everything from Day 1</div>
+          <div class="col-price-big">$14,999</div>
+          <div class="col-price-note">one-time · no recurring fees</div>
+          <div class="col-savings">✓ You save $34,331 – $113,301+ vs. retail Year 1</div>
+          <ul class="col-includes">
+            <li><span class="ci-check">•</span> Full Scale stack built &amp; deployed in 48 hours</li>
+            <li><span class="ci-check">•</span> 90 days of managed support post-launch</li>
+            <li><span class="ci-check">•</span> All source files, AI training data &amp; credentials</li>
+            <li><span class="ci-check">•</span> Full ad account access &amp; campaign history</li>
+            <li><span class="ci-check">•</span> Migration guide included if you ever switch providers</li>
+            <li><span class="ci-check">•</span> You own it all from Day 1 — no strings attached</li>
+          </ul>
+          <a href="assessment.html" class="btn btn-gold btn-lg">Get Started →</a>
+        </div>
+        <div class="col-pay">
+          <div class="flex-badge">★ Most Flexible</div>
+          <div class="col-tag">Pay Over Time</div>
+          <div class="col-title">Same Build, Spread Out</div>
+          <div class="col-sub">Identical complete build as Column 2 — split into 36 interest-free monthly payments</div>
+          <div class="col-price-big">$499<span class="price-mo">/mo</span></div>
+          <div class="col-price-note">× 36 months = $17,964 total · $0 interest · $0 setup fees</div>
+          <div class="col-savings" style="background:rgba(59,130,246,.08);border-color:rgba(59,130,246,.18);color:var(--blue)">⚡ Up and running in 48 hours</div>
+          <ul class="col-includes" style="margin-top:.75rem">
+            <li><span class="ci-check" style="color:var(--blue)">•</span> Includes ongoing updates &amp; support while subscribed</li>
+            <li><span class="ci-check" style="color:var(--blue)">•</span> No contract — cancel anytime, no penalties</li>
+          </ul>
+          <div class="cancel-box">
+            <div class="cancel-box-title">If you cancel:</div>
+            <div class="cancel-box-body">Pay the remaining balance to keep everything, OR simply stop and lose access at the end of your billing period. Either way, we package up all your files and credentials — free of charge.</div>
+          </div>
+          <a href="assessment.html" class="btn btn-pay btn-lg">Get Started →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── ENTERPRISE TABLE ── -->
+    <div class="price-table rev" id="pt-3">
+      <div class="pt-grid">
+        <div class="col-retail">
+          <div class="col-tag">If You Bought It Separately</div>
+          <div class="col-title">What You'd Pay at Retail</div>
+          <div class="col-sub">Market rates for each tool or service, purchased individually from different vendors</div>
+          <div class="retail-items">
+            <div class="retail-item"><span class="ri-name">Everything in Scale (Year 1)</span><div><div class="ri-price">$49,330 – $128,300+</div><div class="ri-freq">Year 1</div></div></div>
+            <div class="retail-item"><span class="ri-name">AI Voice Agent (custom)</span><div><div class="ri-price">$5,000 – $25,000</div><div class="ri-freq">setup + $1.2K–$6K/yr</div></div></div>
+            <div class="retail-item"><span class="ri-name">Custom Third-Party Integrations</span><div><div class="ri-price">$5,000 – $20,000+</div><div class="ri-freq">per project</div></div></div>
+            <div class="retail-item"><span class="ri-name">Advanced Analytics Dashboard</span><div><div class="ri-price">$3,000 – $10,000</div><div class="ri-freq">setup</div></div></div>
+            <div class="retail-item"><span class="ri-name">Weekly Strategy Sessions</span><div><div class="ri-price">$12,000 – $30,000</div><div class="ri-freq">/year</div></div></div>
+            <div class="retail-item"><span class="ri-name">Unlimited Custom Automation Builds</span><div><div class="ri-price">$10,000 – $50,000+</div><div class="ri-freq">/year</div></div></div>
+            <div class="retail-item"><span class="ri-name">White-Glove Onboarding</span><div><div class="ri-price">$2,000 – $5,000</div><div class="ri-freq">one-time</div></div></div>
+          </div>
+          <div class="col-total">
+            <div class="col-total-label">Total Year 1</div>
+            <div class="col-total-price">$86,530 – $274,300+</div>
+            <div class="col-total-sub">And you'd still have to manage it all yourself.</div>
+          </div>
+        </div>
+        <div class="col-own">
+          <div class="best-badge">★ Best Value</div>
+          <div class="col-tag">Own It Outright</div>
+          <div class="col-title">One-Time Investment</div>
+          <div class="col-sub">We build, deploy, and hand it to you — you own everything from Day 1</div>
+          <div class="col-price-big">$29,999<span class="price-mo">+</span></div>
+          <div class="col-price-note">custom quote · no recurring fees · fully bespoke</div>
+          <div class="col-savings">✓ You save $56,531 – $244,301+ vs. retail Year 1</div>
+          <ul class="col-includes">
+            <li><span class="ci-check">•</span> Full Enterprise stack — completely custom-built</li>
+            <li><span class="ci-check">•</span> AI voice agent + all integrations configured</li>
+            <li><span class="ci-check">•</span> 90 days of dedicated onboarding support</li>
+            <li><span class="ci-check">•</span> All source files, API keys, AI models — yours forever</li>
+            <li><span class="ci-check">•</span> Migration documentation for any future transition</li>
+            <li><span class="ci-check">•</span> You own it all from Day 1 — no strings attached</li>
+          </ul>
+          <a href="assessment.html" class="btn btn-gold btn-lg">Let's Talk →</a>
+        </div>
+        <div class="col-pay">
+          <div class="flex-badge">★ Most Flexible</div>
+          <div class="col-tag">Pay Over Time</div>
+          <div class="col-title">Same Build, Spread Out</div>
+          <div class="col-sub">Identical complete build as Column 2 — split into 36 interest-free monthly payments</div>
+          <div class="col-price-big">$999<span class="price-mo">+/mo</span></div>
+          <div class="col-price-note">starting price × 36 months = $35,964+ · $0 interest · $0 setup fees</div>
+          <div class="col-savings" style="background:rgba(59,130,246,.08);border-color:rgba(59,130,246,.18);color:var(--blue)">⚡ Up and running in 48 hours</div>
+          <ul class="col-includes" style="margin-top:.75rem">
+            <li><span class="ci-check" style="color:var(--blue)">•</span> Includes ongoing updates &amp; dedicated support</li>
+            <li><span class="ci-check" style="color:var(--blue)">•</span> No contract — cancel anytime, no penalties</li>
+          </ul>
+          <div class="cancel-box">
+            <div class="cancel-box-title">If you cancel:</div>
+            <div class="cancel-box-body">Pay the remaining balance to keep everything, OR simply stop and lose access at the end of your billing period. Either way, we package up all your files and credentials — free of charge.</div>
+          </div>
+          <a href="assessment.html" class="btn btn-pay btn-lg">Let's Talk →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trust badges -->
+    <div class="pt-trust rev">
+      <div class="pt-trust-item">
+        <div class="pt-trust-icon">🔓</div>
+        <div class="pt-trust-title">You Own Everything</div>
+        <div class="pt-trust-desc">Every file, every login, every credential — yours from Day 1. No hostage situations. Ever.</div>
+      </div>
+      <div class="pt-trust-item">
+        <div class="pt-trust-icon">⚡</div>
+        <div class="pt-trust-title">Live in 48 Hours</div>
+        <div class="pt-trust-desc">We don't just promise fast delivery. We guarantee it. Most clients go live the same week they sign up.</div>
+      </div>
+      <div class="pt-trust-item">
+        <div class="pt-trust-icon">🤝</div>
+        <div class="pt-trust-title">Migrate Anytime</div>
+        <div class="pt-trust-desc">Your data, your code, your domain. If you leave, we package everything up and hand it to you. No fees.</div>
+      </div>
+    </div>
+
+    <!-- No Fine Print -->
+    <div class="no-fine-print rev">
+      <div class="nfp-title">Our Promise: No Contracts. No Setup Fees. No Surprises.</div>
+      <ul class="nfp-list">
+        <li><span class="nfp-arrow">→</span> Cancel your monthly plan anytime — no penalties, no guilt trips</li>
+        <li><span class="nfp-arrow">→</span> Pay the remaining balance to keep everything you've built, OR</li>
+        <li><span class="nfp-arrow">→</span> Walk away and lose access at the end of your billing period</li>
+        <li><span class="nfp-arrow">→</span> We export all your data, files, and credentials — free of charge</li>
+        <li><span class="nfp-arrow">→</span> We even include a migration guide so your next provider can pick up where we left off</li>
+      </ul>
+      <div class="nfp-note">We'd rather earn your business every month by being genuinely excellent than trap you with fine print.</div>
+    </div>
+
   </div>
 </section>
 
@@ -2057,7 +2535,7 @@
         <div class="step-circle">4</div>
         <h3>Go Live. Start Growing.</h3>
         <p>We flip the switch, your new digital presence goes live, and leads start flowing. We stay on to support, update, and improve your stack every single month.</p>
-        <span class="step-tag" style="color:var(--green); background:rgba(16,185,129,.1); border-color:rgba(16,185,129,.2)">Ongoing support</span>
+        <span class="step-tag" style="color:var(--green);background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.2)">Ongoing support</span>
       </div>
     </div>
   </div>
@@ -2079,7 +2557,7 @@
         <div class="tcard-stars">★★★★★</div>
         <p class="tcard-quote">"Before BizStack, I had a terrible website from 2018 and was losing leads to competitors every single day. They built me a new site in less than 48 hours and set up automated texts that follow up with every inquiry automatically. I've had my best two quarters in 12 years of business."</p>
         <div class="tcard-author">
-          <img class="tcard-avatar" src="https://picsum.photos/seed/plumber-mt/80/80" alt="Mike Torres">
+          <div class="tcard-initial" style="background:linear-gradient(135deg,#3B82F6,#1D4ED8)">MT</div>
           <div>
             <p class="tcard-name">Mike Torres</p>
             <p class="tcard-biz">Mike's Plumbing &amp; Heating · Houston, TX</p>
@@ -2091,7 +2569,7 @@
         <div class="tcard-stars">★★★★★</div>
         <p class="tcard-quote">"I was paying over $800/month across four different services that barely talked to each other. BizStack replaced all of them for $299/month and added an AI chatbot that schedules appointments even at 2am. My no-show rate dropped 40% in the first 60 days."</p>
         <div class="tcard-author">
-          <img class="tcard-avatar" src="https://picsum.photos/seed/dentist-sk/80/80" alt="Dr. Sarah Kim">
+          <div class="tcard-initial" style="background:linear-gradient(135deg,#8B5CF6,#6D28D9)">SK</div>
           <div>
             <p class="tcard-name">Dr. Sarah Kim</p>
             <p class="tcard-biz">Kim Family Dental · Austin, TX</p>
@@ -2103,7 +2581,7 @@
         <div class="tcard-stars">★★★★★</div>
         <p class="tcard-quote">"I didn't think I needed any of this until I realized I was losing $3,000/month in missed calls and leads that went cold. The automated follow-up alone paid for three full years of the subscription in its very first month. I wish I'd done this two years ago."</p>
         <div class="tcard-author">
-          <img class="tcard-avatar" src="https://picsum.photos/seed/salon-jr/80/80" alt="Jennifer Reyes">
+          <div class="tcard-initial" style="background:linear-gradient(135deg,#10B981,#065F46)">JR</div>
           <div>
             <p class="tcard-name">Jennifer Reyes</p>
             <p class="tcard-biz">Salon Reyes · Dallas, TX</p>
@@ -2134,6 +2612,12 @@
           <span class="stat-sfx">%</span>
         </div>
         <p class="stat-label">Client Retention Rate</p>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num" style="color:var(--green)">
+          <span style="font-size:2rem;font-family:var(--mono);font-weight:700">$0</span>
+        </div>
+        <p class="stat-label">Hidden Fees</p>
       </div>
     </div>
   </div>
@@ -2209,12 +2693,12 @@
 
         <div class="faq-item rev">
           <button class="faq-q" aria-expanded="false">
-            What if I want to cancel?
+            What happens if I cancel?
             <svg class="faq-icon" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </button>
           <div class="faq-body">
             <div class="faq-body-inner">
-              Cancel anytime with no penalty, no fees, and zero guilt. Just email us or click cancel in your dashboard. We'll keep everything live until the end of your current billing period. You own your domain and your contacts — we export everything for you when you leave, neatly packaged. We'd rather earn your business month after month by being genuinely good at what we do than by trapping you in a contract.
+              If you're on the monthly plan, you can cancel anytime with zero penalties. You have two options: (1) Pay the remaining balance on your technology stack and keep everything — every file, every login, every piece of your system becomes fully yours. Or (2) Simply stop paying and lose access at the end of your current billing period. Either way, we export all your data, package up your files and credentials, and include a migration guide so your next provider can pick up exactly where we left off. We never hold your business hostage.
             </div>
           </div>
         </div>
@@ -2275,7 +2759,7 @@
         <ul>
           <li><a href="#">About Us</a></li>
           <li><a href="#">Careers</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="mailto:hello@bizstack.ai">Contact</a></li>
           <li><a href="#">Partner Program</a></li>
         </ul>
       </div>
@@ -2310,19 +2794,31 @@
     </div>
 
     <div class="footer-bottom">
-      <p>© 2026 BizStack.ai — Everything your business needs to run better.</p>
+      <p>© 2026 BizStack.ai — Everything your business needs to run better. &nbsp;·&nbsp; <a href="mailto:hello@bizstack.ai" style="color:var(--w50)">hello@bizstack.ai</a></p>
       <div class="social-row">
-        <a href="#" class="social-link">
+        <a href="#" class="social-link" aria-label="LinkedIn">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zm-5 3h-2.5A1.5 1.5 0 0010 7.5V9H8v2.5h2V19h2.5v-7.5H15l.5-2.5h-2.5V7.75c0-.414.336-.75.75-.75H15V6z"/></svg>
           LinkedIn
         </a>
-        <a href="#" class="social-link">
+        <a href="#" class="social-link" aria-label="Instagram">
           <svg viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" fill="none" stroke="currentColor" stroke-width="2"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           Instagram
         </a>
-        <a href="#" class="social-link">
+        <a href="#" class="social-link" aria-label="X/Twitter">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          X (Twitter)
+          X
+        </a>
+        <a href="#" class="social-link" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0F172A"/></svg>
+          YouTube
+        </a>
+        <a href="#" class="social-link" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+          TikTok
+        </a>
+        <a href="#" class="social-link" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          Facebook
         </a>
       </div>
     </div>
@@ -2330,6 +2826,23 @@
 </footer>
 
 <script>
+/* ═══════════════════════════════════════════
+   48HR BANNER DISMISS
+═══════════════════════════════════════════ */
+const topBanner = document.getElementById('topBanner');
+const tbDismiss = document.getElementById('tbDismiss');
+if (tbDismiss) {
+  tbDismiss.addEventListener('click', () => {
+    topBanner.classList.add('hidden');
+    try { sessionStorage.setItem('bannerDismissed', '1'); } catch(e) {}
+  });
+}
+try {
+  if (sessionStorage.getItem('bannerDismissed') === '1') {
+    topBanner.classList.add('hidden');
+  }
+} catch(e) {}
+
 /* ═══════════════════════════════════════════
    NAV — SCROLL SOLID + HAMBURGER
 ═══════════════════════════════════════════ */
@@ -2394,7 +2907,7 @@ const revObs = new IntersectionObserver(entries => {
       revObs.unobserve(entry.target);
     }
   });
-}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 revEls.forEach(el => revObs.observe(el));
 
 /* ═══════════════════════════════════════════
@@ -2445,6 +2958,36 @@ document.querySelectorAll('.faq-item').forEach(item => {
     }
   });
 });
+
+/* ═══════════════════════════════════════════
+   PRICING TIER TABS
+═══════════════════════════════════════════ */
+const tierTabs   = document.querySelectorAll('.tier-tab');
+const priceTables = document.querySelectorAll('.price-table');
+
+tierTabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const idx = tab.dataset.tier;
+
+    // Update tabs
+    tierTabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+
+    // Update tables
+    priceTables.forEach(pt => pt.classList.remove('active'));
+    const target = document.getElementById('pt-' + idx);
+    if (target) {
+      target.classList.add('active');
+      // Re-trigger reveal animation
+      target.classList.remove('in');
+      requestAnimationFrame(() => requestAnimationFrame(() => target.classList.add('in')));
+    }
+  });
+});
+
+// Mark initially active table as revealed
+const activePt = document.querySelector('.price-table.active');
+if (activePt) activePt.classList.add('in');
 </script>
 </body>
 </html>
