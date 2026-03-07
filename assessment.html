@@ -3,1414 +3,1460 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Business Assessment — BizStack.ai</title>
+  <title>Free AI Assessment — BizStack.vip</title>
+  <meta name="description" content="Take our free 3-minute business assessment. We'll recommend the perfect BizStack AI plan for your business.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --bg: #0F172A;
-      --bg2: #1E293B;
-      --bg3: #334155;
-      --blue: #3B82F6;
-      --blue2: #2563EB;
-      --purple: #8B5CF6;
-      --green: #10B981;
-      --gold: #F59E0B;
-      --red: #EF4444;
-      --w100: #fff;
+      --bg:      #0F172A;
+      --bg2:     #1E293B;
+      --bg3:     #334155;
+      --blue:    #3B82F6;
+      --blue2:   #2563EB;
+      --blue3:   #1D4ED8;
+      --purple:  #8B5CF6;
+      --purple2: #7C3AED;
+      --green:   #10B981;
+      --gold:    #F59E0B;
+      --cyan:    #06B6D4;
+      --red:     #EF4444;
+      --white:   #FFFFFF;
+      --w90: rgba(255,255,255,.9);
+      --w80: rgba(255,255,255,.8);
       --w70: rgba(255,255,255,.7);
+      --w60: rgba(255,255,255,.6);
+      --w50: rgba(255,255,255,.5);
       --w40: rgba(255,255,255,.4);
+      --w30: rgba(255,255,255,.3);
+      --w20: rgba(255,255,255,.2);
+      --w10: rgba(255,255,255,.1);
+      --w05: rgba(255,255,255,.05);
+      --border: rgba(255,255,255,.08);
       --display: 'Space Grotesk', system-ui, sans-serif;
-      --body: 'Inter', system-ui, sans-serif;
-      --r: .75rem;
-      --r2: 1.25rem;
+      --body:    'Inter', system-ui, sans-serif;
+      --mono:    'JetBrains Mono', monospace;
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: var(--body);
       background: var(--bg);
-      color: var(--w100);
-      min-height: 100vh;
+      color: var(--white);
       overflow-x: hidden;
+      line-height: 1.6;
+      min-height: 100vh;
     }
 
-    /* ── NAV ────────────────────────────────────────────── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: var(--bg);
-      border-bottom: 1px solid rgba(255,255,255,.06);
-      height: 64px;
-      display: flex; align-items: center;
+    h1, h2, h3, h4 {
+      font-family: var(--display);
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    #nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 999;
+      padding: 1.25rem 0;
+      background: rgba(15,23,42,.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
     }
     .nav-inner {
-      max-width: 1200px; width: 100%; margin: 0 auto;
-      padding: 0 2rem;
-      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
     .nav-logo {
       font-family: var(--display);
-      font-size: 1.375rem; font-weight: 700;
-      text-decoration: none; color: var(--w100);
-      display: flex; align-items: center; gap: .5rem;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--white);
     }
-    .nav-logo span { color: var(--blue); }
-    .nav-links { display: flex; align-items: center; gap: 1.5rem; }
-    .nav-links a {
-      color: rgba(255,255,255,.88);
-      text-decoration: none; font-size: .875rem;
-      font-weight: 500; letter-spacing: .01em;
+    .nav-logo .ai { color: var(--blue); }
+    .nav-back {
+      font-size: .845rem;
+      font-weight: 500;
+      color: var(--w60);
       transition: color .2s;
+      display: flex;
+      align-items: center;
+      gap: .4rem;
     }
-    .nav-links a:hover { color: var(--blue); }
-    .nav-cta {
-      background: rgba(59,130,246,.15) !important;
-      border: 1px solid rgba(59,130,246,.3);
-      color: var(--blue) !important;
-      padding: .45rem 1.1rem;
-      border-radius: 6px;
-      font-size: .8125rem !important;
-      transition: background .2s, border-color .2s !important;
-    }
-    .nav-cta:hover { background: rgba(59,130,246,.25) !important; border-color: rgba(59,130,246,.5) !important; }
+    .nav-back:hover { color: var(--white); }
 
-    /* ── PROGRESS ───────────────────────────────────────── */
-    #progressWrap {
-      position: fixed; top: 64px; left: 0; right: 0; z-index: 99;
-      height: 3px; background: rgba(255,255,255,.07);
+    /* ── PAGE WRAPPER ── */
+    .page-wrap {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 7rem 1.5rem 4rem;
     }
-    #progressBar {
+
+    /* ── ASSESSMENT CONTAINER ── */
+    .assessment-container {
+      width: 100%;
+      max-width: 640px;
+    }
+
+    /* ── PROGRESS BAR ── */
+    .progress-header {
+      margin-bottom: 2.5rem;
+    }
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: .75rem;
+    }
+    .progress-label {
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+    .progress-count {
+      font-family: var(--mono);
+      font-size: .78rem;
+      color: var(--w50);
+    }
+    .progress-track {
+      height: 4px;
+      background: var(--w10);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress-fill {
       height: 100%;
       background: linear-gradient(90deg, var(--blue), var(--purple));
-      width: 0%;
-      transition: width .45s cubic-bezier(.4,0,.2,1);
+      border-radius: 999px;
+      transition: width .5s cubic-bezier(.4,0,.2,1);
     }
 
-    /* ── MAIN ───────────────────────────────────────────── */
-    main {
-      min-height: 100vh;
-      padding-top: 67px;
-      display: flex; flex-direction: column; align-items: center;
-    }
-
-    #stage {
-      width: 100%; flex: 1;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      padding: 3.5rem 1.5rem 6rem;
-    }
-
-    /* ── Q PANEL ────────────────────────────────────────── */
-    #qPanel {
-      width: 100%; max-width: 700px;
-      transition: opacity .22s ease, transform .28s cubic-bezier(.4,0,.2,1);
-    }
-    #qPanel.exit-left  { opacity: 0; transform: translateX(-52px); }
-    #qPanel.exit-right { opacity: 0; transform: translateX(52px); }
-    #qPanel.enter-left  { opacity: 0; transform: translateX(52px); }
-    #qPanel.enter-right { opacity: 0; transform: translateX(-52px); }
-
-    .q-step {
-      font-family: var(--display);
-      font-size: .75rem; font-weight: 600;
-      color: var(--blue); letter-spacing: .1em; text-transform: uppercase;
-      margin-bottom: .875rem;
-    }
-    .q-title {
-      font-family: var(--display);
-      font-size: clamp(1.5rem, 3.5vw, 2.25rem);
-      font-weight: 700; line-height: 1.2;
-      margin-bottom: .625rem;
-    }
-    .q-sub {
-      color: var(--w70); font-size: .9375rem;
-      margin-bottom: 2rem; line-height: 1.55;
-    }
-
-    /* ── TEXT / EMAIL / TEL ─────────────────────────────── */
-    .q-input, .q-textarea {
-      width: 100%;
+    /* ── STEP CARD ── */
+    .step-card {
       background: var(--bg2);
-      border: 1.5px solid rgba(255,255,255,.11);
-      border-radius: var(--r);
-      color: var(--w100);
-      font-family: var(--body);
-      font-size: 1.0625rem;
-      padding: 1rem 1.25rem;
-      outline: none;
-      transition: border-color .2s, box-shadow .2s;
-    }
-    .q-input:focus, .q-textarea:focus {
-      border-color: var(--blue);
-      box-shadow: 0 0 0 3px rgba(59,130,246,.18);
-    }
-    .q-input::placeholder, .q-textarea::placeholder { color: var(--w40); }
-    .q-textarea { resize: vertical; min-height: 150px; line-height: 1.6; }
-    .q-input.err { border-color: var(--red); }
-
-    .err-msg {
-      color: var(--red); font-size: .8125rem;
-      margin-top: .5rem; display: none;
-    }
-    .err-msg.show { display: block; }
-
-    /* ── TEXT DUAL ──────────────────────────────────────── */
-    .dual-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-
-    /* ── SINGLE GRID (industry) ─────────────────────────── */
-    .single-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(152px, 1fr));
-      gap: .625rem;
-    }
-    .sg-opt {
-      background: var(--bg2);
-      border: 1.5px solid rgba(255,255,255,.09);
-      border-radius: var(--r);
-      padding: .75rem 1rem;
-      font-size: .875rem; font-weight: 500;
-      color: var(--w70);
-      cursor: pointer; text-align: center;
-      transition: border-color .18s, color .18s, background .18s, box-shadow .18s;
-      user-select: none;
-    }
-    .sg-opt:hover { border-color: rgba(59,130,246,.5); color: var(--w100); background: rgba(59,130,246,.06); }
-    .sg-opt.sel {
-      border-color: var(--blue);
-      background: rgba(59,130,246,.13);
-      color: var(--w100);
-      box-shadow: 0 0 0 2px rgba(59,130,246,.22);
-    }
-
-    /* ── SINGLE CARD ────────────────────────────────────── */
-    .single-cards { display: flex; flex-direction: column; gap: .625rem; }
-    .sc-opt {
-      background: var(--bg2);
-      border: 1.5px solid rgba(255,255,255,.09);
-      border-radius: var(--r);
-      padding: 1rem 1.25rem;
-      display: flex; align-items: center; gap: 1rem;
-      cursor: pointer;
-      transition: border-color .18s, background .18s, box-shadow .18s;
-      user-select: none;
-    }
-    .sc-opt:hover { border-color: rgba(59,130,246,.45); background: rgba(59,130,246,.05); }
-    .sc-opt.sel {
-      border-color: var(--blue);
-      background: rgba(59,130,246,.1);
-      box-shadow: 0 0 0 2px rgba(59,130,246,.18);
-    }
-    .sc-icon {
-      width: 42px; height: 42px; border-radius: .5rem;
-      background: rgba(255,255,255,.05);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.25rem; flex-shrink: 0;
-    }
-    .sc-opt.sel .sc-icon { background: rgba(59,130,246,.18); }
-    .sc-body { flex: 1; min-width: 0; }
-    .sc-label { font-weight: 600; font-size: .9375rem; color: var(--w100); }
-    .sc-desc { font-size: .8rem; color: var(--w70); margin-top: .125rem; }
-    .sc-check {
-      margin-left: auto; flex-shrink: 0;
-      width: 22px; height: 22px; border-radius: 50%;
-      border: 2px solid rgba(255,255,255,.18);
-      display: flex; align-items: center; justify-content: center;
-      transition: border-color .18s, background .18s;
-    }
-    .sc-opt.sel .sc-check { border-color: var(--blue); background: var(--blue); }
-    .sc-check-svg { display: none; }
-    .sc-opt.sel .sc-check-svg { display: block; }
-
-    /* ── MULTI SELECT ───────────────────────────────────── */
-    .multi-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-      gap: .625rem;
-    }
-    .ms-opt {
-      background: var(--bg2);
-      border: 1.5px solid rgba(255,255,255,.09);
-      border-radius: var(--r);
-      padding: .875rem 1rem;
-      display: flex; align-items: center; gap: .75rem;
-      cursor: pointer;
-      transition: border-color .18s, background .18s, box-shadow .18s;
-      user-select: none;
-    }
-    .ms-opt:hover { border-color: rgba(59,130,246,.4); }
-    .ms-opt.sel {
-      border-color: var(--blue);
-      background: rgba(59,130,246,.1);
-      box-shadow: 0 0 0 2px rgba(59,130,246,.15);
-    }
-    .ms-cb {
-      width: 20px; height: 20px; border-radius: 5px; flex-shrink: 0;
-      border: 2px solid rgba(255,255,255,.22);
-      display: flex; align-items: center; justify-content: center;
-      transition: border-color .18s, background .18s;
-    }
-    .ms-opt.sel .ms-cb { border-color: var(--blue); background: var(--blue); }
-    .ms-cb-svg { display: none; }
-    .ms-opt.sel .ms-cb-svg { display: block; }
-    .ms-label { font-size: .875rem; font-weight: 500; color: var(--w100); }
-
-    /* ── NAV BUTTONS ────────────────────────────────────── */
-    .q-nav {
-      margin-top: 2rem;
-      display: flex; align-items: center; gap: 1rem;
-    }
-    .btn-back {
-      padding: .8rem 1.5rem;
-      background: transparent;
-      border: 1.5px solid rgba(255,255,255,.13);
-      border-radius: 8px;
-      color: var(--w70); font-family: var(--body);
-      font-size: .9375rem; font-weight: 600;
-      cursor: pointer;
-      transition: border-color .2s, color .2s;
-    }
-    .btn-back:hover { border-color: rgba(255,255,255,.28); color: var(--w100); }
-    .btn-cont {
-      padding: .85rem 2rem;
-      background: linear-gradient(135deg, var(--blue), var(--purple));
-      border: none; border-radius: 8px;
-      color: #fff; font-family: var(--body);
-      font-size: .9375rem; font-weight: 700;
-      cursor: pointer;
-      transition: opacity .2s, transform .2s, box-shadow .2s;
-      display: flex; align-items: center; gap: .5rem;
-    }
-    .btn-cont:hover {
-      opacity: .9; transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(59,130,246,.4);
-    }
-    .btn-final {
-      padding: 1rem 2.5rem;
-      background: linear-gradient(135deg, var(--blue), var(--purple));
-      border: none; border-radius: 8px;
-      color: #fff; font-family: var(--body);
-      font-size: 1rem; font-weight: 700;
-      cursor: pointer;
-      transition: opacity .2s, transform .2s, box-shadow .2s;
-      width: 100%; margin-top: .5rem;
-    }
-    .btn-final:hover {
-      opacity: .9; transform: translateY(-2px);
-      box-shadow: 0 14px 40px rgba(59,130,246,.5);
-    }
-
-    /* ── RESULTS ─────────────────────────────────────────── */
-    #results { width: 100%; max-width: 800px; }
-
-    .res-header { text-align: center; margin-bottom: 2.5rem; }
-    .res-tag {
-      display: inline-block;
-      background: rgba(16,185,129,.12);
-      color: var(--green);
-      border: 1px solid rgba(16,185,129,.22);
-      border-radius: 100px; padding: .35rem .9rem;
-      font-size: .75rem; font-weight: 700; letter-spacing: .07em;
-      text-transform: uppercase; margin-bottom: 1rem;
-    }
-    .res-header h1 {
-      font-family: var(--display);
-      font-size: clamp(1.75rem, 4vw, 2.75rem);
-      font-weight: 700; line-height: 1.2; margin-bottom: .75rem;
-    }
-    .res-header p { color: var(--w70); font-size: 1rem; max-width: 560px; margin: 0 auto; line-height: 1.6; }
-
-    /* Tier card */
-    .tier-card {
-      background: var(--bg2);
-      border: 1.5px solid rgba(255,255,255,.1);
-      border-radius: var(--r2);
-      padding: 2rem 2.25rem; margin-bottom: 1.5rem;
-      position: relative; overflow: hidden;
-    }
-    .tier-card.rec {
-      border-color: rgba(59,130,246,.5);
-      box-shadow: 0 0 0 1px rgba(59,130,246,.15), 0 20px 60px rgba(59,130,246,.1);
-    }
-    .tier-card::before {
-      content: ''; position: absolute;
-      top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--blue), var(--purple));
-    }
-    .tier-badge {
-      display: inline-flex; align-items: center; gap: .4rem;
-      background: rgba(59,130,246,.13);
-      border: 1px solid rgba(59,130,246,.28);
-      border-radius: 100px; padding: .3rem .875rem;
-      font-size: .75rem; font-weight: 700; letter-spacing: .06em;
-      text-transform: uppercase; color: var(--blue);
-      margin-bottom: 1.125rem;
-    }
-    .tier-name {
-      font-family: var(--display);
-      font-size: 1.875rem; font-weight: 700; margin-bottom: .25rem;
-    }
-    .tier-price {
-      font-size: 2.75rem; font-weight: 800;
-      color: var(--blue); line-height: 1; margin-bottom: .5rem;
-    }
-    .tier-price span { font-size: 1rem; font-weight: 400; color: var(--w70); }
-    .tier-desc { color: var(--w70); margin-bottom: 1.75rem; font-size: .9375rem; line-height: 1.55; }
-    .tier-features { display: grid; grid-template-columns: 1fr 1fr; gap: .625rem; }
-    .tf-item { display: flex; align-items: center; gap: .625rem; font-size: .875rem; }
-    .tf-dot {
-      width: 20px; height: 20px; border-radius: 50%;
-      background: rgba(16,185,129,.18);
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-    }
-
-    /* Exceed budget */
-    .exceed-card {
-      background: rgba(245,158,11,.07);
-      border: 1.5px solid rgba(245,158,11,.22);
-      border-radius: var(--r);
-      padding: 1.25rem 1.5rem;
-      display: flex; gap: 1rem; align-items: flex-start;
-      margin-bottom: 1.5rem;
-    }
-    .exceed-icon { font-size: 1.5rem; flex-shrink: 0; }
-    .exceed-title { font-weight: 700; font-size: .9375rem; color: var(--gold); margin-bottom: .35rem; }
-    .exceed-body { color: var(--w70); font-size: .875rem; line-height: 1.55; }
-
-    /* Section title */
-    .sec-title {
-      font-family: var(--display);
-      font-size: 1.125rem; font-weight: 700;
-      margin-bottom: 1rem; margin-top: 2.25rem;
-      display: flex; align-items: center; gap: .75rem;
-    }
-    .sec-title::after {
-      content: ''; flex: 1; height: 1px;
-      background: rgba(255,255,255,.07);
-    }
-
-    /* Challenge cards */
-    .ch-cards { display: flex; flex-direction: column; gap: .75rem; }
-    .ch-card {
-      background: var(--bg2);
-      border: 1px solid rgba(255,255,255,.07);
-      border-radius: var(--r); padding: 1.125rem 1.25rem;
-    }
-    .ch-name { font-weight: 700; font-size: .9375rem; margin-bottom: .375rem; }
-    .ch-desc { color: var(--w70); font-size: .875rem; line-height: 1.55; }
-    .ch-pill {
-      display: inline-block;
-      background: rgba(59,130,246,.11);
-      color: var(--blue); border-radius: 100px;
-      padding: .2rem .75rem; font-size: .75rem; font-weight: 600;
-      margin-top: .625rem; border: 1px solid rgba(59,130,246,.2);
-    }
-
-    /* Snapshot */
-    .snapshot {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
-      gap: .75rem;
-    }
-    .sn-item {
-      background: var(--bg2); border: 1px solid rgba(255,255,255,.07);
-      border-radius: var(--r); padding: 1rem 1.125rem;
-    }
-    .sn-label { font-size: .7rem; color: var(--w40); text-transform: uppercase; letter-spacing: .07em; margin-bottom: .25rem; }
-    .sn-value { font-weight: 700; font-size: .9375rem; }
-
-    /* CTAs */
-    .res-ctas {
-      display: flex; gap: 1rem; margin-top: 2.25rem; flex-wrap: wrap;
-    }
-    .btn-primary-res {
-      flex: 1; min-width: 200px;
-      padding: 1rem 1.5rem;
-      background: linear-gradient(135deg, var(--blue), var(--purple));
-      border: none; border-radius: 8px;
-      color: #fff; font-family: var(--body);
-      font-size: 1rem; font-weight: 700;
-      cursor: pointer; text-align: center; text-decoration: none;
-      display: flex; align-items: center; justify-content: center; gap: .5rem;
-      transition: opacity .2s, transform .2s, box-shadow .2s;
-    }
-    .btn-primary-res:hover { opacity: .9; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(59,130,246,.4); }
-    .btn-secondary-res {
-      flex: 1; min-width: 200px;
-      padding: 1rem 1.5rem;
-      background: transparent;
-      border: 1.5px solid rgba(255,255,255,.18);
-      border-radius: 8px;
-      color: var(--w100); font-family: var(--body);
-      font-size: 1rem; font-weight: 600;
-      cursor: pointer; text-align: center; text-decoration: none;
-      display: flex; align-items: center; justify-content: center; gap: .5rem;
-      transition: border-color .2s, background .2s;
-    }
-    .btn-secondary-res:hover { border-color: rgba(255,255,255,.38); background: rgba(255,255,255,.04); }
-    .btn-restart {
-      width: 100%; padding: .875rem; margin-top: 1.25rem;
-      background: transparent; border: none;
-      color: var(--w40); font-family: var(--body); font-size: .875rem;
-      cursor: pointer; transition: color .2s;
-    }
-    .btn-restart:hover { color: var(--w70); }
-
-    /* ── RESPONSIVE ─────────────────────────────────────── */
-    @media (max-width: 640px) {
-      .nav-links { display: none; }
-      .dual-row { grid-template-columns: 1fr; }
-      .single-grid { grid-template-columns: repeat(2, 1fr); }
-      .multi-grid { grid-template-columns: 1fr; }
-      .tier-features { grid-template-columns: 1fr; }
-      .res-ctas { flex-direction: column; }
-      #stage { padding: 2.5rem 1rem 5rem; }
-    }
-
-    /* ── PRICING COMPARISON TABLE (results) ── */
-    .res-pricing-wrap { margin-top: 2rem; margin-bottom: 1.5rem; }
-    .res-pricing-title {
-      font-family: var(--display);
-      font-size: 1.05rem; font-weight: 700;
-      margin-bottom: 1rem;
-      display: flex; align-items: center; gap: .75rem;
-    }
-    .res-pricing-title::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,.07); }
-
-    .rpt-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 14px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem 2.5rem 2rem;
+      position: relative;
       overflow: hidden;
-      font-size: .8rem;
     }
-    .rpt-col { padding: 1.25rem; display: flex; flex-direction: column; }
-    .rpt-col-retail { background: rgba(239,68,68,.04); border-right: 1px solid rgba(255,255,255,.06); }
-    .rpt-col-own    { background: rgba(245,158,11,.04); border-right: 1px solid rgba(255,255,255,.06); position: relative; }
-    .rpt-col-own::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, #F59E0B, #F97316); }
-    .rpt-col-pay    { background: rgba(59,130,246,.04); position: relative; }
-    .rpt-col-pay::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, #3B82F6, #06B6D4); }
+    .step-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, var(--blue), var(--purple));
+      opacity: .4;
+    }
 
-    .rpt-tag {
-      font-size: .58rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    /* ── STEP TRANSITIONS ── */
+    .step {
+      display: none;
+      animation: stepIn .35s cubic-bezier(.4,0,.2,1);
+    }
+    .step.active { display: block; }
+    @keyframes stepIn {
+      from { opacity: 0; transform: translateX(18px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    .step.slide-back {
+      animation: stepInBack .35s cubic-bezier(.4,0,.2,1);
+    }
+    @keyframes stepInBack {
+      from { opacity: 0; transform: translateX(-18px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    /* ── STEP HEADER ── */
+    .step-eyebrow {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: .75rem;
+    }
+    .step-title {
+      font-family: var(--display);
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--white);
       margin-bottom: .5rem;
     }
-    .rpt-col-retail .rpt-tag { color: rgba(239,68,68,.7); }
-    .rpt-col-own    .rpt-tag { color: rgba(245,158,11,.8); }
-    .rpt-col-pay    .rpt-tag { color: rgba(59,130,246,.8); }
-
-    .rpt-badge {
-      font-size: .6rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
-      padding: .2rem .6rem; border-radius: 100px; margin-bottom: .625rem; display: inline-flex;
+    .step-sub {
+      font-size: .9rem;
+      color: var(--w60);
+      margin-bottom: 1.75rem;
     }
-    .rpt-badge-gold { background: rgba(245,158,11,.12); border: 1px solid rgba(245,158,11,.22); color: #F59E0B; }
-    .rpt-badge-blue { background: rgba(59,130,246,.12); border: 1px solid rgba(59,130,246,.22); color: #3B82F6; }
 
-    .rpt-items { display: flex; flex-direction: column; gap: .5rem; flex: 1; }
-    .rpt-item { display: flex; justify-content: space-between; align-items: flex-start; gap: .375rem; padding-bottom: .5rem; border-bottom: 1px solid rgba(255,255,255,.04); }
-    .rpt-item:last-child { border-bottom: none; padding-bottom: 0; }
-    .rpt-name { color: rgba(255,255,255,.6); line-height: 1.4; flex: 1; font-size: .73rem; }
-    .rpt-price { color: rgba(239,68,68,.85); font-family: 'JetBrains Mono', monospace; font-size: .68rem; white-space: nowrap; text-align: right; }
+    /* ── FORM FIELDS ── */
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: .45rem;
+    }
+    .field label {
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--w70);
+      letter-spacing: .02em;
+    }
+    .field input,
+    .field select,
+    .field textarea {
+      background: var(--bg3);
+      border: 1.5px solid var(--w10);
+      border-radius: 8px;
+      padding: .75rem 1rem;
+      font-family: var(--body);
+      font-size: .9rem;
+      color: var(--white);
+      transition: border-color .2s, box-shadow .2s;
+      outline: none;
+      width: 100%;
+      -webkit-appearance: none;
+    }
+    .field input::placeholder,
+    .field textarea::placeholder { color: var(--w30); }
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(59,130,246,.15);
+    }
+    .field select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23ffffff66' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+      cursor: pointer;
+    }
+    .field select option {
+      background: var(--bg2);
+      color: var(--white);
+    }
 
-    .rpt-total { margin-top: 1rem; padding-top: .875rem; border-top: 1px solid rgba(239,68,68,.15); }
-    .rpt-total-label { font-size: .58rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(239,68,68,.6); margin-bottom: .25rem; }
-    .rpt-total-price { font-family: 'JetBrains Mono', monospace; font-size: .95rem; font-weight: 700; color: rgba(239,68,68,.9); }
+    /* URL field (conditional) */
+    .url-field {
+      margin-top: .5rem;
+      transition: all .3s;
+    }
+    .url-field.hidden { display: none; }
 
-    .rpt-big-price { font-family: 'JetBrains Mono', monospace; font-size: 1.6rem; font-weight: 700; color: #fff; line-height: 1; margin-bottom: .25rem; }
-    .rpt-big-price .mo { font-size: .8rem; color: var(--w40); font-weight: 400; }
-    .rpt-price-note { font-size: .72rem; color: var(--w40); margin-bottom: .875rem; line-height: 1.45; }
-    .rpt-savings { font-size: .72rem; color: #10B981; margin-bottom: .875rem; }
+    /* ── YES/NO TOGGLE ── */
+    .yn-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem;
+      margin-bottom: 1.75rem;
+    }
+    .yn-btn {
+      padding: 1rem;
+      border-radius: 10px;
+      border: 1.5px solid var(--w10);
+      background: var(--bg3);
+      color: var(--w70);
+      font-family: var(--body);
+      font-size: .95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s;
+      text-align: center;
+    }
+    .yn-btn:hover {
+      border-color: var(--blue);
+      color: var(--white);
+    }
+    .yn-btn.selected {
+      border-color: var(--blue);
+      background: rgba(59,130,246,.12);
+      color: var(--white);
+    }
 
-    .rpt-includes { list-style: none; display: flex; flex-direction: column; gap: .375rem; flex: 1; margin-bottom: .875rem; }
-    .rpt-includes li { display: flex; gap: .375rem; font-size: .73rem; color: var(--w70); line-height: 1.4; }
-    .rpt-ci-gold { color: #F59E0B; flex-shrink: 0; }
-    .rpt-ci-blue { color: #3B82F6; flex-shrink: 0; }
+    /* ── CHOICE CARDS (single-select radio style) ── */
+    .choices {
+      display: flex;
+      flex-direction: column;
+      gap: .65rem;
+      margin-bottom: 1.75rem;
+    }
+    .choice-card {
+      display: flex;
+      align-items: center;
+      gap: .9rem;
+      padding: .9rem 1.1rem;
+      border-radius: 10px;
+      border: 1.5px solid var(--w10);
+      background: var(--bg3);
+      cursor: pointer;
+      transition: all .2s;
+      user-select: none;
+    }
+    .choice-card:hover {
+      border-color: rgba(59,130,246,.5);
+      background: rgba(59,130,246,.06);
+    }
+    .choice-card.selected {
+      border-color: var(--blue);
+      background: rgba(59,130,246,.12);
+    }
+    .choice-radio {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid var(--w30);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .2s;
+    }
+    .choice-card.selected .choice-radio {
+      border-color: var(--blue);
+      background: var(--blue);
+    }
+    .choice-card.selected .choice-radio::after {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--white);
+    }
+    .choice-label {
+      font-size: .92rem;
+      color: var(--w80);
+      font-weight: 500;
+      flex: 1;
+    }
+    .choice-card.selected .choice-label { color: var(--white); }
+    .choice-badge {
+      font-family: var(--mono);
+      font-size: .72rem;
+      padding: .2rem .55rem;
+      border-radius: 999px;
+      background: rgba(59,130,246,.15);
+      color: var(--blue);
+      font-weight: 700;
+    }
 
-    .rpt-cancel-note { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06); border-radius: 8px; padding: .75rem; font-size: .72rem; color: var(--w50); line-height: 1.55; margin-bottom: .875rem; }
-    .rpt-cancel-note strong { color: var(--w80); display: block; margin-bottom: .25rem; font-size: .73rem; }
+    /* ── CHECKBOX MULTI-SELECT ── */
+    .checkboxes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .65rem;
+      margin-bottom: 1.25rem;
+    }
+    .check-card {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      padding: .8rem 1rem;
+      border-radius: 10px;
+      border: 1.5px solid var(--w10);
+      background: var(--bg3);
+      cursor: pointer;
+      transition: all .2s;
+      user-select: none;
+    }
+    .check-card:hover { border-color: rgba(59,130,246,.5); }
+    .check-card.selected {
+      border-color: var(--blue);
+      background: rgba(59,130,246,.12);
+    }
+    .check-box {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border: 2px solid var(--w30);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .2s;
+    }
+    .check-card.selected .check-box {
+      border-color: var(--blue);
+      background: var(--blue);
+    }
+    .check-card.selected .check-box::after {
+      content: '';
+      width: 10px;
+      height: 7px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 7'%3E%3Cpath d='M1 3l3 3 5-5' stroke='%23fff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    .check-label {
+      font-size: .88rem;
+      color: var(--w80);
+      font-weight: 500;
+    }
+    .check-card.selected .check-label { color: var(--white); }
 
-    .btn-rpt-gold { background: linear-gradient(135deg,#F59E0B,#F97316); color: #fff; border: none; border-radius: 8px; padding: .7rem 1rem; font-family: var(--body); font-size: .8rem; font-weight: 700; cursor: pointer; width: 100%; text-align: center; text-decoration: none; display: flex; align-items: center; justify-content: center; transition: opacity .2s, transform .2s; }
-    .btn-rpt-gold:hover { opacity: .9; transform: translateY(-1px); }
-    .btn-rpt-blue { background: linear-gradient(135deg,#3B82F6,#06B6D4); color: #fff; border: none; border-radius: 8px; padding: .7rem 1rem; font-family: var(--body); font-size: .8rem; font-weight: 700; cursor: pointer; width: 100%; text-align: center; text-decoration: none; display: flex; align-items: center; justify-content: center; transition: opacity .2s, transform .2s; }
-    .btn-rpt-blue:hover { opacity: .9; transform: translateY(-1px); }
+    /* Frequency select below checkboxes */
+    .freq-wrap {
+      margin-bottom: 1.75rem;
+    }
+    .freq-wrap label {
+      display: block;
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--w70);
+      margin-bottom: .45rem;
+    }
 
-    @media (max-width: 640px) {
-      .rpt-grid { grid-template-columns: 1fr; }
-      .rpt-col-retail { border-right: none; border-bottom: 1px solid rgba(255,255,255,.06); }
-      .rpt-col-own { border-right: none; border-bottom: 1px solid rgba(255,255,255,.06); }
+    /* ── NAV BUTTONS ── */
+    .step-actions {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .8rem 1.75rem;
+      border-radius: 8px;
+      font-family: var(--body);
+      font-size: .875rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all .25s;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--blue);
+      color: var(--white);
+      flex: 1;
+      justify-content: center;
+    }
+    .btn-primary:hover {
+      background: var(--blue2);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(59,130,246,.35);
+    }
+    .btn-primary:disabled {
+      opacity: .4;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    .btn-back {
+      background: transparent;
+      color: var(--w50);
+      border: 1.5px solid var(--w10);
+      padding: .8rem 1.25rem;
+      flex-shrink: 0;
+    }
+    .btn-back:hover {
+      color: var(--white);
+      border-color: var(--w30);
+    }
+    .btn-gradient {
+      background: linear-gradient(90deg, var(--blue), var(--purple));
+      color: var(--white);
+    }
+    .btn-gradient:hover {
+      opacity: .9;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(100,100,246,.4);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid var(--w20);
+    }
+    .btn-outline:hover {
+      border-color: var(--w60);
+      background: var(--w05);
+      transform: translateY(-1px);
+    }
+    .btn-lg { padding: 1rem 2.25rem; font-size: .95rem; }
+
+    /* ── ERROR TEXT ── */
+    .field-error {
+      font-size: .78rem;
+      color: var(--red);
+      margin-top: -.25rem;
+    }
+    .step-error {
+      font-size: .82rem;
+      color: var(--red);
+      background: rgba(239,68,68,.08);
+      border: 1px solid rgba(239,68,68,.2);
+      border-radius: 6px;
+      padding: .6rem .9rem;
+      margin-bottom: 1rem;
+      display: none;
+    }
+    .step-error.visible { display: block; }
+
+    /* ── RESULTS PAGE ── */
+    #results {
+      display: none;
+      width: 100%;
+      max-width: 640px;
+      animation: stepIn .4s cubic-bezier(.4,0,.2,1);
+    }
+    #results.active { display: block; }
+
+    .results-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .results-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 1rem;
+    }
+    .results-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(16,185,129,.2);
+    }
+    .results-title {
+      font-family: var(--display);
+      font-size: 1.75rem;
+      font-weight: 800;
+      margin-bottom: .5rem;
+    }
+    .results-sub {
+      font-size: .95rem;
+      color: var(--w60);
+    }
+
+    .tier-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    .tier-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+    .tier-card.starter::before  { background: var(--blue); }
+    .tier-card.growth::before   { background: var(--purple); }
+    .tier-card.scale::before    { background: var(--cyan); }
+    .tier-card.enterprise::before { background: var(--gold); }
+
+    .tier-card-header {
+      padding: 1.75rem 2rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .tier-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .3rem .7rem;
+      border-radius: 999px;
+      margin-bottom: .9rem;
+    }
+    .tier-card.starter .tier-badge  { background: rgba(59,130,246,.12);  color: var(--blue); }
+    .tier-card.growth .tier-badge   { background: rgba(139,92,246,.12);   color: var(--purple); }
+    .tier-card.scale .tier-badge    { background: rgba(6,182,212,.12);    color: var(--cyan); }
+    .tier-card.enterprise .tier-badge { background: rgba(245,158,11,.12); color: var(--gold); }
+
+    .tier-name {
+      font-family: var(--display);
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: .25rem;
+    }
+    .tier-price {
+      font-family: var(--mono);
+      font-size: 2rem;
+      font-weight: 700;
+      display: flex;
+      align-items: baseline;
+      gap: .3rem;
+      margin-bottom: .4rem;
+    }
+    .tier-price .per { font-size: .95rem; font-weight: 400; color: var(--w50); }
+    .tier-card.starter .tier-price  { color: var(--blue); }
+    .tier-card.growth .tier-price   { color: var(--purple); }
+    .tier-card.scale .tier-price    { color: var(--cyan); }
+    .tier-card.enterprise .tier-price { color: var(--gold); }
+
+    .tier-desc {
+      font-size: .88rem;
+      color: var(--w60);
+    }
+
+    .tier-card-body {
+      padding: 1.5rem 2rem;
+    }
+    .tier-features-title {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--w40);
+      margin-bottom: .9rem;
+    }
+    .tier-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .65rem;
+      margin-bottom: 1.5rem;
+    }
+    .tier-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+      font-size: .92rem;
+      color: var(--w80);
+    }
+    .feat-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .65rem;
+    }
+    .tier-card.starter .feat-icon  { background: rgba(59,130,246,.15);  color: var(--blue); }
+    .tier-card.growth .feat-icon   { background: rgba(139,92,246,.15);   color: var(--purple); }
+    .tier-card.scale .feat-icon    { background: rgba(6,182,212,.15);    color: var(--cyan); }
+    .tier-card.enterprise .feat-icon { background: rgba(245,158,11,.15); color: var(--gold); }
+
+    /* ── RESULTS ACTIONS ── */
+    .results-actions {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+    }
+    .results-back-link {
+      text-align: center;
+      font-size: .85rem;
+      color: var(--w40);
+      transition: color .2s;
+      padding: .5rem;
+      cursor: pointer;
+    }
+    .results-back-link:hover { color: var(--w70); }
+
+    /* ── SCORE DEBUG (hidden in prod) ── */
+    .score-debug {
+      font-family: var(--mono);
+      font-size: .72rem;
+      color: var(--w30);
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .page-wrap { padding: 6rem 1rem 3rem; }
+      .step-card { padding: 1.75rem 1.25rem 1.5rem; }
+      .field-row { grid-template-columns: 1fr; }
+      .checkboxes { grid-template-columns: 1fr; }
+      .step-title { font-size: 1.3rem; }
+      .tier-card-header,
+      .tier-card-body { padding: 1.25rem 1.25rem; }
+      .tier-price { font-size: 1.6rem; }
     }
   </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
+<nav id="nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo">Biz<span>Stack</span>.ai</a>
-    <div class="nav-links">
-      <a href="index.html#services">Services</a>
-      <a href="index.html#pricing">Pricing</a>
-      <a href="index.html#reviews">Reviews</a>
-      <a href="index.html" class="nav-cta">← Back to Site</a>
-    </div>
+    <a href="/" class="nav-logo">BizStack<span class="ai">.ai</span></a>
+    <a href="/" class="nav-back">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Home
+    </a>
   </div>
 </nav>
 
-<!-- PROGRESS BAR -->
-<div id="progressWrap"><div id="progressBar"></div></div>
+<!-- MAIN -->
+<main class="page-wrap">
 
-<main>
-  <div id="stage">
-    <div id="qPanel"></div>
+  <!-- ═══════════════════════════════════
+       ASSESSMENT FORM
+  ═══════════════════════════════════ -->
+  <div class="assessment-container" id="assessment-form">
+
+    <!-- Progress bar -->
+    <div class="progress-header">
+      <div class="progress-meta">
+        <span class="progress-label">Free AI Assessment</span>
+        <span class="progress-count" id="progress-count">Step 1 of 9</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill" style="width:11.11%"></div>
+      </div>
+    </div>
+
+    <!-- Step card -->
+    <div class="step-card">
+
+      <!-- ─ STEP 1: Contact Info ─ -->
+      <div class="step active" id="step-1">
+        <div class="step-eyebrow">Step 1 of 9</div>
+        <h2 class="step-title">Let's start with the basics.</h2>
+        <p class="step-sub">Tell us a bit about you and your business.</p>
+        <div class="step-error" id="error-1">Please fill in all required fields.</div>
+        <div class="field-group">
+          <div class="field-row">
+            <div class="field">
+              <label for="contact-name">Your Name *</label>
+              <input type="text" id="contact-name" placeholder="Jane Smith" autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="business-name">Business Name *</label>
+              <input type="text" id="business-name" placeholder="Acme Plumbing Co." autocomplete="organization">
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="contact-email">Email Address *</label>
+              <input type="email" id="contact-email" placeholder="jane@acmeplumbing.com" autocomplete="email">
+            </div>
+            <div class="field">
+              <label for="contact-phone">Phone Number *</label>
+              <input type="tel" id="contact-phone" placeholder="(555) 000-0000" autocomplete="tel">
+            </div>
+          </div>
+        </div>
+        <div class="step-actions">
+          <button class="btn btn-primary" onclick="nextStep(1)">Continue →</button>
+        </div>
+      </div>
+
+      <!-- ─ STEP 2: Industry ─ -->
+      <div class="step" id="step-2">
+        <div class="step-eyebrow">Step 2 of 9</div>
+        <h2 class="step-title">What type of business do you run?</h2>
+        <p class="step-sub">Select the category that best describes you.</p>
+        <div class="step-error" id="error-2">Please select your industry.</div>
+        <div class="choices" id="industry-choices">
+          <div class="choice-card" onclick="selectChoice('industry','real-estate',this)">
+            <div class="choice-radio"></div>
+            <span class="choice-label">Real Estate</span>
+          </div>
+          <div class="choice-card" onclick="selectChoice('industry','home-services',this)">
+            <div class="choice-radio"></div>
+            <span class="choice-label">Home Services (plumbing, HVAC, landscaping...)</span>
+          </div>
+          <div class="choice-card" onclick="selectChoice('industry','health-wellness',this)">
+            <div class="choice-radio"></div>
+            <span class="choice-label">Health &amp; Wellness</span>
+          </div>
+          <div class="choice-card" onclick="selectChoice('industry','professional-services',this)">
+            <div class="choice-radio"></div>
+            <span class="choice-label">Professional Services (legal, finance, consulting...)</span>
+          </div>
+          <div class="choice-card" onclick="selectChoice('industry','retail-ecommerce',this)">
+            <div class="choice-radio"></div>
+            <span class="choice-label">Retail / E-Commerce</span>
+          </div>
+          <div class="choice-card" onclick="selectChoice('industry','food-beverage',this)">
+            <div class="choice-radio"></div>
+            <span class="choice-label">Food &amp; Beverage / Restaurant</span>
+          </div>
+          <div class="choice-card" onclick="selectChoice('industry','other',this)">
+            <div class="choice-radio"></div>
+            <span class="choice-label">Other</span>
+          </div>
+        </div>
+        <div class="step-actions">
+          <button class="btn btn-back" onclick="prevStep(2)">←</button>
+          <button class="btn btn-primary" onclick="nextStep(2)">Continue →</button>
+        </div>
+      </div>
+
+      <!-- ─ STEP 3: Website ─ -->
+      <div class="step" id="step-3">
+        <div class="step-eyebrow">Step 3 of 9</div>
+        <h2 class="step-title">Do you have a current website?</h2>
+        <p class="step-sub">This helps us understand where you're starting from.</p>
+        <div class="step-error" id="error-3">Please make a selection.</div>
+        <div class="yn-group">
+          <button class="yn-btn" id="website-yes" onclick="selectYN('website','yes')">Yes, I have one</button>
+          <button class="yn-btn" id="website-no"  onclick="selectYN('website','no')">No, not yet</button>
+        </div>
+        <div class="url-field hidden" id="website-url-wrap">
+          <div class="field">
+            <label for="website-url">Website URL</label>
+            <input type="url" id="website-url" placeholder="https://www.yourbusiness.com">
+          </div>
+        </div>
+        <div class="step-actions" style="margin-top:1.75rem;">
+          <button class="btn btn-back" onclick="prevStep(3)">←</button>
+          <button class="btn btn-primary" onclick="nextStep(3)">Continue →</button>
+        </div>
+      </div>
+
+      <!-- ─ STEP 4: CRM ─ -->
+      <div class="step" id="step-4">
+        <div class="step-eyebrow">Step 4 of 9</div>
+        <h2 class="step-title">Are you using a CRM?</h2>
+        <p class="step-sub">Customer Relationship Management software helps track leads and clients.</p>
+        <div class="step-error" id="error-4">Please make a selection.</div>
+        <div class="yn-group">
+          <button class="yn-btn" id="crm-yes" onclick="selectYN('crm','yes')">Yes, I use one</button>
+          <button class="yn-btn" id="crm-no"  onclick="selectYN('crm','no')">No, I don't</button>
+        </div>
+        <div class="url-field hidden" id="crm-which-wrap">
+          <div class="field">
+            <label for="crm-which">Which CRM are you using?</label>
+            <select id="crm-which">
+              <option value="" disabled selected>Select your CRM</option>
+              <option>GoHighLevel (GHL)</option>
+              <option>HubSpot</option>
+              <option>Salesforce</option>
+              <option>Zoho CRM</option>
+              <option>Pipedrive</option>
+              <option>Monday.com</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="step-actions" style="margin-top:1.75rem;">
+          <button class="btn btn-back" onclick="prevStep(4)">←</button>
+          <button class="btn btn-primary" onclick="nextStep(4)">Continue →</button>
+        </div>
+      </div>
+
+      <!-- ─ STEP 5: Email Marketing ─ -->
+      <div class="step" id="step-5">
+        <div class="step-eyebrow">Step 5 of 9</div>
+        <h2 class="step-title">Are you running email marketing?</h2>
+        <p class="step-sub">Newsletters, drip campaigns, promotional emails — any of the above count.</p>
+        <div class="step-error" id="error-5">Please make a selection.</div>
+        <div class="yn-group">
+          <button class="yn-btn" id="email-yes" onclick="selectYN('email','yes')">Yes, I do</button>
+          <button class="yn-btn" id="email-no"  onclick="selectYN('email','no')">No, not yet</button>
+        </div>
+        <div class="step-actions" style="margin-top:1.75rem;">
+          <button class="btn btn-back" onclick="prevStep(5)">←</button>
+          <button class="btn btn-primary" onclick="nextStep(5)">Continue →</button>
+        </div>
+      </div>
+
+      <!-- ─ STEP 6: Social Media ─ -->
+      <div class="step" id="step-6">
+        <div class="step-eyebrow">Step 6 of 9</div>
+        <h2 class="step-title">Where are you active on social media?</h2>
+        <p class="step-sub">Select all that apply. Don't worry if the answer is "nowhere yet."</p>
+        <div class="step-error" id="error-6">Please make a selection or choose "Not active yet."</div>
+        <div class="checkboxes" id="social-checkboxes">
+          <div class="check-card" onclick="toggleCheck('social','instagram',this)">
+            <div class="check-box"></div>
+            <span class="check-label">Instagram</span>
+          </div>
+          <div class="check-card" onclick="toggleCheck('social','facebook',this)">
+            <div class="check-box"></div>
+            <span class="check-label">Facebook</span>
+          </div>
+          <div class="check-card" onclick="toggleCheck('social','tiktok',this)">
+            <div class="check-box"></div>
+            <span class="check-label">TikTok</span>
+          </div>
+          <div class="check-card" onclick="toggleCheck('social','linkedin',this)">
+            <div class="check-box"></div>
+            <span class="check-label">LinkedIn</span>
+          </div>
+          <div class="check-card" onclick="toggleCheck('social','youtube',this)">
+            <div class="check-box"></div>
+            <span class="check-label">YouTube</span>
+          </div>
+          <div class="check-card" onclick="toggleCheck('social','google',this)">
+            <div class="check-box"></div>
+            <span class="check-label">Google Business</span>
+          </div>
+          <div class="check-card" id="social-none" onclick="selectNone('social', this)" style="grid-column:1/-1;">
+            <div class="check-box"></div>
+            <span class="check-label">Not active yet</span>
+          </div>
+        </div>
+        <div class="freq-wrap" id="freq-wrap" style="display:none;">
+          <div class="field">
+            <label for="post-freq">How often do you post?</label>
+            <select id="post-freq">
+              <option value="" disabled selected>Select frequency</option>
+              <option value="daily">Daily</option>
+              <option value="few-week">A few times a week</option>
+              <option value="weekly">Weekly</option>
+              <option value="rarely">Rarely / inconsistently</option>
+            </select>
+          </div>
+        </div>
+        <div class="step-actions">
+          <button class="btn btn-back" onclick="prevStep(6)">←</button>
+          <button class="btn btn-primary" onclick="nextStep(6)">Continue →</button>
+        </div>
+      </div>
+
+      <!-- ─ STEP 7: Pain Point ─ -->
+      <div class="step" id="step-7">
+        <div class="step-eyebrow">Step 7 of 9</div>
+        <h2 class="step-title">What's your biggest pain point right now?</h2>
+        <p class="step-sub">Be honest — this helps us recommend the right solution.</p>
+        <div class="step-error" id="error-7">Please select a pain point.</div>
+        <div class="choices" id="pain-choices">
+          <div class="choice-card" onclick="selectChoice('pain','lead-gen',this)">
+            <div class="choice-radio"></div>
+            <span class="choice-label">Lead generation — I'm not getting enough new clients</span>
+          </div>
+          <div class="choice-card" onclick="selectChoice('pain','follow-up',this)">
+            <div class="choice-radio"></div>
+            <span class="choice-label">Follow-up — leads slip through the cracks</span>
+          </div>
+          <div class="choice-card" onclick="selectChoice('pain','online-presence',this)">
+            <div class="choice-radio"></div>
+            <span class="choice-label">Online presence — my website &amp; social look outdated</span>
+          </div>
+          <div class="choice-card" onclick="selectChoice('pain','manual-work',this)">
+            <div class="choice-radio"></div>
+            <span class="choice-label">Manual work — too much admin, not enough automation</span>
+          </div>
+          <div class="choice-card" onclick="selectChoice('pain','all',this)">
+            <div class="choice-radio"></div>
+            <span class="choice-label">All of the above — we need a complete overhaul</span>
+            <span class="choice-badge">Most common</span>
+          </div>
+        </div>
+        <div class="step-actions">
+          <button class="btn btn-back" onclick="prevStep(7)">←</button>
+          <button class="btn btn-primary" onclick="nextStep(7)">Continue →</button>
+        </div>
+      </div>
+
+      <!-- ─ STEP 8: Budget ─ -->
+      <div class="step" id="step-8">
+        <div class="step-eyebrow">Step 8 of 9</div>
+        <h2 class="step-title">What's your monthly budget for this?</h2>
+        <p class="step-sub">No wrong answer — we have plans for every stage of growth.</p>
+        <div class="step-error" id="error-8">Please select a budget range.</div>
+        <div class="choices" id="budget-choices">
+          <div class="choice-card" onclick="selectChoice('budget','99-299',this)">
+            <div class="choice-radio"></div>
+            <span class="choice-label">$99 – $299 / mo — Getting started</span>
+            <span class="choice-badge" style="background:rgba(16,185,129,.12);color:var(--green);">Starter</span>
+          </div>
+          <div class="choice-card" onclick="selectChoice('budget','299-499',this)">
+            <div class="choice-radio"></div>
+            <span class="choice-label">$299 – $499 / mo — Ready to grow</span>
+            <span class="choice-badge" style="background:rgba(139,92,246,.12);color:var(--purple);">Growth</span>
+          </div>
+          <div class="choice-card" onclick="selectChoice('budget','499-999',this)">
+            <div class="choice-radio"></div>
+            <span class="choice-label">$499 – $999 / mo — Serious about scaling</span>
+            <span class="choice-badge" style="background:rgba(6,182,212,.12);color:var(--cyan);">Scale</span>
+          </div>
+          <div class="choice-card" onclick="selectChoice('budget','999+',this)">
+            <div class="choice-radio"></div>
+            <span class="choice-label">$999+ / mo — Full-service, enterprise-grade</span>
+            <span class="choice-badge" style="background:rgba(245,158,11,.12);color:var(--gold);">Enterprise</span>
+          </div>
+        </div>
+        <div class="step-actions">
+          <button class="btn btn-back" onclick="prevStep(8)">←</button>
+          <button class="btn btn-primary" onclick="nextStep(8)">Continue →</button>
+        </div>
+      </div>
+
+      <!-- ─ STEP 9: Timeline ─ -->
+      <div class="step" id="step-9">
+        <div class="step-eyebrow">Step 9 of 9</div>
+        <h2 class="step-title">How soon do you want to get started?</h2>
+        <p class="step-sub">We build and launch in 48 hours once you're approved.</p>
+        <div class="step-error" id="error-9">Please select a timeline.</div>
+        <div class="choices" id="timeline-choices">
+          <div class="choice-card" onclick="selectChoice('timeline','asap',this)">
+            <div class="choice-radio"></div>
+            <span class="choice-label">ASAP — I need this yesterday</span>
+            <span class="choice-badge" style="background:rgba(239,68,68,.12);color:#f87171;">Urgent</span>
+          </div>
+          <div class="choice-card" onclick="selectChoice('timeline','this-month',this)">
+            <div class="choice-radio"></div>
+            <span class="choice-label">This month — within the next 30 days</span>
+          </div>
+          <div class="choice-card" onclick="selectChoice('timeline','exploring',this)">
+            <div class="choice-radio"></div>
+            <span class="choice-label">Just exploring — researching my options</span>
+          </div>
+        </div>
+        <div class="step-actions">
+          <button class="btn btn-back" onclick="prevStep(9)">←</button>
+          <button class="btn btn-primary" id="submit-btn" onclick="submitAssessment()">See My Recommendation →</button>
+        </div>
+      </div>
+
+    </div><!-- /.step-card -->
+  </div><!-- /#assessment-form -->
+
+  <!-- ═══════════════════════════════════
+       RESULTS PAGE
+  ═══════════════════════════════════ -->
+  <div id="results">
+    <div class="results-header">
+      <div class="results-eyebrow">Assessment Complete</div>
+      <h2 class="results-title" id="results-title">Your Recommended Plan</h2>
+      <p class="results-sub" id="results-sub">Based on your answers, here's the best fit for your business.</p>
+    </div>
+
+    <div class="tier-card" id="results-tier-card">
+      <div class="tier-card-header">
+        <div class="tier-badge" id="results-badge"></div>
+        <div class="tier-name" id="results-tier-name"></div>
+        <div class="tier-price" id="results-price"></div>
+        <div class="tier-desc" id="results-tier-desc"></div>
+      </div>
+      <div class="tier-card-body">
+        <div class="tier-features-title">What's included</div>
+        <ul class="tier-features" id="results-features"></ul>
+        <div class="results-actions">
+          <a href="https://calendly.com" target="_blank" rel="noopener" class="btn btn-gradient btn-lg" style="justify-content:center;width:100%;">
+            Schedule a Free Demo Call →
+          </a>
+          <a href="/" class="btn btn-outline btn-lg results-back-link" style="justify-content:center;width:100%;text-decoration:none;">
+            Back to Home
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <p class="score-debug" id="score-debug"></p>
   </div>
+
 </main>
 
 <script>
-// ── QUESTION DATA ──────────────────────────────────────────────────────────
-const QUESTIONS = [
-  {
-    id: 'name', type: 'text',
-    title: "Let's start — what's your name?",
-    sub: "We'll use this to personalize your recommendation.",
-    placeholder: "Your full name",
-    required: true
-  },
-  {
-    id: 'email', type: 'email',
-    title: "What's the best email to reach you?",
-    sub: "We'll send your personalized proposal here — no spam, ever.",
-    placeholder: "you@yourbusiness.com",
-    required: true
-  },
-  {
-    id: 'phone', type: 'tel',
-    title: "And your phone number?",
-    sub: "Optional, but our team loves a quick call. We'll never cold-call you.",
-    placeholder: "(555) 000-0000",
-    required: false
-  },
-  {
-    id: 'industry', type: 'single-grid',
-    title: "What industry is your business in?",
-    sub: "We'll match you with services that work best in your field.",
-    options: [
-      "🏠 Home Services","🏥 Healthcare / Wellness","⚖️ Legal / Professional",
-      "🏡 Real Estate","🍽️ Restaurant / Food","🛒 Retail / E-Commerce",
-      "🔨 Construction / Contracting","📚 Education / Coaching",
-      "💰 Financial Services","💅 Beauty / Salon / Spa",
-      "🚗 Auto / Transportation","💻 Technology",
-      "❤️ Non-Profit","📣 Marketing / Agency",
-      "🏋️ Fitness / Sports","✨ Other"
-    ],
-    required: true
-  },
-  {
-    id: 'location', type: 'text-dual',
-    title: "Where is your business located?",
-    sub: "We serve clients across the US — this helps us tailor local strategies.",
-    fields: [
-      { key: 'city', placeholder: 'City' },
-      { key: 'state', placeholder: 'State (e.g. TX)' }
-    ],
-    required: true
-  },
-  {
-    id: 'teamSize', type: 'single-card',
-    title: "How many people are on your team?",
-    sub: "This helps us recommend the right scale of tools and automation.",
-    options: [
-      { icon: '👤', label: 'Solo', desc: "Just me — I'm the whole operation", score: 1 },
-      { icon: '👥', label: '2–5 people', desc: "Small but mighty", score: 2 },
-      { icon: '🏢', label: '6–20 people', desc: "Established team with real processes", score: 3 },
-      { icon: '🏭', label: '21–50 people', desc: "Mid-size and scaling", score: 4 },
-      { icon: '🚀', label: '50+ people', desc: "Large organization", score: 5 }
-    ],
-    required: true
-  },
-  {
-    id: 'website', type: 'single-card',
-    title: "How's your current website situation?",
-    sub: "Be honest — this tells us a lot about where to start.",
-    options: [
-      { icon: '❌', label: 'No website yet', desc: "Starting from scratch", score: 3 },
-      { icon: '🕰️', label: 'Basic / outdated site', desc: "It exists, but it's old or DIY", score: 2 },
-      { icon: '😐', label: 'OK site, not converting', desc: "Looks fine but doesn't generate leads", score: 1 },
-      { icon: '✅', label: 'Professional & converting', desc: "Getting solid traffic and leads", score: 0 }
-    ],
-    required: true
-  },
-  {
-    id: 'revenue', type: 'single-card',
-    title: "What's your current annual revenue?",
-    sub: "Completely confidential — this shapes how we structure growth for you.",
-    options: [
-      { icon: '🌱', label: 'Pre-revenue / Startup', desc: "Not generating revenue yet", score: 0 },
-      { icon: '📈', label: 'Under $250K/yr', desc: "Early-stage business", score: 1 },
-      { icon: '💼', label: '$250K – $1M/yr', desc: "Growing business", score: 2 },
-      { icon: '🏆', label: '$1M – $5M/yr', desc: "Established and scaling", score: 3 },
-      { icon: '🌟', label: '$5M+/yr', desc: "High-volume enterprise", score: 4 }
-    ],
-    required: true
-  },
-  {
-    id: 'budget', type: 'single-card',
-    title: "What's your monthly budget for business tools & services?",
-    sub: "This is your budget ceiling — we'll never recommend more than you can spend.",
-    options: [
-      { icon: '💵', label: 'Under $100/mo', desc: "Very lean budget", ceilIndex: 0, score: 0 },
-      { icon: '💳', label: '$100 – $300/mo', desc: "Starter-level investment", ceilIndex: 1, score: 1 },
-      { icon: '📊', label: '$300 – $500/mo', desc: "Growth-stage budget", ceilIndex: 2, score: 2 },
-      { icon: '💰', label: '$500 – $1,000/mo', desc: "Serious about scaling", ceilIndex: 3, score: 3 },
-      { icon: '🏦', label: '$1,000+/mo', desc: "Enterprise investment", ceilIndex: 3, score: 4 },
-      { icon: '🤔', label: 'Not sure yet', desc: "Help me figure out the right budget", ceilIndex: 3, score: 2 }
-    ],
-    required: true
-  },
-  {
-    id: 'timeline', type: 'single-card',
-    title: "When are you looking to get started?",
-    sub: "We'll match your urgency with our team's availability.",
-    options: [
-      { icon: '⚡', label: 'ASAP', desc: "Within the next 2 weeks", score: 0 },
-      { icon: '📅', label: '1–3 months', desc: "Planning for the near future", score: 0 },
-      { icon: '🗓️', label: '3–6 months', desc: "Working up to it", score: 0 },
-      { icon: '⏳', label: '6+ months out', desc: "Long-term planning", score: 0 },
-      { icon: '🔍', label: 'Just exploring', desc: "Researching my options", score: 0 }
-    ],
-    required: true
-  },
-  {
-    id: 'challenges', type: 'multi',
-    title: "What are your biggest business challenges right now?",
-    sub: "Select all that apply — the more you share, the better we can help.",
-    options: [
-      "Not enough leads / traffic",
-      "Low website conversion rate",
-      "Poor online reputation / reviews",
-      "Too many manual repetitive tasks",
-      "No clear marketing strategy",
-      "Inconsistent or unpredictable revenue",
-      "Hard to manage customer follow-up",
-      "No CRM or client tracking system",
-      "Weak social media presence",
-      "Struggling to scale operations",
-      "I don't have time to create content or send newsletters",
-      "I have manual processes that should be automated"
-    ],
-    required: true
-  },
-  {
-    id: 'tools', type: 'multi',
-    title: "Which tools are you currently using?",
-    sub: "We'll work with what you have and fill in the gaps.",
-    options: [
-      "Spreadsheets (Excel / Google Sheets)",
-      "Email marketing (Mailchimp, Klaviyo, etc.)",
-      "CRM (HubSpot, Salesforce, etc.)",
-      "Social scheduling tool",
-      "Review management tool",
-      "Website builder (Wix, Squarespace, etc.)",
-      "Ad platform (Google Ads, Meta Ads)",
-      "None / just getting started"
-    ],
-    required: false
-  },
-  {
-    id: 'goal', type: 'textarea',
-    title: "What's the #1 outcome you want from BizStack.ai?",
-    sub: "Be specific — this becomes the north star for your custom plan.",
-    placeholder: "e.g. I want to generate 20 new qualified leads per month and automate my follow-up so I stop losing customers to competitors...",
-    required: true
-  },
-  {
-    id: 'source', type: 'single-card',
-    title: "Last one — how did you hear about BizStack.ai?",
-    sub: "This helps us understand where to focus our outreach.",
-    options: [
-      { icon: '🔍', label: 'Google Search', desc: "Found you while searching", score: 0 },
-      { icon: '📱', label: 'Social Media', desc: "Instagram, LinkedIn, TikTok, etc.", score: 0 },
-      { icon: '🤝', label: 'Referral / Friend', desc: "Someone recommended you", score: 0 },
-      { icon: '📢', label: 'Online Ad', desc: "Saw an ad somewhere", score: 0 },
-      { icon: '▶️', label: 'YouTube', desc: "", score: 0 },
-      { icon: '✨', label: 'Other', desc: "", score: 0 }
-    ],
-    required: false
-  }
-];
+  // ─────────────────────────────────────
+  //  STATE
+  // ─────────────────────────────────────
+  const TOTAL_STEPS = 9;
+  let currentStep = 1;
+  let isBack = false;
 
-// ── TIER PRICING DATA (3-column transparency model) ──────────────────────
-const TIER_PRICING = [
-  {
-    name: 'Starter',
-    retailItems: [
-      { name: 'Professional Website (5-page, custom)', price: '$3,000 – $5,000', freq: 'one-time' },
-      { name: 'Hosting, SSL & Domain', price: '$360 – $600', freq: '/year' },
-      { name: 'Google Business Profile Setup', price: '$200 – $500', freq: 'one-time' },
-      { name: 'SEO Foundation (on-page + technical)', price: '$500 – $1,500', freq: 'one-time' },
-      { name: 'Contact Forms + Email Notifications', price: '$100 – $300', freq: '/year' },
-      { name: 'Google Analytics Setup', price: '$150 – $300', freq: 'one-time' },
-      { name: 'Basic CRM (up to 500 contacts)', price: '$240 – $600', freq: '/year' },
-      { name: 'Monthly Website Maintenance', price: '$600 – $1,200', freq: '/year' },
-    ],
-    retailTotal: '$5,150 – $10,000+',
-    retailSub: 'Annual ongoing: $1,300 – $2,700/yr',
-    ownPrice: '$2,999',
-    ownNote: 'one-time · no recurring fees',
-    ownSavings: 'You save $2,151 – $7,001+ vs. retail Year 1',
-    payMonthly: '$99',
-    payTotal: '$3,564 total ($0 interest)',
-    payNote: '× 36 months = $3,564 total · $0 interest · $0 setup fees',
-  },
-  {
-    name: 'Growth',
-    retailItems: [
-      { name: 'Everything in Starter (Year 1)', price: '$5,150 – $10,000+', freq: 'Year 1' },
-      { name: 'Unlimited Website Pages', price: '+$1,000 – $3,000', freq: 'design' },
-      { name: 'Lead Capture Landing Pages', price: '$500 – $2,000', freq: 'each' },
-      { name: 'CRM Pipeline (5,000 contacts)', price: '$600 – $3,600', freq: '/year' },
-      { name: '3 Automated Email Sequences', price: '$1,500 – $4,000', freq: 'to set up' },
-      { name: 'SMS Automation Platform', price: '$300 – $1,200', freq: '/year' },
-      { name: 'Appointment Booking System', price: '$180 – $600', freq: '/year' },
-      { name: '2 Blog Posts/Mo + GBP Management', price: '$4,800 – $12,000', freq: '/year' },
-      { name: 'Newsletter & Email Marketing (2/month)', price: '$2,400 – $6,000', freq: '/year' },
-    ],
-    retailTotal: '$18,230 – $48,400+',
-    retailSub: 'And you\'d still manage it all yourself.',
-    ownPrice: '$7,499',
-    ownNote: 'one-time · no recurring fees',
-    ownSavings: 'You save $10,731 – $40,901+ vs. retail Year 1',
-    payMonthly: '$299',
-    payTotal: '$10,764 total ($0 interest)',
-    payNote: '× 36 months = $10,764 total · $0 interest · $0 setup fees',
-  },
-  {
-    name: 'Scale',
-    retailItems: [
-      { name: 'Everything in Growth (Year 1)', price: '$18,230 – $48,400+', freq: 'Year 1' },
-      { name: 'AI Chatbot (custom-trained)', price: '$3,000 – $10,000', freq: 'setup +/yr' },
-      { name: 'Unlimited CRM Contacts', price: '$1,200 – $6,000', freq: '/year' },
-      { name: '4 Blog Posts + Social Captions/Mo', price: '$9,600 – $24,000', freq: '/year' },
-      { name: 'Paid Ad Campaign Management', price: '$6,000 – $18,000', freq: '/year' },
-      { name: 'Stripe Payment Integration', price: '$500 – $1,500', freq: 'setup' },
-      { name: 'Dedicated Account Manager', price: '$12,000 – $24,000', freq: '/year' },
-      { name: 'Newsletter & Email Marketing (4/month)', price: '$4,800 – $12,000', freq: '/year' },
-      { name: 'Workflow Automation (up to 3 custom)', price: '$3,000 – $15,000', freq: 'setup + maint.' },
-      { name: 'Analytics Dashboard', price: '$3,000 – $10,000', freq: 'setup + /year' },
-    ],
-    retailTotal: '$61,830 – $170,900+',
-    retailSub: 'And you\'d still manage it all yourself.',
-    ownPrice: '$14,999',
-    ownNote: 'one-time · no recurring fees',
-    ownSavings: 'You save $46,831 – $155,901+ vs. retail Year 1',
-    payMonthly: '$499',
-    payTotal: '$17,964 total ($0 interest)',
-    payNote: '× 36 months = $17,964 total · $0 interest · $0 setup fees',
-  },
-  {
-    name: 'Enterprise',
-    retailItems: [
-      { name: 'Everything in Scale (Year 1)', price: '$61,830 – $170,900+', freq: 'Year 1' },
-      { name: 'Newsletter & Email Marketing (unlimited)', price: '$12,000 – $30,000', freq: '/year' },
-      { name: 'AI Voice Agent (custom-trained)', price: '$5,000 – $25,000', freq: 'setup + $1.2K–$6K/yr' },
-      { name: 'Custom Third-Party Integrations', price: '$5,000 – $20,000+', freq: 'per project' },
-      { name: 'Advanced Analytics Dashboard', price: '$3,000 – $10,000', freq: 'setup + $2.4K–$6K/yr' },
-      { name: 'Weekly Strategy Sessions', price: '$12,000 – $30,000', freq: '/year' },
-      { name: 'Unlimited Custom Automation Builds', price: '$10,000 – $50,000+', freq: '/year' },
-      { name: 'White-Glove Onboarding', price: '$2,000 – $5,000', freq: 'one-time' },
-    ],
-    retailTotal: '$110,830 – $347,900+',
-    retailSub: 'And you\'d still manage it all yourself.',
-    ownPrice: '$29,999+',
-    ownNote: 'custom quote · fully bespoke',
-    ownSavings: 'You save $80,831 – $317,901+ vs. retail Year 1',
-    payMonthly: '$999+',
-    payTotal: '$35,964+ total ($0 interest)',
-    payNote: 'starting price × 36 months · $0 interest · $0 setup fees',
-  },
-];
+  const answers = {
+    contactName:   '',
+    businessName:  '',
+    email:         '',
+    phone:         '',
+    industry:      '',
+    hasWebsite:    null,  // true/false
+    websiteUrl:    '',
+    hasCRM:        null,
+    crmName:       '',
+    hasEmail:      null,
+    socialPlatforms: [],
+    postFrequency: '',
+    painPoint:     '',
+    budget:        '',
+    timeline:      ''
+  };
 
-// ── TIER DEFINITIONS ──────────────────────────────────────────────────────
-const TIERS = [
-  {
-    name: 'Starter',
-    price: '$99', per: '/mo',
-    desc: 'Perfect for solo operators and early-stage businesses ready to build a strong online foundation.',
-    features: [
-      'Professional website (5 pages)',
-      'Google Business optimization',
-      'Monthly SEO performance report',
-      'Review monitoring & alerts',
-      'Email support (48-hr response)'
-    ]
-  },
-  {
-    name: 'Growth',
-    price: '$299', per: '/mo',
-    desc: 'Built for growing businesses ready to invest in lead generation and marketing automation.',
-    features: [
-      'Everything in Starter',
-      'Lead generation campaigns',
-      'Email marketing automation',
-      'CRM integration & setup',
-      'Social media management (3x/wk)',
-      'Bi-weekly strategy calls'
-    ]
-  },
-  {
-    name: 'Scale',
-    price: '$499', per: '/mo',
-    desc: 'For established businesses ready to dominate their market with advanced automation and paid advertising.',
-    features: [
-      'Everything in Growth',
-      'Paid ad management (Google + Meta)',
-      'Advanced workflow automation',
-      'Dedicated account manager',
-      'Custom reporting dashboard',
-      'Priority support (24-hr response)'
-    ]
-  },
-  {
-    name: 'Enterprise',
-    price: 'Custom', per: '',
-    desc: 'Fully custom solutions for high-volume businesses that need white-glove service and enterprise-grade infrastructure.',
-    features: [
-      'Everything in Scale',
-      'Custom AI automation builds',
-      'Dedicated development team',
-      'Multi-location management',
-      'White-label reporting suite',
-      'Weekly executive strategy reviews'
-    ]
-  }
-];
+  // Single-select state per group
+  const selections = {};
 
-// ── CHALLENGE EXPLANATIONS ────────────────────────────────────────────────
-const CH_EXP = {
-  "Not enough leads / traffic": {
-    name: "Lead Generation Gap",
-    desc: "Your pipeline is running dry. BizStack will deploy a multi-channel strategy — targeted SEO, paid campaigns, and content marketing — to drive a consistent flow of inbound leads from people already searching for what you offer.",
-    pill: "SEO + Paid Ads + Content"
-  },
-  "Low website conversion rate": {
-    name: "Conversion Optimization",
-    desc: "Traffic without conversions is wasted spend. We'll audit your site, redesign key conversion points, and implement A/B-tested landing pages that turn visitors into booked appointments and paying customers.",
-    pill: "CRO + Landing Pages"
-  },
-  "Poor online reputation / reviews": {
-    name: "Reputation Management",
-    desc: "Reviews are your most powerful sales asset — or your biggest liability. We automate review requests at exactly the right moment and arm you with a professional response playbook that builds trust at scale.",
-    pill: "Review Automation + Management"
-  },
-  "Too many manual repetitive tasks": {
-    name: "Workflow Automation",
-    desc: "Every repetitive task is costing you real money. We'll map your operations and build automated workflows for follow-ups, scheduling, invoicing, and reporting — so you can focus on growth, not busywork.",
-    pill: "Process Automation + AI"
-  },
-  "No clear marketing strategy": {
-    name: "Marketing Strategy",
-    desc: "Random acts of marketing get random results. We'll analyze your market and competitors, then build a data-driven 90-day roadmap tailored to your goals — and execute every step of it.",
-    pill: "Strategy + Full Execution"
-  },
-  "Inconsistent or unpredictable revenue": {
-    name: "Revenue Consistency",
-    desc: "Revenue spikes and valleys kill momentum and planning. We'll diversify your acquisition channels and build retargeting systems that keep a steady stream of new and returning customers coming in.",
-    pill: "Retention + Multi-Channel"
-  },
-  "Hard to manage customer follow-up": {
-    name: "Follow-Up Automation",
-    desc: "Leads go cold within 24 hours. We'll build automated email and SMS sequences that follow up on your behalf, nurturing every lead through your funnel until they're ready to buy.",
-    pill: "Email + SMS Automation"
-  },
-  "No CRM or client tracking system": {
-    name: "CRM Implementation",
-    desc: "You can't scale what you can't track. We'll implement and configure a CRM perfectly matched to your sales process, so every lead, deal, and customer is always visible and nothing falls through the cracks.",
-    pill: "CRM Setup + Training"
-  },
-  "Weak social media presence": {
-    name: "Social Media Growth",
-    desc: "In today's market, social proof is non-negotiable. We'll build a consistent content calendar, manage your accounts, and run targeted campaigns that grow your following into a steady stream of paying customers.",
-    pill: "Content + Paid Social"
-  },
-  "Struggling to scale operations": {
-    name: "Operations Infrastructure",
-    desc: "Growth breaks things. We'll audit your current processes and implement scalable systems — from project management to team communication to client onboarding — built to grow with you without falling apart.",
-    pill: "Systems + Infrastructure"
-  },
-  "I don't have time to create content or send newsletters": {
-    name: "Content & Newsletter Automation",
-    desc: "Staying top-of-mind requires consistent content — but creating it takes hours you don't have. We research, write, design, and send your branded newsletters and content on autopilot, so your audience hears from you every week without you lifting a finger.",
-    pill: "Newsletter + Content Marketing"
-  },
-  "I have manual processes that should be automated": {
-    name: "Process Automation",
-    desc: "If you're doing the same task more than twice, it's costing you real money. We'll identify your biggest time drains and build custom automated workflows that handle them 24/7 — from invoice generation to lead routing to appointment reminders.",
-    pill: "Workflow Automation + AI"
-  }
-};
+  // ─────────────────────────────────────
+  //  NAVIGATION
+  // ─────────────────────────────────────
+  function showStep(n, back) {
+    const current = document.getElementById('step-' + currentStep);
+    current.classList.remove('active', 'slide-back');
 
-// ── STATE ─────────────────────────────────────────────────────────────────
-let current = 0;
-const answers = {};
-const TOTAL = QUESTIONS.length;
-let advTimer = null;
+    currentStep = n;
+    isBack = !!back;
 
-// ── PROGRESS ──────────────────────────────────────────────────────────────
-function setProgress(pct) {
-  document.getElementById('progressBar').style.width = pct + '%';
-}
+    const next = document.getElementById('step-' + n);
+    if (back) next.classList.add('slide-back');
+    else next.classList.remove('slide-back');
+    next.classList.add('active');
 
-// ── RENDER ────────────────────────────────────────────────────────────────
-function render(dir = 'fwd', skipExit = false) {
-  clearTimeout(advTimer);
-  const panel = document.getElementById('qPanel');
-  const q = QUESTIONS[current];
-  setProgress((current / TOTAL) * 100);
-
-  const html = buildQ(q);
-
-  if (skipExit) {
-    panel.innerHTML = html;
-    panel.classList.add('enter-left');
-    requestAnimationFrame(() => requestAnimationFrame(() => panel.classList.remove('enter-left')));
-    bindQ(q);
-    focusFirst(panel);
-    return;
-  }
-
-  const exitCls = dir === 'fwd' ? 'exit-left' : 'exit-right';
-  const enterCls = dir === 'fwd' ? 'enter-left' : 'enter-right';
-
-  panel.classList.add(exitCls);
-  setTimeout(() => {
-    panel.innerHTML = html;
-    panel.classList.remove(exitCls);
-    panel.classList.add(enterCls);
-    requestAnimationFrame(() => requestAnimationFrame(() => panel.classList.remove(enterCls)));
-    bindQ(q);
-    focusFirst(panel);
-  }, 240);
-}
-
-function focusFirst(panel) {
-  const inp = panel.querySelector('.q-input');
-  if (inp) setTimeout(() => inp.focus(), 280);
-}
-
-// ── BUILD HTML ────────────────────────────────────────────────────────────
-function ckSvg() {
-  return `<svg width="11" height="8" viewBox="0 0 11 8" fill="none">
-    <path d="M1 4L4 7L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>`;
-}
-
-function buildQ(q) {
-  const isLast = current === TOTAL - 1;
-  let body = '';
-
-  if (q.type === 'text' || q.type === 'email' || q.type === 'tel') {
-    const v = answers[q.id] || '';
-    body = `<input class="q-input" type="${q.type}" id="qInp" placeholder="${q.placeholder}" value="${v}" autocomplete="off">
-    <div class="err-msg" id="qErr"></div>`;
-  }
-
-  if (q.type === 'textarea') {
-    const v = answers[q.id] || '';
-    body = `<textarea class="q-textarea" id="qInp" placeholder="${q.placeholder}">${v}</textarea>
-    <div class="err-msg" id="qErr"></div>`;
-  }
-
-  if (q.type === 'text-dual') {
-    const v = answers[q.id] || {};
-    body = `<div class="dual-row">
-      ${q.fields.map(f => `<div>
-        <input class="q-input" type="text" data-key="${f.key}" placeholder="${f.placeholder}" value="${v[f.key] || ''}" autocomplete="off">
-      </div>`).join('')}
-    </div>
-    <div class="err-msg" id="qErr"></div>`;
-  }
-
-  if (q.type === 'single-grid') {
-    const sel = answers[q.id] || null;
-    body = `<div class="single-grid">
-      ${q.options.map(o => `<div class="sg-opt${sel === o ? ' sel' : ''}" data-v="${o}">${o}</div>`).join('')}
-    </div>
-    <div class="err-msg" id="qErr"></div>`;
-  }
-
-  if (q.type === 'single-card') {
-    const selLabel = answers[q.id] ? answers[q.id].label : null;
-    body = `<div class="single-cards">
-      ${q.options.map(o => `<div class="sc-opt${selLabel === o.label ? ' sel' : ''}" data-label="${o.label}">
-        <div class="sc-icon">${o.icon}</div>
-        <div class="sc-body">
-          <div class="sc-label">${o.label}</div>
-          ${o.desc ? `<div class="sc-desc">${o.desc}</div>` : ''}
-        </div>
-        <div class="sc-check">
-          <span class="sc-check-svg">${ckSvg()}</span>
-        </div>
-      </div>`).join('')}
-    </div>
-    <div class="err-msg" id="qErr"></div>`;
-  }
-
-  if (q.type === 'multi') {
-    const sel = answers[q.id] || [];
-    body = `<div class="multi-grid">
-      ${q.options.map(o => `<div class="ms-opt${sel.includes(o) ? ' sel' : ''}" data-v="${o}">
-        <div class="ms-cb"><span class="ms-cb-svg">${ckSvg()}</span></div>
-        <div class="ms-label">${o}</div>
-      </div>`).join('')}
-    </div>
-    ${q.required ? '<div class="err-msg" id="qErr"></div>' : ''}`;
-  }
-
-  const nav = `<div class="q-nav">
-    ${current > 0 ? '<button class="btn-back" id="btnBack">← Back</button>' : ''}
-    ${isLast
-      ? `<button class="btn-final" id="btnCont">See My Recommendation →</button>`
-      : `<button class="btn-cont" id="btnCont">Continue →</button>`
-    }
-  </div>`;
-
-  return `
-    <div class="q-step">Question ${current + 1} of ${TOTAL}</div>
-    <div class="q-title">${q.title}</div>
-    <div class="q-sub">${q.sub}</div>
-    ${body}
-    ${nav}
-  `;
-}
-
-// ── BIND LISTENERS ────────────────────────────────────────────────────────
-function bindQ(q) {
-  if (!answers[q.id] && q.type === 'multi') answers[q.id] = [];
-
-  if (q.type === 'single-grid') {
-    document.querySelectorAll('.sg-opt').forEach(el => {
-      el.addEventListener('click', () => {
-        document.querySelectorAll('.sg-opt').forEach(x => x.classList.remove('sel'));
-        el.classList.add('sel');
-        answers[q.id] = el.dataset.v;
-        hideErr();
-      });
-    });
-  }
-
-  if (q.type === 'single-card') {
-    document.querySelectorAll('.sc-opt').forEach(el => {
-      el.addEventListener('click', () => {
-        clearTimeout(advTimer);
-        document.querySelectorAll('.sc-opt').forEach(x => x.classList.remove('sel'));
-        el.classList.add('sel');
-        const opt = q.options.find(o => o.label === el.dataset.label);
-        answers[q.id] = opt;
-        hideErr();
-        advTimer = setTimeout(() => advance(), 380);
-      });
-    });
-  }
-
-  if (q.type === 'multi') {
-    document.querySelectorAll('.ms-opt').forEach(el => {
-      el.addEventListener('click', () => {
-        const v = el.dataset.v;
-        const idx = answers[q.id].indexOf(v);
-        if (idx === -1) { answers[q.id].push(v); el.classList.add('sel'); }
-        else { answers[q.id].splice(idx, 1); el.classList.remove('sel'); }
-        hideErr();
-      });
-    });
-  }
-
-  if (q.type === 'text-dual') {
-    if (!answers[q.id]) answers[q.id] = {};
-    document.querySelectorAll('.dual-row .q-input').forEach(inp => {
-      inp.addEventListener('input', () => { answers[q.id][inp.dataset.key] = inp.value.trim(); });
-    });
-  }
-
-  const singleInp = document.getElementById('qInp');
-  if (singleInp) {
-    singleInp.addEventListener('input', () => { answers[q.id] = singleInp.value; });
-    singleInp.addEventListener('keydown', e => {
-      if (e.key === 'Enter' && q.type !== 'textarea') advance();
-    });
-  }
-
-  const back = document.getElementById('btnBack');
-  if (back) back.addEventListener('click', () => { clearTimeout(advTimer); current--; render('back'); });
-
-  const cont = document.getElementById('btnCont');
-  if (cont) cont.addEventListener('click', advance);
-}
-
-// ── VALIDATE ──────────────────────────────────────────────────────────────
-function validate(q) {
-  if (!q.required) return true;
-  const v = answers[q.id];
-  switch (q.type) {
-    case 'text':     return v && v.trim().length >= 2;
-    case 'email':    return v && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
-    case 'tel':      return true;
-    case 'textarea': return v && v.trim().length >= 5;
-    case 'text-dual': return v && v.city && v.city.length > 0 && v.state && v.state.length > 0;
-    case 'single-grid': return !!v;
-    case 'single-card': return !!v;
-    case 'multi':    return v && v.length > 0;
-    default: return true;
-  }
-}
-
-function showErr(msg) {
-  const el = document.getElementById('qErr');
-  if (el) { el.textContent = msg; el.classList.add('show'); }
-  const inp = document.getElementById('qInp');
-  if (inp) inp.classList.add('err');
-}
-function hideErr() {
-  const el = document.getElementById('qErr');
-  if (el) el.classList.remove('show');
-  const inp = document.getElementById('qInp');
-  if (inp) inp.classList.remove('err');
-}
-
-// ── ADVANCE ───────────────────────────────────────────────────────────────
-function advance() {
-  clearTimeout(advTimer);
-  const q = QUESTIONS[current];
-
-  // Sync latest text values
-  const singleInp = document.getElementById('qInp');
-  if (singleInp) answers[q.id] = singleInp.value;
-
-  if (q.type === 'text-dual') {
-    if (!answers[q.id]) answers[q.id] = {};
-    document.querySelectorAll('.dual-row .q-input').forEach(inp => {
-      answers[q.id][inp.dataset.key] = inp.value.trim();
-    });
-  }
-
-  if (!validate(q)) {
-    const msgs = {
-      text: "Please fill this in before continuing.",
-      email: "Please enter a valid email address.",
-      tel: "Please enter your phone number.",
-      textarea: "Please share a bit more before continuing.",
-      'text-dual': "Please enter both your city and state.",
-      'single-grid': "Please select an option to continue.",
-      'single-card': "Please select an option to continue.",
-      multi: "Please select at least one option."
-    };
-    showErr(msgs[q.type] || "Please complete this field.");
-    return;
-  }
-
-  if (current === TOTAL - 1) { showResults(); return; }
-  current++;
-  render('fwd');
-}
-
-// ── RECOMMENDATION LOGIC ──────────────────────────────────────────────────
-function calcRec() {
-  // Budget ceiling
-  const budgetOpt = answers['budget'];
-  const ceil = budgetOpt ? (budgetOpt.ceilIndex !== undefined ? budgetOpt.ceilIndex : 3) : 3;
-
-  // Complexity score
-  let score = 0;
-  const team = answers['teamSize']; if (team) score += (team.score || 0);
-  const site = answers['website'];  if (site) score += (site.score || 0);
-  const rev  = answers['revenue'];  if (rev)  score += (rev.score  || 0);
-
-  const challenges = answers['challenges'] || [];
-  score += challenges.length;
-
-  const tools = answers['tools'] || [];
-  // Fewer existing tools = more gaps = higher need
-  score += Math.max(0, 4 - Math.min(tools.length, 4));
-
-  // Map score to tier index
-  let need;
-  if (score <= 4)       need = 0;
-  else if (score <= 8)  need = 1;
-  else if (score <= 13) need = 2;
-  else                  need = 3;
-
-  const exceeds = need > ceil;
-  const rec = Math.min(need, ceil);
-  return { rec, need, exceeds };
-}
-
-// ── SHOW RESULTS ──────────────────────────────────────────────────────────
-function showResults() {
-  setProgress(100);
-  const { rec, need, exceeds } = calcRec();
-  const tier = TIERS[rec];
-  const needTier = TIERS[need];
-  const challenges = answers['challenges'] || [];
-  const firstName = (answers['name'] || '').trim().split(' ')[0] || 'there';
-
-  const emailBody = encodeURIComponent(
-    `Hi BizStack team,\n\nI just completed the BizStack assessment and would love to receive my personalized proposal for the ${tier.name} plan.\n\nName: ${answers['name'] || ''}\nEmail: ${answers['email'] || ''}\nBudget: ${answers['budget'] ? answers['budget'].label : 'Not specified'}\n\nLooking forward to connecting!`
-  );
-  const mailtoHref = `mailto:hello@bizstack.ai?subject=${encodeURIComponent(`${tier.name} Plan Proposal — ${answers['name'] || 'BizStack Assessment'}`)}&body=${emailBody}`;
-
-  const snap = [
-    { label: 'Industry', value: answers['industry'] ? answers['industry'].replace(/^\S+\s/, '') : '—' },
-    { label: 'Location', value: answers['location'] ? `${answers['location'].city || '—'}, ${answers['location'].state || '—'}` : '—' },
-    { label: 'Team Size', value: answers['teamSize'] ? answers['teamSize'].label : '—' },
-    { label: 'Annual Revenue', value: answers['revenue'] ? answers['revenue'].label : '—' },
-    { label: 'Monthly Budget', value: answers['budget'] ? answers['budget'].label : '—' },
-    { label: 'Timeline', value: answers['timeline'] ? answers['timeline'].label : '—' }
-  ];
-
-  let html = `<div id="results">
-    <div class="res-header">
-      <div class="res-tag">✓ Assessment Complete</div>
-      <h1>Here's your personalized plan, ${firstName}.</h1>
-      <p>Based on your answers, we've matched you with the BizStack tier that best fits your needs and budget.</p>
-    </div>
-
-    <div class="tier-card rec">
-      <div class="tier-badge">⭐ Recommended for You</div>
-      <div class="tier-name">${tier.name} Plan</div>
-      <div class="tier-price">${tier.price}${tier.per ? `<span>${tier.per}</span>` : ''}</div>
-      <div class="tier-desc">${tier.desc}</div>
-      <div class="tier-features">
-        ${tier.features.map(f => `<div class="tf-item">
-          <div class="tf-dot">
-            <svg width="9" height="7" viewBox="0 0 9 7" fill="none">
-              <path d="M1 3.5L3.2 5.5L8 1" stroke="#10B981" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <span>${f}</span>
-        </div>`).join('')}
-      </div>
-    </div>`;
-
-  if (exceeds) {
-    html += `<div class="exceed-card">
-      <div class="exceed-icon">⚠️</div>
-      <div>
-        <div class="exceed-title">Your needs align with our ${needTier.name} plan (${needTier.price}/mo)</div>
-        <div class="exceed-body">Based on your business complexity and goals, the ${needTier.name} plan would be the ideal fit — but it falls outside your stated budget. We've recommended the ${tier.name} plan as the strongest option within your range. When you're ready to scale, upgrading is seamless. Our team can also walk you through flexible options on your free call.</div>
-      </div>
-    </div>`;
-  }
-
-  // ── 3-column pricing comparison ──
-  const tp = TIER_PRICING[rec];
-  html += `<div class="res-pricing-wrap">
-    <div class="res-pricing-title">Your Pricing Breakdown — Full Transparency</div>
-    <div class="rpt-grid">
-      <!-- Column 1: Retail -->
-      <div class="rpt-col rpt-col-retail">
-        <div class="rpt-tag">If You Bought It Separately</div>
-        <div class="rpt-items">
-          ${tp.retailItems.map(item => `<div class="rpt-item">
-            <span class="rpt-name">${item.name}</span>
-            <div style="text-align:right;flex-shrink:0">
-              <div class="rpt-price">${item.price}</div>
-              <div style="font-size:.6rem;color:rgba(255,255,255,.28)">${item.freq}</div>
-            </div>
-          </div>`).join('')}
-        </div>
-        <div class="rpt-total">
-          <div class="rpt-total-label">Total Year 1</div>
-          <div class="rpt-total-price">${tp.retailTotal}</div>
-          <div style="font-size:.7rem;color:rgba(255,255,255,.3);margin-top:.2rem">${tp.retailSub}</div>
-        </div>
-      </div>
-      <!-- Column 2: Own It -->
-      <div class="rpt-col rpt-col-own">
-        <div class="rpt-badge rpt-badge-gold">★ Best Value</div>
-        <div class="rpt-tag">Own It Outright</div>
-        <div class="rpt-big-price">${tp.ownPrice}</div>
-        <div class="rpt-price-note">${tp.ownNote}</div>
-        <div class="rpt-savings">✓ ${tp.ownSavings}</div>
-        <ul class="rpt-includes">
-          <li><span class="rpt-ci-gold">•</span> Full build &amp; deployment in 48 hours</li>
-          <li><span class="rpt-ci-gold">•</span> 90 days of managed support post-launch</li>
-          <li><span class="rpt-ci-gold">•</span> All source files &amp; credentials — yours forever</li>
-          <li><span class="rpt-ci-gold">•</span> Migration guide included if you ever switch</li>
-        </ul>
-        <a href="mailto:hello@bizstack.ai?subject=Own It Outright — ${tp.name} Plan&body=I'd like to get started with the ${tp.name} Own It Outright option." class="btn-rpt-gold">Get Started →</a>
-      </div>
-      <!-- Column 3: Pay Over Time -->
-      <div class="rpt-col rpt-col-pay">
-        <div class="rpt-badge rpt-badge-blue">★ Most Flexible</div>
-        <div class="rpt-tag">Pay Over Time</div>
-        <div class="rpt-big-price">${tp.payMonthly}<span class="mo">/mo</span></div>
-        <div class="rpt-price-note">${tp.payNote}</div>
-        <ul class="rpt-includes">
-          <li><span class="rpt-ci-blue">•</span> Same complete build as column 2</li>
-          <li><span class="rpt-ci-blue">•</span> Includes ongoing updates &amp; support</li>
-          <li><span class="rpt-ci-blue">•</span> No contract — cancel anytime</li>
-        </ul>
-        <div class="rpt-cancel-note"><strong>If you cancel:</strong> Pay remaining balance to keep everything, OR stop and lose access — we export all your files either way.</div>
-        <a href="mailto:hello@bizstack.ai?subject=Monthly Plan — ${tp.name}&body=I'd like to start the ${tp.name} monthly plan." class="btn-rpt-blue">Get Started →</a>
-      </div>
-    </div>
-  </div>`;
-
-  if (challenges.length > 0) {
-    html += `<div class="sec-title">How We'll Address Your Challenges</div>
-    <div class="ch-cards">`;
-    challenges.forEach(ch => {
-      const exp = CH_EXP[ch];
-      if (exp) {
-        html += `<div class="ch-card">
-          <div class="ch-name">${exp.name}</div>
-          <div class="ch-desc">${exp.desc}</div>
-          <div class="ch-pill">${exp.pill}</div>
-        </div>`;
-      }
-    });
-    html += `</div>`;
-  }
-
-  html += `<div class="sec-title">Your Business Snapshot</div>
-  <div class="snapshot">
-    ${snap.map(s => `<div class="sn-item">
-      <div class="sn-label">${s.label}</div>
-      <div class="sn-value">${s.value}</div>
-    </div>`).join('')}
-  </div>
-
-  <div class="sec-title">Ready to Get Started?</div>
-  <div class="res-ctas">
-    <a href="index.html#contact" class="btn-primary-res">📞 Schedule a Free Call</a>
-    <a href="${mailtoHref}" class="btn-secondary-res">✉️ Email My Proposal</a>
-  </div>
-  <button class="btn-restart" onclick="restart()">← Start over / retake assessment</button>
-  </div>`;
-
-  const stage = document.getElementById('stage');
-  const panel = document.getElementById('qPanel');
-  panel.classList.add('exit-left');
-  setTimeout(() => {
-    stage.innerHTML = html;
-    stage.style.justifyContent = 'flex-start';
-    stage.style.paddingTop = '3rem';
+    updateProgress();
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, 240);
-}
+  }
 
-// ── RESTART ───────────────────────────────────────────────────────────────
-function restart() {
-  current = 0;
-  Object.keys(answers).forEach(k => delete answers[k]);
-  const stage = document.getElementById('stage');
-  stage.innerHTML = '<div id="qPanel"></div>';
-  stage.style.justifyContent = '';
-  stage.style.paddingTop = '';
-  render('fwd', true);
-}
+  function updateProgress() {
+    const pct = (currentStep / TOTAL_STEPS) * 100;
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('progress-count').textContent = 'Step ' + currentStep + ' of ' + TOTAL_STEPS;
+  }
 
-// ── INIT ──────────────────────────────────────────────────────────────────
-render('fwd', true);
+  function nextStep(from) {
+    if (!validateStep(from)) return;
+    collectStep(from);
+    if (from < TOTAL_STEPS) showStep(from + 1, false);
+  }
+
+  function prevStep(from) {
+    if (from > 1) showStep(from - 1, true);
+  }
+
+  // ─────────────────────────────────────
+  //  VALIDATION
+  // ─────────────────────────────────────
+  function showError(step, msg) {
+    const el = document.getElementById('error-' + step);
+    if (msg) el.textContent = msg;
+    el.classList.add('visible');
+  }
+  function clearError(step) {
+    document.getElementById('error-' + step).classList.remove('visible');
+  }
+
+  function validateStep(n) {
+    clearError(n);
+    if (n === 1) {
+      const name  = document.getElementById('contact-name').value.trim();
+      const biz   = document.getElementById('business-name').value.trim();
+      const email = document.getElementById('contact-email').value.trim();
+      const phone = document.getElementById('contact-phone').value.trim();
+      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!name || !biz || !email || !phone) {
+        showError(1, 'Please fill in all required fields.');
+        return false;
+      }
+      if (!emailRe.test(email)) {
+        showError(1, 'Please enter a valid email address.');
+        return false;
+      }
+      return true;
+    }
+    if (n === 2) {
+      if (!selections['industry']) { showError(2); return false; }
+      return true;
+    }
+    if (n === 3) {
+      if (answers.hasWebsite === null) { showError(3); return false; }
+      return true;
+    }
+    if (n === 4) {
+      if (answers.hasCRM === null) { showError(4); return false; }
+      return true;
+    }
+    if (n === 5) {
+      if (answers.hasEmail === null) { showError(5); return false; }
+      return true;
+    }
+    if (n === 6) {
+      const hasSocial = answers.socialPlatforms.length > 0 || answers.socialPlatforms.includes('none');
+      const noneSelected = document.getElementById('social-none').classList.contains('selected');
+      const anySelected = document.querySelectorAll('#social-checkboxes .check-card.selected').length > 0;
+      if (!anySelected) { showError(6); return false; }
+      return true;
+    }
+    if (n === 7) {
+      if (!selections['pain']) { showError(7); return false; }
+      return true;
+    }
+    if (n === 8) {
+      if (!selections['budget']) { showError(8); return false; }
+      return true;
+    }
+    if (n === 9) {
+      if (!selections['timeline']) { showError(9); return false; }
+      return true;
+    }
+    return true;
+  }
+
+  // ─────────────────────────────────────
+  //  DATA COLLECTION PER STEP
+  // ─────────────────────────────────────
+  function collectStep(n) {
+    if (n === 1) {
+      answers.contactName  = document.getElementById('contact-name').value.trim();
+      answers.businessName = document.getElementById('business-name').value.trim();
+      answers.email        = document.getElementById('contact-email').value.trim();
+      answers.phone        = document.getElementById('contact-phone').value.trim();
+    }
+    if (n === 2) answers.industry = selections['industry'] || '';
+    if (n === 3) {
+      answers.websiteUrl = document.getElementById('website-url').value.trim();
+    }
+    if (n === 4) {
+      answers.crmName = document.getElementById('crm-which').value || '';
+    }
+    if (n === 6) {
+      const freq = document.getElementById('post-freq').value;
+      answers.postFrequency = freq;
+    }
+    if (n === 7) answers.painPoint = selections['pain'] || '';
+    if (n === 8) answers.budget    = selections['budget'] || '';
+    if (n === 9) answers.timeline  = selections['timeline'] || '';
+  }
+
+  // ─────────────────────────────────────
+  //  CHOICE SELECTORS
+  // ─────────────────────────────────────
+  function selectChoice(group, value, el) {
+    // Deselect previous
+    const parent = el.closest('.choices');
+    parent.querySelectorAll('.choice-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    selections[group] = value;
+    clearError(currentStep);
+  }
+
+  function selectYN(field, value) {
+    const yes = document.getElementById(field + '-yes');
+    const no  = document.getElementById(field + '-no');
+    yes.classList.remove('selected');
+    no.classList.remove('selected');
+
+    if (value === 'yes') {
+      yes.classList.add('selected');
+      if (field === 'website') {
+        answers.hasWebsite = true;
+        document.getElementById('website-url-wrap').classList.remove('hidden');
+      }
+      if (field === 'crm') {
+        answers.hasCRM = true;
+        document.getElementById('crm-which-wrap').classList.remove('hidden');
+      }
+      if (field === 'email') answers.hasEmail = true;
+    } else {
+      no.classList.add('selected');
+      if (field === 'website') {
+        answers.hasWebsite = false;
+        document.getElementById('website-url-wrap').classList.add('hidden');
+        document.getElementById('website-url').value = '';
+      }
+      if (field === 'crm') {
+        answers.hasCRM = false;
+        document.getElementById('crm-which-wrap').classList.add('hidden');
+      }
+      if (field === 'email') answers.hasEmail = false;
+    }
+    clearError(currentStep);
+  }
+
+  function toggleCheck(group, value, el) {
+    // If "Not active yet" was selected, deselect it
+    const noneEl = document.getElementById('social-none');
+    if (noneEl.classList.contains('selected')) {
+      noneEl.classList.remove('selected');
+      answers.socialPlatforms = answers.socialPlatforms.filter(v => v !== 'none');
+    }
+
+    el.classList.toggle('selected');
+    if (el.classList.contains('selected')) {
+      if (!answers.socialPlatforms.includes(value)) {
+        answers.socialPlatforms.push(value);
+      }
+    } else {
+      answers.socialPlatforms = answers.socialPlatforms.filter(v => v !== value);
+    }
+
+    // Show frequency selector if any platform selected
+    const anyPlatform = answers.socialPlatforms.filter(v => v !== 'none').length > 0;
+    document.getElementById('freq-wrap').style.display = anyPlatform ? 'block' : 'none';
+    clearError(currentStep);
+  }
+
+  function selectNone(group, el) {
+    // Deselect all other checkboxes
+    document.querySelectorAll('#social-checkboxes .check-card').forEach(c => {
+      if (c !== el) c.classList.remove('selected');
+    });
+    el.classList.toggle('selected');
+    answers.socialPlatforms = el.classList.contains('selected') ? ['none'] : [];
+    document.getElementById('freq-wrap').style.display = 'none';
+    clearError(currentStep);
+  }
+
+  // ─────────────────────────────────────
+  //  SCORING
+  // ─────────────────────────────────────
+  function calcScore() {
+    let score = 0;
+    const s = answers;
+
+    if (s.hasWebsite)                          score += 1;
+    if (s.hasCRM)                              score += 2;
+    if (s.hasEmail)                            score += 1;
+    const activeSocial = s.socialPlatforms.filter(v => v !== 'none').length > 0;
+    if (activeSocial)                          score += 1;
+
+    if (s.painPoint === 'all')                 score += 3;
+    else if (s.painPoint)                      score += 1;
+
+    if (s.budget === '499-999')                score += 2;
+    if (s.budget === '999+')                   score += 3;
+
+    if (s.timeline === 'asap')                 score += 2;
+    if (s.timeline === 'this-month')           score += 1;
+
+    return score;
+  }
+
+  function tierFromScore(score) {
+    if (score >= 10) return 'enterprise';
+    if (score >= 7)  return 'scale';
+    if (score >= 4)  return 'growth';
+    return 'starter';
+  }
+
+  // ─────────────────────────────────────
+  //  TIER DATA
+  // ─────────────────────────────────────
+  const TIERS = {
+    starter: {
+      name:  'Starter',
+      price: '$99',
+      per:   '/mo',
+      desc:  'Perfect for businesses just getting started online. We set up the essentials so you look professional and stop losing leads.',
+      features: [
+        'Professional website designed and built for your business',
+        'Basic CRM setup to capture and track leads',
+        'Email templates and automated follow-up sequences',
+        'Google Business Profile optimization',
+        'Monthly performance report'
+      ]
+    },
+    growth: {
+      name:  'Growth',
+      price: '$299',
+      per:   '/mo',
+      desc:  'For businesses that have the basics but want to accelerate. We build systems that consistently bring in and convert leads.',
+      features: [
+        'Everything in Starter',
+        'Content calendar and social media strategy',
+        'Advanced CRM automations and pipeline management',
+        'Email marketing campaigns (newsletters + drip sequences)',
+        'Lead magnet and opt-in page creation',
+        'Bi-weekly strategy check-in'
+      ]
+    },
+    scale: {
+      name:  'Scale',
+      price: '$499',
+      per:   '/mo',
+      desc:  'For businesses ready to invest in real growth infrastructure. AI-powered tools and deep integrations that compound over time.',
+      features: [
+        'Everything in Growth',
+        'Full SEO audit and on-page optimization',
+        'Paid vs. organic gap analysis and ad strategy',
+        'AI chatbot on your website (qualifies leads 24/7)',
+        'Custom integrations between your tools',
+        'Dedicated Slack channel for priority support'
+      ]
+    },
+    enterprise: {
+      name:  'Enterprise',
+      price: '$999+',
+      per:   '/mo',
+      desc:  'White-glove service for complex organizations. A dedicated AI agent team builds and runs your entire marketing and automation stack.',
+      features: [
+        'Everything in Scale',
+        'Dedicated AI agent team assigned to your account',
+        'Custom multi-step automation workflows',
+        'White-glove onboarding and migration from existing tools',
+        'Priority support with guaranteed response time',
+        'Monthly executive strategy session'
+      ]
+    }
+  };
+
+  // ─────────────────────────────────────
+  //  SUBMIT
+  // ─────────────────────────────────────
+  function submitAssessment() {
+    if (!validateStep(9)) return;
+    collectStep(9);
+
+    const score = calcScore();
+    const tierKey = tierFromScore(score);
+    const tier = TIERS[tierKey];
+
+    // Console log full data
+    console.log('=== BizStack AI Assessment Submission ===');
+    console.log('Score:', score, '→ Tier:', tierKey);
+    console.log('Form Data:', JSON.stringify(answers, null, 2));
+
+    // Build results UI
+    renderResults(tierKey, tier, score);
+
+    // Hide form, show results
+    document.getElementById('assessment-form').style.display = 'none';
+    const resultsEl = document.getElementById('results');
+    resultsEl.classList.add('active');
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function renderResults(tierKey, tier, score) {
+    const card = document.getElementById('results-tier-card');
+    card.className = 'tier-card ' + tierKey;
+
+    document.getElementById('results-title').textContent =
+      'Hey ' + (answers.contactName.split(' ')[0] || 'there') + ', here\'s your recommendation.';
+    document.getElementById('results-sub').textContent =
+      'Based on your assessment, ' + tier.name + ' is the best fit for ' + (answers.businessName || 'your business') + '.';
+
+    document.getElementById('results-badge').textContent = tier.name + ' Plan';
+    document.getElementById('results-tier-name').textContent = tier.name;
+
+    const priceEl = document.getElementById('results-price');
+    priceEl.innerHTML = tier.price + '<span class="per">' + tier.per + '</span>';
+
+    document.getElementById('results-tier-desc').textContent = tier.desc;
+
+    const featList = document.getElementById('results-features');
+    featList.innerHTML = tier.features.map(f =>
+      '<li><div class="feat-icon">&#10003;</div><span>' + f + '</span></li>'
+    ).join('');
+
+    document.getElementById('score-debug').textContent = 'Assessment score: ' + score;
+  }
 </script>
 </body>
 </html>

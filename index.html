@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BizStack.ai — Everything Your Business Needs to Run Better</title>
-  <meta name="description" content="Professional websites, CRM, lead automation, and AI tools — all in one affordable subscription. Built in 48 hours, not months.">
+  <title>BizStack.vip - Everything Your Business Needs to Run Better</title>
+  <meta name="description" content="Professional websites, CRM, lead automation, and AI tools - all in one affordable subscription. Built in 48 hours, not months.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -76,7 +76,7 @@
       display: inline-flex;
       align-items: center;
       gap: .5rem;
-      font-size: .68rem;
+      font-size: .85rem;
       font-weight: 700;
       letter-spacing: .14em;
       text-transform: uppercase;
@@ -163,7 +163,7 @@
     .top-banner {
       background: linear-gradient(90deg, rgba(59,130,246,.12), rgba(139,92,246,.12));
       border-bottom: 1px solid rgba(59,130,246,.18);
-      padding: .55rem 3rem;
+      padding: 1rem 3rem;
       text-align: center;
       font-size: .78rem;
       font-weight: 500;
@@ -397,9 +397,9 @@
       background: rgba(59,130,246,.1);
       border: 1px solid rgba(59,130,246,.32);
       border-radius: 100px;
-      padding: .44rem 1.1rem .44rem .7rem;
-      font-size: .78rem;
-      font-weight: 500;
+      padding: .6rem 1.4rem .6rem 1rem;
+      font-size: 1.05rem;
+      font-weight: 700;
       color: #7eb8ff;
       margin-bottom: 2.75rem;
       animation: pillGlow 3.5s ease-in-out infinite;
@@ -521,6 +521,7 @@
       align-items: center;
       justify-content: center;
       flex-wrap: wrap;
+      isolation: isolate;
     }
     .tbadge {
       display: flex;
@@ -530,6 +531,8 @@
       color: rgba(255,255,255,.38);
       padding: 0 1.5rem;
       border-right: 1px solid rgba(255,255,255,.07);
+      position: relative;
+      z-index: 3;
     }
     .tbadge:first-child { padding-left: 0; }
     .tbadge:last-child  { border-right: none; padding-right: 0; }
@@ -663,7 +666,7 @@
     }
 
     /* ═══════════════════════════════════════════
-       SERVICES — ALTERNATING LAYOUT
+       SERVICES - ALTERNATING LAYOUT
     ═══════════════════════════════════════════ */
     #services { padding: 7rem 0; }
 
@@ -944,7 +947,7 @@
     .ill-ana-int { height: 18px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.06); border-radius: 4px; }
 
     /* ═══════════════════════════════════════════
-       PRICING — NEW 3-COLUMN TRANSPARENCY MODEL
+       PRICING - NEW 3-COLUMN TRANSPARENCY MODEL
     ═══════════════════════════════════════════ */
     #pricing {
       padding: 7rem 0;
@@ -1159,7 +1162,13 @@
     .col-price-note {
       font-size: .78rem;
       color: var(--w50);
-      margin-bottom: 1rem;
+      margin-bottom: .5rem;
+      line-height: 1.45;
+    }
+    .col-trial {
+      font-size: .75rem;
+      color: var(--blue);
+      margin-bottom: .875rem;
       line-height: 1.45;
     }
     .col-savings {
@@ -1207,7 +1216,7 @@
       box-shadow: 0 8px 24px rgba(245,158,11,.35);
     }
 
-    /* ── Column 3: Pay Over Time (blue/cyan) ── */
+    /* ── Column 3: Monthly Subscription (blue/cyan) ── */
     .col-pay {
       background: rgba(59,130,246,.035);
       padding: 1.75rem;
@@ -1257,6 +1266,64 @@
       font-size: .75rem;
       color: var(--w50);
       line-height: 1.6;
+    }
+
+    .col-roi {
+      font-size: .72rem;
+      color: var(--green);
+      margin-bottom: .75rem;
+      padding: .45rem .75rem;
+      background: rgba(16,185,129,.07);
+      border: 1px solid rgba(16,185,129,.15);
+      border-radius: 8px;
+      line-height: 1.5;
+    }
+    .maint-note {
+      font-size: .72rem;
+      color: var(--w50);
+      margin-bottom: 1rem;
+      padding: .45rem .75rem;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 8px;
+      line-height: 1.5;
+    }
+    .custom-tier-card {
+      max-width: 680px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, rgba(139,92,246,.08) 0%, rgba(59,130,246,.06) 100%);
+      border: 1.5px solid rgba(139,92,246,.25);
+      border-radius: 18px;
+      padding: 3rem 2.5rem;
+      text-align: center;
+    }
+    .custom-tier-card h3 {
+      font-family: var(--display);
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .custom-tier-card p {
+      color: var(--w70);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn-lets-talk {
+      background: linear-gradient(135deg, var(--purple), var(--blue));
+      color: var(--white);
+      font-weight: 700;
+      padding: 1rem 2.5rem;
+      font-size: 1rem;
+      display: inline-flex;
+    }
+    .btn-lets-talk:hover {
+      opacity: .9;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(139,92,246,.4);
     }
 
     .btn-pay {
@@ -1777,6 +1844,56 @@
       .footer-brand { grid-column: span 1; }
       .steps { grid-template-columns: 1fr; }
     }
+
+    /* ── Image / Video Policy ── */
+    .media-policy {
+      max-width: 720px;
+      margin: 3rem auto 0;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      padding: 2rem 2.25rem;
+    }
+    .mp-title {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--w40);
+      margin-bottom: 1.25rem;
+    }
+    .mp-grid { display: flex; flex-direction: column; gap: 0; }
+    .mp-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.6fr;
+      gap: 1rem;
+      padding: .65rem 0;
+      border-bottom: 1px solid rgba(255,255,255,.05);
+      font-size: .88rem;
+      color: var(--w70);
+      align-items: center;
+    }
+    .mp-row:last-child { border-bottom: none; }
+    .mp-head {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--w40);
+      padding-bottom: .5rem;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .mp-plan { font-weight: 600; color: var(--w90); }
+    .mp-enterprise .mp-plan { color: var(--gold); }
+    .mp-none { color: var(--w30); }
+    .mp-note { font-size: .75rem; color: var(--w40); }
+    .mp-overage {
+      margin-top: 1.25rem;
+      font-size: .78rem;
+      color: var(--w40);
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
   </style>
 </head>
 <body>
@@ -1786,7 +1903,7 @@
 ═══════════════════════════════════════════ -->
 <div class="top-banner" id="topBanner">
   <span class="tb-icon">⚡</span>
-  Every stack is built and deployed in <strong>48 hours or less</strong> — guaranteed.
+  Every stack is built and deployed in <strong>48 hours or less</strong> - guaranteed.
   <button class="tb-dismiss" id="tbDismiss" aria-label="Dismiss banner">×</button>
 </div>
 
@@ -1795,7 +1912,7 @@
 ═══════════════════════════════════════════ -->
 <nav id="nav">
   <div class="wrap nav-inner">
-    <a href="#hero" class="nav-logo">BizStack<span class="ai">.ai</span></a>
+    <a href="#hero" class="nav-logo">BizStack<span class="ai">.vip</span></a>
     <ul class="nav-menu">
       <li><a href="#services">Services</a></li>
       <li><a href="#pricing">Pricing</a></li>
@@ -1804,7 +1921,7 @@
       <li><a href="#faq">FAQ</a></li>
     </ul>
     <div class="nav-actions">
-      <a href="assessment.html" class="btn btn-blue">Get Free Assessment →</a>
+      <a href="assessment.html" class="btn btn-blue">Get Your Free AI Assessment →</a>
     </div>
     <button class="hamburger" id="burger" aria-label="Open menu">
       <span></span><span></span><span></span>
@@ -1819,7 +1936,7 @@
   <a href="#how"        class="mm-link">How It Works</a>
   <a href="#results"    class="mm-link">Results</a>
   <a href="#faq"        class="mm-link">FAQ</a>
-  <a href="assessment.html" class="btn btn-blue">Get Free Assessment →</a>
+  <a href="assessment.html" class="btn btn-blue">Get Your Free AI Assessment →</a>
 </div>
 
 <!-- ═══════════════════════════════════════════
@@ -1846,8 +1963,8 @@
     </h1>
 
     <p class="hero-sub">
-      Professional websites, CRM, lead automation, and AI — all in one
-      affordable subscription. Built in 48 hours, not 48 days.
+      Professional websites, CRM, lead automation, and AI - all in one
+      affordable monthly subscription. Own everything after 24 months.
     </p>
 
     <div class="hero-ctas">
@@ -1880,7 +1997,7 @@
 </section>
 
 <!-- ═══════════════════════════════════════════
-     PROBLEM — "SOUND FAMILIAR?"
+     PROBLEM - "SOUND FAMILIAR?"
 ═══════════════════════════════════════════ -->
 <section id="problem">
   <div class="wrap">
@@ -1900,7 +2017,7 @@
           </svg>
         </div>
         <h3>"Your website looks like it was built in 2015."</h3>
-        <p>Slow, outdated, not mobile-friendly — and your competitors just got a shiny new site. First impressions are everything, and right now you're losing customers before they even call.</p>
+        <p>Slow, outdated, not mobile-friendly - and your competitors just got a shiny new site. First impressions are everything, and right now you're losing customers before they even call.</p>
       </div>
 
       <div class="pain-card rev" style="transition-delay:.1s">
@@ -1930,21 +2047,21 @@
     <div class="problem-bridge rev">
       <p class="bridge-eyebrow">There's a better way.</p>
       <h3>One platform. Everything connected. One low monthly price.</h3>
-      <p>BizStack.ai replaces all of it — built, managed, and running in 48 hours or less.</p>
+      <p>BizStack.vip replaces all of it - built, managed, and running in 48 hours or less.</p>
       <a href="#services" class="btn btn-blue">See What's Included →</a>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════
-     SERVICES — ALTERNATING ROWS
+     SERVICES - ALTERNATING ROWS
 ═══════════════════════════════════════════ -->
 <section id="services">
   <div class="wrap">
     <div class="services-head rev">
       <div class="chip center">Our Services</div>
       <h2>One Subscription. Everything You Need.</h2>
-      <p>Every service is built, hosted, and maintained by our team. No tech skills required — ever.</p>
+      <p>Every service is built, hosted, and maintained by our team. No tech skills required - ever.</p>
     </div>
 
     <div class="svc-rows">
@@ -1955,7 +2072,7 @@
           <div class="svc-row-num">01</div>
           <div class="chip">Website Design &amp; Hosting</div>
           <h3>A Website That Actually Wins Business</h3>
-          <p>Your site is your #1 salesperson and it works 24/7. We build fast, modern, mobile-first websites that convert browsers into paying customers — then we host, maintain, and update it for you forever.</p>
+          <p>Your site is your #1 salesperson and it works 24/7. We build fast, modern, mobile-first websites that convert browsers into paying customers - then we host, maintain, and update it for you forever.</p>
           <ul class="svc-bullets">
             <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>5-page to unlimited pages, mobile-responsive design</li>
             <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Hosting, SSL, domain, and free lifetime updates</li>
@@ -2004,7 +2121,7 @@
           <div class="svc-row-num">02</div>
           <div class="chip purple">Lead Capture &amp; CRM</div>
           <h3>Know Every Lead. Miss None of Them.</h3>
-          <p>We build smart lead capture forms, landing pages, and connect them directly to your CRM pipeline — so every lead is tracked, tagged, and ready for follow-up the moment it comes in.</p>
+          <p>We build smart lead capture forms, landing pages, and connect them directly to your CRM pipeline - so every lead is tracked, tagged, and ready for follow-up the moment it comes in.</p>
           <ul class="svc-bullets">
             <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Visual pipeline &amp; deal tracking from 500 to unlimited contacts</li>
             <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Smart forms that capture name, phone, email, and intent</li>
@@ -2054,11 +2171,11 @@
           <div class="svc-row-num">03</div>
           <div class="chip green">Automated Follow-Up</div>
           <h3>Follow Up Like You Have a Full Sales Team</h3>
-          <p>The money is in the follow-up — and most small businesses never do it. We build automated email and SMS sequences that reach out to leads 3, 5, 10+ times on autopilot while you focus on the work you love.</p>
+          <p>The money is in the follow-up - and most small businesses never do it. We build automated email and SMS sequences that reach out to leads 3, 5, 10+ times on autopilot while you focus on the work you love.</p>
           <ul class="svc-bullets">
             <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Email &amp; SMS sequences triggered by lead behavior</li>
             <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Appointment reminders, re-engagement, and review requests</li>
-            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Written by our team — personalized, on-brand, ready to send</li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Written by our team - personalized, on-brand, ready to send</li>
           </ul>
           <a href="#pricing" class="svc-link" style="color:var(--green)">Included in Growth+ →</a>
         </div>
@@ -2105,13 +2222,13 @@
       <div class="svc-row">
         <div class="svc-text rev-right">
           <div class="svc-row-num">04</div>
-          <div class="chip purple">AI Chatbot &amp; Voice Agent</div>
-          <h3>Answer Every Lead. Even at 2am.</h3>
-          <p>Your AI chatbot lives on your website, qualifies leads, answers questions, and books appointments — 24/7 without a salary. Upgrade to the voice agent and your AI actually answers phone calls too.</p>
+          <div class="chip purple">AI Chatbot - 24/7 Lead Capture</div>
+          <h3>Capture Every Lead. Even at 2am.</h3>
+          <p>A text-based AI chatbot lives on your website and works around the clock - answering questions, qualifying leads, and capturing contact info so no inquiry slips through after hours.</p>
           <ul class="svc-bullets">
             <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Website chatbot trained on your business and services</li>
-            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Qualifies leads, answers FAQs, and books appointments automatically</li>
-            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>AI voice agent answers inbound calls (Enterprise tier)</li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Qualifies leads, answers FAQs, and captures contact info automatically</li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Handles after-hours inquiries so your pipeline never goes cold</li>
           </ul>
           <a href="#pricing" class="svc-link" style="color:var(--purple)">Included in Scale+ →</a>
         </div>
@@ -2148,11 +2265,11 @@
           <div class="svc-row-num">05</div>
           <div class="chip gold">Payment Processing</div>
           <h3>Get Paid Faster. Look More Professional.</h3>
-          <p>Online invoicing, recurring billing, and a branded payment page — all connected to your CRM so you know exactly who has paid and who hasn't. No more chasing checks or playing phone tag.</p>
+          <p>Online invoicing, recurring billing, and a branded payment page - all connected to your CRM so you know exactly who has paid and who hasn't. No more chasing checks or playing phone tag.</p>
           <ul class="svc-bullets">
             <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Online invoicing with automatic payment reminders</li>
             <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Recurring subscriptions and payment plans for your clients</li>
-            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Syncs directly with your CRM — no manual bookkeeping</li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Syncs directly with your CRM - no manual bookkeeping</li>
           </ul>
           <a href="#pricing" class="svc-link" style="color:var(--gold)">Included in Growth+ →</a>
         </div>
@@ -2190,7 +2307,7 @@
           <div class="svc-row-num">06</div>
           <div class="chip green">Marketing &amp; Content</div>
           <h3>Show Up Online. Every Single Week.</h3>
-          <p>Consistent content is how you win the long game. Our team writes your blog posts, social media captions, and manages your Google Business Profile — so you stay visible without spending hours on it yourself.</p>
+          <p>Consistent content is how you win the long game. Our team writes your blog posts, social media captions, and manages your Google Business Profile - so you stay visible without spending hours on it yourself.</p>
           <ul class="svc-bullets">
             <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>2–4 SEO blog posts per month written for your business</li>
             <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Social media captions &amp; Google Business Profile management</li>
@@ -2234,7 +2351,7 @@
           <div class="svc-row-num">07</div>
           <div class="chip orange">Newsletter &amp; Email Marketing</div>
           <h3>Stay Top of Mind. Every Single Week.</h3>
-          <p>We research, write, design, and send branded newsletters and email campaigns for your business — complete with AI-generated infographics and professional formatting. Your clients stay engaged, your brand stays visible, and you never have to write a single word.</p>
+          <p>We research, write, design, and send branded newsletters and email campaigns for your business - complete with AI-generated infographics and professional formatting. Your clients stay engaged, your brand stays visible, and you never have to write a single word.</p>
           <ul class="svc-bullets">
             <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Branded newsletter designed to match your business identity</li>
             <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>AI-researched content with data-backed insights for your industry</li>
@@ -2286,11 +2403,11 @@
           <div class="svc-row-num">08</div>
           <div class="chip cyan">Workflow &amp; Process Automation</div>
           <h3>Stop Doing Repetitive Work. Let Your Systems Handle It.</h3>
-          <p>We identify the repetitive, manual processes eating your time — then build automated workflows that handle them 24/7. From invoice generation to lead routing to appointment reminders, if it's a process you do more than twice, we automate it.</p>
+          <p>We identify the repetitive, manual processes eating your time - then build automated workflows that handle them 24/7. From invoice generation to lead routing to appointment reminders, if it's a process you do more than twice, we automate it.</p>
           <ul class="svc-bullets">
             <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Custom automated workflows tailored to your business operations</li>
             <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Connects your existing tools (email, calendar, CRM, payments)</li>
-            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Runs 24/7 in the background — no manual intervention needed</li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Runs 24/7 in the background - no manual intervention needed</li>
             <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Up to 3 custom workflows (Scale), unlimited (Enterprise)</li>
           </ul>
           <a href="#pricing" class="svc-link" style="color:var(--cyan)">Included in Scale+ →</a>
@@ -2335,14 +2452,14 @@
       <div class="svc-row">
         <div class="svc-text rev-left">
           <div class="svc-row-num">09</div>
-          <div class="chip gold">AI Voice Agent</div>
-          <h3>Never Miss a Call. Even at 3am.</h3>
-          <p>Your AI voice agent answers inbound phone calls, qualifies leads, answers frequently asked questions, and books appointments — all in a natural, conversational voice customized to your brand. It's like hiring a receptionist that never sleeps, never calls in sick, and never puts anyone on hold.</p>
+          <div class="chip gold">AI Phone Agent - Inbound &amp; Outbound Calls</div>
+          <h3>A Receptionist That Never Sleeps.</h3>
+          <p>Voice-based AI that answers inbound calls, makes outbound follow-up calls, books appointments, and handles phone inquiries - all in a natural human voice. Powered by VAPI and ElevenLabs.</p>
           <ul class="svc-bullets">
-            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Natural-sounding AI voice trained on your business and services</li>
-            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Handles inbound calls: qualifies leads, answers FAQs, books appointments</li>
-            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Transfers to a live person when the situation requires it</li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Answers inbound calls and handles inquiries with a natural human voice</li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Makes outbound follow-up calls and books appointments automatically</li>
             <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Works 24/7/365 with call recordings and transcripts available</li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Transfers to a live person when the situation requires it</li>
           </ul>
           <a href="#pricing" class="svc-link" style="color:var(--gold)">Enterprise Only →</a>
         </div>
@@ -2400,12 +2517,12 @@
           <div class="svc-row-num">10</div>
           <div class="chip purple">Custom Integrations &amp; Analytics</div>
           <h3>See Everything. Connect Everything.</h3>
-          <p>We connect your existing business tools into one unified system and build custom analytics dashboards so you can see exactly what's working, what's not, and where your revenue is coming from — all in one place. No more logging into 6 different apps to figure out how your business is doing.</p>
+          <p>We connect your existing business tools into one unified system and build custom analytics dashboards so you can see exactly what's working, what's not, and where your revenue is coming from - all in one place. No more logging into 6 different apps to figure out how your business is doing.</p>
           <ul class="svc-bullets">
             <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Connect any third-party tools you're already using (QuickBooks, Calendly, Mailchimp, etc.)</li>
             <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Custom analytics dashboard showing leads, revenue, conversion rates, and more</li>
-            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Automated reporting — delivered to your inbox weekly or monthly</li>
-            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Full data ownership — export everything anytime</li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Automated reporting - delivered to your inbox weekly or monthly</li>
+            <li><svg class="bcheck" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-opacity=".3"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Full data ownership - export everything anytime</li>
           </ul>
           <a href="#pricing" class="svc-link" style="color:var(--purple)">Enterprise Only (Custom Integrations) →</a>
         </div>
@@ -2453,7 +2570,7 @@
 </section>
 
 <!-- ═══════════════════════════════════════════
-     PRICING — TRANSPARENT 3-COLUMN MODEL
+     PRICING - TRANSPARENT 3-COLUMN MODEL
 ═══════════════════════════════════════════ -->
 <section id="pricing">
   <div class="wrap">
@@ -2484,6 +2601,11 @@
         <span class="tt-pop">&nbsp;</span>
         <span class="tt-name">Enterprise</span>
         <span class="tt-price">$999+/mo</span>
+      </button>
+      <button class="tier-tab" data-tier="4">
+        <span class="tt-pop">&nbsp;</span>
+        <span class="tt-name">Custom</span>
+        <span class="tt-price">Let's Talk</span>
       </button>
     </div>
 
@@ -2516,36 +2638,39 @@
           <div class="best-badge">★ Best Value</div>
           <div class="col-tag">Own It Outright</div>
           <div class="col-title">One-Time Investment</div>
-          <div class="col-sub">We build, deploy, and hand it to you — you own everything from Day 1</div>
+          <div class="col-sub">We build, deploy, and hand it to you - you own everything from Day 1</div>
           <div class="col-price-big">$2,999</div>
           <div class="col-price-note">one-time · no recurring fees</div>
           <div class="col-savings">✓ You save $2,151 – $7,001+ vs. retail Year 1</div>
           <ul class="col-includes">
             <li><span class="ci-check">•</span> Full build, config &amp; deployment in 48 hours</li>
             <li><span class="ci-check">•</span> 90 days of managed support post-launch</li>
-            <li><span class="ci-check">•</span> All source files &amp; credentials — yours forever</li>
-            <li><span class="ci-check">•</span> Domain, hosting account, CRM data — all in your name</li>
+            <li><span class="ci-check">•</span> All source files &amp; credentials - yours forever</li>
+            <li><span class="ci-check">•</span> Domain, hosting account, CRM data - all in your name</li>
             <li><span class="ci-check">•</span> Migration guide included if you ever switch providers</li>
-            <li><span class="ci-check">•</span> You own it all from Day 1 — no strings attached</li>
+            <li><span class="ci-check">•</span> You own it all from Day 1 - no strings attached</li>
           </ul>
           <a href="assessment.html" class="btn btn-gold btn-lg">Get Started →</a>
         </div>
-        <!-- Column 3: Pay Over Time -->
+        <!-- Column 3: Monthly Subscription -->
         <div class="col-pay">
           <div class="flex-badge">★ Most Flexible</div>
-          <div class="col-tag">Pay Over Time</div>
+          <div class="col-tag">Monthly Subscription</div>
           <div class="col-title">Same Build, Spread Out</div>
-          <div class="col-sub">Identical complete build as Column 2 — split into 36 interest-free monthly payments</div>
+          <div class="col-sub">Identical complete build as Column 2 - split into 24 interest-free monthly payments</div>
           <div class="col-price-big">$99<span class="price-mo">/mo</span></div>
-          <div class="col-price-note">× 36 months = $3,564 total · $0 interest · $0 setup fees</div>
+          <div class="col-price-note">Own everything in 24 months · $0 interest · $0 setup fees</div>
+          <div class="col-roi">💰 Replaces $400–$850/mo in freelancer &amp; tool costs - save $300–$750/mo vs piecemeal</div>
+          <div class="col-trial">🔒 Try free for 30 days - cancel anytime, no questions asked.</div>
           <div class="col-savings" style="background:rgba(59,130,246,.08);border-color:rgba(59,130,246,.18);color:var(--blue)">⚡ Up and running in 48 hours</div>
           <ul class="col-includes" style="margin-top:.75rem">
             <li><span class="ci-check" style="color:var(--blue)">•</span> Includes ongoing updates &amp; support while subscribed</li>
-            <li><span class="ci-check" style="color:var(--blue)">•</span> No contract — cancel anytime, no penalties</li>
+            <li><span class="ci-check" style="color:var(--blue)">•</span> No contract - cancel anytime, no penalties</li>
           </ul>
+          <div class="maint-note">🛡️ After 24 months, stay protected for just $49/mo</div>
           <div class="cancel-box">
             <div class="cancel-box-title">If you cancel:</div>
-            <div class="cancel-box-body">Pay the remaining balance to keep everything, OR simply stop and lose access at the end of your billing period. Either way, we package up all your files and credentials — free of charge.</div>
+            <div class="cancel-box-body">Pay the remaining balance to keep everything, OR simply stop and lose access at the end of your billing period. Either way, we package up all your files and credentials - free of charge.</div>
           </div>
           <a href="assessment.html" class="btn btn-pay btn-lg">Get Started →</a>
         </div>
@@ -2582,35 +2707,38 @@
           <div class="best-badge">★ Best Value</div>
           <div class="col-tag">Own It Outright</div>
           <div class="col-title">One-Time Investment</div>
-          <div class="col-sub">We build, deploy, and hand it to you — you own everything from Day 1</div>
+          <div class="col-sub">We build, deploy, and hand it to you - you own everything from Day 1</div>
           <div class="col-price-big">$7,499</div>
           <div class="col-price-note">one-time · no recurring fees</div>
           <div class="col-savings">✓ You save $10,731 – $40,901+ vs. retail Year 1</div>
           <ul class="col-includes">
             <li><span class="ci-check">•</span> Full Growth stack built &amp; deployed in 48 hours</li>
             <li><span class="ci-check">•</span> 90 days of managed support post-launch</li>
-            <li><span class="ci-check">•</span> All source files &amp; credentials — yours forever</li>
-            <li><span class="ci-check">•</span> All automations, sequences, and CRM — in your account</li>
+            <li><span class="ci-check">•</span> All source files &amp; credentials - yours forever</li>
+            <li><span class="ci-check">•</span> All automations, sequences, and CRM - in your account</li>
             <li><span class="ci-check">•</span> Migration guide included if you ever switch providers</li>
-            <li><span class="ci-check">•</span> You own it all from Day 1 — no strings attached</li>
+            <li><span class="ci-check">•</span> You own it all from Day 1 - no strings attached</li>
           </ul>
           <a href="assessment.html" class="btn btn-gold btn-lg">Get Started →</a>
         </div>
         <div class="col-pay">
           <div class="flex-badge">★ Most Flexible</div>
-          <div class="col-tag">Pay Over Time</div>
+          <div class="col-tag">Monthly Subscription</div>
           <div class="col-title">Same Build, Spread Out</div>
-          <div class="col-sub">Identical complete build as Column 2 — split into 36 interest-free monthly payments</div>
+          <div class="col-sub">Identical complete build as Column 2 - split into 24 interest-free monthly payments</div>
           <div class="col-price-big">$299<span class="price-mo">/mo</span></div>
-          <div class="col-price-note">× 36 months = $10,764 total · $0 interest · $0 setup fees</div>
+          <div class="col-price-note">Own everything in 24 months · $0 interest · $0 setup fees</div>
+          <div class="col-roi">💰 Replaces $1,500–$4,000/mo in agency &amp; staff costs - save $1,200–$3,700/mo</div>
+          <div class="col-trial">🔒 Try free for 30 days - cancel anytime, no questions asked.</div>
           <div class="col-savings" style="background:rgba(59,130,246,.08);border-color:rgba(59,130,246,.18);color:var(--blue)">⚡ Up and running in 48 hours</div>
           <ul class="col-includes" style="margin-top:.75rem">
             <li><span class="ci-check" style="color:var(--blue)">•</span> Includes ongoing updates &amp; support while subscribed</li>
-            <li><span class="ci-check" style="color:var(--blue)">•</span> No contract — cancel anytime, no penalties</li>
+            <li><span class="ci-check" style="color:var(--blue)">•</span> No contract - cancel anytime, no penalties</li>
           </ul>
+          <div class="maint-note">🛡️ After 24 months, stay protected for just $99/mo</div>
           <div class="cancel-box">
             <div class="cancel-box-title">If you cancel:</div>
-            <div class="cancel-box-body">Pay the remaining balance to keep everything, OR simply stop and lose access at the end of your billing period. Either way, we package up all your files and credentials — free of charge.</div>
+            <div class="cancel-box-body">Pay the remaining balance to keep everything, OR simply stop and lose access at the end of your billing period. Either way, we package up all your files and credentials - free of charge.</div>
           </div>
           <a href="assessment.html" class="btn btn-pay btn-lg">Get Started →</a>
         </div>
@@ -2647,7 +2775,7 @@
           <div class="best-badge">★ Best Value</div>
           <div class="col-tag">Own It Outright</div>
           <div class="col-title">One-Time Investment</div>
-          <div class="col-sub">We build, deploy, and hand it to you — you own everything from Day 1</div>
+          <div class="col-sub">We build, deploy, and hand it to you - you own everything from Day 1</div>
           <div class="col-price-big">$14,999</div>
           <div class="col-price-note">one-time · no recurring fees</div>
           <div class="col-savings">✓ You save $46,831 – $155,901+ vs. retail Year 1</div>
@@ -2657,25 +2785,28 @@
             <li><span class="ci-check">•</span> All source files, AI training data &amp; credentials</li>
             <li><span class="ci-check">•</span> Full ad account access &amp; campaign history</li>
             <li><span class="ci-check">•</span> Migration guide included if you ever switch providers</li>
-            <li><span class="ci-check">•</span> You own it all from Day 1 — no strings attached</li>
+            <li><span class="ci-check">•</span> You own it all from Day 1 - no strings attached</li>
           </ul>
           <a href="assessment.html" class="btn btn-gold btn-lg">Get Started →</a>
         </div>
         <div class="col-pay">
           <div class="flex-badge">★ Most Flexible</div>
-          <div class="col-tag">Pay Over Time</div>
+          <div class="col-tag">Monthly Subscription</div>
           <div class="col-title">Same Build, Spread Out</div>
-          <div class="col-sub">Identical complete build as Column 2 — split into 36 interest-free monthly payments</div>
+          <div class="col-sub">Identical complete build as Column 2 - split into 24 interest-free monthly payments</div>
           <div class="col-price-big">$499<span class="price-mo">/mo</span></div>
-          <div class="col-price-note">× 36 months = $17,964 total · $0 interest · $0 setup fees</div>
+          <div class="col-price-note">Own everything in 24 months · $0 interest · $0 setup fees</div>
+          <div class="col-roi">💰 Replaces $5,000–$14,000/mo in agency, ads &amp; team costs - save $4,500–$13,500/mo</div>
+          <div class="col-trial">🔒 Try free for 30 days - cancel anytime, no questions asked.</div>
           <div class="col-savings" style="background:rgba(59,130,246,.08);border-color:rgba(59,130,246,.18);color:var(--blue)">⚡ Up and running in 48 hours</div>
           <ul class="col-includes" style="margin-top:.75rem">
             <li><span class="ci-check" style="color:var(--blue)">•</span> Includes ongoing updates &amp; support while subscribed</li>
-            <li><span class="ci-check" style="color:var(--blue)">•</span> No contract — cancel anytime, no penalties</li>
+            <li><span class="ci-check" style="color:var(--blue)">•</span> No contract - cancel anytime, no penalties</li>
           </ul>
+          <div class="maint-note">🛡️ After 24 months, stay protected for just $149/mo</div>
           <div class="cancel-box">
             <div class="cancel-box-title">If you cancel:</div>
-            <div class="cancel-box-body">Pay the remaining balance to keep everything, OR simply stop and lose access at the end of your billing period. Either way, we package up all your files and credentials — free of charge.</div>
+            <div class="cancel-box-body">Pay the remaining balance to keep everything, OR simply stop and lose access at the end of your billing period. Either way, we package up all your files and credentials - free of charge.</div>
           </div>
           <a href="assessment.html" class="btn btn-pay btn-lg">Get Started →</a>
         </div>
@@ -2709,38 +2840,52 @@
           <div class="best-badge">★ Best Value</div>
           <div class="col-tag">Own It Outright</div>
           <div class="col-title">One-Time Investment</div>
-          <div class="col-sub">We build, deploy, and hand it to you — you own everything from Day 1</div>
+          <div class="col-sub">We build, deploy, and hand it to you - you own everything from Day 1</div>
           <div class="col-price-big">$29,999<span class="price-mo">+</span></div>
           <div class="col-price-note">custom quote · no recurring fees · fully bespoke</div>
           <div class="col-savings">✓ You save $80,831 – $317,901+ vs. retail Year 1</div>
           <ul class="col-includes">
-            <li><span class="ci-check">•</span> Full Enterprise stack — completely custom-built</li>
+            <li><span class="ci-check">•</span> Full Enterprise stack - completely custom-built</li>
             <li><span class="ci-check">•</span> AI voice agent + all integrations configured</li>
             <li><span class="ci-check">•</span> 90 days of dedicated onboarding support</li>
-            <li><span class="ci-check">•</span> All source files, API keys, AI models — yours forever</li>
+            <li><span class="ci-check">•</span> All source files, API keys, AI models - yours forever</li>
             <li><span class="ci-check">•</span> Migration documentation for any future transition</li>
-            <li><span class="ci-check">•</span> You own it all from Day 1 — no strings attached</li>
+            <li><span class="ci-check">•</span> You own it all from Day 1 - no strings attached</li>
           </ul>
           <a href="assessment.html" class="btn btn-gold btn-lg">Let's Talk →</a>
         </div>
         <div class="col-pay">
           <div class="flex-badge">★ Most Flexible</div>
-          <div class="col-tag">Pay Over Time</div>
+          <div class="col-tag">Monthly Subscription</div>
           <div class="col-title">Same Build, Spread Out</div>
-          <div class="col-sub">Identical complete build as Column 2 — split into 36 interest-free monthly payments</div>
+          <div class="col-sub">Identical complete build as Column 2 - split into 24 interest-free monthly payments</div>
           <div class="col-price-big">$999<span class="price-mo">+/mo</span></div>
-          <div class="col-price-note">starting price × 36 months = $35,964+ · $0 interest · $0 setup fees</div>
+          <div class="col-price-note">Own everything in 24 months · $0 interest · $0 setup fees</div>
+          <div class="col-roi">💰 Replaces $9,000–$29,000/mo in department &amp; agency costs - save $8,000–$28,000/mo</div>
+          <div class="col-trial">🔒 Try free for 30 days - cancel anytime, no questions asked.</div>
           <div class="col-savings" style="background:rgba(59,130,246,.08);border-color:rgba(59,130,246,.18);color:var(--blue)">⚡ Up and running in 48 hours</div>
           <ul class="col-includes" style="margin-top:.75rem">
             <li><span class="ci-check" style="color:var(--blue)">•</span> Includes ongoing updates &amp; dedicated support</li>
-            <li><span class="ci-check" style="color:var(--blue)">•</span> No contract — cancel anytime, no penalties</li>
+            <li><span class="ci-check" style="color:var(--blue)">•</span> No contract - cancel anytime, no penalties</li>
           </ul>
+          <div class="maint-note">🛡️ After 24 months, stay protected for just $149/mo</div>
           <div class="cancel-box">
             <div class="cancel-box-title">If you cancel:</div>
-            <div class="cancel-box-body">Pay the remaining balance to keep everything, OR simply stop and lose access at the end of your billing period. Either way, we package up all your files and credentials — free of charge.</div>
+            <div class="cancel-box-body">Pay the remaining balance to keep everything, OR simply stop and lose access at the end of your billing period. Either way, we package up all your files and credentials - free of charge.</div>
           </div>
           <a href="assessment.html" class="btn btn-pay btn-lg">Let's Talk →</a>
         </div>
+      </div>
+    </div>
+
+    <!-- ── CUSTOM TABLE ── -->
+    <div class="price-table rev" id="pt-4">
+      <div class="custom-tier-card">
+        <div class="tt-pop" style="display:inline-block;background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.25);color:var(--purple);border-radius:100px;padding:.3rem .9rem;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.5rem;">✦ Fully Custom</div>
+        <h3>Need something bigger?</h3>
+        <p>Get a custom quote tailored to your business. Whether you need multi-location infrastructure, white-label systems, or an entire AI department - we'll scope and build it from scratch.</p>
+        <a href="mailto:hello@bizstack.vip?subject=Custom Plan Inquiry" class="btn btn-lets-talk btn-lg">Let's Talk →</a>
+        <div style="margin-top:1.5rem;font-size:.8rem;color:var(--w40)">No commitment required. We'll respond within one business day.</div>
       </div>
     </div>
 
@@ -2749,7 +2894,7 @@
       <div class="pt-trust-item">
         <div class="pt-trust-icon">🔓</div>
         <div class="pt-trust-title">You Own Everything</div>
-        <div class="pt-trust-desc">Every file, every login, every credential — yours from Day 1. No hostage situations. Ever.</div>
+        <div class="pt-trust-desc">Every file, every login, every credential - yours from Day 1. No hostage situations. Ever.</div>
       </div>
       <div class="pt-trust-item">
         <div class="pt-trust-icon">⚡</div>
@@ -2767,13 +2912,44 @@
     <div class="no-fine-print rev">
       <div class="nfp-title">Our Promise: No Contracts. No Setup Fees. No Surprises.</div>
       <ul class="nfp-list">
-        <li><span class="nfp-arrow">→</span> Cancel your monthly plan anytime — no penalties, no guilt trips</li>
+        <li><span class="nfp-arrow">→</span> Cancel your monthly plan anytime - no penalties, no guilt trips</li>
         <li><span class="nfp-arrow">→</span> Pay the remaining balance to keep everything you've built, OR</li>
         <li><span class="nfp-arrow">→</span> Walk away and lose access at the end of your billing period</li>
-        <li><span class="nfp-arrow">→</span> We export all your data, files, and credentials — free of charge</li>
+        <li><span class="nfp-arrow">→</span> We export all your data, files, and credentials - free of charge</li>
         <li><span class="nfp-arrow">→</span> We even include a migration guide so your next provider can pick up where we left off</li>
       </ul>
       <div class="nfp-note">We'd rather earn your business every month by being genuinely excellent than trap you with fine print.</div>
+    </div>
+
+    <!-- Image / Video Policy -->
+    <div class="media-policy rev">
+      <div class="mp-title">Images &amp; Video Included Per Month</div>
+      <div class="mp-grid">
+        <div class="mp-row mp-head">
+          <div>Plan</div><div>Images</div><div>Video</div>
+        </div>
+        <div class="mp-row">
+          <div class="mp-plan">Starter</div>
+          <div>20 images</div>
+          <div class="mp-none">Not included</div>
+        </div>
+        <div class="mp-row">
+          <div class="mp-plan">Growth</div>
+          <div>50 images</div>
+          <div class="mp-none">Not included</div>
+        </div>
+        <div class="mp-row">
+          <div class="mp-plan">Scale</div>
+          <div>100 images</div>
+          <div>4 clips/mo &nbsp;<span class="mp-note">60s max · 3-day turnaround</span></div>
+        </div>
+        <div class="mp-row mp-enterprise">
+          <div class="mp-plan">Enterprise</div>
+          <div>Unlimited</div>
+          <div>Unlimited</div>
+        </div>
+      </div>
+      <div class="mp-overage">Need more? &nbsp;+$5 per 10 extra images &nbsp;·&nbsp; +$25 per extra video clip</div>
     </div>
 
   </div>
@@ -2806,7 +2982,7 @@
       <div class="step">
         <div class="step-circle">3</div>
         <h3>You Review &amp; Approve</h3>
-        <p>We send you a private preview link. You review everything, request any changes, and we iterate fast — usually within the same business day. Your input, your brand.</p>
+        <p>We send you a private preview link. You review everything, request any changes, and we iterate fast - usually within the same business day. Your input, your brand.</p>
         <span class="step-tag">Same day revisions</span>
       </div>
       <div class="step">
@@ -2912,7 +3088,7 @@
     <div class="assess-inner rev">
       <div class="chip center purple">Free Assessment</div>
       <h2>Not Sure Which Plan You Need?</h2>
-      <p>Take our free 3-minute business assessment. We'll analyze your current setup, identify your biggest gaps, and recommend the perfect plan — no pressure, no commitment, no sales call required.</p>
+      <p>Take our free 3-minute business assessment. We'll analyze your current setup, identify your biggest gaps, and recommend the perfect plan - no pressure, no commitment, no sales call required.</p>
       <a href="assessment.html" class="btn btn-gradient btn-lg">Start Your Free Assessment →</a>
       <p class="assess-note">Takes less than 3 minutes. Your custom recommendation is instant.</p>
     </div>
@@ -2927,7 +3103,7 @@
     <div class="faq-head rev">
       <div class="chip center">FAQ</div>
       <h2>Questions? We've Got Answers.</h2>
-      <p>Straight talk. No jargon. If you still have questions, email us at hello@bizstack.ai</p>
+      <p>Straight talk. No jargon. If you still have questions, email us at hello@bizstack.vip</p>
     </div>
 
     <div class="wrap-narrow">
@@ -2940,7 +3116,7 @@
           </button>
           <div class="faq-body">
             <div class="faq-body-inner">
-              The Starter plan includes a professionally designed, 5-page mobile-responsive website, hosting, SSL, domain connection, a contact form that emails you in real-time, Google Analytics setup, and a basic CRM to manage up to 500 contacts. You get everything a small business needs to have a credible, functional online presence — without the $3,000–$5,000 upfront agency fee. We build it, we host it, we maintain it.
+              The Starter plan includes a professionally designed, 5-page mobile-responsive website, hosting, SSL, domain connection, a contact form that emails you in real-time, Google Analytics setup, and a basic CRM to manage up to 500 contacts. You get everything a small business needs to have a credible, functional online presence - without the $3,000–$5,000 upfront agency fee. We build it, we host it, we maintain it.
             </div>
           </div>
         </div>
@@ -2952,7 +3128,7 @@
           </button>
           <div class="faq-body">
             <div class="faq-body-inner">
-              Seriously fast. After you complete your onboarding assessment (5 minutes), our team gets to work immediately. Most websites are fully built and live within 48 hours. Complex sites with custom features may take 3–5 business days. We've built a plumber's website, connected it to their CRM, and had automated follow-up sequences running — all in the same week. Speed is not a marketing claim. It's how we operate.
+              Seriously fast. After you complete your onboarding assessment (5 minutes), our team gets to work immediately. Most websites are fully built and live within 48 hours. Complex sites with custom features may take 3–5 business days. We've built a plumber's website, connected it to their CRM, and had automated follow-up sequences running - all in the same week. Speed is not a marketing claim. It's how we operate.
             </div>
           </div>
         </div>
@@ -2964,7 +3140,7 @@
           </button>
           <div class="faq-body">
             <div class="faq-body-inner">
-              Not even a little bit. If you can send an email and describe your business, you can work with BizStack.ai. We handle every technical detail — hosting, domains, SSL certificates, DNS records, CRM configuration, automation workflows, AI chatbot training, and more. You tell us what you need, you approve the final product, and we handle everything under the hood. Our clients range from 24-year-old e-commerce owners to 65-year-old contractors who've never logged into a CRM in their lives. They all love it.
+              Not even a little bit. If you can send an email and describe your business, you can work with BizStack.vip. We handle every technical detail - hosting, domains, SSL certificates, DNS records, CRM configuration, automation workflows, AI chatbot training, and more. You tell us what you need, you approve the final product, and we handle everything under the hood. Our clients range from 24-year-old e-commerce owners to 65-year-old contractors who've never logged into a CRM in their lives. They all love it.
             </div>
           </div>
         </div>
@@ -2976,7 +3152,7 @@
           </button>
           <div class="faq-body">
             <div class="faq-body-inner">
-              If you're on the monthly plan, you can cancel anytime with zero penalties. You have two options: (1) Pay the remaining balance on your technology stack and keep everything — every file, every login, every piece of your system becomes fully yours. Or (2) Simply stop paying and lose access at the end of your current billing period. Either way, we export all your data, package up your files and credentials, and include a migration guide so your next provider can pick up exactly where we left off. We never hold your business hostage.
+              If you're on the monthly subscription, you can cancel anytime with zero penalties. You have two options: (1) Pay the remaining balance on your technology stack and keep everything - every file, every login, every piece of your system becomes fully yours. Most clients own it all within 24 months. Or (2) Simply stop paying and lose access at the end of your current billing period. Either way, we export all your data, package up your files and credentials, and include a migration guide so your next provider can pick up exactly where we left off. We never hold your business hostage.
             </div>
           </div>
         </div>
@@ -2988,19 +3164,19 @@
           </button>
           <div class="faq-body">
             <div class="faq-body-inner">
-              Absolutely. You can change your plan at any time through your dashboard. Upgrades take effect immediately and we begin building your new features right away. Downgrades take effect at the start of your next billing cycle. We prorate everything so you're never double-paying. And if you're not sure which plan to upgrade to, just email your account manager — that's literally what they're there for.
+              Absolutely. You can move between tiers anytime - upgrade when you need more firepower, scale back if things slow down. No penalties, no waiting periods. Your system adjusts with your business.
             </div>
           </div>
         </div>
 
         <div class="faq-item rev">
           <button class="faq-q" aria-expanded="false">
-            Do you work with businesses outside of Texas?
+            Do you work with businesses outside of California?
             <svg class="faq-icon" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </button>
           <div class="faq-body">
             <div class="faq-body-inner">
-              Yes — we're headquartered in Texas but we serve small businesses across all 50 states. The vast majority of our work is done remotely, so location is never a limitation. We've built websites and systems for businesses from California to Florida to New York. If you're outside the US, reach out and we'll let you know on a case-by-case basis. Send a message to hello@bizstack.ai and we'll get back to you within one business day.
+              Yes - we're headquartered in Los Angeles but we serve small businesses across all 50 states. The vast majority of our work is done remotely, so location is never a limitation. We've built websites and systems for businesses from New York to Florida to Texas. If you're outside the US, reach out and we'll let you know on a case-by-case basis. Send a message to hello@bizstack.vip and we'll get back to you within one business day.
             </div>
           </div>
         </div>
@@ -3012,7 +3188,31 @@
           </button>
           <div class="faq-body">
             <div class="faq-body-inner">
-              Squarespace and Wix are DIY tools — great if you have 40+ hours and enjoy learning software. BizStack.ai is a done-for-you service. We build it, host it, update it, and make it actually generate business for you. But the bigger difference? We don't just build websites. We connect your website to a real CRM, automated follow-up, AI tools, payment processing, and content marketing. Squarespace is a blank canvas. BizStack is a complete revenue engine. You're not buying software. You're buying a team that wants your business to grow.
+              Squarespace and Wix are DIY tools - great if you have 40+ hours and enjoy learning software. BizStack.vip is a done-for-you service. We build it, host it, update it, and make it actually generate business for you. But the bigger difference? We don't just build websites. We connect your website to a real CRM, automated follow-up, AI tools, payment processing, and content marketing. Squarespace is a blank canvas. BizStack is a complete revenue engine. You're not buying software. You're buying a team that wants your business to grow.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item rev">
+          <button class="faq-q" aria-expanded="false">
+            Can I see the code and automations running my system?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq-body">
+            <div class="faq-body-inner">
+              We handle everything under the hood so you never have to touch code or think about tech. That said, it's your system - not ours. Once you complete your plan, every file, every login, and every piece of your system gets handed directly to you. You'll have full access to everything. We're not hiding it. We just don't make you deal with it.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item rev">
+          <button class="faq-q" aria-expanded="false">
+            What happens after I finish my 24-month plan?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq-body">
+            <div class="faq-body-inner">
+              You own everything outright - no strings, no asterisks. Most clients choose to stay on our maintenance plan ($49–$149/mo) so they never have to think about hosting, security, or updates again. But that's entirely your call. You've paid for the thing. It belongs to you.
             </div>
           </div>
         </div>
@@ -3029,7 +3229,7 @@
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="#hero" class="nav-logo">BizStack<span class="ai">.ai</span></a>
+        <a href="#hero" class="nav-logo">BizStack<span class="ai">.vip</span></a>
         <p>Everything your business needs to run better. Built for small business owners who are tired of overpaying for tech that doesn't work together.</p>
       </div>
       <div class="footer-col">
@@ -3037,7 +3237,7 @@
         <ul>
           <li><a href="#">About Us</a></li>
           <li><a href="#">Careers</a></li>
-          <li><a href="mailto:hello@bizstack.ai">Contact</a></li>
+          <li><a href="mailto:hello@bizstack.vip">Contact</a></li>
           <li><a href="#">Partner Program</a></li>
         </ul>
       </div>
@@ -3076,7 +3276,7 @@
     </div>
 
     <div class="footer-bottom">
-      <p>© 2026 BizStack.ai — Everything your business needs to run better. &nbsp;·&nbsp; <a href="mailto:hello@bizstack.ai" style="color:var(--w50)">hello@bizstack.ai</a></p>
+      <p>© 2026 BizStack.vip - Everything your business needs to run better. &nbsp;·&nbsp; <a href="mailto:hello@bizstack.vip" style="color:var(--w50)">hello@bizstack.vip</a></p>
       <div class="social-row">
         <a href="#" class="social-link" aria-label="LinkedIn">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zm-5 3h-2.5A1.5 1.5 0 0010 7.5V9H8v2.5h2V19h2.5v-7.5H15l.5-2.5h-2.5V7.75c0-.414.336-.75.75-.75H15V6z"/></svg>
@@ -3126,7 +3326,7 @@ try {
 } catch(e) {}
 
 /* ═══════════════════════════════════════════
-   NAV — SCROLL SOLID + HAMBURGER
+   NAV - SCROLL SOLID + HAMBURGER
 ═══════════════════════════════════════════ */
 const nav    = document.getElementById('nav');
 const burger = document.getElementById('burger');
@@ -3168,7 +3368,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 });
 
 /* ═══════════════════════════════════════════
-   PARALLAX — HERO (bg base drifts on scroll)
+   PARALLAX - HERO (bg base drifts on scroll)
 ═══════════════════════════════════════════ */
 const heroBgBase = document.querySelector('.hero-bg-base');
 window.addEventListener('scroll', () => {
