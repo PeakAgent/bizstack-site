@@ -471,14 +471,37 @@
     }
     .btn-back {
       background: transparent;
-      color: var(--w50);
-      border: 1.5px solid var(--w10);
-      padding: .8rem 1.25rem;
+      border: none;
+      color: var(--w40);
+      font-family: var(--body);
+      font-size: .83rem;
+      font-weight: 500;
+      cursor: pointer;
+      padding: .35rem 0;
       flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: .3rem;
+      transition: color .2s;
+      letter-spacing: .01em;
     }
-    .btn-back:hover {
-      color: var(--white);
-      border-color: var(--w30);
+    .btn-back:hover { color: var(--w70); }
+
+    /* Auto-advance confirmation flash */
+    @keyframes confirmPulse {
+      0%   { box-shadow: 0 0 0 0   rgba(16,185,129,.5); border-color: var(--green); }
+      60%  { box-shadow: 0 0 0 8px rgba(16,185,129,0);  border-color: var(--green); }
+      100% { box-shadow: 0 0 0 0   rgba(16,185,129,0); }
+    }
+    .choice-card.auto-confirming {
+      border-color: var(--green) !important;
+      background: rgba(16,185,129,.12) !important;
+      animation: confirmPulse .4s ease forwards;
+    }
+    .yn-btn.auto-confirming {
+      border-color: var(--green) !important;
+      background: rgba(16,185,129,.12) !important;
+      animation: confirmPulse .4s ease forwards;
     }
     .btn-gradient {
       background: linear-gradient(90deg, var(--blue), var(--purple));
@@ -1267,8 +1290,7 @@
           </div>
         </div>
         <div class="step-actions">
-          <button class="btn btn-back" onclick="prevStep(2)">←</button>
-          <button class="btn btn-primary" onclick="nextStep(2)">Continue →</button>
+          <button class="btn btn-back" onclick="prevStep(2)">← Back</button>
         </div>
       </div>
 
@@ -1289,8 +1311,8 @@
           </div>
         </div>
         <div class="step-actions" style="margin-top:1.75rem;">
-          <button class="btn btn-back" onclick="prevStep(3)">←</button>
-          <button class="btn btn-primary" onclick="nextStep(3)">Continue →</button>
+          <button class="btn btn-back" onclick="prevStep(3)">← Back</button>
+          <button class="btn btn-primary" id="step3-continue" onclick="nextStep(3)" style="display:none;">Continue →</button>
         </div>
       </div>
 
@@ -1320,8 +1342,8 @@
           </div>
         </div>
         <div class="step-actions" style="margin-top:1.75rem;">
-          <button class="btn btn-back" onclick="prevStep(4)">←</button>
-          <button class="btn btn-primary" onclick="nextStep(4)">Continue →</button>
+          <button class="btn btn-back" onclick="prevStep(4)">← Back</button>
+          <button class="btn btn-primary" id="step4-continue" onclick="nextStep(4)" style="display:none;">Continue →</button>
         </div>
       </div>
 
@@ -1336,8 +1358,7 @@
           <button class="yn-btn" id="email-no"  onclick="selectYN('email','no')">No, not yet</button>
         </div>
         <div class="step-actions" style="margin-top:1.75rem;">
-          <button class="btn btn-back" onclick="prevStep(5)">←</button>
-          <button class="btn btn-primary" onclick="nextStep(5)">Continue →</button>
+          <button class="btn btn-back" onclick="prevStep(5)">← Back</button>
         </div>
       </div>
 
@@ -1390,7 +1411,7 @@
           </div>
         </div>
         <div class="step-actions">
-          <button class="btn btn-back" onclick="prevStep(6)">←</button>
+          <button class="btn btn-back" onclick="prevStep(6)">← Back</button>
           <button class="btn btn-primary" onclick="nextStep(6)">Continue →</button>
         </div>
       </div>
@@ -1425,8 +1446,7 @@
           </div>
         </div>
         <div class="step-actions">
-          <button class="btn btn-back" onclick="prevStep(7)">←</button>
-          <button class="btn btn-primary" onclick="nextStep(7)">Continue →</button>
+          <button class="btn btn-back" onclick="prevStep(7)">← Back</button>
         </div>
       </div>
 
@@ -1459,8 +1479,7 @@
           </div>
         </div>
         <div class="step-actions">
-          <button class="btn btn-back" onclick="prevStep(8)">←</button>
-          <button class="btn btn-primary" onclick="nextStep(8)">Continue →</button>
+          <button class="btn btn-back" onclick="prevStep(8)">← Back</button>
         </div>
       </div>
 
@@ -1486,8 +1505,7 @@
           </div>
         </div>
         <div class="step-actions">
-          <button class="btn btn-back" onclick="prevStep(9)">←</button>
-          <button class="btn btn-primary" id="submit-btn" onclick="submitAssessment()">See My Recommendation →</button>
+          <button class="btn btn-back" onclick="prevStep(9)">← Back</button>
         </div>
       </div>
 
@@ -1819,46 +1837,81 @@
   }
 
   // ─────────────────────────────────────
+  //  AUTO-ADVANCE
+  // ─────────────────────────────────────
+  let _advanceLock = false;
+
+  function autoAdvance(from) {
+    if (_advanceLock) return;
+    _advanceLock = true;
+    setTimeout(() => {
+      _advanceLock = false;
+      if (from === TOTAL_STEPS) {
+        submitAssessment();
+      } else {
+        nextStep(from);
+      }
+    }, 300);
+  }
+
+  // ─────────────────────────────────────
   //  CHOICE SELECTORS
   // ─────────────────────────────────────
   function selectChoice(group, value, el) {
-    // Deselect previous
     const parent = el.closest('.choices');
-    parent.querySelectorAll('.choice-card').forEach(c => c.classList.remove('selected'));
-    el.classList.add('selected');
+    parent.querySelectorAll('.choice-card').forEach(c => c.classList.remove('selected', 'auto-confirming'));
+    el.classList.add('selected', 'auto-confirming');
+    setTimeout(() => el.classList.remove('auto-confirming'), 500);
     selections[group] = value;
     clearError(currentStep);
+    autoAdvance(currentStep);
   }
 
   function selectYN(field, value) {
     const yes = document.getElementById(field + '-yes');
     const no  = document.getElementById(field + '-no');
-    yes.classList.remove('selected');
-    no.classList.remove('selected');
+    yes.classList.remove('selected', 'auto-confirming');
+    no.classList.remove('selected', 'auto-confirming');
 
     if (value === 'yes') {
-      yes.classList.add('selected');
+      yes.classList.add('selected', 'auto-confirming');
+      setTimeout(() => yes.classList.remove('auto-confirming'), 500);
       if (field === 'website') {
         answers.hasWebsite = true;
         document.getElementById('website-url-wrap').classList.remove('hidden');
+        document.getElementById('step3-continue').style.display = '';
+        // focus URL field for keyboard users
+        setTimeout(() => document.getElementById('website-url').focus(), 50);
       }
       if (field === 'crm') {
         answers.hasCRM = true;
         document.getElementById('crm-which-wrap').classList.remove('hidden');
+        document.getElementById('step4-continue').style.display = '';
       }
-      if (field === 'email') answers.hasEmail = true;
+      if (field === 'email') {
+        answers.hasEmail = true;
+        autoAdvance(5);
+      }
     } else {
-      no.classList.add('selected');
+      no.classList.add('selected', 'auto-confirming');
+      setTimeout(() => no.classList.remove('auto-confirming'), 500);
       if (field === 'website') {
         answers.hasWebsite = false;
         document.getElementById('website-url-wrap').classList.add('hidden');
         document.getElementById('website-url').value = '';
+        document.getElementById('step3-continue').style.display = 'none';
+        autoAdvance(3);
       }
       if (field === 'crm') {
         answers.hasCRM = false;
         document.getElementById('crm-which-wrap').classList.add('hidden');
+        document.getElementById('step4-continue').style.display = 'none';
+        autoAdvance(4);
       }
-      if (field === 'email') answers.hasEmail = false;
+      if (field === 'email') {
+        answers.hasEmail = false;
+        autoAdvance(5);
+      }
     }
     clearError(currentStep);
   }
@@ -2100,20 +2153,40 @@
     const tierKey = tierFromScore(score);
     const tier = TIERS[tierKey];
 
-    // Console log full data
     console.log('=== BizStack AI Assessment Submission ===');
     console.log('Score:', score, '→ Tier:', tierKey);
     console.log('Form Data:', JSON.stringify(answers, null, 2));
 
-    // Build results UI
+    // Fire emails in background — don't block results render
+    sendAssessmentEmail(score, tierKey, tier);
+
+    // Show results
     renderResults(tierKey, tier, score);
-
-    // Hide form, show results
     document.getElementById('assessment-form').style.display = 'none';
-    const resultsEl = document.getElementById('results');
-    resultsEl.classList.add('active');
-
+    document.getElementById('results').classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function sendAssessmentEmail(score, tierKey, tier) {
+    const cmp = COMPARISON_DATA[tierKey];
+    fetch('/api/assessment-submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        answers,
+        score,
+        tierKey,
+        tierName:     tier.name,
+        tierPrice:    tier.price,
+        tierDesc:     tier.desc,
+        tierFeatures: tier.features,
+        agencyCost:   cmp.retailDisplay,
+        savingsAmt:   cmp.savingsPct,
+      })
+    })
+    .then(r => r.json())
+    .then(d => console.log('[assessment-submit]', d))
+    .catch(e => console.warn('[assessment-submit] email error (non-blocking):', e));
   }
 
   function renderResults(tierKey, tier, score) {
@@ -2170,21 +2243,30 @@
   }
 
   // ─────────────────────────────────────
-  //  ENTER KEY → CONTINUE
+  //  KEYBOARD NAVIGATION
   // ─────────────────────────────────────
+  // Steps that auto-advance on click — Enter should NOT re-trigger
+  const AUTO_ADVANCE_STEPS = [2, 5, 7, 8, 9];
+
   document.addEventListener('keydown', function(e) {
-    if (e.key !== 'Enter') return;
-    // Don't intercept if user is in a textarea or the skip-call email input
-    const tag = document.activeElement && document.activeElement.tagName;
-    if (tag === 'TEXTAREA') return;
-    if (document.activeElement && document.activeElement.id === 'skip-email-input') return;
-    // Only fire when the assessment form is visible (not results)
-    if (document.getElementById('assessment-form').style.display === 'none') return;
-    // On step 9 use submit, otherwise continue
-    if (currentStep === TOTAL_STEPS) {
-      submitAssessment();
-    } else {
+    const tag = document.activeElement ? document.activeElement.tagName : '';
+    const id  = document.activeElement ? document.activeElement.id : '';
+    const formHidden = document.getElementById('assessment-form').style.display === 'none';
+
+    // ── Enter: advance on text/multi-select steps only ──
+    if (e.key === 'Enter') {
+      if (tag === 'TEXTAREA') return;
+      if (id === 'skip-email-input') return;
+      if (formHidden) return;
+      if (AUTO_ADVANCE_STEPS.includes(currentStep)) return; // auto-advance steps handle themselves
       nextStep(currentStep);
+    }
+
+    // ── Backspace / ← Arrow: go back (only when NOT typing in an input) ──
+    if (e.key === 'Backspace' || e.key === 'ArrowLeft') {
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+      if (formHidden) return;
+      if (currentStep > 1) prevStep(currentStep);
     }
   });
 </script>
