@@ -695,6 +695,393 @@
       margin-top: 1rem;
     }
 
+    /* ═══════════════════════════════════════════
+       RESULTS SALES PAGE — SCROLL REVEAL
+    ═══════════════════════════════════════════ */
+    .rev-section {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .rev-section.in { opacity: 1; transform: translateY(0); }
+
+    .results-section { margin-top: 2rem; }
+    .section-label {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--w40);
+      margin-bottom: .5rem;
+    }
+    .section-heading {
+      font-family: var(--display);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: .45rem;
+    }
+    .section-sub {
+      font-size: .875rem;
+      color: var(--w60);
+      margin-bottom: 1.25rem;
+    }
+
+    /* ── COMPARISON TABLE ── */
+    .compare-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .compare-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .compare-side { padding: 1.5rem; }
+    .compare-side.bizstack {
+      background: rgba(16,185,129,.06);
+      border-right: 1px solid var(--border);
+    }
+    .compare-side.retail { background: rgba(239,68,68,.04); }
+    .compare-side-label {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: .5rem;
+    }
+    .compare-side.bizstack .compare-side-label { color: var(--green); }
+    .compare-side.retail  .compare-side-label { color: #f87171; }
+    .compare-price-big {
+      font-family: var(--mono);
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: .3rem;
+    }
+    .compare-side.bizstack .compare-price-big { color: var(--green); }
+    .compare-side.retail .compare-price-big {
+      color: var(--w40);
+      text-decoration: line-through;
+      text-decoration-color: #f87171;
+      text-decoration-thickness: 2px;
+    }
+    .compare-price-sub { font-size: .78rem; color: var(--w50); }
+    .compare-side.bizstack .compare-price-sub { color: rgba(16,185,129,.65); }
+
+    .savings-banner {
+      background: linear-gradient(90deg, rgba(16,185,129,.1), rgba(59,130,246,.1));
+      border-top: 1px solid rgba(16,185,129,.15);
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .75rem;
+      flex-wrap: wrap;
+    }
+    .savings-pct {
+      font-family: var(--mono);
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: var(--green);
+    }
+    .savings-text {
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--w80);
+      max-width: 220px;
+    }
+    .compare-items {
+      border-top: 1px solid var(--border);
+      padding: 1.25rem 1.5rem;
+    }
+    .compare-items-title {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--w30);
+      margin-bottom: .85rem;
+    }
+    .compare-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: .5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,.04);
+      font-size: .875rem;
+      gap: .5rem;
+    }
+    .compare-row:last-child { border-bottom: none; }
+    .compare-row-label { color: var(--w70); }
+    .compare-row-cost {
+      font-family: var(--mono);
+      font-size: .78rem;
+      color: var(--w40);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* ── RENT-TO-OWN ── */
+    .rto-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .rto-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--purple));
+    }
+    .rto-points {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .9rem;
+      margin-bottom: 2rem;
+    }
+    .rto-points li {
+      display: flex;
+      align-items: flex-start;
+      gap: .8rem;
+      font-size: .9rem;
+      color: var(--w80);
+      line-height: 1.55;
+    }
+    .rto-points li strong { color: var(--white); }
+    .rto-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      background: rgba(59,130,246,.12);
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: .6rem;
+      margin-top: 2px;
+    }
+    .rto-timeline {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      gap: .5rem;
+    }
+    .rto-phase {
+      flex: 1;
+      text-align: center;
+      padding: 1.1rem .75rem;
+      border-radius: 10px;
+    }
+    .rto-phase.building {
+      background: rgba(59,130,246,.1);
+      border: 1px solid rgba(59,130,246,.2);
+    }
+    .rto-phase.owning {
+      background: rgba(16,185,129,.1);
+      border: 1px solid rgba(16,185,129,.2);
+    }
+    .rto-phase-month {
+      font-family: var(--mono);
+      font-size: .68rem;
+      font-weight: 700;
+      margin-bottom: .35rem;
+    }
+    .rto-phase.building .rto-phase-month { color: var(--blue); }
+    .rto-phase.owning   .rto-phase-month { color: var(--green); }
+    .rto-phase-title {
+      font-family: var(--display);
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: .2rem;
+    }
+    .rto-phase-sub { font-size: .74rem; color: var(--w50); }
+    .rto-arrow { color: var(--w20); font-size: 1.4rem; flex-shrink: 0; }
+    .rto-no-lock {
+      background: rgba(16,185,129,.06);
+      border: 1px solid rgba(16,185,129,.15);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+      font-size: .875rem;
+      color: var(--w80);
+      line-height: 1.5;
+    }
+    .rto-no-lock strong { color: var(--white); }
+    .rto-lock-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
+
+    /* ── NEXT STEPS ── */
+    .next-steps-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .next-steps-hd {
+      background: linear-gradient(135deg, rgba(59,130,246,.1), rgba(139,92,246,.1));
+      border-bottom: 1px solid var(--border);
+      padding: 1.75rem 2rem;
+      text-align: center;
+    }
+    .next-steps-title {
+      font-family: var(--display);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: .3rem;
+    }
+    .next-steps-sub { font-size: .875rem; color: var(--w60); }
+    .next-steps-body { padding: 1.75rem 2rem 2rem; }
+    .ns-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: .9rem 0;
+      border-bottom: 1px solid rgba(255,255,255,.04);
+    }
+    .ns-row:last-of-type { border-bottom: none; }
+    .ns-num {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--bg3);
+      border: 1.5px solid var(--w10);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--w50);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .ns-row.active .ns-num {
+      background: rgba(59,130,246,.15);
+      border-color: rgba(59,130,246,.4);
+      color: var(--blue);
+    }
+    .ns-content-title {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: .2rem;
+    }
+    .ns-content-sub { font-size: .82rem; color: var(--w50); }
+
+    .cta-main-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .6rem;
+      width: 100%;
+      margin-top: 1.5rem;
+      padding: 1.1rem 2rem;
+      border-radius: 10px;
+      background: linear-gradient(90deg, var(--blue), var(--purple));
+      color: var(--white);
+      font-family: var(--display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      transition: all .25s;
+    }
+    .cta-main-btn:hover {
+      opacity: .9;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(100,100,246,.4);
+    }
+    .divider-or {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin: 1.25rem 0;
+    }
+    .divider-or::before,
+    .divider-or::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .divider-or span {
+      font-size: .72rem;
+      font-weight: 600;
+      color: var(--w30);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .skip-call-box {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+    }
+    .skip-call-label {
+      font-size: .82rem;
+      color: var(--w60);
+      margin-bottom: .75rem;
+      text-align: center;
+    }
+    .skip-call-label strong { color: var(--w80); }
+    .skip-email-row { display: flex; gap: .5rem; }
+    .skip-email-input {
+      flex: 1;
+      background: var(--bg2);
+      border: 1.5px solid var(--w10);
+      border-radius: 8px;
+      padding: .7rem 1rem;
+      font-family: var(--body);
+      font-size: .875rem;
+      color: var(--white);
+      outline: none;
+      transition: border-color .2s;
+      min-width: 0;
+    }
+    .skip-email-input:focus { border-color: var(--blue); }
+    .skip-email-input::placeholder { color: var(--w30); }
+    .skip-email-btn {
+      background: var(--blue);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      padding: .7rem 1.1rem;
+      font-family: var(--body);
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background .2s;
+      flex-shrink: 0;
+    }
+    .skip-email-btn:hover { background: var(--blue2); }
+    .skip-email-confirm {
+      display: none;
+      text-align: center;
+      font-size: .875rem;
+      color: var(--green);
+      padding: .5rem 0;
+      font-weight: 600;
+    }
+    .back-home-link {
+      display: block;
+      text-align: center;
+      font-size: .83rem;
+      color: var(--w30);
+      margin-top: 1.75rem;
+      margin-bottom: .5rem;
+      transition: color .2s;
+    }
+    .back-home-link:hover { color: var(--w70); }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 600px) {
       .page-wrap { padding: 6rem 1rem 3rem; }
@@ -705,6 +1092,18 @@
       .tier-card-header,
       .tier-card-body { padding: 1.25rem 1.25rem; }
       .tier-price { font-size: 1.6rem; }
+
+      .compare-hero { grid-template-columns: 1fr; }
+      .compare-side.bizstack { border-right: none; border-bottom: 1px solid var(--border); }
+      .savings-pct { font-size: 1.75rem; }
+      .savings-text { max-width: none; text-align: center; }
+      .rto-timeline { flex-direction: column; }
+      .rto-arrow { transform: rotate(90deg); }
+      .rto-card { padding: 1.5rem 1.25rem; }
+      .next-steps-hd,
+      .next-steps-body { padding: 1.25rem; }
+      .skip-email-row { flex-direction: column; }
+      .skip-email-btn { width: 100%; text-align: center; padding: .75rem; }
     }
   </style>
 </head>
@@ -1044,12 +1443,15 @@
        RESULTS PAGE
   ═══════════════════════════════════ -->
   <div id="results">
+
+    <!-- Header -->
     <div class="results-header">
       <div class="results-eyebrow">Assessment Complete</div>
       <h2 class="results-title" id="results-title">Your Recommended Plan</h2>
       <p class="results-sub" id="results-sub">Based on your answers, here's the best fit for your business.</p>
     </div>
 
+    <!-- Tier card -->
     <div class="tier-card" id="results-tier-card">
       <div class="tier-card-header">
         <div class="tier-badge" id="results-badge"></div>
@@ -1060,17 +1462,128 @@
       <div class="tier-card-body">
         <div class="tier-features-title">What's included</div>
         <ul class="tier-features" id="results-features"></ul>
-        <div class="results-actions">
-          <a href="https://calendly.com" target="_blank" rel="noopener" class="btn btn-gradient btn-lg" style="justify-content:center;width:100%;">
-            Schedule a Free Demo Call →
-          </a>
-          <a href="/" class="btn btn-outline btn-lg results-back-link" style="justify-content:center;width:100%;text-decoration:none;">
-            Back to Home
-          </a>
+      </div>
+    </div>
+
+    <!-- ─ SECTION 1: Price Comparison ─ -->
+    <div class="results-section rev-section" id="compare-section">
+      <div class="section-label">The Numbers Don't Lie</div>
+      <h3 class="section-heading">What This Would Cost You Separately</h3>
+      <p class="section-sub">Hiring individual tools and freelancers to cover what BizStack does adds up shockingly fast.</p>
+      <div class="compare-card">
+        <div class="compare-hero">
+          <div class="compare-side bizstack">
+            <div class="compare-side-label">With BizStack AI</div>
+            <div class="compare-price-big" id="cmp-bizstack-price"></div>
+            <div class="compare-price-sub">per month, all-inclusive</div>
+          </div>
+          <div class="compare-side retail">
+            <div class="compare-side-label">Piecing it together yourself</div>
+            <div class="compare-price-big" id="cmp-retail-price"></div>
+            <div class="compare-price-sub" id="cmp-retail-range"></div>
+          </div>
+        </div>
+        <div class="savings-banner">
+          <span class="savings-pct" id="cmp-savings-pct"></span>
+          <span class="savings-text" id="cmp-savings-text"></span>
+        </div>
+        <div class="compare-items">
+          <div class="compare-items-title">What you'd need to buy separately</div>
+          <div id="cmp-rows"></div>
         </div>
       </div>
     </div>
 
+    <!-- ─ SECTION 2: Rent-to-Own ─ -->
+    <div class="results-section rev-section" id="rto-section">
+      <div class="section-label">Built to Last</div>
+      <h3 class="section-heading">Own Everything You Build</h3>
+      <p class="section-sub">Unlike traditional agencies that rent you their platform, you're building equity in your own business.</p>
+      <div class="rto-card">
+        <ul class="rto-points">
+          <li>
+            <div class="rto-icon">&#9679;</div>
+            <span>After 24 months, you <strong>own every asset we build</strong> — your website, automations, CRM setup, content library, and AI agents. All yours, forever.</span>
+          </li>
+          <li>
+            <div class="rto-icon">&#9679;</div>
+            <span>Once paid off, keep everything running for just <strong>$49–149/mo maintenance</strong>. No inflated retainer fees, ever.</span>
+          </li>
+          <li>
+            <div class="rto-icon">&#9679;</div>
+            <span>Most agencies charge recurring fees forever and <strong>own your assets</strong>. We build them for you — not for us.</span>
+          </li>
+        </ul>
+        <div class="rto-timeline">
+          <div class="rto-phase building">
+            <div class="rto-phase-month">Month 1–24</div>
+            <div class="rto-phase-title">Building &amp; Growing</div>
+            <div class="rto-phase-sub">We build, you scale</div>
+          </div>
+          <div class="rto-arrow">&#8594;</div>
+          <div class="rto-phase owning">
+            <div class="rto-phase-month">Month 25+</div>
+            <div class="rto-phase-title">You Own It All</div>
+            <div class="rto-phase-sub">$49–149/mo to maintain</div>
+          </div>
+        </div>
+        <div class="rto-no-lock">
+          <span class="rto-lock-icon">&#128275;</span>
+          <span><strong>No contracts. No lock-in. Cancel anytime</strong> — and keep everything that's been built so far, even if you leave on day one.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─ SECTION 3: Next Steps ─ -->
+    <div class="results-section rev-section" id="next-steps-section">
+      <div class="next-steps-card">
+        <div class="next-steps-hd">
+          <div class="next-steps-title">Here's What Happens Next</div>
+          <div class="next-steps-sub">Three steps from right now to a fully running AI-powered business.</div>
+        </div>
+        <div class="next-steps-body">
+          <div class="ns-row active">
+            <div class="ns-num">1</div>
+            <div>
+              <div class="ns-content-title">Schedule a free 15-minute strategy call</div>
+              <div class="ns-content-sub">We'll review your assessment, answer questions, and map out your custom build plan.</div>
+            </div>
+          </div>
+          <div class="ns-row">
+            <div class="ns-num">2</div>
+            <div>
+              <div class="ns-content-title">Receive your custom proposal within 24 hours</div>
+              <div class="ns-content-sub">A full breakdown of what we'll build, when it goes live, and exactly what it costs.</div>
+            </div>
+          </div>
+          <div class="ns-row">
+            <div class="ns-num">3</div>
+            <div>
+              <div class="ns-content-title">Approve &amp; pay online — we start building immediately</div>
+              <div class="ns-content-sub">Most businesses are live within 48 hours of approval. We don't waste time.</div>
+            </div>
+          </div>
+
+          <a href="https://calendly.com" target="_blank" rel="noopener" class="cta-main-btn">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="3" width="14" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M6 1v3M12 1v3M2 7h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            Book My Free Strategy Call →
+          </a>
+
+          <div class="divider-or"><span>or skip the call</span></div>
+
+          <div class="skip-call-box">
+            <div class="skip-call-label"><strong>Get your custom proposal by email</strong> — we'll review your answers and send a tailored plan within a few hours.</div>
+            <div class="skip-email-row">
+              <input type="email" id="skip-email-input" class="skip-email-input" placeholder="Your email address">
+              <button class="skip-email-btn" onclick="submitSkipEmail()">Send My Proposal</button>
+            </div>
+            <div class="skip-email-confirm" id="skip-email-confirm">&#10003; Got it! Check your inbox within a few hours.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a href="/" class="back-home-link">&#8592; Back to BizStack.vip</a>
     <p class="score-debug" id="score-debug"></p>
   </div>
 
@@ -1346,6 +1859,108 @@
   }
 
   // ─────────────────────────────────────
+  //  COMPARISON DATA
+  // ─────────────────────────────────────
+  const COMPARISON_DATA = {
+    starter: {
+      retailDisplay: '~$650',
+      retailRange: 'estimated $500–800/mo',
+      bizstackPrice: '$99',
+      savingsPct: '85%',
+      savingsText: 'average savings per month with BizStack Starter',
+      rows: [
+        ['Professional website (Wix + designer)',   '~$200/mo'],
+        ['Basic CRM (HubSpot / GoHighLevel)',        '~$97/mo'],
+        ['Email marketing (Mailchimp)',              '~$50/mo'],
+        ['AI chatbot (Intercom / Drift)',            '~$100/mo'],
+        ['Maintenance &amp; updates',               '~$150/mo'],
+      ]
+    },
+    growth: {
+      retailDisplay: '~$2,000',
+      retailRange: 'estimated $1,500–2,500/mo',
+      bizstackPrice: '$299',
+      savingsPct: '85%',
+      savingsText: 'average savings per month with BizStack Growth',
+      rows: [
+        ['Everything in Starter',                   '~$500–800/mo'],
+        ['Content calendar (Buffer / Hootsuite)',   '~$100/mo'],
+        ['Social media management',                 '~$500/mo'],
+        ['Advanced CRM automations',                '~$200/mo'],
+        ['SEO tools (Ahrefs / SEMrush)',            '~$200/mo'],
+        ['Copywriter / content creator',            '~$500/mo'],
+      ]
+    },
+    scale: {
+      retailDisplay: '~$4,000',
+      retailRange: 'estimated $3,000–5,000/mo',
+      bizstackPrice: '$499',
+      savingsPct: '88%',
+      savingsText: 'average savings per month with BizStack Scale',
+      rows: [
+        ['Everything in Growth',                    '~$1,500–2,500/mo'],
+        ['Full SEO audit &amp; management',         '~$500/mo'],
+        ['Paid ad management',                      '~$500/mo'],
+        ['AI chatbot with custom training',         '~$300/mo'],
+        ['Custom integrations developer',           '~$500/mo'],
+        ['Dedicated account manager',               '~$500/mo'],
+      ]
+    },
+    enterprise: {
+      retailDisplay: '~$11,500',
+      retailRange: 'estimated $8,000–15,000/mo',
+      bizstackPrice: '$999+',
+      savingsPct: '91%',
+      savingsText: 'average savings per month with BizStack Enterprise',
+      rows: [
+        ['Everything in Scale',                     '~$3,000–5,000/mo'],
+        ['Dedicated AI agent team',                 '~$2,000/mo'],
+        ['Custom workflow development',             '~$2,000/mo'],
+        ['White-glove onboarding',                  '~$1,500/mo'],
+        ['Priority support',                        '~$500/mo'],
+        ['Strategy consulting',                     '~$2,000/mo'],
+      ]
+    }
+  };
+
+  let currentTierKey = '';
+
+  // ─────────────────────────────────────
+  //  SCROLL REVEAL (results page)
+  // ─────────────────────────────────────
+  function initScrollReveal() {
+    const els = document.querySelectorAll('#results .rev-section');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(el => el.classList.add('in'));
+      return;
+    }
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    els.forEach(el => obs.observe(el));
+  }
+
+  // ─────────────────────────────────────
+  //  SKIP-CALL EMAIL OPT-IN
+  // ─────────────────────────────────────
+  function submitSkipEmail() {
+    const input = document.getElementById('skip-email-input');
+    const email = input.value.trim();
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!re.test(email)) {
+      input.style.borderColor = 'var(--red)';
+      setTimeout(() => { input.style.borderColor = ''; }, 1500);
+      return;
+    }
+    console.log('=== BizStack Skip-Call Email ===');
+    console.log({ email, tier: currentTierKey, name: answers.contactName, business: answers.businessName });
+    document.querySelector('.skip-email-row').style.display = 'none';
+    document.getElementById('skip-email-confirm').style.display = 'block';
+  }
+
+  // ─────────────────────────────────────
   //  TIER DATA
   // ─────────────────────────────────────
   const TIERS = {
@@ -1434,6 +2049,9 @@
   }
 
   function renderResults(tierKey, tier, score) {
+    currentTierKey = tierKey;
+
+    // ── Tier card ──
     const card = document.getElementById('results-tier-card');
     card.className = 'tier-card ' + tierKey;
 
@@ -1455,7 +2073,28 @@
       '<li><div class="feat-icon">&#10003;</div><span>' + f + '</span></li>'
     ).join('');
 
+    // ── Comparison table ──
+    const cmp = COMPARISON_DATA[tierKey];
+    document.getElementById('cmp-bizstack-price').textContent  = cmp.bizstackPrice;
+    document.getElementById('cmp-retail-price').textContent    = cmp.retailDisplay;
+    document.getElementById('cmp-retail-range').textContent    = cmp.retailRange;
+    document.getElementById('cmp-savings-pct').textContent     = cmp.savingsPct;
+    document.getElementById('cmp-savings-text').textContent    = cmp.savingsText;
+    document.getElementById('cmp-rows').innerHTML = cmp.rows.map(([label, cost]) =>
+      '<div class="compare-row">' +
+        '<span class="compare-row-label">' + label + '</span>' +
+        '<span class="compare-row-cost">'  + cost  + '</span>' +
+      '</div>'
+    ).join('');
+
+    // ── Pre-fill skip-call email ──
+    document.getElementById('skip-email-input').value = answers.email || '';
+
+    // ── Score debug ──
     document.getElementById('score-debug').textContent = 'Assessment score: ' + score;
+
+    // ── Init scroll reveal after DOM settles ──
+    setTimeout(initScrollReveal, 120);
   }
 </script>
 </body>
