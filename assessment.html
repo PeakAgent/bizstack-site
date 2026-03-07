@@ -1082,6 +1082,61 @@
     }
     .back-home-link:hover { color: var(--w70); }
 
+    /* ── PROPOSAL CONFIRMATION BANNER ── */
+    .proposal-banner {
+      display: flex;
+      align-items: flex-start;
+      gap: .85rem;
+      background: rgba(16,185,129,.08);
+      border: 1px solid rgba(16,185,129,.25);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .proposal-banner-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(16,185,129,.2);
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: .85rem;
+      font-weight: 700;
+      margin-top: 1px;
+    }
+    .proposal-banner-text { flex: 1; }
+    .proposal-banner-title {
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: .2rem;
+    }
+    .proposal-banner-sub {
+      font-size: .82rem;
+      color: var(--w60);
+      line-height: 1.45;
+    }
+    .proposal-banner-email {
+      font-weight: 600;
+      color: var(--w80);
+    }
+
+    /* ── COMPARE OWN-NOTE ── */
+    .compare-own-note {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      background: rgba(59,130,246,.06);
+      border-top: 1px solid rgba(59,130,246,.12);
+      padding: .75rem 1.5rem;
+      font-size: .8rem;
+      color: var(--blue);
+      font-weight: 600;
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 600px) {
       .page-wrap { padding: 6rem 1rem 3rem; }
@@ -1451,6 +1506,15 @@
       <p class="results-sub" id="results-sub">Based on your answers, here's the best fit for your business.</p>
     </div>
 
+    <!-- Proposal confirmation banner -->
+    <div class="proposal-banner" id="proposal-banner">
+      <div class="proposal-banner-icon">&#10003;</div>
+      <div class="proposal-banner-text">
+        <div class="proposal-banner-title">We'll email your custom proposal within 24 hours</div>
+        <div class="proposal-banner-sub">Your assessment results are being reviewed. A tailored proposal for <span class="proposal-banner-email" id="proposal-email-display"></span> will land in your inbox shortly — no sales pressure, just a clear breakdown of exactly what we'll build and what it costs.</div>
+      </div>
+    </div>
+
     <!-- Tier card -->
     <div class="tier-card" id="results-tier-card">
       <div class="tier-card-header">
@@ -1469,27 +1533,34 @@
     <div class="results-section rev-section" id="compare-section">
       <div class="section-label">The Numbers Don't Lie</div>
       <h3 class="section-heading">What This Would Cost You Separately</h3>
-      <p class="section-sub">Hiring individual tools and freelancers to cover what BizStack does adds up shockingly fast.</p>
+      <p class="section-sub">Hiring an agency or freelancers to build what BizStack delivers costs a small fortune — and you still pay them monthly forever.</p>
       <div class="compare-card">
         <div class="compare-hero">
           <div class="compare-side bizstack">
-            <div class="compare-side-label">With BizStack AI</div>
+            <div class="compare-side-label">Your BizStack Price</div>
             <div class="compare-price-big" id="cmp-bizstack-price"></div>
             <div class="compare-price-sub">per month, all-inclusive</div>
           </div>
           <div class="compare-side retail">
-            <div class="compare-side-label">Piecing it together yourself</div>
+            <div class="compare-side-label">Agency Cost to Build This</div>
             <div class="compare-price-big" id="cmp-retail-price"></div>
             <div class="compare-price-sub" id="cmp-retail-range"></div>
           </div>
         </div>
         <div class="savings-banner">
-          <span class="savings-pct" id="cmp-savings-pct"></span>
+          <div style="text-align:center;">
+            <div style="font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(16,185,129,.7);margin-bottom:.25rem;">You Save</div>
+            <span class="savings-pct" id="cmp-savings-pct"></span>
+          </div>
           <span class="savings-text" id="cmp-savings-text"></span>
         </div>
         <div class="compare-items">
-          <div class="compare-items-title">What you'd need to buy separately</div>
+          <div class="compare-items-title">What agencies charge to build this</div>
           <div id="cmp-rows"></div>
+        </div>
+        <div class="compare-own-note">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v6l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/></svg>
+          Plus you OWN everything after 24 months — no agency keeps your assets
         </div>
       </div>
     </div>
@@ -1863,62 +1934,59 @@
   // ─────────────────────────────────────
   const COMPARISON_DATA = {
     starter: {
-      retailDisplay: '~$650',
-      retailRange: 'estimated $500–800/mo',
+      retailDisplay: '$4,000+',
+      retailRange: 'one-time agency build cost',
       bizstackPrice: '$99',
-      savingsPct: '85%',
-      savingsText: 'average savings per month with BizStack Starter',
+      savingsPct: '$3,900+',
+      savingsText: 'vs. hiring an agency to build the same assets',
       rows: [
-        ['Professional website (Wix + designer)',   '~$200/mo'],
-        ['Basic CRM (HubSpot / GoHighLevel)',        '~$97/mo'],
-        ['Email marketing (Mailchimp)',              '~$50/mo'],
-        ['AI chatbot (Intercom / Drift)',            '~$100/mo'],
-        ['Maintenance &amp; updates',               '~$150/mo'],
+        ['Professional website design &amp; development', '$2,000'],
+        ['CRM setup &amp; configuration',                '$1,000'],
+        ['Email template design &amp; copywriting',      '$500'],
+        ['Lead capture funnel setup',                    '$500'],
       ]
     },
     growth: {
-      retailDisplay: '~$2,000',
-      retailRange: 'estimated $1,500–2,500/mo',
+      retailDisplay: '$8,000+',
+      retailRange: 'one-time agency build cost',
       bizstackPrice: '$299',
-      savingsPct: '85%',
-      savingsText: 'average savings per month with BizStack Growth',
+      savingsPct: '$7,700+',
+      savingsText: 'vs. hiring an agency to build the same assets',
       rows: [
-        ['Everything in Starter',                   '~$500–800/mo'],
-        ['Content calendar (Buffer / Hootsuite)',   '~$100/mo'],
-        ['Social media management',                 '~$500/mo'],
-        ['Advanced CRM automations',                '~$200/mo'],
-        ['SEO tools (Ahrefs / SEMrush)',            '~$200/mo'],
-        ['Copywriter / content creator',            '~$500/mo'],
+        ['Animated professional website',            '$3,000'],
+        ['CRM + advanced automations',               '$2,000'],
+        ['2 lead capture campaigns',                 '$1,500'],
+        ['Email + SMS follow-up sequences',          '$1,000'],
+        ['Appointment booking system',               '$500'],
       ]
     },
     scale: {
-      retailDisplay: '~$4,000',
-      retailRange: 'estimated $3,000–5,000/mo',
+      retailDisplay: '$15,500+',
+      retailRange: 'one-time agency build cost',
       bizstackPrice: '$499',
-      savingsPct: '88%',
-      savingsText: 'average savings per month with BizStack Scale',
+      savingsPct: '$15,000+',
+      savingsText: 'vs. hiring an agency to build the same assets',
       rows: [
-        ['Everything in Growth',                    '~$1,500–2,500/mo'],
-        ['Full SEO audit &amp; management',         '~$500/mo'],
-        ['Paid ad management',                      '~$500/mo'],
-        ['AI chatbot with custom training',         '~$300/mo'],
-        ['Custom integrations developer',           '~$500/mo'],
-        ['Dedicated account manager',               '~$500/mo'],
+        ['Scroll-animated showcase website',             '$5,000'],
+        ['AI chatbot (24/7 lead handling)',               '$3,000'],
+        ['3 lead capture campaigns',                     '$2,500'],
+        ['Email + SMS sequences',                        '$2,000'],
+        ['Appointment booking system',                   '$500'],
+        ['LinkedIn content strategy (20 posts/mo)',      '$2,000/mo ongoing'],
+        ['Self-healing monitoring',                      '$500/mo ongoing'],
       ]
     },
     enterprise: {
-      retailDisplay: '~$11,500',
-      retailRange: 'estimated $8,000–15,000/mo',
+      retailDisplay: '$23,000+',
+      retailRange: 'one-time agency build cost',
       bizstackPrice: '$999+',
-      savingsPct: '91%',
-      savingsText: 'average savings per month with BizStack Enterprise',
+      savingsPct: '$22,000+',
+      savingsText: 'vs. hiring an agency to build the same assets',
       rows: [
-        ['Everything in Scale',                     '~$3,000–5,000/mo'],
-        ['Dedicated AI agent team',                 '~$2,000/mo'],
-        ['Custom workflow development',             '~$2,000/mo'],
-        ['White-glove onboarding',                  '~$1,500/mo'],
-        ['Priority support',                        '~$500/mo'],
-        ['Strategy consulting',                     '~$2,000/mo'],
+        ['Everything in Scale',                  '$15,500'],
+        ['Multi-page animated platform',         '$5,000'],
+        ['Custom integrations',                  '$2,000–5,000'],
+        ['Advanced analytics dashboard',         '$2,000'],
       ]
     }
   };
@@ -2073,6 +2141,10 @@
       '<li><div class="feat-icon">&#10003;</div><span>' + f + '</span></li>'
     ).join('');
 
+    // ── Proposal banner ──
+    const firstName = answers.contactName.split(' ')[0] || 'there';
+    document.getElementById('proposal-email-display').textContent = answers.email || 'your email';
+
     // ── Comparison table ──
     const cmp = COMPARISON_DATA[tierKey];
     document.getElementById('cmp-bizstack-price').textContent  = cmp.bizstackPrice;
@@ -2096,6 +2168,25 @@
     // ── Init scroll reveal after DOM settles ──
     setTimeout(initScrollReveal, 120);
   }
+
+  // ─────────────────────────────────────
+  //  ENTER KEY → CONTINUE
+  // ─────────────────────────────────────
+  document.addEventListener('keydown', function(e) {
+    if (e.key !== 'Enter') return;
+    // Don't intercept if user is in a textarea or the skip-call email input
+    const tag = document.activeElement && document.activeElement.tagName;
+    if (tag === 'TEXTAREA') return;
+    if (document.activeElement && document.activeElement.id === 'skip-email-input') return;
+    // Only fire when the assessment form is visible (not results)
+    if (document.getElementById('assessment-form').style.display === 'none') return;
+    // On step 9 use submit, otherwise continue
+    if (currentStep === TOTAL_STEPS) {
+      submitAssessment();
+    } else {
+      nextStep(currentStep);
+    }
+  });
 </script>
 </body>
 </html>
