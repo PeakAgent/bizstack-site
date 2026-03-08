@@ -1547,6 +1547,19 @@
       </div>
     </div>
 
+    <!-- ─ CTA Buttons ─ -->
+    <div class="results-actions rev-section" id="results-cta-section" style="margin-top:1.75rem;">
+      <a id="results-stripe-btn" href="#" target="_blank" rel="noopener" class="cta-main-btn" style="margin-top:0;">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1l2.5 5 5.5.8-4 3.9.9 5.5L9 13.5 4.1 16.2l.9-5.5L1 6.8l5.5-.8z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        Get Started Now — <span id="results-cta-price">$99</span>/mo →
+      </a>
+      <a href="https://calendly.com" target="_blank" rel="noopener"
+        style="display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%;padding:1rem 2rem;border-radius:10px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);color:var(--w70);font-family:var(--display);font-weight:600;font-size:.95rem;text-decoration:none;transition:all .25s;cursor:pointer;">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="11" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M5 1v3M11 1v3M2 7h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Schedule a Free Strategy Call
+      </a>
+    </div>
+
     <!-- ─ SECTION 1: Price Comparison ─ -->
     <div class="results-section rev-section" id="compare-section">
       <div class="section-label">The Numbers Don't Lie</div>
@@ -2084,6 +2097,13 @@
   // ─────────────────────────────────────
   //  TIER DATA
   // ─────────────────────────────────────
+  const STRIPE_LINKS = {
+    starter:    'https://buy.stripe.com/3cI3cv0wC2GD2us9mB8so02',
+    growth:     'https://buy.stripe.com/28E00j2EK6WT1qobuJ8so04',
+    scale:      'https://buy.stripe.com/eVqaEXfrw5SP6KI56l8so03',
+    enterprise: 'https://buy.stripe.com/cNi6oH0wC4OL9WUgP38so05',
+  };
+
   const TIERS = {
     starter: {
       name:  'Starter',
@@ -2091,11 +2111,12 @@
       per:   '/mo',
       desc:  'Perfect for businesses just getting started online. We set up the essentials so you look professional and stop losing leads.',
       features: [
-        'Professional website designed and built for your business',
+        'Professional custom website, mobile-responsive + SSL',
         'Basic CRM setup to capture and track leads',
-        'Email templates and automated follow-up sequences',
-        'Google Business Profile optimization',
-        'Monthly performance report'
+        'Email templates + automated lead capture',
+        'Google Business Profile setup and optimization',
+        '2 content updates per month',
+        'Own everything after 24 months — no contracts'
       ]
     },
     growth: {
@@ -2104,12 +2125,14 @@
       per:   '/mo',
       desc:  'For businesses that have the basics but want to accelerate. We build systems that consistently bring in and convert leads.',
       features: [
-        'Everything in Starter',
-        'Content calendar and social media strategy',
-        'Advanced CRM automations and pipeline management',
-        'Email marketing campaigns (newsletters + drip sequences)',
-        'Lead magnet and opt-in page creation',
-        'Bi-weekly strategy check-in'
+        'Animated professional website',
+        'CRM with advanced automations and pipeline management',
+        '2 lead capture campaigns',
+        'Email + SMS follow-up sequences',
+        'Appointment booking automation',
+        'Review generation system',
+        'Monthly analytics report',
+        'Own everything after 24 months — no contracts'
       ]
     },
     scale: {
@@ -2118,12 +2141,16 @@
       per:   '/mo',
       desc:  'For businesses ready to invest in real growth infrastructure. AI-powered tools and deep integrations that compound over time.',
       features: [
-        'Everything in Growth',
-        'Full SEO audit and on-page optimization',
-        'Paid vs. organic gap analysis and ad strategy',
+        'Scroll-animated showcase website',
         'AI chatbot on your website (qualifies leads 24/7)',
-        'Custom integrations between your tools',
-        'Dedicated Slack channel for priority support'
+        '3 lead capture campaigns',
+        'Email + SMS sequences',
+        'Appointment booking automation',
+        'LinkedIn content — 20 posts/month',
+        'Full SEO audit and on-page optimization',
+        'Self-healing monitoring',
+        'Bi-weekly strategy calls',
+        'Own everything after 24 months — no contracts'
       ]
     },
     enterprise: {
@@ -2132,12 +2159,16 @@
       per:   '/mo',
       desc:  'White-glove service for complex organizations. A dedicated AI agent team builds and runs your entire marketing and automation stack.',
       features: [
-        'Everything in Scale',
-        'Dedicated AI agent team assigned to your account',
-        'Custom multi-step automation workflows',
-        'White-glove onboarding and migration from existing tools',
-        'Priority support with guaranteed response time',
-        'Monthly executive strategy session'
+        'Multi-page animated platform',
+        'Everything in Scale, plus:',
+        'AI voice agent (handles calls and inquiries 24/7)',
+        'Custom integrations between all your tools',
+        'Unlimited automations',
+        'Advanced analytics dashboard',
+        'Weekly strategy sessions',
+        'Dedicated support with guaranteed response time',
+        'White-glove onboarding and migration',
+        'Own everything after 24 months — no contracts'
       ]
     }
   };
@@ -2231,6 +2262,11 @@
         '<span class="compare-row-cost">'  + cost  + '</span>' +
       '</div>'
     ).join('');
+
+    // ── CTA buttons ──
+    const stripeBtn = document.getElementById('results-stripe-btn');
+    stripeBtn.href = STRIPE_LINKS[tierKey] || '#';
+    document.getElementById('results-cta-price').textContent = tier.price;
 
     // ── Pre-fill skip-call email ──
     document.getElementById('skip-email-input').value = answers.email || '';

@@ -5,6 +5,58 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 const FROM_ADDRESS = 'BizStack AI <hello@bizstack.vip>';
 const TEAM_EMAIL   = 'andrew@peakagentai.com';
 
+const STRIPE_LINKS = {
+  starter:    'https://buy.stripe.com/3cI3cv0wC2GD2us9mB8so02',
+  growth:     'https://buy.stripe.com/28E00j2EK6WT1qobuJ8so04',
+  scale:      'https://buy.stripe.com/eVqaEXfrw5SP6KI56l8so03',
+  enterprise: 'https://buy.stripe.com/cNi6oH0wC4OL9WUgP38so05',
+};
+
+const FULL_FEATURES = {
+  starter: [
+    'Professional custom website, mobile-responsive + SSL',
+    'Basic CRM setup to capture and track leads',
+    'Email templates + automated lead capture',
+    'Google Business Profile setup and optimization',
+    '2 content updates per month',
+    'Own everything after 24 months — no contracts',
+  ],
+  growth: [
+    'Animated professional website',
+    'CRM with advanced automations and pipeline management',
+    '2 lead capture campaigns',
+    'Email + SMS follow-up sequences',
+    'Appointment booking automation',
+    'Review generation system',
+    'Monthly analytics report',
+    'Own everything after 24 months — no contracts',
+  ],
+  scale: [
+    'Scroll-animated showcase website',
+    'AI chatbot on your website (qualifies leads 24/7)',
+    '3 lead capture campaigns',
+    'Email + SMS sequences',
+    'Appointment booking automation',
+    'LinkedIn content — 20 posts/month',
+    'Full SEO audit and on-page optimization',
+    'Self-healing monitoring',
+    'Bi-weekly strategy calls',
+    'Own everything after 24 months — no contracts',
+  ],
+  enterprise: [
+    'Multi-page animated platform',
+    'Everything in Scale, plus:',
+    'AI voice agent (handles calls and inquiries 24/7)',
+    'Custom integrations between all your tools',
+    'Unlimited automations',
+    'Advanced analytics dashboard',
+    'Weekly strategy sessions',
+    'Dedicated support with guaranteed response time',
+    'White-glove onboarding and migration',
+    'Own everything after 24 months — no contracts',
+  ],
+};
+
 // ─────────────────────────────────────────────────────────────────
 //  TIER CONFIG (mirrors frontend TIERS)
 // ─────────────────────────────────────────────────────────────────
@@ -18,12 +70,15 @@ const TIER_COLORS = {
 // ─────────────────────────────────────────────────────────────────
 //  PROSPECT HTML EMAIL
 // ─────────────────────────────────────────────────────────────────
-function buildProspectEmail({ answers, tierName, tierPrice, tierDesc, tierFeatures, agencyCost, savingsAmt }) {
+function buildProspectEmail({ answers, tierName, tierPrice, tierDesc, tierFeatures, agencyCost, savingsAmt, stripeLink }) {
   const firstName = answers.contactName.split(' ')[0] || 'there';
   const tierKey   = tierName.toLowerCase();
   const accent    = TIER_COLORS[tierKey] || '#3B82F6';
 
-  const featureRows = tierFeatures
+  // Use canonical full feature list, falling back to whatever was sent from frontend
+  const features = FULL_FEATURES[tierKey] || tierFeatures || [];
+
+  const featureRows = features
     .map(f => `
       <tr>
         <td style="padding:8px 0;border-bottom:1px solid #1E293B;font-size:14px;color:#CBD5E1;">
@@ -163,16 +218,24 @@ function buildProspectEmail({ answers, tierName, tierPrice, tierDesc, tierFeatur
         <!-- CTA -->
         <tr>
           <td style="padding-bottom:12px;text-align:center;">
-            <a href="https://calendly.com"
+            <a href="${stripeLink || 'https://bizstack.vip'}"
               style="display:inline-block;padding:16px 40px;background:linear-gradient(90deg,#3B82F6,#8B5CF6);color:#FFFFFF;text-decoration:none;font-weight:700;font-size:15px;border-radius:10px;letter-spacing:.01em;">
-              Book My Free Strategy Call →
+              Get Started — ${tierPrice}/mo →
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom:12px;text-align:center;">
+            <a href="https://calendly.com"
+              style="display:inline-block;padding:13px 32px;background:transparent;border:1px solid rgba(255,255,255,.15);color:#94A3B8;text-decoration:none;font-weight:600;font-size:14px;border-radius:10px;letter-spacing:.01em;">
+              Schedule a Free Strategy Call
             </a>
           </td>
         </tr>
         <tr>
           <td style="padding-bottom:40px;text-align:center;">
             <p style="margin:0;font-size:13px;color:#64748B;">
-              Your custom proposal is being prepared and will arrive within 24 hours.
+              Ready to get started? Click above to begin your subscription, or reply to this email to schedule a free strategy call.
             </p>
           </td>
         </tr>
@@ -264,8 +327,9 @@ export default async function handler(req, res) {
     return res.status(200).json({ success: true, mode: 'dev-no-key' });
   }
 
+  const stripeLink = STRIPE_LINKS[tierKey] || '';
   const prospectHtml = buildProspectEmail({
-    answers, tierName, tierPrice, tierDesc, tierFeatures, agencyCost, savingsAmt
+    answers, tierName, tierPrice, tierDesc, tierFeatures, agencyCost, savingsAmt, stripeLink
   });
   const teamText = buildTeamEmailText({ answers, score, tierKey, tierName, tierPrice });
 
