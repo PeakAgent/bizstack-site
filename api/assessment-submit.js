@@ -371,7 +371,7 @@ export default async function handler(req, res) {
 //  MISSION CONTROL LEAD INGESTION
 // ─────────────────────────────────────────────────────────────────
 async function postToMissionControl({ answers, score, tierKey, tierPrice }) {
-  const MC_URL = process.env.MC_LEADS_URL || 'https://mc.bizstack.vip/api/leads';
+  const MC_URL = process.env.MC_LEADS_URL || 'https://app.bizstack.vip/api/leads';
   const MC_SECRET = process.env.MC_LEADS_SECRET || '';
 
   const urgency = (() => {
