@@ -157,41 +157,6 @@
       }
     }
 
-    /* ═══════════════════════════════════════════
-       48HR TOP BANNER
-    ═══════════════════════════════════════════ */
-    .top-banner {
-      background: linear-gradient(90deg, rgba(59,130,246,.12), rgba(139,92,246,.12));
-      border-bottom: 1px solid rgba(59,130,246,.18);
-      padding: 1rem 3rem;
-      text-align: center;
-      font-size: .78rem;
-      font-weight: 500;
-      color: var(--w80);
-      position: relative;
-      z-index: 1001;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: .5rem;
-    }
-    .top-banner.hidden { display: none; }
-    .tb-icon { color: var(--blue); font-size: .9rem; }
-    .tb-dismiss {
-      position: absolute;
-      right: 1.25rem;
-      top: 50%;
-      transform: translateY(-50%);
-      background: none;
-      border: none;
-      color: var(--w40);
-      cursor: pointer;
-      font-size: 1.1rem;
-      line-height: 1;
-      padding: .25rem;
-      transition: color .2s;
-    }
-    .tb-dismiss:hover { color: var(--w80); }
 
     /* ═══════════════════════════════════════════
        NAVIGATION
@@ -537,53 +502,6 @@
     .tbadge:first-child { padding-left: 0; }
     .tbadge:last-child  { border-right: none; padding-right: 0; }
     .tbadge-check { color: rgba(16,185,129,.85); font-size: .85rem; }
-
-    .hero-scroll {
-      position: absolute;
-      bottom: 2.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: .7rem;
-      animation: fadeInScroll 1s ease 1.8s both;
-    }
-    @keyframes fadeInScroll {
-      from { opacity: 0; transform: translateX(-50%) translateY(10px); }
-      to   { opacity: 1; transform: translateX(-50%) translateY(0); }
-    }
-    .hero-scroll-label {
-      font-size: .58rem;
-      font-weight: 600;
-      letter-spacing: .34em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.25);
-    }
-    .hero-scroll-track {
-      width: 1.5px;
-      height: 54px;
-      background: rgba(255,255,255,.07);
-      border-radius: 2px;
-      overflow: hidden;
-      position: relative;
-    }
-    .hero-scroll-thumb {
-      position: absolute;
-      top: -55px;
-      left: 0; right: 0;
-      height: 54px;
-      background: linear-gradient(to bottom, transparent, rgba(99,130,246,.9), rgba(139,92,246,.6), transparent);
-      border-radius: 2px;
-      animation: scrollSlide 2.4s cubic-bezier(.4,0,.2,1) infinite;
-    }
-    @keyframes scrollSlide {
-      0%   { top: -55px; opacity: 0; }
-      15%  { opacity: 1; }
-      85%  { opacity: 1; }
-      100% { top: 55px; opacity: 0; }
-    }
 
     /* ═══════════════════════════════════════════
        PROBLEM SECTION
@@ -1814,8 +1732,6 @@
       #hero { padding-top: 70px; }
       .hero-trust { display: none; }
       .hero-ctas { flex-direction: column; align-items: center; }
-      .hero-scroll { display: none; }
-
       .svc-row {
         grid-template-columns: 1fr;
         gap: 2.5rem;
@@ -1899,15 +1815,6 @@
 <body>
 
 <!-- ═══════════════════════════════════════════
-     48HR TOP BANNER
-═══════════════════════════════════════════ -->
-<div class="top-banner" id="topBanner">
-  <span class="tb-icon">⚡</span>
-  Every stack is built and deployed in <strong>48 hours or less</strong> - guaranteed.
-  <button class="tb-dismiss" id="tbDismiss" aria-label="Dismiss banner">×</button>
-</div>
-
-<!-- ═══════════════════════════════════════════
      NAVIGATION
 ═══════════════════════════════════════════ -->
 <nav id="nav">
@@ -1975,7 +1882,7 @@
     <div class="hero-trust">
       <div class="tbadge">
         <span class="tbadge-check">✓</span>
-        Live in 48 Hours
+        Live in 48 Hours — Guaranteed
       </div>
       <div class="tbadge">
         <span class="tbadge-check">✓</span>
@@ -1988,12 +1895,6 @@
     </div>
   </div>
 
-  <div class="hero-scroll">
-    <span class="hero-scroll-label">Scroll</span>
-    <div class="hero-scroll-track">
-      <div class="hero-scroll-thumb"></div>
-    </div>
-  </div>
 </section>
 
 <!-- ═══════════════════════════════════════════
@@ -3308,23 +3209,6 @@
 </footer>
 
 <script>
-/* ═══════════════════════════════════════════
-   48HR BANNER DISMISS
-═══════════════════════════════════════════ */
-const topBanner = document.getElementById('topBanner');
-const tbDismiss = document.getElementById('tbDismiss');
-if (tbDismiss) {
-  tbDismiss.addEventListener('click', () => {
-    topBanner.classList.add('hidden');
-    try { sessionStorage.setItem('bannerDismissed', '1'); } catch(e) {}
-  });
-}
-try {
-  if (sessionStorage.getItem('bannerDismissed') === '1') {
-    topBanner.classList.add('hidden');
-  }
-} catch(e) {}
-
 /* ═══════════════════════════════════════════
    NAV - SCROLL SOLID + HAMBURGER
 ═══════════════════════════════════════════ */
