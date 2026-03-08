@@ -354,10 +354,63 @@ export default async function handler(req, res) {
       team:     teamResult.data?.id,
     });
 
+    // ── Fire lead to Mission Control (async, non-blocking) ──────────────────
+    postToMissionControl({ answers, score, tierKey, tierPrice }).catch(() => {});
+
     return res.status(200).json({ success: true });
   } catch (err) {
     console.error('[assessment-submit] Resend error:', err);
     // Still return 200 to frontend — email failure shouldn't break the UX
+    // Still try to post lead even if email failed
+    postToMissionControl({ answers, score, tierKey, tierPrice }).catch(() => {});
     return res.status(200).json({ success: true, emailError: err.message });
   }
+}
+
+// ─────────────────────────────────────────────────────────────────
+//  MISSION CONTROL LEAD INGESTION
+// ─────────────────────────────────────────────────────────────────
+async function postToMissionControl({ answers, score, tierKey, tierPrice }) {
+  const MC_URL = process.env.MC_LEADS_URL || 'https://mc.bizstack.vip/api/leads';
+  const MC_SECRET = process.env.MC_LEADS_SECRET || '';
+
+  const urgency = (() => {
+    const t = (answers.timeline || '').toLowerCase();
+    if (t.includes('asap') || t.includes('immediately') || t.includes('now')) return 'high';
+    if (t.includes('exploring') || t.includes('someday') || t.includes('no rush')) return 'low';
+    return 'medium';
+  })();
+
+  const payload = {
+    name:         answers.contactName,
+    email:        answers.email,
+    phone:        answers.phone,
+    company:      answers.businessName,
+    industry:     answers.industry,
+    score,
+    tier:         tierKey,
+    budget_range: answers.budget,
+    urgency,
+    source:       'assessment_form',
+    answers: {
+      hasWebsite:      answers.hasWebsite,
+      websiteUrl:      answers.websiteUrl,
+      hasCRM:          answers.hasCRM,
+      crmName:         answers.crmName,
+      hasEmail:        answers.hasEmail,
+      socialPlatforms: answers.socialPlatforms,
+      postFrequency:   answers.postFrequency,
+      painPoint:       answers.painPoint,
+      budget:          answers.budget,
+      timeline:        answers.timeline,
+    },
+  };
+
+  const headers = { 'Content-Type': 'application/json' };
+  if (MC_SECRET) headers['x-mc-secret'] = MC_SECRET;
+
+  const res = await fetch(MC_URL, { method: 'POST', headers, body: JSON.stringify(payload) });
+  const data = await res.json().catch(() => ({}));
+  console.log('[assessment-submit] Mission Control response:', res.status, data);
+  return data;
 }
