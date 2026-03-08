@@ -1,0 +1,1885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Onboarding — BizStack AI</title>
+  <meta name="description" content="Complete your BizStack AI onboarding checklist. Your 48-hour build clock starts when you submit.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ═══ RESET + TOKENS ═══ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0F172A;
+      --bg2:     #1E293B;
+      --bg3:     #334155;
+      --blue:    #3B82F6;
+      --blue2:   #2563EB;
+      --purple:  #8B5CF6;
+      --green:   #10B981;
+      --gold:    #F59E0B;
+      --cyan:    #06B6D4;
+      --red:     #EF4444;
+      --white:   #FFFFFF;
+      --w90: rgba(255,255,255,.9);
+      --w80: rgba(255,255,255,.8);
+      --w70: rgba(255,255,255,.7);
+      --w60: rgba(255,255,255,.6);
+      --w50: rgba(255,255,255,.5);
+      --w40: rgba(255,255,255,.4);
+      --w30: rgba(255,255,255,.3);
+      --w20: rgba(255,255,255,.2);
+      --w10: rgba(255,255,255,.1);
+      --w05: rgba(255,255,255,.05);
+      --border: rgba(255,255,255,.08);
+      --display: 'Space Grotesk', system-ui, sans-serif;
+      --body:    'Inter', system-ui, sans-serif;
+      --mono:    'JetBrains Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--body);
+      background: var(--bg);
+      color: var(--white);
+      overflow-x: hidden;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--display);
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ═══ NAV ═══ */
+    #nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 999;
+      padding: 1.1rem 0;
+      background: rgba(15,23,42,.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--display);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--white);
+    }
+    .nav-logo .ai { color: var(--blue); }
+    .nav-back {
+      font-size: .84rem;
+      font-weight: 500;
+      color: var(--w60);
+      transition: color .2s;
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+    }
+    .nav-back:hover { color: var(--white); }
+
+    /* ═══ STICKY PROGRESS ═══ */
+    .nav-spacer { height: 62px; }
+    .progress-sticky {
+      position: sticky;
+      top: 62px;
+      z-index: 99;
+      background: rgba(15,23,42,.97);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: .65rem 1.5rem;
+    }
+    .progress-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: .35rem;
+    }
+    .progress-label {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+    .progress-pct {
+      font-family: var(--mono);
+      font-size: .7rem;
+      color: var(--w50);
+    }
+    .progress-track {
+      height: 3px;
+      background: var(--w10);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--blue), var(--purple));
+      border-radius: 999px;
+      transition: width .5s cubic-bezier(.4,0,.2,1);
+      width: 0%;
+    }
+
+    /* ═══ PAGE WRAP ═══ */
+    .page-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    /* ═══ FORM HEADER ═══ */
+    .form-header {
+      text-align: center;
+      margin-bottom: 2.75rem;
+    }
+    .form-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 1.1rem;
+    }
+    .form-eyebrow::before,
+    .form-eyebrow::after {
+      content: '';
+      width: 20px; height: 2px;
+      background: currentColor;
+      border-radius: 99px;
+    }
+    .form-title {
+      font-size: clamp(1.75rem, 4vw, 2.6rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: .75rem;
+    }
+    .form-title span { color: var(--blue); }
+    .form-sub {
+      font-size: .95rem;
+      color: var(--w60);
+      max-width: 580px;
+      margin: 0 auto;
+    }
+    .form-sub strong { color: var(--gold); font-weight: 600; }
+
+    /* ═══ ACCORDION ═══ */
+    .accordion {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      margin-bottom: .75rem;
+      overflow: hidden;
+      transition: border-color .25s;
+    }
+    .accordion.is-open { border-color: rgba(59,130,246,.2); }
+    .accordion.is-done { border-color: rgba(16,185,129,.2); }
+
+    .accordion-header {
+      display: flex;
+      align-items: center;
+      gap: .9rem;
+      padding: 1.1rem 1.4rem;
+      cursor: pointer;
+      user-select: none;
+      transition: background .15s;
+    }
+    .accordion-header:hover { background: var(--w05); }
+
+    .section-num {
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      background: var(--bg3);
+      border: 2px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono);
+      font-size: .7rem;
+      font-weight: 700;
+      color: var(--w40);
+      flex-shrink: 0;
+      transition: all .25s;
+    }
+    .accordion.is-open .section-num {
+      border-color: rgba(59,130,246,.5);
+      color: var(--blue);
+    }
+    .accordion.is-done .section-num {
+      background: rgba(16,185,129,.15);
+      border-color: var(--green);
+      color: var(--green);
+    }
+
+    .section-title-wrap { flex: 1; min-width: 0; }
+    .section-title {
+      font-family: var(--display);
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .section-prog {
+      font-size: .7rem;
+      color: var(--w40);
+      margin-top: .1rem;
+    }
+
+    .section-done-icon {
+      width: 22px; height: 22px;
+      background: var(--green);
+      border-radius: 50%;
+      display: none;
+      align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .accordion.is-done .section-done-icon { display: flex; }
+    .section-done-icon svg { width: 11px; height: 11px; }
+
+    .section-chevron {
+      color: var(--w30);
+      flex-shrink: 0;
+      transition: transform .25s;
+    }
+    .accordion.is-open .section-chevron { transform: rotate(180deg); }
+    .accordion.is-done .section-chevron { display: none; }
+
+    .accordion-body {
+      display: none;
+      padding: 0 1.4rem 1.75rem;
+    }
+    .accordion.is-open .accordion-body { display: block; }
+
+    /* ═══ FIELD LAYOUT ═══ */
+    .fg { margin-bottom: 1.1rem; }
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .9rem;
+    }
+    @media (max-width: 580px) { .field-row { grid-template-columns: 1fr; } }
+
+    /* ═══ LABELS ═══ */
+    .fg > label, label.field-label {
+      display: block;
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--w70);
+      margin-bottom: .4rem;
+    }
+    label .req { color: var(--blue); margin-left: 1px; }
+    .field-note {
+      display: block;
+      font-size: .68rem;
+      font-weight: 400;
+      color: var(--w40);
+      margin-top: .1rem;
+    }
+
+    /* ═══ INPUTS ═══ */
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="url"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      background: var(--bg3);
+      border: 1.5px solid var(--w10);
+      border-radius: 8px;
+      color: var(--white);
+      font-family: var(--body);
+      font-size: .88rem;
+      padding: .6rem .85rem;
+      transition: border-color .2s, background .2s;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="tel"]:focus,
+    input[type="url"]:focus,
+    input[type="number"]:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--blue);
+      background: rgba(51,65,85,.7);
+    }
+    input.invalid, select.invalid, textarea.invalid {
+      border-color: var(--red) !important;
+      background: rgba(239,68,68,.05) !important;
+    }
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2394A3B8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right .8rem center;
+      padding-right: 2.2rem;
+      cursor: pointer;
+    }
+    select option { background: var(--bg2); color: var(--white); }
+    textarea { resize: vertical; min-height: 82px; line-height: 1.55; }
+    input::placeholder, textarea::placeholder { color: var(--w30); }
+
+    /* ═══ TOGGLE ═══ */
+    .toggle-group {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      padding: .75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .toggle-group:last-of-type { border-bottom: none; }
+    .toggle-group-label {
+      flex: 1;
+      font-size: .875rem;
+      color: var(--w70);
+    }
+    .toggle-group-label .field-note { margin-top: .1rem; }
+    .toggle {
+      position: relative;
+      width: 42px; height: 22px;
+      flex-shrink: 0;
+    }
+    .toggle input { opacity: 0; width: 100%; height: 100%; position: absolute; cursor: pointer; z-index: 2; margin: 0; }
+    .toggle-track {
+      position: absolute; inset: 0;
+      background: var(--bg3);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 999px;
+      transition: background .2s, border-color .2s;
+    }
+    .toggle-thumb {
+      position: absolute;
+      top: 3px; left: 3px;
+      width: 14px; height: 14px;
+      background: var(--w40);
+      border-radius: 50%;
+      transition: transform .2s, background .2s;
+      pointer-events: none;
+    }
+    .toggle input:checked ~ .toggle-track { background: var(--green); border-color: var(--green); }
+    .toggle input:checked ~ .toggle-thumb { transform: translateX(20px); background: var(--white); }
+
+    /* ═══ PILLS ═══ */
+    .pills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+      margin-top: .3rem;
+    }
+    .pill-check { display: none; }
+    .pill-label {
+      display: inline-flex;
+      align-items: center;
+      padding: .35rem .8rem;
+      background: var(--bg3);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 999px;
+      font-size: .78rem;
+      font-weight: 500;
+      color: var(--w60);
+      cursor: pointer;
+      transition: all .18s;
+      user-select: none;
+    }
+    .pill-check:checked + .pill-label {
+      background: rgba(59,130,246,.16);
+      border-color: rgba(59,130,246,.5);
+      color: var(--white);
+    }
+
+    /* ═══ COLOR PICKER ═══ */
+    .color-row {
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+    }
+    input[type="color"] {
+      width: 44px; height: 36px;
+      border: 1.5px solid var(--w10);
+      border-radius: 7px;
+      background: var(--bg3);
+      cursor: pointer;
+      padding: 3px;
+      flex-shrink: 0;
+      -webkit-appearance: none;
+    }
+    .color-hex {
+      flex: 1;
+      font-family: var(--mono);
+      font-size: .82rem;
+    }
+
+    /* ═══ FILE UPLOAD ═══ */
+    .file-zone {
+      border: 2px dashed rgba(255,255,255,.14);
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .file-zone:hover, .file-zone.drag-over {
+      border-color: var(--blue);
+      background: rgba(59,130,246,.04);
+    }
+    .file-zone-icon { font-size: 1.75rem; margin-bottom: .4rem; }
+    .file-zone-text { font-size: .82rem; color: var(--w50); }
+    .file-zone-text strong { color: var(--blue); }
+    .file-zone-sub { font-size: .68rem; color: var(--w30); margin-top: .2rem; }
+    .file-previews {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      margin-top: .9rem;
+    }
+    .file-thumb {
+      position: relative;
+      width: 76px; height: 76px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--bg3);
+    }
+    .file-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .file-thumb-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: rgba(0,0,0,.65);
+      font-size: .52rem;
+      padding: 2px 4px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      color: var(--w70);
+    }
+    .file-pdf-icon {
+      display: flex; align-items: center; justify-content: center;
+      height: 100%; font-size: 1.5rem;
+    }
+    .file-thumb-remove {
+      position: absolute; top: 3px; right: 3px;
+      width: 17px; height: 17px;
+      background: rgba(15,23,42,.85);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      font-size: .55rem;
+      color: var(--w80);
+      line-height: 1;
+    }
+    .file-thumb-remove:hover { background: var(--red); border-color: var(--red); }
+
+    /* ═══ SECTION 6 TOOLS ═══ */
+    .security-notice {
+      display: flex;
+      align-items: flex-start;
+      gap: .7rem;
+      padding: .8rem .95rem;
+      background: rgba(245,158,11,.06);
+      border: 1px solid rgba(245,158,11,.2);
+      border-radius: 8px;
+      font-size: .79rem;
+      color: rgba(245,158,11,.9);
+      margin-bottom: 1.25rem;
+      line-height: 1.5;
+    }
+    .tool-grid { display: flex; flex-direction: column; gap: .6rem; }
+    .tool-row {
+      background: rgba(255,255,255,.025);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: .8rem 1rem;
+      transition: border-color .2s;
+    }
+    .tool-row.is-yes { border-color: rgba(16,185,129,.2); }
+    .tool-row-top {
+      display: flex;
+      align-items: center;
+      gap: .9rem;
+    }
+    .tool-name { flex: 1; font-size: .86rem; font-weight: 500; color: var(--w80); }
+    .tool-notes { display: none; margin-top: .65rem; }
+    .tool-notes.show { display: block; }
+
+    /* ═══ SUBMIT AREA ═══ */
+    .submit-area {
+      margin-top: 2.25rem;
+      text-align: center;
+    }
+    .btn-submit {
+      display: inline-flex;
+      align-items: center;
+      gap: .65rem;
+      padding: 1rem 2.75rem;
+      background: linear-gradient(90deg, var(--blue), var(--purple));
+      color: var(--white);
+      font-family: var(--display);
+      font-size: 1rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: opacity .2s, transform .15s;
+      letter-spacing: .01em;
+    }
+    .btn-submit:hover { opacity: .92; transform: translateY(-1px); }
+    .btn-submit:active { transform: translateY(0); }
+    .btn-submit:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+    .submit-note {
+      font-size: .75rem;
+      color: var(--w40);
+      margin-top: .65rem;
+    }
+    .btn-clear {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .5rem 1.1rem;
+      background: transparent;
+      color: var(--w40);
+      font-size: .76rem;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      cursor: pointer;
+      margin-top: .85rem;
+      transition: all .2s;
+    }
+    .btn-clear:hover { color: var(--red); border-color: rgba(239,68,68,.35); }
+
+    /* ═══ TOAST ═══ */
+    #toast {
+      position: fixed;
+      bottom: 1.5rem; right: 1.5rem;
+      background: rgba(16,185,129,.12);
+      border: 1px solid rgba(16,185,129,.3);
+      color: var(--green);
+      padding: .45rem .9rem;
+      border-radius: 7px;
+      font-size: .76rem;
+      font-weight: 600;
+      z-index: 9999;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity .25s, transform .25s;
+      pointer-events: none;
+    }
+    #toast.show { opacity: 1; transform: translateY(0); }
+
+    /* ═══ SUCCESS PAGE ═══ */
+    #success-page {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: 9998;
+      overflow-y: auto;
+      padding: 5.5rem 1.5rem 4rem;
+    }
+    #success-page.show { display: block; }
+    .success-inner {
+      max-width: 520px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .success-check {
+      width: 76px; height: 76px;
+      background: rgba(16,185,129,.1);
+      border: 2px solid var(--green);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.75rem;
+      animation: popIn .55s cubic-bezier(.34,1.56,.64,1) both;
+    }
+    @keyframes popIn { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .success-check svg { width: 34px; height: 34px; color: var(--green); }
+    .success-h1 { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800; margin-bottom: .6rem; }
+    .success-sub { font-size: .95rem; color: var(--w60); margin-bottom: 2rem; }
+    .success-timeline {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.4rem;
+      text-align: left;
+      margin-bottom: 1.75rem;
+    }
+    .success-timeline h3 {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--w40);
+      margin-bottom: 1.1rem;
+    }
+    .t-item {
+      display: flex;
+      align-items: flex-start;
+      gap: .9rem;
+      padding-bottom: .9rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: .9rem;
+    }
+    .t-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .t-dot {
+      width: 30px; height: 30px; flex-shrink: 0;
+      border-radius: 50%;
+      background: rgba(59,130,246,.1);
+      border: 2px solid rgba(59,130,246,.3);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono);
+      font-size: .6rem;
+      font-weight: 700;
+      color: var(--blue);
+    }
+    .t-text strong { display: block; font-size: .86rem; font-weight: 600; margin-bottom: .15rem; }
+    .t-text span { font-size: .8rem; color: var(--w50); }
+    .success-contact { font-size: .82rem; color: var(--w50); margin-bottom: 1.25rem; }
+    .success-contact a { color: var(--blue); }
+    .success-home {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .65rem 1.4rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: .86rem;
+      font-weight: 600;
+      color: var(--w60);
+      transition: all .2s;
+    }
+    .success-home:hover { border-color: rgba(255,255,255,.25); color: var(--white); }
+
+    /* ═══ MISC HELPERS ═══ */
+    .section-sep { height: 1px; background: var(--border); margin: 1.25rem 0; }
+    .toggles-block { border: 1px solid var(--border); border-radius: 9px; overflow: hidden; padding: 0 .75rem; margin-bottom: 1.1rem; }
+    .toggles-block .toggle-group { padding: .7rem 0; }
+
+    @media (max-width: 768px) {
+      .accordion-header { padding: .9rem 1.1rem; }
+      .accordion-body { padding: 0 1.1rem 1.5rem; }
+      .page-wrap { padding: 2rem 1rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">BizStack<span class="ai">.vip</span></a>
+      <a href="/" class="nav-back">← Back to Home</a>
+    </div>
+  </nav>
+
+  <!-- NAV SPACER + STICKY PROGRESS -->
+  <div class="nav-spacer"></div>
+  <div class="progress-sticky" id="progressSticky">
+    <div class="progress-inner">
+      <div class="progress-meta">
+        <span class="progress-label">Onboarding Progress</span>
+        <span class="progress-pct" id="progressPct">0% complete</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORM PAGE -->
+  <div id="form-page">
+    <div class="page-wrap">
+
+      <!-- HEADER -->
+      <div class="form-header">
+        <div class="form-eyebrow">New Client Onboarding</div>
+        <h1 class="form-title">Welcome to <span>BizStack AI</span><br>Let's Build Your Stack</h1>
+        <p class="form-sub">Complete this checklist so we can build your system exactly the way you need it. <strong>Your 48-hour build clock starts when you submit.</strong></p>
+      </div>
+
+      <!-- ── SECTION 1: YOUR BUSINESS ── -->
+      <section class="accordion is-open" id="s1">
+        <div class="accordion-header" onclick="toggleAccordion('s1')">
+          <div class="section-num">01</div>
+          <div class="section-title-wrap">
+            <div class="section-title">Your Business</div>
+            <div class="section-prog" id="s1-prog">0 of 7 required fields complete</div>
+          </div>
+          <div class="section-done-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <svg class="section-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="accordion-body">
+          <div class="field-row">
+            <div class="fg">
+              <label for="business_name">Business Name <span class="req">*</span></label>
+              <input type="text" id="business_name" name="business_name" placeholder="Acme Plumbing Co." autocomplete="organization">
+            </div>
+            <div class="fg">
+              <label for="full_name">Your Full Name <span class="req">*</span></label>
+              <input type="text" id="full_name" name="full_name" placeholder="John Smith" autocomplete="name">
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="fg">
+              <label for="role_title">Your Role / Title</label>
+              <input type="text" id="role_title" name="role_title" placeholder="Owner, CEO, Operations Manager...">
+            </div>
+            <div class="fg">
+              <label for="business_phone">Business Phone <span class="req">*</span></label>
+              <input type="tel" id="business_phone" name="business_phone" placeholder="(555) 000-0000" autocomplete="tel">
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="fg">
+              <label for="business_email">Business Email <span class="req">*</span></label>
+              <input type="email" id="business_email" name="business_email" placeholder="you@yourbusiness.com" autocomplete="email">
+            </div>
+            <div class="fg">
+              <label for="business_address">Business Address / City</label>
+              <input type="text" id="business_address" name="business_address" placeholder="Los Angeles, CA">
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="fg">
+              <label for="website_url">Website URL (if exists)</label>
+              <input type="url" id="website_url" name="website_url" placeholder="https://yourbusiness.com">
+            </div>
+            <div class="fg">
+              <label for="year_founded">Year Founded</label>
+              <input type="text" id="year_founded" name="year_founded" placeholder="2019">
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="fg">
+              <label for="industry">Industry / Type of Business <span class="req">*</span></label>
+              <input type="text" id="industry" name="industry" placeholder="Real estate, HVAC, Law firm...">
+            </div>
+            <div class="fg">
+              <label for="num_employees">Number of Employees</label>
+              <select id="num_employees" name="num_employees">
+                <option value="">Select...</option>
+                <option value="just_me">Just me</option>
+                <option value="2-5">2–5</option>
+                <option value="6-20">6–20</option>
+                <option value="21-50">21–50</option>
+                <option value="50+">50+</option>
+              </select>
+            </div>
+          </div>
+          <div class="fg">
+            <label for="primary_service">Primary Service or Product <span class="req">*</span></label>
+            <textarea id="primary_service" name="primary_service" rows="2" placeholder="What do you sell or do? Be specific."></textarea>
+          </div>
+          <div class="fg">
+            <label for="ideal_customer">Who Is Your Ideal Customer? <span class="req">*</span></label>
+            <textarea id="ideal_customer" name="ideal_customer" rows="2" placeholder="Describe the type of person or business you want to attract."></textarea>
+          </div>
+          <div class="fg">
+            <label for="differentiator">What Makes You Different from Competitors?</label>
+            <textarea id="differentiator" name="differentiator" rows="2" placeholder="What's your unfair advantage or unique edge?"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SECTION 2: YOUR BRAND ── -->
+      <section class="accordion" id="s2">
+        <div class="accordion-header" onclick="toggleAccordion('s2')">
+          <div class="section-num">02</div>
+          <div class="section-title-wrap">
+            <div class="section-title">Your Brand</div>
+            <div class="section-prog" id="s2-prog">Not started</div>
+          </div>
+          <div class="section-done-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <svg class="section-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="accordion-body">
+          <!-- Logo upload -->
+          <div class="fg">
+            <label class="field-label">Logo Upload</label>
+            <div class="file-zone" id="logo-zone">
+              <div class="file-zone-icon">🖼️</div>
+              <div class="file-zone-text"><strong>Click to upload</strong> or drag and drop your logo</div>
+              <div class="file-zone-sub">PNG, JPG, SVG, PDF — max 5MB</div>
+            </div>
+            <input type="file" id="logo_file" accept="image/*,application/pdf" style="display:none">
+            <div class="file-previews" id="logo-previews"></div>
+          </div>
+
+          <!-- Brand colors -->
+          <div class="field-row">
+            <div class="fg">
+              <label for="color_primary">Primary Brand Color</label>
+              <div class="color-row">
+                <input type="color" id="color_primary_picker">
+                <input type="text" id="color_primary" name="color_primary" class="color-hex" placeholder="#3B82F6" maxlength="7">
+              </div>
+            </div>
+            <div class="fg">
+              <label for="color_secondary">Secondary Brand Color</label>
+              <div class="color-row">
+                <input type="color" id="color_secondary_picker">
+                <input type="text" id="color_secondary" name="color_secondary" class="color-hex" placeholder="#8B5CF6" maxlength="7">
+              </div>
+            </div>
+          </div>
+
+          <!-- Font preference -->
+          <div class="fg">
+            <label for="font_preference">Font Preference</label>
+            <select id="font_preference" name="font_preference">
+              <option value="">Select a style...</option>
+              <option value="modern_clean">Modern &amp; Clean</option>
+              <option value="classic_professional">Classic &amp; Professional</option>
+              <option value="bold_impactful">Bold &amp; Impactful</option>
+              <option value="friendly_approachable">Friendly &amp; Approachable</option>
+              <option value="luxury_elegant">Luxury &amp; Elegant</option>
+              <option value="no_preference">No Preference</option>
+            </select>
+          </div>
+
+          <!-- Brand feel pills -->
+          <div class="fg">
+            <label class="field-label">Overall Brand Feel <span class="field-note">Select all that apply</span></label>
+            <div class="pills-wrap" id="brand-feel-pills">
+              <input type="checkbox" class="pill-check" id="feel_professional" name="feel_professional" value="Professional">
+              <label class="pill-label" for="feel_professional">Professional</label>
+              <input type="checkbox" class="pill-check" id="feel_friendly" name="feel_friendly" value="Friendly">
+              <label class="pill-label" for="feel_friendly">Friendly</label>
+              <input type="checkbox" class="pill-check" id="feel_luxury" name="feel_luxury" value="Luxury">
+              <label class="pill-label" for="feel_luxury">Luxury</label>
+              <input type="checkbox" class="pill-check" id="feel_bold" name="feel_bold" value="Bold">
+              <label class="pill-label" for="feel_bold">Bold</label>
+              <input type="checkbox" class="pill-check" id="feel_minimalist" name="feel_minimalist" value="Minimalist">
+              <label class="pill-label" for="feel_minimalist">Minimalist</label>
+              <input type="checkbox" class="pill-check" id="feel_playful" name="feel_playful" value="Playful">
+              <label class="pill-label" for="feel_playful">Playful</label>
+              <input type="checkbox" class="pill-check" id="feel_corporate" name="feel_corporate" value="Corporate">
+              <label class="pill-label" for="feel_corporate">Corporate</label>
+              <input type="checkbox" class="pill-check" id="feel_creative" name="feel_creative" value="Creative">
+              <label class="pill-label" for="feel_creative">Creative</label>
+            </div>
+          </div>
+
+          <!-- 3 brand words -->
+          <div class="fg">
+            <label for="brand_words">3 Words That Describe Your Brand</label>
+            <input type="text" id="brand_words" name="brand_words" placeholder="Bold, Trustworthy, Modern">
+          </div>
+
+          <!-- Brands admired -->
+          <div class="fg">
+            <label for="brands_admire">Brands You Admire Visually</label>
+            <textarea id="brands_admire" name="brands_admire" rows="2" placeholder="Any industry — just tell us what looks good to you. (e.g. Apple, Stripe, Nike, Peloton)"></textarea>
+          </div>
+
+          <!-- Additional photos -->
+          <div class="fg">
+            <label class="field-label">Additional Photos / Images to Use</label>
+            <div class="file-zone" id="photos-zone">
+              <div class="file-zone-icon">📸</div>
+              <div class="file-zone-text"><strong>Click to upload</strong> or drag and drop multiple files</div>
+              <div class="file-zone-sub">Images, PDFs — 5MB per file · 20MB total</div>
+            </div>
+            <input type="file" id="brand_photos" accept="image/*,application/pdf" multiple style="display:none">
+            <div class="file-previews" id="photos-previews"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SECTION 3: YOUR WEBSITE ── -->
+      <section class="accordion" id="s3">
+        <div class="accordion-header" onclick="toggleAccordion('s3')">
+          <div class="section-num">03</div>
+          <div class="section-title-wrap">
+            <div class="section-title">Your Website</div>
+            <div class="section-prog" id="s3-prog">0 of 2 required fields complete</div>
+          </div>
+          <div class="section-done-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <svg class="section-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="accordion-body">
+          <div class="field-row">
+            <div class="fg">
+              <label for="domain_name">Domain Name or Desired Domain <span class="req">*</span></label>
+              <input type="text" id="domain_name" name="domain_name" placeholder="yourbusiness.com">
+            </div>
+            <div class="fg">
+              <label for="domain_registrar">Domain Registrar / Login Info
+                <span class="field-note">We'll collect credentials securely in a separate step</span>
+              </label>
+              <input type="text" id="domain_registrar" name="domain_registrar" placeholder="GoDaddy, Namecheap, Google Domains...">
+            </div>
+          </div>
+          <div class="fg">
+            <label for="current_hosting">Current Hosting Provider (if any)</label>
+            <input type="text" id="current_hosting" name="current_hosting" placeholder="Bluehost, WP Engine, Wix, Squarespace...">
+          </div>
+
+          <!-- Pages wanted pills -->
+          <div class="fg">
+            <label class="field-label">Pages You Want <span class="field-note">Select all that apply</span></label>
+            <div class="pills-wrap">
+              <input type="checkbox" class="pill-check" id="page_home" name="page_home" value="Home">
+              <label class="pill-label" for="page_home">Home</label>
+              <input type="checkbox" class="pill-check" id="page_about" name="page_about" value="About">
+              <label class="pill-label" for="page_about">About</label>
+              <input type="checkbox" class="pill-check" id="page_services" name="page_services" value="Services">
+              <label class="pill-label" for="page_services">Services</label>
+              <input type="checkbox" class="pill-check" id="page_contact" name="page_contact" value="Contact">
+              <label class="pill-label" for="page_contact">Contact</label>
+              <input type="checkbox" class="pill-check" id="page_blog" name="page_blog" value="Blog">
+              <label class="pill-label" for="page_blog">Blog</label>
+              <input type="checkbox" class="pill-check" id="page_faq" name="page_faq" value="FAQ">
+              <label class="pill-label" for="page_faq">FAQ</label>
+              <input type="checkbox" class="pill-check" id="page_testimonials" name="page_testimonials" value="Testimonials">
+              <label class="pill-label" for="page_testimonials">Testimonials</label>
+              <input type="checkbox" class="pill-check" id="page_gallery" name="page_gallery" value="Gallery">
+              <label class="pill-label" for="page_gallery">Gallery</label>
+              <input type="checkbox" class="pill-check" id="page_booking" name="page_booking" value="Booking">
+              <label class="pill-label" for="page_booking">Booking</label>
+              <input type="checkbox" class="pill-check" id="page_other" name="page_other_check" value="Other" onchange="toggleOtherPages(this)">
+              <label class="pill-label" for="page_other">Other</label>
+            </div>
+          </div>
+          <div class="fg" id="pages-other-field" style="display:none;">
+            <label for="pages_other">Custom Page Names</label>
+            <input type="text" id="pages_other" name="pages_other" placeholder="e.g. Portfolio, Careers, Team Bios">
+          </div>
+
+          <div class="fg">
+            <label for="services_on_site">Services / Products to Feature on the Site <span class="req">*</span></label>
+            <textarea id="services_on_site" name="services_on_site" rows="3" placeholder="List what you want highlighted on your website."></textarea>
+          </div>
+
+          <!-- Website toggles -->
+          <div class="toggles-block">
+            <div class="toggle-group">
+              <span class="toggle-group-label">Do you want a booking / appointment form?</span>
+              <div class="toggle">
+                <input type="checkbox" id="want_booking" name="want_booking">
+                <div class="toggle-track"></div>
+                <div class="toggle-thumb"></div>
+              </div>
+            </div>
+            <div class="toggle-group">
+              <span class="toggle-group-label">Do you want a contact form?</span>
+              <div class="toggle">
+                <input type="checkbox" id="want_contact" name="want_contact">
+                <div class="toggle-track"></div>
+                <div class="toggle-thumb"></div>
+              </div>
+            </div>
+            <div class="toggle-group">
+              <span class="toggle-group-label">Do you want a chatbot on the site?
+                <span class="field-note">Available on Scale+ plans</span>
+              </span>
+              <div class="toggle">
+                <input type="checkbox" id="want_chatbot" name="want_chatbot">
+                <div class="toggle-track"></div>
+                <div class="toggle-thumb"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="fg">
+            <label for="website_examples">Website Examples You Like</label>
+            <textarea id="website_examples" name="website_examples" rows="2" placeholder="Paste any URLs of sites you think look great. Any industry is fine."></textarea>
+          </div>
+          <div class="fg">
+            <label for="website_hates">Anything You Hate About Typical Websites?</label>
+            <textarea id="website_hates" name="website_hates" rows="2" placeholder="Too many pop-ups? Clunky navigation? Hard to read text? Tell us."></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SECTION 4: YOUR CRM & LEAD FLOW ── -->
+      <section class="accordion" id="s4">
+        <div class="accordion-header" onclick="toggleAccordion('s4')">
+          <div class="section-num">04</div>
+          <div class="section-title-wrap">
+            <div class="section-title">Your CRM &amp; Lead Flow</div>
+            <div class="section-prog" id="s4-prog">Not started</div>
+          </div>
+          <div class="section-done-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <svg class="section-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="accordion-body">
+          <div class="field-row">
+            <div class="fg">
+              <label for="current_crm">Current CRM (if any)</label>
+              <select id="current_crm" name="current_crm" onchange="toggleCrmOther(this)">
+                <option value="">Select...</option>
+                <option value="none">None</option>
+                <option value="hubspot">HubSpot</option>
+                <option value="salesforce">Salesforce</option>
+                <option value="gohighlevel">GoHighLevel</option>
+                <option value="zoho">Zoho</option>
+                <option value="monday">Monday.com</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="fg" id="crm-other-wrap" style="display:none;">
+              <label for="crm_other">Which CRM?</label>
+              <input type="text" id="crm_other" name="crm_other" placeholder="CRM name...">
+            </div>
+          </div>
+
+          <!-- How leads contact you pills -->
+          <div class="fg">
+            <label class="field-label">How Do Leads Currently Contact You? <span class="field-note">Select all that apply</span></label>
+            <div class="pills-wrap">
+              <input type="checkbox" class="pill-check" id="lead_phone" name="lead_phone" value="Phone">
+              <label class="pill-label" for="lead_phone">Phone</label>
+              <input type="checkbox" class="pill-check" id="lead_email" name="lead_email" value="Email">
+              <label class="pill-label" for="lead_email">Email</label>
+              <input type="checkbox" class="pill-check" id="lead_website_form" name="lead_website_form" value="Website Form">
+              <label class="pill-label" for="lead_website_form">Website Form</label>
+              <input type="checkbox" class="pill-check" id="lead_social" name="lead_social" value="Social Media">
+              <label class="pill-label" for="lead_social">Social Media</label>
+              <input type="checkbox" class="pill-check" id="lead_walkin" name="lead_walkin" value="Walk-in">
+              <label class="pill-label" for="lead_walkin">Walk-in</label>
+              <input type="checkbox" class="pill-check" id="lead_referral" name="lead_referral" value="Referral">
+              <label class="pill-label" for="lead_referral">Referral</label>
+              <input type="checkbox" class="pill-check" id="lead_other" name="lead_other" value="Other">
+              <label class="pill-label" for="lead_other">Other</label>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="fg">
+              <label for="followup_speed">How Quickly Do You Follow Up With Leads?</label>
+              <select id="followup_speed" name="followup_speed">
+                <option value="">Select...</option>
+                <option value="minutes">Within minutes</option>
+                <option value="hours">Within hours</option>
+                <option value="same_day">Same day</option>
+                <option value="next_day">Next day</option>
+                <option value="varies">It varies</option>
+                <option value="no_system">I don't have a system</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label for="sales_cycle">What's Your Average Sales Cycle?</label>
+              <select id="sales_cycle" name="sales_cycle">
+                <option value="">Select...</option>
+                <option value="same_day">Same day</option>
+                <option value="1-7d">1–7 days</option>
+                <option value="1-4w">1–4 weeks</option>
+                <option value="1-3m">1–3 months</option>
+                <option value="3m+">3+ months</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="fg">
+            <label for="lead_journey">What Happens After a Lead Contacts You? Walk Us Through It.</label>
+            <textarea id="lead_journey" name="lead_journey" rows="3" placeholder="e.g. They call, I answer and give a quote, send a follow-up email the next day..."></textarea>
+          </div>
+
+          <div class="fg">
+            <label for="avg_transaction">What's Your Average Transaction Value?</label>
+            <select id="avg_transaction" name="avg_transaction">
+              <option value="">Select...</option>
+              <option value="under_100">Under $100</option>
+              <option value="100-500">$100–$500</option>
+              <option value="500-2000">$500–$2,000</option>
+              <option value="2000-10000">$2,000–$10,000</option>
+              <option value="10000+">$10,000+</option>
+              <option value="varies">Varies widely</option>
+            </select>
+          </div>
+
+          <!-- CRM toggles -->
+          <div class="toggles-block">
+            <div class="toggle-group">
+              <span class="toggle-group-label">Do you want automated appointment reminders?</span>
+              <div class="toggle">
+                <input type="checkbox" id="want_reminders" name="want_reminders">
+                <div class="toggle-track"></div>
+                <div class="toggle-thumb"></div>
+              </div>
+            </div>
+            <div class="toggle-group">
+              <span class="toggle-group-label">Do you want automated review requests after service?</span>
+              <div class="toggle">
+                <input type="checkbox" id="want_reviews" name="want_reviews">
+                <div class="toggle-track"></div>
+                <div class="toggle-thumb"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="fg">
+              <label for="email_marketing_tool">Current Email Marketing Tool (if any)</label>
+              <input type="text" id="email_marketing_tool" name="email_marketing_tool" placeholder="Mailchimp, Klaviyo, ActiveCampaign...">
+            </div>
+            <div class="fg">
+              <label for="sms_platform">Current SMS Platform (if any)</label>
+              <input type="text" id="sms_platform" name="sms_platform" placeholder="Twilio, TextMagic, SimpleTexting...">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SECTION 5: YOUR GOALS ── -->
+      <section class="accordion" id="s5">
+        <div class="accordion-header" onclick="toggleAccordion('s5')">
+          <div class="section-num">05</div>
+          <div class="section-title-wrap">
+            <div class="section-title">Your Goals</div>
+            <div class="section-prog" id="s5-prog">0 of 2 required fields complete</div>
+          </div>
+          <div class="section-done-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <svg class="section-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="accordion-body">
+          <div class="fg">
+            <label for="goal_90_days">What Is Your #1 Business Goal in the Next 90 Days? <span class="req">*</span></label>
+            <textarea id="goal_90_days" name="goal_90_days" rows="2" placeholder="Be specific — 'close 5 new clients', 'hit $20K/month revenue'..."></textarea>
+          </div>
+          <div class="fg">
+            <label for="revenue_goal">What Is Your Revenue Goal for This Year?</label>
+            <input type="text" id="revenue_goal" name="revenue_goal" placeholder="e.g. $250,000 / $500K / $1M">
+          </div>
+          <div class="fg">
+            <label for="biggest_problem">What Is the Biggest Problem in Your Business Right Now? <span class="req">*</span></label>
+            <textarea id="biggest_problem" name="biggest_problem" rows="2" placeholder="Don't hold back — the more honest you are, the better we can help."></textarea>
+          </div>
+          <div class="fg">
+            <label for="tasks_to_automate">What Tasks Take Up the Most Time That You Wish Were Automated?</label>
+            <textarea id="tasks_to_automate" name="tasks_to_automate" rows="2" placeholder="e.g. Following up with leads, scheduling, sending invoices, chasing reviews..."></textarea>
+          </div>
+          <div class="fg">
+            <label for="success_12mo">What Does Success Look Like to You in 12 Months?</label>
+            <textarea id="success_12mo" name="success_12mo" rows="2" placeholder="Paint the picture — revenue, lifestyle, team size, customer count, impact..."></textarea>
+          </div>
+          <div class="fg">
+            <label for="anything_else">Is There Anything Specific You Want Us to Know Before We Build?</label>
+            <textarea id="anything_else" name="anything_else" rows="2" placeholder="Anything we haven't asked that's important to your business or how you work."></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SECTION 6: EXISTING TOOLS & LOGINS ── -->
+      <section class="accordion" id="s6">
+        <div class="accordion-header" onclick="toggleAccordion('s6')">
+          <div class="section-num">06</div>
+          <div class="section-title-wrap">
+            <div class="section-title">Existing Tools &amp; Logins</div>
+            <div class="section-prog" id="s6-prog">Not started</div>
+          </div>
+          <div class="section-done-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <svg class="section-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="accordion-body">
+          <div class="security-notice">
+            <span style="flex-shrink:0; margin-top:.05rem;">🔒</span>
+            <span>Never include passwords here. We'll collect login credentials securely through a separate encrypted form after we receive your checklist.</span>
+          </div>
+
+          <div class="tool-grid">
+            <!-- Google Business Profile -->
+            <div class="tool-row" id="row-google_business">
+              <div class="tool-row-top">
+                <span class="tool-name">Google Business Profile</span>
+                <div class="toggle">
+                  <input type="checkbox" id="tool_google_business" onchange="toggleToolNotes('google_business', this.checked)">
+                  <div class="toggle-track"></div>
+                  <div class="toggle-thumb"></div>
+                </div>
+              </div>
+              <div class="tool-notes" id="notes-google_business">
+                <input type="text" id="tool_google_business_notes" name="tool_google_business_notes" placeholder="Notes (profile URL, verification status...)" style="margin-top:.5rem;">
+              </div>
+            </div>
+
+            <!-- Google Analytics -->
+            <div class="tool-row" id="row-google_analytics">
+              <div class="tool-row-top">
+                <span class="tool-name">Google Analytics</span>
+                <div class="toggle">
+                  <input type="checkbox" id="tool_google_analytics" onchange="toggleToolNotes('google_analytics', this.checked)">
+                  <div class="toggle-track"></div>
+                  <div class="toggle-thumb"></div>
+                </div>
+              </div>
+              <div class="tool-notes" id="notes-google_analytics">
+                <input type="text" id="tool_google_analytics_notes" name="tool_google_analytics_notes" placeholder="Notes (GA4 property ID, tracking status...)" style="margin-top:.5rem;">
+              </div>
+            </div>
+
+            <!-- Facebook Business Page -->
+            <div class="tool-row" id="row-facebook_page">
+              <div class="tool-row-top">
+                <span class="tool-name">Facebook Business Page</span>
+                <div class="toggle">
+                  <input type="checkbox" id="tool_facebook_page" onchange="toggleToolNotes('facebook_page', this.checked)">
+                  <div class="toggle-track"></div>
+                  <div class="toggle-thumb"></div>
+                </div>
+              </div>
+              <div class="tool-notes" id="notes-facebook_page">
+                <input type="text" id="tool_facebook_page_notes" name="tool_facebook_page_notes" placeholder="Notes (page URL, follower count...)" style="margin-top:.5rem;">
+              </div>
+            </div>
+
+            <!-- Instagram Business Account -->
+            <div class="tool-row" id="row-instagram_business">
+              <div class="tool-row-top">
+                <span class="tool-name">Instagram Business Account</span>
+                <div class="toggle">
+                  <input type="checkbox" id="tool_instagram_business" onchange="toggleToolNotes('instagram_business', this.checked)">
+                  <div class="toggle-track"></div>
+                  <div class="toggle-thumb"></div>
+                </div>
+              </div>
+              <div class="tool-notes" id="notes-instagram_business">
+                <input type="text" id="tool_instagram_business_notes" name="tool_instagram_business_notes" placeholder="Notes (@handle, follower count...)" style="margin-top:.5rem;">
+              </div>
+            </div>
+
+            <!-- Google Ads -->
+            <div class="tool-row" id="row-google_ads">
+              <div class="tool-row-top">
+                <span class="tool-name">Google Ads Account</span>
+                <div class="toggle">
+                  <input type="checkbox" id="tool_google_ads" onchange="toggleToolNotes('google_ads', this.checked)">
+                  <div class="toggle-track"></div>
+                  <div class="toggle-thumb"></div>
+                </div>
+              </div>
+              <div class="tool-notes" id="notes-google_ads">
+                <input type="text" id="tool_google_ads_notes" name="tool_google_ads_notes" placeholder="Notes (monthly spend, campaigns active...)" style="margin-top:.5rem;">
+              </div>
+            </div>
+
+            <!-- Facebook Ads -->
+            <div class="tool-row" id="row-facebook_ads">
+              <div class="tool-row-top">
+                <span class="tool-name">Facebook Ads Account</span>
+                <div class="toggle">
+                  <input type="checkbox" id="tool_facebook_ads" onchange="toggleToolNotes('facebook_ads', this.checked)">
+                  <div class="toggle-track"></div>
+                  <div class="toggle-thumb"></div>
+                </div>
+              </div>
+              <div class="tool-notes" id="notes-facebook_ads">
+                <input type="text" id="tool_facebook_ads_notes" name="tool_facebook_ads_notes" placeholder="Notes (monthly spend, pixel installed...)" style="margin-top:.5rem;">
+              </div>
+            </div>
+
+            <!-- Email List (special - contacts field) -->
+            <div class="tool-row" id="row-email_list">
+              <div class="tool-row-top">
+                <span class="tool-name">Existing Email List</span>
+                <div class="toggle">
+                  <input type="checkbox" id="tool_email_list" onchange="toggleToolNotes('email_list', this.checked)">
+                  <div class="toggle-track"></div>
+                  <div class="toggle-thumb"></div>
+                </div>
+              </div>
+              <div class="tool-notes" id="notes-email_list">
+                <div class="field-row" style="margin-top:.5rem;">
+                  <div class="fg">
+                    <label for="tool_email_list_contacts">How many contacts?</label>
+                    <input type="number" id="tool_email_list_contacts" name="tool_email_list_contacts" placeholder="e.g. 1500" min="0">
+                  </div>
+                  <div class="fg">
+                    <label for="tool_email_list_notes">Notes</label>
+                    <input type="text" id="tool_email_list_notes" name="tool_email_list_notes" placeholder="Platform, list health, opt-in source...">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Stripe -->
+            <div class="tool-row" id="row-stripe">
+              <div class="tool-row-top">
+                <span class="tool-name">Stripe or Payment Processor</span>
+                <div class="toggle">
+                  <input type="checkbox" id="tool_stripe" onchange="toggleToolNotes('stripe', this.checked)">
+                  <div class="toggle-track"></div>
+                  <div class="toggle-thumb"></div>
+                </div>
+              </div>
+              <div class="tool-notes" id="notes-stripe">
+                <input type="text" id="tool_stripe_notes" name="tool_stripe_notes" placeholder="Notes (Stripe, Square, PayPal, etc.)" style="margin-top:.5rem;">
+              </div>
+            </div>
+
+            <!-- Scheduling Tool -->
+            <div class="tool-row" id="row-scheduling_tool">
+              <div class="tool-row-top">
+                <span class="tool-name">Scheduling Tool (Calendly, etc.)</span>
+                <div class="toggle">
+                  <input type="checkbox" id="tool_scheduling_tool" onchange="toggleToolNotes('scheduling_tool', this.checked)">
+                  <div class="toggle-track"></div>
+                  <div class="toggle-thumb"></div>
+                </div>
+              </div>
+              <div class="tool-notes" id="notes-scheduling_tool">
+                <input type="text" id="tool_scheduling_tool_notes" name="tool_scheduling_tool_notes" placeholder="Notes (tool name, booking link...)" style="margin-top:.5rem;">
+              </div>
+            </div>
+          </div>
+
+          <div class="fg" style="margin-top:1rem;">
+            <label for="other_tools">Any Other Tools We Should Know About?</label>
+            <textarea id="other_tools" name="other_tools" rows="2" placeholder="Accounting software, industry-specific platforms, tools you use daily..."></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- SUBMIT AREA -->
+      <div class="submit-area">
+        <button class="btn-submit" id="submitBtn" onclick="submitForm()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg>
+          Submit Onboarding Checklist
+        </button>
+        <p class="submit-note">Your 48-hour build clock starts the moment you submit.</p>
+        <br>
+        <button class="btn-clear" onclick="clearForm()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+          Clear all progress
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SUCCESS PAGE -->
+  <div id="success-page">
+    <nav id="nav">
+      <div class="nav-inner">
+        <a href="/" class="nav-logo">BizStack<span class="ai">.vip</span></a>
+      </div>
+    </nav>
+    <div class="success-inner" style="margin-top:2rem;">
+      <div class="success-check">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h1 class="success-h1">Your onboarding checklist<br>has been received!</h1>
+      <p class="success-sub">Your 48-hour build clock starts now. Here's what happens next.</p>
+
+      <div class="success-timeline">
+        <h3>Your Build Timeline</h3>
+        <div class="t-item">
+          <div class="t-dot">24h</div>
+          <div class="t-text">
+            <strong>Within 24 hours</strong>
+            <span>Your system will be built and ready for review</span>
+          </div>
+        </div>
+        <div class="t-item">
+          <div class="t-dot">48h</div>
+          <div class="t-text">
+            <strong>Within 48 hours</strong>
+            <span>Preview link delivered to <span id="success-email" style="color:var(--blue);">your email</span></span>
+          </div>
+        </div>
+        <div class="t-item">
+          <div class="t-dot">7d</div>
+          <div class="t-text">
+            <strong>Within 7 days</strong>
+            <span>System goes live after your approval</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="success-contact">Questions? Email us at <a href="mailto:hello@bizstack.vip">hello@bizstack.vip</a></p>
+      <a href="/" class="success-home">← Back to BizStack.vip</a>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast">✓ Progress saved</div>
+
+  <script>
+  // ═══════════════════════════════════════
+  //  CONSTANTS
+  // ═══════════════════════════════════════
+  const STORAGE_KEY = 'bizstack_onboarding_v1';
+  const MAX_FILE_BYTES = 5 * 1024 * 1024;   // 5MB per file
+  const MAX_TOTAL_BYTES = 20 * 1024 * 1024; // 20MB total
+
+  // Required field IDs per section
+  const REQUIRED = {
+    s1: ['business_name', 'full_name', 'business_phone', 'business_email', 'industry', 'primary_service', 'ideal_customer'],
+    s2: [],
+    s3: ['domain_name', 'services_on_site'],
+    s4: [],
+    s5: ['goal_90_days', 'biggest_problem'],
+    s6: [],
+  };
+  const ALL_REQUIRED = Object.values(REQUIRED).flat();
+
+  const TOOL_IDS = ['google_business', 'google_analytics', 'facebook_page', 'instagram_business',
+    'google_ads', 'facebook_ads', 'email_list', 'stripe', 'scheduling_tool'];
+
+  // File storage: { logo: [{name, type, base64, size}], photos: [...] }
+  const fileData = { logo: [], photos: [] };
+  let totalFileBytes = 0;
+
+  // ═══════════════════════════════════════
+  //  ACCORDION
+  // ═══════════════════════════════════════
+  function toggleAccordion(id) {
+    const el = document.getElementById(id);
+    const isOpen = el.classList.contains('is-open');
+    if (isOpen) {
+      el.classList.remove('is-open');
+    } else {
+      el.classList.add('is-open');
+    }
+  }
+
+  // ═══════════════════════════════════════
+  //  CONDITIONAL FIELDS
+  // ═══════════════════════════════════════
+  function toggleOtherPages(cb) {
+    document.getElementById('pages-other-field').style.display = cb.checked ? 'block' : 'none';
+  }
+
+  function toggleCrmOther(sel) {
+    document.getElementById('crm-other-wrap').style.display = sel.value === 'other' ? 'block' : 'none';
+  }
+
+  function toggleToolNotes(toolId, isChecked) {
+    const notesEl = document.getElementById('notes-' + toolId);
+    const rowEl = document.getElementById('row-' + toolId);
+    if (notesEl) notesEl.classList.toggle('show', isChecked);
+    if (rowEl) rowEl.classList.toggle('is-yes', isChecked);
+  }
+
+  // ═══════════════════════════════════════
+  //  COLOR PICKERS
+  // ═══════════════════════════════════════
+  function setupColorPickers() {
+    [['color_primary_picker', 'color_primary'], ['color_secondary_picker', 'color_secondary']].forEach(([pickId, textId]) => {
+      const picker = document.getElementById(pickId);
+      const text = document.getElementById(textId);
+      if (!picker || !text) return;
+
+      // Sync picker → text
+      picker.addEventListener('input', () => {
+        text.value = picker.value.toUpperCase();
+        schedSave();
+      });
+
+      // Sync text → picker
+      text.addEventListener('input', () => {
+        const v = text.value.trim();
+        if (/^#[0-9a-fA-F]{6}$/.test(v)) picker.value = v;
+        schedSave();
+      });
+    });
+  }
+
+  function syncColorPickersFromText() {
+    [['color_primary_picker', 'color_primary'], ['color_secondary_picker', 'color_secondary']].forEach(([pickId, textId]) => {
+      const picker = document.getElementById(pickId);
+      const text = document.getElementById(textId);
+      if (picker && text && /^#[0-9a-fA-F]{6}$/.test(text.value)) picker.value = text.value;
+    });
+  }
+
+  // ═══════════════════════════════════════
+  //  FILE UPLOAD
+  // ═══════════════════════════════════════
+  function setupFileZones() {
+    setupZone('logo-zone', 'logo_file', 'logo', true);
+    setupZone('photos-zone', 'brand_photos', 'photos', false);
+  }
+
+  function setupZone(zoneId, inputId, category, single) {
+    const zone = document.getElementById(zoneId);
+    const input = document.getElementById(inputId);
+    if (!zone || !input) return;
+
+    // Click zone → open file dialog
+    zone.addEventListener('click', () => input.click());
+
+    // Drag and drop
+    zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
+    zone.addEventListener('dragleave', e => { if (!zone.contains(e.relatedTarget)) zone.classList.remove('drag-over'); });
+    zone.addEventListener('drop', e => {
+      e.preventDefault();
+      zone.classList.remove('drag-over');
+      processFiles(e.dataTransfer.files, category, single);
+    });
+
+    // File input change
+    input.addEventListener('change', () => {
+      processFiles(input.files, category, single);
+      input.value = '';
+    });
+  }
+
+  async function processFiles(fileList, category, single) {
+    for (const file of Array.from(fileList)) {
+      if (file.size > MAX_FILE_BYTES) {
+        alert(`"${file.name}" is too large. Max 5MB per file.`);
+        continue;
+      }
+      if (totalFileBytes + file.size > MAX_TOTAL_BYTES) {
+        alert('Total upload limit (20MB) reached. Remove some files first.');
+        break;
+      }
+      if (single) {
+        // Remove existing
+        totalFileBytes -= fileData[category].reduce((s, f) => s + f.size, 0);
+        fileData[category] = [];
+      }
+      const base64 = await toBase64(file);
+      fileData[category].push({ name: file.name, type: file.type, size: file.size, base64 });
+      totalFileBytes += file.size;
+    }
+    renderPreviews(category);
+    schedSave();
+    updateProgress();
+  }
+
+  function toBase64(file) {
+    return new Promise((res, rej) => {
+      const reader = new FileReader();
+      reader.onload = e => res(e.target.result);
+      reader.onerror = rej;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function renderPreviews(category) {
+    const containerId = category === 'logo' ? 'logo-previews' : 'photos-previews';
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    container.innerHTML = fileData[category].map((f, i) => {
+      const isImg = f.type.startsWith('image/');
+      return `<div class="file-thumb">
+        ${isImg
+          ? `<img src="${f.base64}" alt="${f.name}">`
+          : `<div class="file-pdf-icon">📄</div>`}
+        <div class="file-thumb-label">${f.name}</div>
+        <div class="file-thumb-remove" onclick="removeFile('${category}',${i})" title="Remove">✕</div>
+      </div>`;
+    }).join('');
+  }
+
+  function removeFile(category, index) {
+    totalFileBytes -= fileData[category][index].size;
+    fileData[category].splice(index, 1);
+    renderPreviews(category);
+    schedSave();
+    updateProgress();
+  }
+
+  // ═══════════════════════════════════════
+  //  PROGRESS
+  // ═══════════════════════════════════════
+  function updateProgress() {
+    const filled = ALL_REQUIRED.filter(id => {
+      const el = document.getElementById(id);
+      return el && el.value && el.value.trim();
+    }).length;
+
+    const pct = ALL_REQUIRED.length ? Math.round((filled / ALL_REQUIRED.length) * 100) : 0;
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressPct').textContent = pct + '% complete';
+
+    ['s1','s2','s3','s4','s5','s6'].forEach(updateSectionStatus);
+  }
+
+  function updateSectionStatus(sId) {
+    const required = REQUIRED[sId];
+    const section = document.getElementById(sId);
+    const progEl = document.getElementById(sId + '-prog');
+    if (!section || !progEl) return;
+
+    if (required.length > 0) {
+      const filled = required.filter(id => {
+        const el = document.getElementById(id);
+        return el && el.value && el.value.trim();
+      }).length;
+      progEl.textContent = `${filled} of ${required.length} required fields complete`;
+      section.classList.toggle('is-done', filled === required.length);
+    } else {
+      // Optional sections — count filled fields + checked boxes
+      const body = section.querySelector('.accordion-body');
+      const textFilled = Array.from(body.querySelectorAll('input[type="text"],input[type="email"],input[type="tel"],input[type="url"],input[type="number"],select,textarea'))
+        .filter(el => el.value && el.value.trim()).length;
+      const checked = body.querySelectorAll('input[type="checkbox"]:checked').length;
+      const files = sId === 's2' ? fileData.logo.length + fileData.photos.length : 0;
+      const total = textFilled + checked + files;
+
+      if (total === 0) {
+        progEl.textContent = 'Not started';
+        section.classList.remove('is-done');
+      } else {
+        progEl.textContent = `${total} field${total === 1 ? '' : 's'} filled`;
+        // Optional sections: mark done when they have decent coverage
+        const isDone = (sId === 's2' && (fileData.logo.length > 0 || checked >= 2)) ||
+                       (sId === 's4' && total >= 2) ||
+                       (sId === 's6' && checked >= 1);
+        section.classList.toggle('is-done', isDone);
+      }
+    }
+  }
+
+  // ═══════════════════════════════════════
+  //  STORAGE
+  // ═══════════════════════════════════════
+  let saveTimer;
+  function schedSave() { clearTimeout(saveTimer); saveTimer = setTimeout(doSave, 700); }
+
+  function doSave() {
+    try {
+      const data = collectFormData();
+      // Don't store base64 in localStorage (too large) — just filenames for UI hint
+      const fileMeta = {
+        logo: fileData.logo.map(f => ({ name: f.name, size: f.size })),
+        photos: fileData.photos.map(f => ({ name: f.name, size: f.size })),
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ data, fileMeta }));
+      showToast();
+    } catch(e) {
+      console.warn('localStorage save failed:', e);
+    }
+  }
+
+  function loadFromStorage() {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+    let saved;
+    try { saved = JSON.parse(raw); } catch { return; }
+    if (!saved || !saved.data) return;
+
+    const { data } = saved;
+
+    // Restore text/select/textarea
+    Object.entries(data).forEach(([id, val]) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      if (el.type === 'checkbox') {
+        el.checked = Boolean(val);
+      } else {
+        el.value = val || '';
+      }
+    });
+
+    // Sync color pickers
+    syncColorPickersFromText();
+
+    // Refresh conditional displays
+    const crmSel = document.getElementById('current_crm');
+    if (crmSel) toggleCrmOther(crmSel);
+
+    const pageOther = document.getElementById('page_other');
+    if (pageOther && pageOther.checked) toggleOtherPages(pageOther);
+
+    TOOL_IDS.forEach(id => {
+      const cb = document.getElementById('tool_' + id);
+      if (cb && cb.checked) toggleToolNotes(id, true);
+    });
+  }
+
+  function collectFormData() {
+    const data = {};
+    // All text-like inputs + selects + textareas (by id)
+    document.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="url"], input[type="number"], select, textarea').forEach(el => {
+      if (el.id) data[el.id] = el.value;
+    });
+    // Checkboxes (toggles, pills) by id
+    document.querySelectorAll('input[type="checkbox"]').forEach(el => {
+      if (el.id) data[el.id] = el.checked;
+    });
+    return data;
+  }
+
+  // ═══════════════════════════════════════
+  //  TOAST
+  // ═══════════════════════════════════════
+  let toastTimer;
+  function showToast() {
+    const t = document.getElementById('toast');
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove('show'), 2000);
+  }
+
+  // ═══════════════════════════════════════
+  //  VALIDATION
+  // ═══════════════════════════════════════
+  function validateForm() {
+    let valid = true;
+    let firstInvalid = null;
+
+    document.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
+
+    ALL_REQUIRED.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el || !el.value || !el.value.trim()) {
+        el?.classList.add('invalid');
+        valid = false;
+        if (!firstInvalid) firstInvalid = el;
+      }
+    });
+
+    if (!valid && firstInvalid) {
+      // Open the section containing the first invalid field
+      const section = firstInvalid.closest('.accordion');
+      if (section && !section.classList.contains('is-open')) {
+        section.classList.add('is-open');
+      }
+      setTimeout(() => firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
+    }
+
+    return valid;
+  }
+
+  // ═══════════════════════════════════════
+  //  SUBMIT
+  // ═══════════════════════════════════════
+  async function submitForm() {
+    if (!validateForm()) return;
+
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation:spin 1s linear infinite"><circle cx="12" cy="12" r="10" opacity=".25"/><path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/></svg> Submitting...';
+
+    const formData = collectFormData();
+
+    // Log full data to console
+    console.log('[BizStack Onboarding] Submitted:', { formData, fileData });
+
+    // Fire to app.bizstack.vip (non-blocking, include files)
+    fetch('https://app.bizstack.vip/api/onboarding', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...formData, files: fileData }),
+    }).catch(() => {}); // expected to fail until endpoint is built
+
+    // Fire to Resend endpoint for team email
+    try {
+      await fetch('/api/onboarding-submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+    } catch(e) {
+      console.warn('Email endpoint error (non-critical):', e);
+    }
+
+    // Clear storage
+    localStorage.removeItem(STORAGE_KEY);
+
+    // Show success
+    showSuccess(formData.business_email || '');
+  }
+
+  function showSuccess(email) {
+    if (email) {
+      document.getElementById('success-email').textContent = email;
+    }
+    document.getElementById('success-page').classList.add('show');
+    window.scrollTo(0, 0);
+  }
+
+  // ═══════════════════════════════════════
+  //  CLEAR FORM
+  // ═══════════════════════════════════════
+  function clearForm() {
+    if (!confirm('Are you sure you want to clear all your progress? This cannot be undone.')) return;
+    localStorage.removeItem(STORAGE_KEY);
+    location.reload();
+  }
+
+  // ═══════════════════════════════════════
+  //  URL PARAMS PRE-FILL
+  // ═══════════════════════════════════════
+  function prefillFromParams() {
+    const params = new URLSearchParams(window.location.search);
+    const map = {
+      name:     'full_name',
+      email:    'business_email',
+      company:  'business_name',
+      industry: 'industry',
+      phone:    'business_phone',
+    };
+    Object.entries(map).forEach(([param, fieldId]) => {
+      const val = params.get(param);
+      if (val) {
+        const el = document.getElementById(fieldId);
+        if (el && !el.value) el.value = decodeURIComponent(val);
+      }
+    });
+  }
+
+  // ═══════════════════════════════════════
+  //  CHANGE LISTENERS (for auto-save + progress)
+  // ═══════════════════════════════════════
+  function setupChangeListeners() {
+    document.querySelectorAll('input, select, textarea').forEach(el => {
+      el.addEventListener('change', () => { updateProgress(); schedSave(); });
+      if (el.tagName === 'TEXTAREA' || el.type === 'text' || el.type === 'email' ||
+          el.type === 'tel' || el.type === 'url' || el.type === 'number') {
+        el.addEventListener('input', () => { updateProgress(); schedSave(); });
+      }
+    });
+  }
+
+  // Spin animation for submit loader
+  const spinStyle = document.createElement('style');
+  spinStyle.textContent = '@keyframes spin { to { transform: rotate(360deg); } }';
+  document.head.appendChild(spinStyle);
+
+  // ═══════════════════════════════════════
+  //  INIT
+  // ═══════════════════════════════════════
+  document.addEventListener('DOMContentLoaded', () => {
+    // Order matters: load storage first, then params (params only fill if empty), then setup
+    loadFromStorage();
+    prefillFromParams();
+    setupColorPickers();
+    setupFileZones();
+    setupChangeListeners();
+    updateProgress();
+  });
+  </script>
+</body>
+</html>

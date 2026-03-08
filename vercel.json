@@ -3,6 +3,7 @@
   "trailingSlash": false,
   "outputDirectory": ".",
   "rewrites": [
-    { "source": "/assessment", "destination": "/assessment.html" }
+    { "source": "/assessment", "destination": "/assessment.html" },
+    { "source": "/onboarding", "destination": "/onboarding.html" }
   ]
 }
