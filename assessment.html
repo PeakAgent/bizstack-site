@@ -1528,8 +1528,8 @@
     <div class="proposal-banner" id="proposal-banner">
       <div class="proposal-banner-icon">&#10003;</div>
       <div class="proposal-banner-text">
-        <div class="proposal-banner-title">We'll email your custom proposal within 24 hours</div>
-        <div class="proposal-banner-sub">Your assessment results are being reviewed. A tailored proposal for <span class="proposal-banner-email" id="proposal-email-display"></span> will land in your inbox shortly — no sales pressure, just a clear breakdown of exactly what we'll build and what it costs.</div>
+        <div class="proposal-banner-title">Your full assessment results have been sent to <span class="proposal-banner-email" id="proposal-email-display"></span></div>
+        <div class="proposal-banner-sub">Check your inbox — your complete results and recommended plan are there. Our team will be in touch soon.</div>
       </div>
     </div>
 
@@ -1654,8 +1654,8 @@
           <div class="ns-row">
             <div class="ns-num">2</div>
             <div>
-              <div class="ns-content-title">Receive your custom proposal within 24 hours</div>
-              <div class="ns-content-sub">A full breakdown of what we'll build, when it goes live, and exactly what it costs.</div>
+              <div class="ns-content-title">Our team reviews your assessment and follows up</div>
+              <div class="ns-content-sub">We'll reach out to answer questions, confirm your plan, and walk you through exactly what we'll build.</div>
             </div>
           </div>
           <div class="ns-row">
@@ -1666,21 +1666,9 @@
             </div>
           </div>
 
-          <a href="https://calendly.com" target="_blank" rel="noopener" class="cta-main-btn">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="3" width="14" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M6 1v3M12 1v3M2 7h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            Book My Free Strategy Call →
-          </a>
-
-          <div class="divider-or"><span>or skip the call</span></div>
-
-          <div class="skip-call-box">
-            <div class="skip-call-label"><strong>Get your custom proposal by email</strong> — we'll review your answers and send a tailored plan within a few hours.</div>
-            <div class="skip-email-row">
-              <input type="email" id="skip-email-input" class="skip-email-input" placeholder="Your email address">
-              <button class="skip-email-btn" onclick="submitSkipEmail()">Send My Proposal</button>
-            </div>
-            <div class="skip-email-confirm" id="skip-email-confirm">&#10003; Got it! Check your inbox within a few hours.</div>
-          </div>
+          <!-- hidden inputs kept to avoid JS errors from submitSkipEmail references -->
+          <input type="email" id="skip-email-input" style="display:none;">
+          <div id="skip-email-confirm" style="display:none;"></div>
         </div>
       </div>
     </div>
