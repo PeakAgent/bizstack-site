@@ -1548,6 +1548,9 @@
       </div>
     </div>
 
+    <!-- ─ Budget cap upsell message ─ -->
+    <div id="results-budget-upsell" style="display:none;margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:var(--w70);font-size:.9rem;line-height:1.6;"></div>
+
     <!-- ─ CTA Buttons ─ -->
     <div class="results-actions rev-section" id="results-cta-section" style="margin-top:1.75rem;">
       <a id="results-stripe-btn" href="#" target="_blank" rel="noopener" class="cta-main-btn" style="margin-top:0;">
@@ -1984,6 +1987,38 @@
     return 'starter';
   }
 
+  // Budget cap: prevent recommending a tier the prospect can't afford.
+  // Returns the lower of the score-based tier and the budget ceiling.
+  const TIER_ORDER = ['starter', 'growth', 'scale', 'enterprise'];
+  function applyBudgetCap(scoredTier, budget) {
+    const caps = {
+      '99-299':  'growth',    // $99–$299/mo → max Growth
+      '299-499': 'scale',     // $299–$499/mo → max Scale
+      '499-999': 'enterprise' // $499–$999/mo → no effective cap
+      // '999+' and '0-99' handled below
+    };
+
+    let ceiling;
+    if (budget === '0-99') {
+      ceiling = 'starter';
+    } else if (budget === '999+') {
+      return { tier: scoredTier, originalTier: null }; // no cap
+    } else {
+      ceiling = caps[budget] || null;
+    }
+
+    if (!ceiling) return { tier: scoredTier, originalTier: null };
+
+    const scoredIdx  = TIER_ORDER.indexOf(scoredTier);
+    const ceilingIdx = TIER_ORDER.indexOf(ceiling);
+
+    if (scoredIdx > ceilingIdx) {
+      // Prospect scored higher than their budget allows — cap it
+      return { tier: ceiling, originalTier: scoredTier };
+    }
+    return { tier: scoredTier, originalTier: null };
+  }
+
   // ─────────────────────────────────────
   //  COMPARISON DATA
   // ─────────────────────────────────────
@@ -2170,18 +2205,19 @@
     collectStep(9);
 
     const score = calcScore();
-    const tierKey = tierFromScore(score);
+    const scoredTier = tierFromScore(score);
+    const { tier: tierKey, originalTier } = applyBudgetCap(scoredTier, answers.budget);
     const tier = TIERS[tierKey];
 
     console.log('=== BizStack AI Assessment Submission ===');
-    console.log('Score:', score, '→ Tier:', tierKey);
+    console.log('Score:', score, '→ Scored tier:', scoredTier, '→ Final tier:', tierKey, originalTier ? '(capped from ' + originalTier + ')' : '');
     console.log('Form Data:', JSON.stringify(answers, null, 2));
 
     // Fire emails in background — don't block results render
     sendAssessmentEmail(score, tierKey, tier);
 
     // Show results
-    renderResults(tierKey, tier, score);
+    renderResults(tierKey, tier, score, originalTier);
     document.getElementById('assessment-form').style.display = 'none';
     document.getElementById('results').classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -2209,8 +2245,20 @@
     .catch(e => console.warn('[assessment-submit] email error (non-blocking):', e));
   }
 
-  function renderResults(tierKey, tier, score) {
+  function renderResults(tierKey, tier, score, originalTier) {
     currentTierKey = tierKey;
+
+    // ── Budget cap upsell message ──
+    const upsellEl = document.getElementById('results-budget-upsell');
+    if (originalTier) {
+      const originalTierName = TIERS[originalTier].name;
+      upsellEl.textContent =
+        'Based on your needs, we\u2019d recommend ' + originalTierName + '. ' +
+        'But ' + tier.name + ' is a great place to start \u2014 you can upgrade anytime as you grow.';
+      upsellEl.style.display = 'block';
+    } else {
+      upsellEl.style.display = 'none';
+    }
 
     // ── Tier card ──
     const card = document.getElementById('results-tier-card');
