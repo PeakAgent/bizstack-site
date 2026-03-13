@@ -2310,6 +2310,19 @@
     stripeBtn.href = STRIPE_LINKS[tierKey] || '#';
     document.getElementById('results-cta-price').textContent = tier.price;
 
+    // Save assessment data to localStorage so onboarding form can pre-fill after Stripe payment
+    stripeBtn.addEventListener('click', function() {
+      const prefill = {
+        name:    answers.contactName,
+        email:   answers.email,
+        phone:   answers.phone,
+        company: answers.businessName,
+        industry: answers.industry,
+        tier:    tier.name,
+      };
+      try { localStorage.setItem('bizstack_stripe_prefill', JSON.stringify(prefill)); } catch(e) {}
+    }, { once: true });
+
     // ── Pre-fill skip-call email ──
     document.getElementById('skip-email-input').value = answers.email || '';
 

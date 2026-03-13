@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onboarding Checklist — BizStack AI</title>
+  <meta name="description" content="Everything you need to prepare before filling out your BizStack AI onboarding form. Get your materials ready so we can build fast.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0F172A;
+      --bg2:     #1E293B;
+      --bg3:     #334155;
+      --blue:    #3B82F6;
+      --blue2:   #2563EB;
+      --purple:  #8B5CF6;
+      --green:   #10B981;
+      --gold:    #F59E0B;
+      --cyan:    #06B6D4;
+      --red:     #EF4444;
+      --white:   #FFFFFF;
+      --w90: rgba(255,255,255,.9);
+      --w80: rgba(255,255,255,.8);
+      --w70: rgba(255,255,255,.7);
+      --w60: rgba(255,255,255,.6);
+      --w50: rgba(255,255,255,.5);
+      --w10: rgba(255,255,255,.1);
+      --w05: rgba(255,255,255,.05);
+      --border: rgba(255,255,255,.08);
+      --display: 'Space Grotesk', system-ui, sans-serif;
+      --body:    'Inter', system-ui, sans-serif;
+      --mono:    'JetBrains Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--body);
+      background: var(--bg);
+      color: var(--white);
+      overflow-x: hidden;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--display);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    #nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 999;
+      padding: 1.1rem 0;
+      background: rgba(15,23,42,.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--display);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--white);
+    }
+    .nav-logo .ai { color: var(--blue); }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .5rem 1.1rem;
+      background: var(--blue);
+      color: var(--white);
+      border-radius: 8px;
+      font-size: .84rem;
+      font-weight: 600;
+      transition: background .2s;
+    }
+    .nav-cta:hover { background: var(--blue2); }
+
+    /* ── LAYOUT ── */
+    .nav-spacer { height: 68px; }
+    .page-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem 6rem;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      background: rgba(59,130,246,.1);
+      border: 1px solid rgba(59,130,246,.2);
+      border-radius: 999px;
+      padding: .35rem .9rem;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 {
+      font-size: clamp(1.9rem, 5vw, 2.75rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: .9rem;
+    }
+    .hero h1 span { color: var(--blue); }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--w70);
+      max-width: 560px;
+      margin: 0 auto 2rem;
+      line-height: 1.65;
+    }
+
+    /* ── PROGRESS BAR ── */
+    .progress-bar-wrap {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .progress-bar-track {
+      flex: 1;
+      height: 6px;
+      background: var(--w10);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--blue), var(--purple));
+      border-radius: 999px;
+      transition: width .4s cubic-bezier(.4,0,.2,1);
+      width: 0%;
+    }
+    .progress-bar-label {
+      font-family: var(--mono);
+      font-size: .75rem;
+      color: var(--w50);
+      white-space: nowrap;
+    }
+    #progress-count {
+      color: var(--blue);
+      font-weight: 700;
+    }
+
+    /* ── TIMELINE CALLOUT ── */
+    .timeline-callout {
+      display: flex;
+      gap: 1px;
+      background: var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 3rem;
+    }
+    .tl-step {
+      flex: 1;
+      background: var(--bg2);
+      padding: 1.1rem 1rem;
+      text-align: center;
+    }
+    .tl-step:first-child { border-radius: 12px 0 0 12px; }
+    .tl-step:last-child  { border-radius: 0 12px 12px 0; }
+    .tl-label {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--w40);
+      margin-bottom: .3rem;
+    }
+    .tl-val {
+      font-family: var(--display);
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .tl-val.blue   { color: var(--blue); }
+    .tl-val.purple { color: var(--purple); }
+    .tl-val.green  { color: var(--green); }
+
+    /* ── SECTION CARD ── */
+    .section-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 1.25rem;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.1rem 1.4rem;
+      cursor: pointer;
+      user-select: none;
+      transition: background .15s;
+    }
+    .section-header:hover { background: rgba(255,255,255,.03); }
+    .section-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+    }
+    .section-title-wrap { flex: 1; min-width: 0; }
+    .section-title {
+      font-family: var(--display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .section-meta {
+      font-size: .78rem;
+      color: var(--w50);
+      margin-top: .1rem;
+    }
+    .section-badge {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: .25rem .65rem;
+      border-radius: 999px;
+      flex-shrink: 0;
+    }
+    .badge-req  { background: rgba(59,130,246,.12);  color: var(--blue); }
+    .badge-opt  { background: rgba(255,255,255,.06); color: var(--w50); }
+    .badge-done { background: rgba(16,185,129,.12);  color: var(--green); }
+    .section-chevron {
+      flex-shrink: 0;
+      color: var(--w30);
+      transition: transform .25s;
+    }
+    .section-card.open .section-chevron { transform: rotate(180deg); }
+
+    /* ── CHECKLIST BODY ── */
+    .section-body {
+      display: none;
+      padding: 0 1.4rem 1.4rem;
+    }
+    .section-card.open .section-body { display: block; }
+    .section-divider {
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 1.25rem;
+    }
+
+    /* ── CHECKLIST ITEMS ── */
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: .85rem;
+      padding: .7rem 0;
+      border-bottom: 1px solid rgba(255,255,255,.04);
+      cursor: pointer;
+      transition: opacity .15s;
+    }
+    .checklist-item:last-child { border-bottom: none; }
+    .checklist-item:hover .item-box { border-color: var(--blue); }
+
+    .item-box {
+      width: 22px;
+      height: 22px;
+      border: 1.5px solid var(--w30);
+      border-radius: 6px;
+      flex-shrink: 0;
+      margin-top: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color .15s, background .15s;
+    }
+    .checklist-item.checked .item-box {
+      background: var(--green);
+      border-color: var(--green);
+    }
+    .checklist-item.checked .item-box svg { display: block; }
+    .item-box svg { display: none; }
+
+    .item-content { flex: 1; min-width: 0; }
+    .item-label {
+      font-size: .92rem;
+      font-weight: 500;
+      color: var(--w90);
+      line-height: 1.4;
+      transition: color .15s;
+    }
+    .checklist-item.checked .item-label {
+      color: var(--w40);
+      text-decoration: line-through;
+      text-decoration-color: var(--w20);
+    }
+    .item-hint {
+      font-size: .78rem;
+      color: var(--w40);
+      margin-top: .2rem;
+      line-height: 1.5;
+    }
+    .checklist-item.checked .item-hint { color: var(--w20); }
+
+    /* ── NOTES FIELD ── */
+    .item-notes {
+      display: none;
+      margin-top: .6rem;
+      width: 100%;
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      color: var(--w80);
+      font-family: var(--body);
+      font-size: .82rem;
+      padding: .55rem .75rem;
+      resize: vertical;
+      line-height: 1.5;
+      transition: border-color .2s;
+    }
+    .item-notes:focus { outline: none; border-color: rgba(59,130,246,.4); }
+    .checklist-item.checked + .item-notes-wrap .item-notes,
+    .item-notes-wrap.open .item-notes { display: block; }
+    .notes-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      margin-top: .4rem;
+      font-size: .74rem;
+      color: var(--w30);
+      cursor: pointer;
+      transition: color .15s;
+      background: none;
+      border: none;
+      padding: 0;
+      font-family: var(--body);
+    }
+    .notes-toggle:hover { color: var(--blue); }
+
+    /* ── CTA FOOTER ── */
+    .cta-card {
+      background: linear-gradient(135deg, rgba(59,130,246,.08) 0%, rgba(139,92,246,.08) 100%);
+      border: 1px solid rgba(59,130,246,.2);
+      border-radius: 16px;
+      padding: 2.25rem;
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+    .cta-card h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: .7rem;
+    }
+    .cta-card p {
+      color: var(--w60);
+      font-size: .95rem;
+      margin-bottom: 1.5rem;
+      max-width: 420px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: 1rem 2.25rem;
+      background: linear-gradient(90deg, var(--blue), var(--purple));
+      color: var(--white);
+      border-radius: 10px;
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: opacity .2s, transform .2s;
+      cursor: pointer;
+    }
+    .cta-btn:hover { opacity: .9; transform: translateY(-1px); }
+    .cta-sub {
+      margin-top: 1rem;
+      font-size: .82rem;
+      color: var(--w30);
+    }
+
+    /* ── PRINT BUTTON ── */
+    .toolbar {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 1.5rem;
+      gap: .6rem;
+    }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .5rem 1rem;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--w50);
+      font-size: .82rem;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: var(--body);
+      transition: border-color .2s, color .2s;
+    }
+    .btn-ghost:hover { border-color: var(--w30); color: var(--w80); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 600px) {
+      .page-wrap { padding: 2rem 1rem 5rem; }
+      .timeline-callout { flex-direction: column; gap: 1px; }
+      .tl-step:first-child { border-radius: 12px 12px 0 0; }
+      .tl-step:last-child  { border-radius: 0 0 12px 12px; }
+      .cta-card { padding: 1.5rem 1.25rem; }
+      .cta-card h2 { font-size: 1.3rem; }
+    }
+
+    @media print {
+      #nav, .toolbar, .nav-spacer, .progress-bar-wrap { display: none; }
+      .page-wrap { padding: 1rem; }
+      .section-body { display: block !important; }
+      .section-card { break-inside: avoid; border: 1px solid #ccc; }
+      .cta-card { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">BizStack<span class="ai">.vip</span></a>
+      <a href="/onboarding" class="nav-cta">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Start Onboarding Form
+      </a>
+    </div>
+  </nav>
+  <div class="nav-spacer"></div>
+
+  <div class="page-wrap">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-eyebrow">Step 1 of 2</div>
+      <h1>Onboarding <span>Checklist</span></h1>
+      <p class="hero-sub">Before you fill out the form, gather everything below. The more you bring, the faster we build — and the better your end result.</p>
+
+      <!-- Progress -->
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="progressFill"></div>
+        </div>
+        <span class="progress-bar-label"><span id="progress-count">0 of 24</span> ready</span>
+      </div>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="timeline-callout">
+      <div class="tl-step">
+        <div class="tl-label">Today</div>
+        <div class="tl-val blue">Prep your assets</div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-label">After checkout</div>
+        <div class="tl-val purple">Fill the form</div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-label">Within 24 hours</div>
+        <div class="tl-val green">We start building</div>
+      </div>
+    </div>
+
+    <!-- TOOLBAR -->
+    <div class="toolbar">
+      <button class="btn-ghost" onclick="expandAll()">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1 4.5L6.5 1 12 4.5M1 8.5L6.5 12 12 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Expand all
+      </button>
+      <button class="btn-ghost" onclick="window.print()">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="2" y="4" width="9" height="6" rx="1" stroke="currentColor" stroke-width="1.3"/><path d="M4 4V2h5v2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M4 9h5M4 7h3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        Print / PDF
+      </button>
+    </div>
+
+    <!-- ─────────────────────────────────────────────── -->
+    <!-- SECTION 1: Business Info -->
+    <!-- ─────────────────────────────────────────────── -->
+    <div class="section-card open" id="s1">
+      <div class="section-header" onclick="toggleSection('s1')">
+        <div class="section-icon" style="background:rgba(59,130,246,.1);">🏢</div>
+        <div class="section-title-wrap">
+          <div class="section-title">Business Information</div>
+          <div class="section-meta">The basics about your company</div>
+        </div>
+        <span class="section-badge badge-req">Required</span>
+        <svg class="section-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="section-body">
+        <div class="section-divider"></div>
+
+        <div class="checklist-item" onclick="toggle(this)">
+          <div class="item-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="item-content">
+            <div class="item-label">Legal business name</div>
+            <div class="item-hint">The exact name as registered — and the name you want displayed publicly if different.</div>
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggle(this)">
+          <div class="item-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="item-content">
+            <div class="item-label">Business address or city</div>
+            <div class="item-hint">Used for your website, Google Business Profile, and local SEO.</div>
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggle(this)">
+          <div class="item-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="item-content">
+            <div class="item-label">Business phone number</div>
+            <div class="item-hint">The number you want customers to call. Can be a direct line or a new number we help you set up.</div>
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggle(this)">
+          <div class="item-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="item-content">
+            <div class="item-label">Business email address</div>
+            <div class="item-hint">Ideally a branded email (you@yourbusiness.com). If you only have Gmail, that's fine for now.</div>
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggle(this)">
+          <div class="item-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="item-content">
+            <div class="item-label">Industry and type of business</div>
+            <div class="item-hint">e.g. Real estate brokerage, residential HVAC, family law firm, e-commerce clothing brand.</div>
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggle(this)">
+          <div class="item-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="item-content">
+            <div class="item-label">Description of your ideal customer</div>
+            <div class="item-hint">Who do you want to attract? Be specific — age, location, budget, what problem they have.</div>
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggle(this)">
+          <div class="item-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="item-content">
+            <div class="item-label">Key products or services with pricing</div>
+            <div class="item-hint">A list of what you offer and how much each costs. e.g. "Basic cleaning $150, Deep clean $280". Approximates are fine.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ─────────────────────────────────────────────── -->
+    <!-- SECTION 2: Brand & Visual Identity -->
+    <!-- ─────────────────────────────────────────────── -->
+    <div class="section-card open" id="s2">
+      <div class="section-header" onclick="toggleSection('s2')">
+        <div class="section-icon" style="background:rgba(139,92,246,.1);">🎨</div>
+        <div class="section-title-wrap">
+          <div class="section-title">Brand & Visual Identity</div>
+          <div class="section-meta">Files and colors that define how you look</div>
+        </div>
+        <span class="section-badge badge-req">Required</span>
+        <svg class="section-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="section-body">
+        <div class="section-divider"></div>
+
+        <div class="checklist-item" onclick="toggle(this)">
+          <div class="item-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="item-content">
+            <div class="item-label">Logo file(s)</div>
+            <div class="item-hint">Best formats: SVG, PNG with transparent background, or AI/EPS. If you only have a JPEG that's okay — we'll work with what you have.</div>
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggle(this)">
+          <div class="item-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="item-content">
+            <div class="item-label">Brand colors (hex codes or description)</div>
+            <div class="item-hint">Exact hex codes (#3B82F6) are ideal. If you don't know them, describe in words: "shiny gold like a new coin, deep navy blue."</div>
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggle(this)">
+          <div class="item-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="item-content">
+            <div class="item-label">Headshots or professional photos</div>
+            <div class="item-hint">At least one high-quality photo of you or your team. Minimum 1MB, ideally on a clean background.</div>
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggle(this)">
+          <div class="item-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="item-content">
+            <div class="item-label">Any brand photos or lifestyle images you own</div>
+            <div class="item-hint">Before/after photos, photos of your space, product shots, team at work. The more the better — we'll curate.</div>
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggle(this)">
+          <div class="item-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="item-content">
+            <div class="item-label">3 words that describe your brand</div>
+            <div class="item-hint">e.g. "Bold, Trustworthy, Modern" or "Warm, Expert, Approachable." This shapes the tone of all copy we write.</div>
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggle(this)">
+          <div class="item-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="item-content">
+            <div class="item-label">Brands or websites you visually admire <span style="color:var(--w30);font-size:.78rem;font-weight:400;">(optional)</span></div>
+            <div class="item-hint">Links or names — any industry. Just brands whose look and feel you love. e.g. Apple, Stripe, Peloton, a local competitor.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ─────────────────────────────────────────────── -->
+    <!-- SECTION 3: Website Content -->
+    <!-- ─────────────────────────────────────────────── -->
+    <div class="section-card" id="s3">
+      <div class="section-header" onclick="toggleSection('s3')">
+        <div class="section-icon" style="background:rgba(6,182,212,.1);">🌐</div>
+        <div class="section-title-wrap">
+          <div class="section-title">Website Content</div>
+          <div class="section-meta">Copy and information that goes on your site</div>
+        </div>
+        <span class="section-badge badge-req">Required</span>
+        <svg class="section-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="section-body">
+        <div class="section-divider"></div>
+
+        <div class="checklist-item" onclick="toggle(this)">
+          <div class="item-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="item-content">
+            <div class="item-label">Short "About" bio or story</div>
+            <div class="item-hint">A few sentences about you / your company — who you are, how long you've been operating, what drives you. We'll polish it.</div>
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggle(this)">
+          <div class="item-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="item-content">
+            <div class="item-label">Complete list of services and descriptions</div>
+            <div class="item-hint">Each service/product you want featured on the site — name, brief description, and pricing if public-facing.</div>
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggle(this)">
+          <div class="item-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="item-content">
+            <div class="item-label">Customer testimonials or reviews</div>
+            <div class="item-hint">Copy/paste from Google, Yelp, Facebook, or email threads. Even 2–3 good ones make a big difference on your site.</div>
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggle(this)">
+          <div class="item-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="item-content">
+            <div class="item-label">Your unique selling point or guarantee</div>
+            <div class="item-hint">What do you promise that competitors don't? e.g. "48-hour response," "same-day service," "5-year warranty."</div>
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggle(this)">
+          <div class="item-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="item-content">
+            <div class="item-label">FAQs your customers commonly ask <span style="color:var(--w30);font-size:.78rem;font-weight:400;">(optional)</span></div>
+            <div class="item-hint">5–10 questions you hear repeatedly. We'll build a FAQ section and use these to train your AI chatbot.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ─────────────────────────────────────────────── -->
+    <!-- SECTION 4: Domain & Hosting -->
+    <!-- ─────────────────────────────────────────────── -->
+    <div class="section-card" id="s4">
+      <div class="section-header" onclick="toggleSection('s4')">
+        <div class="section-icon" style="background:rgba(245,158,11,.1);">🔐</div>
+        <div class="section-title-wrap">
+          <div class="section-title">Domain & Hosting Access</div>
+          <div class="section-meta">Login credentials for your web presence</div>
+        </div>
+        <span class="section-badge badge-req">Required</span>
+        <svg class="section-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="section-body">
+        <div class="section-divider"></div>
+
+        <div class="checklist-item" onclick="toggle(this)">
+          <div class="item-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="item-content">
+            <div class="item-label">Your domain name (or desired domain)</div>
+            <div class="item-hint">e.g. yourbusiness.com — if you don't own one yet, we'll help you pick and register one.</div>
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggle(this)">
+          <div class="item-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="item-content">
+            <div class="item-label">Domain registrar login (if transferring)</div>
+            <div class="item-hint">GoDaddy, Namecheap, Google Domains, etc. We'll need access to update DNS. <strong style="color:var(--gold);">Share securely — never via email.</strong> We'll send a secure link.</div>
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggle(this)">
+          <div class="item-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="item-content">
+            <div class="item-label">Current hosting provider (if applicable)</div>
+            <div class="item-hint">Wix, Squarespace, GoDaddy, WP Engine, Bluehost — whatever your existing site runs on.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ─────────────────────────────────────────────── -->
+    <!-- SECTION 5: Social Media -->
+    <!-- ─────────────────────────────────────────────── -->
+    <div class="section-card" id="s5">
+      <div class="section-header" onclick="toggleSection('s5')">
+        <div class="section-icon" style="background:rgba(16,185,129,.1);">📱</div>
+        <div class="section-title-wrap">
+          <div class="section-title">Social Media Handles</div>
+          <div class="section-meta">Your existing profiles across platforms</div>
+        </div>
+        <span class="section-badge badge-opt">Optional</span>
+        <svg class="section-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="section-body">
+        <div class="section-divider"></div>
+        <p style="font-size:.82rem;color:var(--w40);margin-bottom:1rem;">Only check what you have. If you're starting fresh on a platform, leave it unchecked — we'll set it up.</p>
+
+        <div class="checklist-item" onclick="toggle(this)">
+          <div class="item-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="item-content">
+            <div class="item-label">Instagram handle and login</div>
+            <div class="item-hint">@yourbusiness — we'll need admin access to connect to your scheduler and post on your behalf.</div>
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggle(this)">
+          <div class="item-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="item-content">
+            <div class="item-label">Facebook Business Page login</div>
+            <div class="item-hint">Required for Meta Ads, page management, and lead form integrations.</div>
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggle(this)">
+          <div class="item-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="item-content">
+            <div class="item-label">Google Business Profile email</div>
+            <div class="item-hint">The Gmail used to manage your Google Business listing. We'll verify and optimize it for local SEO.</div>
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggle(this)">
+          <div class="item-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="item-content">
+            <div class="item-label">LinkedIn company page URL <span style="color:var(--w30);font-size:.78rem;font-weight:400;">(optional)</span></div>
+            <div class="item-hint">Needed for LinkedIn content scheduling if you're on the Growth or Scale plan.</div>
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggle(this)">
+          <div class="item-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="item-content">
+            <div class="item-label">TikTok or YouTube handle <span style="color:var(--w30);font-size:.78rem;font-weight:400;">(optional)</span></div>
+            <div class="item-hint">Only if you currently have a presence. Not required to get started.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ─────────────────────────────────────────────── -->
+    <!-- SECTION 6: Existing Tools & Software -->
+    <!-- ─────────────────────────────────────────────── -->
+    <div class="section-card" id="s6">
+      <div class="section-header" onclick="toggleSection('s6')">
+        <div class="section-icon" style="background:rgba(255,255,255,.06);">🛠️</div>
+        <div class="section-title-wrap">
+          <div class="section-title">Existing Tools & Software</div>
+          <div class="section-meta">What you're already using — we'll plug in or replace</div>
+        </div>
+        <span class="section-badge badge-opt">Optional</span>
+        <svg class="section-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="section-body">
+        <div class="section-divider"></div>
+        <p style="font-size:.82rem;color:var(--w40);margin-bottom:1rem;">Check any tools you currently use. Don't worry if you use none — that's normal and we'll set everything up for you.</p>
+
+        <div class="checklist-item" onclick="toggle(this)">
+          <div class="item-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="item-content">
+            <div class="item-label">CRM system (GoHighLevel, HubSpot, Salesforce, etc.)</div>
+            <div class="item-hint">Name of the system and roughly how many contacts/leads are in it. We'll migrate or integrate.</div>
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggle(this)">
+          <div class="item-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="item-content">
+            <div class="item-label">Email marketing platform (Mailchimp, Klaviyo, Constant Contact, etc.)</div>
+            <div class="item-hint">Include your current subscriber count if you have one. We'll migrate your list.</div>
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggle(this)">
+          <div class="item-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="item-content">
+            <div class="item-label">Scheduling or booking tool (Calendly, Acuity, Jane, etc.)</div>
+            <div class="item-hint">We'll connect this to your site, your CRM, and your automated follow-up sequences.</div>
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggle(this)">
+          <div class="item-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="item-content">
+            <div class="item-label">Payment processor (Stripe, Square, PayPal, etc.)</div>
+            <div class="item-hint">We'll connect payments to your CRM for automatic deal tracking and receipt automation.</div>
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggle(this)">
+          <div class="item-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="item-content">
+            <div class="item-label">Google Ads or Facebook Ads account</div>
+            <div class="item-hint">Share your account ID or Business Manager access. We'll audit existing campaigns and build from there.</div>
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggle(this)">
+          <div class="item-box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2 6 5 9 10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="item-content">
+            <div class="item-label">Any other tools you rely on</div>
+            <div class="item-hint">Quickbooks, Zapier, Slack, project management tools, SMS platforms, review tools — anything you use daily.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ─────────────────────────────────────────────── -->
+    <!-- CTA CARD -->
+    <!-- ─────────────────────────────────────────────── -->
+    <div class="cta-card" id="cta-section">
+      <h2>Ready to build?</h2>
+      <p>Once you've gathered everything above, fill out the onboarding form. The more complete it is, the faster your system goes live.</p>
+      <a href="/onboarding" class="cta-btn">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Start the Onboarding Form
+      </a>
+      <div class="cta-sub">Your 48-hour build clock starts when you submit &nbsp;·&nbsp; hello@bizstack.vip</div>
+    </div>
+
+  </div><!-- /.page-wrap -->
+
+  <script>
+    // ── STORAGE KEY ──────────────────────────────
+    const SK = 'bizstack_checklist_v1';
+    const TOTAL = document.querySelectorAll('.checklist-item').length;
+
+    // ── LOAD SAVED STATE ─────────────────────────
+    function loadState() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(SK) || '{}');
+        document.querySelectorAll('.checklist-item').forEach((item, i) => {
+          if (saved[i]) item.classList.add('checked');
+        });
+      } catch(e) {}
+    }
+
+    function saveState() {
+      const state = {};
+      document.querySelectorAll('.checklist-item').forEach((item, i) => {
+        if (item.classList.contains('checked')) state[i] = true;
+      });
+      try { localStorage.setItem(SK, JSON.stringify(state)); } catch(e) {}
+    }
+
+    // ── TOGGLE ITEM ──────────────────────────────
+    function toggle(el) {
+      el.classList.toggle('checked');
+      saveState();
+      updateProgress();
+      pulseSection(el.closest('.section-card'));
+    }
+
+    // ── PROGRESS ─────────────────────────────────
+    function updateProgress() {
+      const checked = document.querySelectorAll('.checklist-item.checked').length;
+      const pct = Math.round((checked / TOTAL) * 100);
+      document.getElementById('progressFill').style.width = pct + '%';
+      document.getElementById('progress-count').textContent = checked + ' of ' + TOTAL;
+
+      // Update section badges
+      document.querySelectorAll('.section-card').forEach(card => {
+        const items = card.querySelectorAll('.checklist-item');
+        const done  = card.querySelectorAll('.checklist-item.checked');
+        const badge = card.querySelector('.section-badge');
+        if (!badge) return;
+        if (done.length > 0 && done.length === items.length) {
+          badge.textContent = 'Done ✓';
+          badge.className = 'section-badge badge-done';
+        }
+      });
+
+      // Celebrate when all done
+      if (checked === TOTAL) {
+        confetti();
+        setTimeout(() => {
+          document.getElementById('cta-section').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 800);
+      }
+    }
+
+    // ── PULSE SECTION HEADER ─────────────────────
+    function pulseSection(card) {
+      if (!card) return;
+      const hdr = card.querySelector('.section-header');
+      hdr.style.background = 'rgba(59,130,246,.06)';
+      setTimeout(() => hdr.style.background = '', 300);
+    }
+
+    // ── ACCORDION ────────────────────────────────
+    function toggleSection(id) {
+      const card = document.getElementById(id);
+      card.classList.toggle('open');
+    }
+
+    function expandAll() {
+      document.querySelectorAll('.section-card').forEach(c => c.classList.add('open'));
+    }
+
+    // ── CONFETTI (CSS only, no external lib) ─────
+    function confetti() {
+      const colors = ['#3B82F6', '#8B5CF6', '#10B981', '#F59E0B', '#06B6D4'];
+      for (let i = 0; i < 60; i++) {
+        const d = document.createElement('div');
+        const size = Math.random() * 8 + 5;
+        d.style.cssText = [
+          'position:fixed',
+          'pointer-events:none',
+          'z-index:9999',
+          'border-radius:2px',
+          `width:${size}px`,
+          `height:${size}px`,
+          `background:${colors[Math.floor(Math.random() * colors.length)]}`,
+          `left:${Math.random() * 100}vw`,
+          `top:-${size}px`,
+          `opacity:${Math.random() * .8 + .2}`,
+          'transition:transform 2s ease-in, top 2s ease-in, opacity 2s',
+        ].join(';');
+        document.body.appendChild(d);
+        requestAnimationFrame(() => {
+          d.style.top = (60 + Math.random() * 40) + 'vh';
+          d.style.transform = `rotate(${Math.random() * 720}deg) translateX(${(Math.random() - .5) * 120}px)`;
+          d.style.opacity = '0';
+        });
+        setTimeout(() => d.remove(), 2200);
+      }
+    }
+
+    // ── INIT ─────────────────────────────────────
+    loadState();
+    updateProgress();
+  </script>
+
+</body>
+</html>

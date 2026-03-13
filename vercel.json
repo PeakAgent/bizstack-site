@@ -4,6 +4,7 @@
   "outputDirectory": ".",
   "rewrites": [
     { "source": "/assessment", "destination": "/assessment.html" },
-    { "source": "/onboarding", "destination": "/onboarding.html" }
+    { "source": "/onboarding", "destination": "/onboarding.html" },
+    { "source": "/onboarding-checklist", "destination": "/onboarding-checklist.html" }
   ]
 }

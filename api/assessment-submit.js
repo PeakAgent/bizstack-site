@@ -226,16 +226,24 @@ function buildProspectEmail({ answers, tierName, tierPrice, tierDesc, tierFeatur
         </tr>
         <tr>
           <td style="padding-bottom:12px;text-align:center;">
-            <a href="https://calendly.com"
+            <a href="https://bizstack.vip/onboarding-checklist"
               style="display:inline-block;padding:13px 32px;background:transparent;border:1px solid rgba(255,255,255,.15);color:#94A3B8;text-decoration:none;font-weight:600;font-size:14px;border-radius:10px;letter-spacing:.01em;">
-              Schedule a Free Strategy Call
+              📋 Review Your Onboarding Checklist →
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom:12px;text-align:center;">
+            <a href="https://bizstack.vip/onboarding"
+              style="display:inline-block;padding:13px 32px;background:transparent;border:1px solid rgba(255,255,255,.15);color:#94A3B8;text-decoration:none;font-weight:600;font-size:14px;border-radius:10px;letter-spacing:.01em;">
+              Start your onboarding form →
             </a>
           </td>
         </tr>
         <tr>
           <td style="padding-bottom:40px;text-align:center;">
             <p style="margin:0;font-size:13px;color:#64748B;">
-              Ready to get started? Click above to begin your subscription, or reply to this email to schedule a free strategy call.
+              Ready to get started? Click the button above to begin your subscription. Review the checklist first to prepare your assets, then complete the onboarding form so we can start building.
             </p>
           </td>
         </tr>
@@ -355,14 +363,18 @@ export default async function handler(req, res) {
     });
 
     // ── Fire lead to Mission Control (async, non-blocking) ──────────────────
-    postToMissionControl({ answers, score, tierKey, tierPrice }).catch(() => {});
+    postToMissionControl({ answers, score, tierKey, tierPrice }).catch(err => {
+      console.error('[assessment-submit] Mission Control post failed:', err.message);
+    });
 
     return res.status(200).json({ success: true });
   } catch (err) {
     console.error('[assessment-submit] Resend error:', err);
     // Still return 200 to frontend — email failure shouldn't break the UX
     // Still try to post lead even if email failed
-    postToMissionControl({ answers, score, tierKey, tierPrice }).catch(() => {});
+    postToMissionControl({ answers, score, tierKey, tierPrice }).catch(err => {
+      console.error('[assessment-submit] Mission Control post failed:', err.message);
+    });
     return res.status(200).json({ success: true, emailError: err.message });
   }
 }
@@ -411,6 +423,10 @@ async function postToMissionControl({ answers, score, tierKey, tierPrice }) {
 
   const res = await fetch(MC_URL, { method: 'POST', headers, body: JSON.stringify(payload) });
   const data = await res.json().catch(() => ({}));
-  console.log('[assessment-submit] Mission Control response:', res.status, data);
+  if (!res.ok) {
+    console.error('[assessment-submit] Mission Control rejected lead — status:', res.status, data);
+    throw new Error(`MC returned ${res.status}`);
+  }
+  console.log('[assessment-submit] Mission Control lead created:', res.status, data);
   return data;
 }

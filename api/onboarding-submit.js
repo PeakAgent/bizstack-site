@@ -111,6 +111,7 @@ function buildTeamEmail(d) {
         ${row('Industry', d.industry)}
         ${row('Employees', d.num_employees)}
         ${row('Primary Service', d.primary_service)}
+        ${row('Key Products / Services & Pricing', d.key_products_services)}
         ${row('Ideal Customer', d.ideal_customer)}
         ${row('Differentiator', d.differentiator)}
       `)}
@@ -118,6 +119,8 @@ function buildTeamEmail(d) {
       ${section('Section 2 — Brand', '#8B5CF6', `
         ${row('Primary Color', d.color_primary || '—')}
         ${row('Secondary Color', d.color_secondary || '—')}
+        ${row('Color Description', d.color_description)}
+        ${row('Design Elements', d.design_elements)}
         ${row('Font Preference', d.font_preference)}
         ${row('Brand Feel', feelPills)}
         ${row('3 Brand Words', d.brand_words)}
