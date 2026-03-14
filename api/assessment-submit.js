@@ -382,10 +382,16 @@ export default async function handler(req, res) {
 // ─────────────────────────────────────────────────────────────────
 //  MISSION CONTROL LEAD INGESTION
 // ─────────────────────────────────────────────────────────────────
-async function postToMissionControl({ answers, score, tierKey, tierPrice }) {
-  const MC_URL = process.env.MC_LEADS_URL || 'https://app.bizstack.vip/api/leads';
-  const MC_SECRET = process.env.MC_LEADS_SECRET || '';
+async function postToMissionControl({ answers, score, tierKey }) {
+  const INGEST_URL = 'https://app.bizstack.vip/api/leads/ingest';
+  const apiKey = process.env.LEADS_INGEST_KEY;
 
+  if (!apiKey) {
+    console.warn('[assessment-submit] LEADS_INGEST_KEY not set — skipping lead ingest');
+    return;
+  }
+
+  // Build a readable notes string from assessment answers
   const urgency = (() => {
     const t = (answers.timeline || '').toLowerCase();
     if (t.includes('asap') || t.includes('immediately') || t.includes('now')) return 'high';
@@ -393,40 +399,41 @@ async function postToMissionControl({ answers, score, tierKey, tierPrice }) {
     return 'medium';
   })();
 
+  const notes = [
+    `Score: ${score}`,
+    `Urgency: ${urgency} | Timeline: ${answers.timeline || '—'} | Budget: ${answers.budget || '—'}`,
+    `Website: ${answers.hasWebsite ? (answers.websiteUrl || 'Yes') : 'No'} | CRM: ${answers.hasCRM ? (answers.crmName || 'Yes') : 'No'} | Email marketing: ${answers.hasEmail ? 'Yes' : 'No'}`,
+    `Social: ${(answers.socialPlatforms || []).join(', ') || 'None'}`,
+    `Pain point: ${answers.painPoint || '—'}`,
+  ].join('\n');
+
   const payload = {
-    name:         answers.contactName,
-    email:        answers.email,
-    phone:        answers.phone,
-    company:      answers.businessName,
-    industry:     answers.industry,
-    score,
-    tier:         tierKey,
-    budget_range: answers.budget,
-    urgency,
-    source:       'assessment_form',
-    answers: {
-      hasWebsite:      answers.hasWebsite,
-      websiteUrl:      answers.websiteUrl,
-      hasCRM:          answers.hasCRM,
-      crmName:         answers.crmName,
-      hasEmail:        answers.hasEmail,
-      socialPlatforms: answers.socialPlatforms,
-      postFrequency:   answers.postFrequency,
-      painPoint:       answers.painPoint,
-      budget:          answers.budget,
-      timeline:        answers.timeline,
-    },
+    name:     answers.contactName,
+    email:    answers.email,
+    phone:    answers.phone,
+    company:  answers.businessName,
+    industry: answers.industry,
+    tier:     tierKey,
+    source:   'Assessment',
+    notes,
   };
 
-  const headers = { 'Content-Type': 'application/json' };
-  if (MC_SECRET) headers['x-mc-secret'] = MC_SECRET;
+  console.log('[assessment-submit] Posting lead to Mission Control ingest:', answers.email);
 
-  const res = await fetch(MC_URL, { method: 'POST', headers, body: JSON.stringify(payload) });
+  const res = await fetch(INGEST_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key':    apiKey,
+    },
+    body: JSON.stringify(payload),
+  });
+
   const data = await res.json().catch(() => ({}));
   if (!res.ok) {
-    console.error('[assessment-submit] Mission Control rejected lead — status:', res.status, data);
-    throw new Error(`MC returned ${res.status}`);
+    console.error('[assessment-submit] Mission Control ingest rejected — status:', res.status, data);
+    throw new Error(`Ingest returned ${res.status}`);
   }
-  console.log('[assessment-submit] Mission Control lead created:', res.status, data);
+  console.log('[assessment-submit] ✅ Mission Control lead ingested:', res.status, data);
   return data;
 }
