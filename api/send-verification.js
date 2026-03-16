@@ -28,7 +28,7 @@ export default async function handler(req, res) {
     return res.status(200).json({ success: true, token, _dev_code: code });
   }
 
-  const body = `Your BizStack AI code is: ${code}. Valid for 10 minutes. Reply STOP to opt out.`;
+  const body = `Your BizStack VIP code is: ${code}. Valid for 10 minutes. Reply STOP to opt out.`;
   const auth = Buffer.from(`${accountSid}:${authToken}`).toString('base64');
 
   try {

@@ -1,7 +1,7 @@
 import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-const FROM_ADDRESS = 'BizStack AI <hello@bizstack.vip>';
+const FROM_ADDRESS = 'BizStack VIP <hello@bizstack.vip>';
 const TEAM_EMAIL   = 'andrew@peakagentai.com';
 
 // ─── HTML EMAIL TO TEAM ───────────────────────────────────────────

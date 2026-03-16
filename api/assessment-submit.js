@@ -2,7 +2,7 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const FROM_ADDRESS = 'BizStack AI <hello@bizstack.vip>';
+const FROM_ADDRESS = 'BizStack VIP <hello@bizstack.vip>';
 const TEAM_EMAIL   = 'andrew@peakagentai.com';
 
 const STRIPE_LINKS = {
@@ -92,7 +92,7 @@ function buildProspectEmail({ answers, tierName, tierPrice, tierDesc, tierFeatur
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Your BizStack AI Assessment Results</title>
+  <title>Your BizStack VIP Assessment Results</title>
 </head>
 <body style="margin:0;padding:0;background:#0F172A;font-family:'Inter',system-ui,sans-serif;color:#F1F5F9;">
 
@@ -346,7 +346,7 @@ export default async function handler(req, res) {
       resend.emails.send({
         from:    FROM_ADDRESS,
         to:      [answers.email],
-        subject: `Your BizStack AI Assessment — ${tierName} Plan Recommended`,
+        subject: `Your BizStack VIP Assessment — ${tierName} Plan Recommended`,
         html:    prospectHtml,
       }),
       resend.emails.send({
@@ -362,19 +362,25 @@ export default async function handler(req, res) {
       team:     teamResult.data?.id,
     });
 
-    // ── Fire lead to Mission Control (async, non-blocking) ──────────────────
-    postToMissionControl({ answers, score, tierKey, tierPrice }).catch(err => {
-      console.error('[assessment-submit] Mission Control post failed:', err.message);
-    });
+    // ── Post lead to Mission Control BEFORE responding (Vercel kills after res is sent) ──
+    try {
+      await postToMissionControl({ answers, score, tierKey, tierPrice });
+      console.log('[assessment-submit] Mission Control ingest succeeded');
+    } catch (ingestErr) {
+      console.error('[assessment-submit] Mission Control ingest failed:', ingestErr.message);
+    }
 
     return res.status(200).json({ success: true });
   } catch (err) {
     console.error('[assessment-submit] Resend error:', err);
     // Still return 200 to frontend — email failure shouldn't break the UX
-    // Still try to post lead even if email failed
-    postToMissionControl({ answers, score, tierKey, tierPrice }).catch(err => {
-      console.error('[assessment-submit] Mission Control post failed:', err.message);
-    });
+    // Still post lead even if email failed
+    try {
+      await postToMissionControl({ answers, score, tierKey, tierPrice });
+      console.log('[assessment-submit] Mission Control ingest succeeded (email had failed)');
+    } catch (ingestErr) {
+      console.error('[assessment-submit] Mission Control ingest failed:', ingestErr.message);
+    }
     return res.status(200).json({ success: true, emailError: err.message });
   }
 }

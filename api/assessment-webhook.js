@@ -263,7 +263,7 @@ export default async function handler(req, res) {
     try {
       const resend = new Resend(resendKey);
       await resend.emails.send({
-        from:    'BizStack AI <hello@bizstack.vip>',
+        from:    'BizStack VIP <hello@bizstack.vip>',
         to:      [resolvedEmail],
         subject: `Your BizStack Recommendation is Ready, ${firstName}`,
         html:    buildProposalHtml({ firstName, tierName: emailTierName, price: emailPrice, monthlySavings: emailMonthlySavings, roi }),
