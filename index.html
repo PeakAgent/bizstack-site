@@ -715,61 +715,16 @@
 
     /* ── COMPARISON TABLE ── */
     .compare-section {
-      max-width: 800px;
+      max-width: 960px;
       margin: 0 auto;
     }
-    .compare-card {
-      background: var(--white);
-      border: 0.5px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-    .compare-header {
+    .compare-row-pair {
       display: grid;
       grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.25rem;
     }
-    .compare-col {
-      padding: 2rem;
-    }
-    .compare-col.without {
-      background: rgba(239,68,68,.03);
-      border-right: 1px solid var(--border);
-    }
-    .compare-col.with {
-      background: rgba(16,185,129,.03);
-    }
-    .compare-col-label {
-      font-size: .7rem;
-      font-weight: 700;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      margin-bottom: .5rem;
-    }
-    .compare-col.without .compare-col-label { color: var(--red); }
-    .compare-col.with .compare-col-label { color: var(--green); }
-    .compare-col-price {
-      font-family: var(--display);
-      font-size: 2.25rem;
-      font-weight: 800;
-      line-height: 1;
-      margin-bottom: .25rem;
-    }
-    .compare-col.without .compare-col-price {
-      color: var(--text4);
-      text-decoration: line-through;
-      text-decoration-color: var(--red);
-      text-decoration-thickness: 2px;
-    }
-    .compare-col.with .compare-col-price { color: var(--green); }
-    .compare-col-sub {
-      font-size: .8rem;
-      color: var(--text3);
-    }
-    .compare-items {
-      padding: 1.5rem 2rem;
-      border-top: 1px solid var(--border);
-    }
-    .compare-items-label {
+    .compare-row-label-bar {
       font-size: .7rem;
       font-weight: 700;
       letter-spacing: .1em;
@@ -777,38 +732,113 @@
       color: var(--text4);
       margin-bottom: .75rem;
     }
-    .compare-row {
+    .compare-card {
+      background: var(--white);
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+    }
+    .compare-card.without {
+      background: rgba(239,68,68,.02);
+    }
+    .compare-card.with {
+      background: rgba(16,185,129,.02);
+    }
+    .compare-card-label {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    .compare-card.without .compare-card-label { color: var(--red); }
+    .compare-card.with .compare-card-label { color: var(--green); }
+    .compare-line {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: .5rem 0;
+      padding: .45rem 0;
       border-bottom: 1px solid var(--border);
       font-size: .85rem;
       gap: .5rem;
     }
-    .compare-row:last-child { border-bottom: none; }
-    .compare-row-label { color: var(--text2); }
-    .compare-row-cost {
+    .compare-line:last-child { border-bottom: none; }
+    .compare-line-name { color: var(--text2); }
+    .compare-line-cost {
       font-weight: 600;
       color: var(--text4);
       white-space: nowrap;
     }
-    .compare-savings {
-      background: linear-gradient(90deg, rgba(16,185,129,.06), rgba(59,130,246,.06));
-      border-top: 1px solid rgba(16,185,129,.15);
-      padding: 1.5rem 2rem;
-      text-align: center;
+    .compare-total {
+      margin-top: 1rem;
+      padding-top: .75rem;
+      border-top: 2px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: .95rem;
     }
-    .compare-savings-big {
+    .compare-total-label {
+      font-weight: 700;
+      color: var(--text);
+    }
+    .compare-total-amount {
       font-family: var(--display);
-      font-size: 2rem;
+      font-weight: 800;
+      font-size: 1.35rem;
+      color: var(--red);
+      text-decoration: line-through;
+      text-decoration-color: var(--red);
+      text-decoration-thickness: 2px;
+    }
+    .compare-hero-price {
+      font-family: var(--display);
+      font-size: 3.5rem;
       font-weight: 800;
       color: var(--green);
-      margin-bottom: .25rem;
+      line-height: 1;
+      margin-bottom: .5rem;
     }
-    .compare-savings-sub {
+    .compare-hero-sub {
       font-size: .9rem;
       color: var(--text2);
+      line-height: 1.5;
+    }
+    .compare-hero-sub strong {
+      color: var(--text);
+    }
+    .compare-tiers {
+      display: flex;
+      gap: .75rem;
+      margin-bottom: .75rem;
+      flex-wrap: wrap;
+    }
+    .compare-tier-pill {
+      font-family: var(--display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--green);
+      background: rgba(16,185,129,.08);
+      border: 1px solid rgba(16,185,129,.15);
+      border-radius: 8px;
+      padding: .35rem .75rem;
+    }
+    .compare-summary {
+      background: var(--white);
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .compare-summary p {
+      font-size: 1.05rem;
+      color: var(--text2);
+      line-height: 1.65;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .compare-summary strong {
+      color: var(--text);
     }
 
     /* ── INDUSTRIES ── */
@@ -1014,8 +1044,9 @@
       .problems { grid-template-columns: 1fr; }
       .steps-grid { grid-template-columns: 1fr; }
       .pricing-grid { grid-template-columns: 1fr; }
-      .compare-header { grid-template-columns: 1fr; }
-      .compare-col.without { border-right: none; border-bottom: 1px solid var(--border); }
+      .compare-row-pair { grid-template-columns: 1fr; }
+      .compare-hero-price { font-size: 2.5rem; }
+      .compare-tiers { justify-content: center; }
       .industries-grid { grid-template-columns: 1fr 1fr; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
       .footer-bottom { flex-direction: column; gap: .5rem; text-align: center; }
@@ -1343,32 +1374,60 @@
         <div class="section-label">The Numbers</div>
         <h2 class="section-title" style="font-size:1.75rem;">What you're paying now vs. BizStack</h2>
       </div>
-      <div class="compare-card">
-        <div class="compare-header">
-          <div class="compare-col without">
-            <div class="compare-col-label">Without BizStack</div>
-            <div class="compare-col-price">$1,094+</div>
-            <div class="compare-col-sub">per month, minimum</div>
+
+      <!-- ROW 1: SETUP COSTS -->
+      <div class="compare-row-label-bar">The setup cost nobody talks about</div>
+      <div class="compare-row-pair">
+        <div class="compare-card without">
+          <div class="compare-card-label">Without BizStack</div>
+          <div class="compare-line"><span class="compare-line-name">Custom website design + development</span><span class="compare-line-cost">$5,000 - $15,000</span></div>
+          <div class="compare-line"><span class="compare-line-name">CRM setup and configuration</span><span class="compare-line-cost">$1,000 - $3,000</span></div>
+          <div class="compare-line"><span class="compare-line-name">Email/SMS automation sequences</span><span class="compare-line-cost">$1,500 - $3,000</span></div>
+          <div class="compare-line"><span class="compare-line-name">AI chatbot development</span><span class="compare-line-cost">$2,000 - $5,000</span></div>
+          <div class="compare-line"><span class="compare-line-name">Content strategy + first month of posts</span><span class="compare-line-cost">$1,500 - $3,000</span></div>
+          <div class="compare-total">
+            <span class="compare-total-label">Total upfront</span>
+            <span class="compare-total-amount">$11,000 - $29,000</span>
           </div>
-          <div class="compare-col with">
-            <div class="compare-col-label">With BizStack Growth</div>
-            <div class="compare-col-price">$299</div>
-            <div class="compare-col-sub">per month, everything included</div>
+        </div>
+        <div class="compare-card with" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
+          <div class="compare-card-label">With BizStack</div>
+          <div class="compare-hero-price">$0</div>
+          <div class="compare-hero-sub"><strong>Setup cost: included in your subscription</strong><br>Everything built in 48 hours. No upfront investment.</div>
+        </div>
+      </div>
+
+      <!-- ROW 2: MONTHLY COSTS -->
+      <div class="compare-row-label-bar">Then the monthly bills start</div>
+      <div class="compare-row-pair">
+        <div class="compare-card without">
+          <div class="compare-card-label">Without BizStack</div>
+          <div class="compare-line"><span class="compare-line-name">Website hosting + maintenance</span><span class="compare-line-cost">$33 - $150/mo</span></div>
+          <div class="compare-line"><span class="compare-line-name">CRM subscription</span><span class="compare-line-cost">$50 - $300/mo</span></div>
+          <div class="compare-line"><span class="compare-line-name">Email marketing tool</span><span class="compare-line-cost">$30 - $80/mo</span></div>
+          <div class="compare-line"><span class="compare-line-name">Scheduling/booking tool</span><span class="compare-line-cost">$15 - $50/mo</span></div>
+          <div class="compare-line"><span class="compare-line-name">Social media management</span><span class="compare-line-cost">$200 - $800/mo</span></div>
+          <div class="compare-line"><span class="compare-line-name">Freelancer for updates</span><span class="compare-line-cost">$100 - $500/mo</span></div>
+          <div class="compare-total">
+            <span class="compare-total-label">Total ongoing</span>
+            <span class="compare-total-amount">$428 - $1,880/mo</span>
           </div>
         </div>
-        <div class="compare-items">
-          <div class="compare-items-label">What you're paying for separately</div>
-          <div class="compare-row"><span class="compare-row-label">Squarespace / Wix</span><span class="compare-row-cost">$33/mo</span></div>
-          <div class="compare-row"><span class="compare-row-label">Mailchimp</span><span class="compare-row-cost">$45/mo</span></div>
-          <div class="compare-row"><span class="compare-row-label">Calendly</span><span class="compare-row-cost">$16/mo</span></div>
-          <div class="compare-row"><span class="compare-row-label">CRM (HubSpot / Zoho)</span><span class="compare-row-cost">$50/mo</span></div>
-          <div class="compare-row"><span class="compare-row-label">Social media VA</span><span class="compare-row-cost">$800/mo</span></div>
-          <div class="compare-row"><span class="compare-row-label">Freelance designer / developer</span><span class="compare-row-cost">$150/mo</span></div>
+        <div class="compare-card with" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
+          <div class="compare-card-label">With BizStack</div>
+          <div class="compare-tiers">
+            <span class="compare-tier-pill">$99</span>
+            <span class="compare-tier-pill">$299</span>
+            <span class="compare-tier-pill">$499</span>
+            <span class="compare-tier-pill">$999+</span>
+          </div>
+          <div class="compare-hero-sub"><strong>One subscription. Everything included.</strong><br>Everything connected.</div>
         </div>
-        <div class="compare-savings">
-          <div class="compare-savings-big">Save 73% and get MORE done</div>
-          <div class="compare-savings-sub">Everything connected, automated, and managed  - for less than what you're spending on disconnected tools.</div>
-        </div>
+      </div>
+
+      <!-- BOTTOM SUMMARY -->
+      <div class="compare-summary">
+        <p>Most businesses spend <strong>$11,000+</strong> just to get started, then <strong>$1,000+/month</strong> to keep it running. BizStack does it all for one monthly subscription - and we build everything in 48 hours.</p>
       </div>
     </div>
   </div>
