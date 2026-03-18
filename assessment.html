@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free AI Assessment — BizStack.vip</title>
-  <meta name="description" content="Take our free 3-minute business assessment. We'll recommend the perfect BizStack VIP plan for your business.">
+  <title>Free Assessment — BizStack.vip</title>
+  <meta name="description" content="Take our free 5-minute business assessment. We'll recommend the perfect BizStack plan for your business.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -12,33 +12,29 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:      #0F172A;
-      --bg2:     #1E293B;
-      --bg3:     #334155;
-      --blue:    #3B82F6;
-      --blue2:   #2563EB;
-      --blue3:   #1D4ED8;
-      --purple:  #8B5CF6;
+      --bg: #FAFBFC;
+      --white: #FFFFFF;
+      --dark: #0F172A;
+      --dark2: #1E293B;
+      --dark3: #334155;
+      --text: #0F172A;
+      --text2: #475569;
+      --text3: #64748B;
+      --text4: #94A3B8;
+      --blue: #3B82F6;
+      --blue2: #2563EB;
+      --blue3: #1D4ED8;
+      --purple: #8B5CF6;
       --purple2: #7C3AED;
-      --green:   #10B981;
-      --gold:    #F59E0B;
-      --cyan:    #06B6D4;
-      --red:     #EF4444;
-      --white:   #FFFFFF;
-      --w90: rgba(255,255,255,.9);
-      --w80: rgba(255,255,255,.8);
-      --w70: rgba(255,255,255,.7);
-      --w60: rgba(255,255,255,.6);
-      --w50: rgba(255,255,255,.5);
-      --w40: rgba(255,255,255,.4);
-      --w30: rgba(255,255,255,.3);
-      --w20: rgba(255,255,255,.2);
-      --w10: rgba(255,255,255,.1);
-      --w05: rgba(255,255,255,.05);
-      --border: rgba(255,255,255,.08);
+      --green: #10B981;
+      --gold: #F59E0B;
+      --cyan: #06B6D4;
+      --red: #EF4444;
+      --border: #E2E8F0;
+      --border2: #CBD5E1;
       --display: 'Space Grotesk', system-ui, sans-serif;
-      --body:    'Inter', system-ui, sans-serif;
-      --mono:    'JetBrains Mono', monospace;
+      --body: 'Inter', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', monospace;
     }
 
     html { scroll-behavior: smooth; }
@@ -46,10 +42,11 @@
     body {
       font-family: var(--body);
       background: var(--bg);
-      color: var(--white);
+      color: var(--text);
       overflow-x: hidden;
       line-height: 1.6;
       min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
     }
 
     h1, h2, h3, h4 {
@@ -65,37 +62,35 @@
       position: fixed;
       inset: 0 0 auto;
       z-index: 999;
-      padding: 1.25rem 0;
-      background: rgba(15,23,42,.96);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
+      background: var(--dark);
+      border-bottom: 1px solid rgba(255,255,255,.06);
     }
     .nav-inner {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 1.5rem;
+      height: 64px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
     .nav-logo {
       font-family: var(--display);
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       font-weight: 800;
-      color: var(--white);
+      color: #FFFFFF;
     }
-    .nav-logo .ai { color: var(--blue); }
+    .nav-logo .vip { color: var(--blue); }
     .nav-back {
       font-size: .845rem;
       font-weight: 500;
-      color: var(--w60);
+      color: rgba(255,255,255,.5);
       transition: color .2s;
       display: flex;
       align-items: center;
       gap: .4rem;
     }
-    .nav-back:hover { color: var(--white); }
+    .nav-back:hover { color: #FFFFFF; }
 
     /* ── PAGE WRAPPER ── */
     .page-wrap {
@@ -132,11 +127,11 @@
     .progress-count {
       font-family: var(--mono);
       font-size: .78rem;
-      color: var(--w50);
+      color: var(--text4);
     }
     .progress-track {
       height: 4px;
-      background: var(--w10);
+      background: var(--border);
       border-radius: 999px;
       overflow: hidden;
     }
@@ -149,20 +144,21 @@
 
     /* ── STEP CARD ── */
     .step-card {
-      background: var(--bg2);
-      border: 1px solid var(--border);
+      background: var(--white);
+      border: 0.5px solid var(--border);
       border-radius: 16px;
       padding: 2.5rem 2.5rem 2rem;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 1px 2px rgba(0,0,0,.03), 0 4px 16px rgba(0,0,0,.04);
     }
     .step-card::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0;
-      height: 1px;
+      height: 2px;
       background: linear-gradient(90deg, var(--blue), var(--purple));
-      opacity: .4;
+      opacity: .5;
     }
 
     /* ── STEP TRANSITIONS ── */
@@ -196,12 +192,12 @@
       font-family: var(--display);
       font-size: 1.55rem;
       font-weight: 700;
-      color: var(--white);
+      color: var(--text);
       margin-bottom: .5rem;
     }
     .step-sub {
       font-size: .9rem;
-      color: var(--w60);
+      color: var(--text3);
       margin-bottom: 1.75rem;
     }
 
@@ -225,42 +221,42 @@
     .field label {
       font-size: .8rem;
       font-weight: 600;
-      color: var(--w70);
+      color: var(--text2);
       letter-spacing: .02em;
     }
     .field input,
     .field select,
     .field textarea {
-      background: var(--bg3);
-      border: 1.5px solid var(--w10);
+      background: var(--bg);
+      border: 1.5px solid var(--border);
       border-radius: 8px;
       padding: .75rem 1rem;
       font-family: var(--body);
       font-size: .9rem;
-      color: var(--white);
+      color: var(--text);
       transition: border-color .2s, box-shadow .2s;
       outline: none;
       width: 100%;
       -webkit-appearance: none;
     }
     .field input::placeholder,
-    .field textarea::placeholder { color: var(--w30); }
+    .field textarea::placeholder { color: var(--text4); }
     .field input:focus,
     .field select:focus,
     .field textarea:focus {
       border-color: var(--blue);
-      box-shadow: 0 0 0 3px rgba(59,130,246,.15);
+      box-shadow: 0 0 0 3px rgba(59,130,246,.1);
     }
     .field select {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23ffffff66' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2394A3B8' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-position: right 1rem center;
       padding-right: 2.5rem;
       cursor: pointer;
     }
     .field select option {
-      background: var(--bg2);
-      color: var(--white);
+      background: var(--white);
+      color: var(--text);
     }
 
     /* URL field (conditional) */
@@ -280,9 +276,9 @@
     .yn-btn {
       padding: 1rem;
       border-radius: 10px;
-      border: 1.5px solid var(--w10);
-      background: var(--bg3);
-      color: var(--w70);
+      border: 1.5px solid var(--border);
+      background: var(--white);
+      color: var(--text2);
       font-family: var(--body);
       font-size: .95rem;
       font-weight: 600;
@@ -292,12 +288,12 @@
     }
     .yn-btn:hover {
       border-color: var(--blue);
-      color: var(--white);
+      color: var(--text);
     }
     .yn-btn.selected {
       border-color: var(--blue);
-      background: rgba(59,130,246,.12);
-      color: var(--white);
+      background: rgba(59,130,246,.06);
+      color: var(--blue);
     }
 
     /* ── CHOICE CARDS (single-select radio style) ── */
@@ -313,25 +309,25 @@
       gap: .9rem;
       padding: .9rem 1.1rem;
       border-radius: 10px;
-      border: 1.5px solid var(--w10);
-      background: var(--bg3);
+      border: 1.5px solid var(--border);
+      background: var(--white);
       cursor: pointer;
       transition: all .2s;
       user-select: none;
     }
     .choice-card:hover {
       border-color: rgba(59,130,246,.5);
-      background: rgba(59,130,246,.06);
+      background: rgba(59,130,246,.03);
     }
     .choice-card.selected {
       border-color: var(--blue);
-      background: rgba(59,130,246,.12);
+      background: rgba(59,130,246,.06);
     }
     .choice-radio {
       width: 20px;
       height: 20px;
       border-radius: 50%;
-      border: 2px solid var(--w30);
+      border: 2px solid var(--border2);
       flex-shrink: 0;
       display: flex;
       align-items: center;
@@ -351,17 +347,17 @@
     }
     .choice-label {
       font-size: .92rem;
-      color: var(--w80);
+      color: var(--text2);
       font-weight: 500;
       flex: 1;
     }
-    .choice-card.selected .choice-label { color: var(--white); }
+    .choice-card.selected .choice-label { color: var(--text); }
     .choice-badge {
       font-family: var(--mono);
       font-size: .72rem;
       padding: .2rem .55rem;
       border-radius: 999px;
-      background: rgba(59,130,246,.15);
+      background: rgba(59,130,246,.08);
       color: var(--blue);
       font-weight: 700;
     }
@@ -379,8 +375,8 @@
       gap: .7rem;
       padding: .8rem 1rem;
       border-radius: 10px;
-      border: 1.5px solid var(--w10);
-      background: var(--bg3);
+      border: 1.5px solid var(--border);
+      background: var(--white);
       cursor: pointer;
       transition: all .2s;
       user-select: none;
@@ -388,13 +384,13 @@
     .check-card:hover { border-color: rgba(59,130,246,.5); }
     .check-card.selected {
       border-color: var(--blue);
-      background: rgba(59,130,246,.12);
+      background: rgba(59,130,246,.06);
     }
     .check-box {
       width: 18px;
       height: 18px;
       border-radius: 4px;
-      border: 2px solid var(--w30);
+      border: 2px solid var(--border2);
       flex-shrink: 0;
       display: flex;
       align-items: center;
@@ -415,10 +411,10 @@
     }
     .check-label {
       font-size: .88rem;
-      color: var(--w80);
+      color: var(--text2);
       font-weight: 500;
     }
-    .check-card.selected .check-label { color: var(--white); }
+    .check-card.selected .check-label { color: var(--text); }
 
     /* Frequency select below checkboxes */
     .freq-wrap {
@@ -428,7 +424,7 @@
       display: block;
       font-size: .8rem;
       font-weight: 600;
-      color: var(--w70);
+      color: var(--text2);
       margin-bottom: .45rem;
     }
 
@@ -454,14 +450,14 @@
     }
     .btn-primary {
       background: var(--blue);
-      color: var(--white);
+      color: #FFFFFF;
       flex: 1;
       justify-content: center;
     }
     .btn-primary:hover {
       background: var(--blue2);
       transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(59,130,246,.35);
+      box-shadow: 0 6px 20px rgba(59,130,246,.25);
     }
     .btn-primary:disabled {
       opacity: .4;
@@ -472,7 +468,7 @@
     .btn-back {
       background: transparent;
       border: none;
-      color: var(--w40);
+      color: var(--text4);
       font-family: var(--body);
       font-size: .83rem;
       font-weight: 500;
@@ -485,7 +481,7 @@
       transition: color .2s;
       letter-spacing: .01em;
     }
-    .btn-back:hover { color: var(--w70); }
+    .btn-back:hover { color: var(--text2); }
 
     /* Auto-advance confirmation flash */
     @keyframes confirmPulse {
@@ -495,31 +491,30 @@
     }
     .choice-card.auto-confirming {
       border-color: var(--green) !important;
-      background: rgba(16,185,129,.12) !important;
+      background: rgba(16,185,129,.06) !important;
       animation: confirmPulse .4s ease forwards;
     }
     .yn-btn.auto-confirming {
       border-color: var(--green) !important;
-      background: rgba(16,185,129,.12) !important;
+      background: rgba(16,185,129,.06) !important;
       animation: confirmPulse .4s ease forwards;
     }
     .btn-gradient {
       background: linear-gradient(90deg, var(--blue), var(--purple));
-      color: var(--white);
+      color: #FFFFFF;
     }
     .btn-gradient:hover {
       opacity: .9;
       transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(100,100,246,.4);
+      box-shadow: 0 8px 28px rgba(100,100,246,.3);
     }
     .btn-outline {
       background: transparent;
-      color: var(--white);
-      border: 1.5px solid var(--w20);
+      color: var(--text);
+      border: 1.5px solid var(--border);
     }
     .btn-outline:hover {
-      border-color: var(--w60);
-      background: var(--w05);
+      border-color: var(--text3);
       transform: translateY(-1px);
     }
     .btn-lg { padding: 1rem 2.25rem; font-size: .95rem; }
@@ -533,8 +528,8 @@
     .step-error {
       font-size: .82rem;
       color: var(--red);
-      background: rgba(239,68,68,.08);
-      border: 1px solid rgba(239,68,68,.2);
+      background: rgba(239,68,68,.06);
+      border: 1px solid rgba(239,68,68,.15);
       border-radius: 6px;
       padding: .6rem .9rem;
       margin-bottom: 1rem;
@@ -573,7 +568,7 @@
       height: 8px;
       background: var(--green);
       border-radius: 50%;
-      box-shadow: 0 0 0 3px rgba(16,185,129,.2);
+      box-shadow: 0 0 0 3px rgba(16,185,129,.15);
     }
     .results-title {
       font-family: var(--display);
@@ -583,16 +578,17 @@
     }
     .results-sub {
       font-size: .95rem;
-      color: var(--w60);
+      color: var(--text3);
     }
 
     .tier-card {
-      background: var(--bg2);
-      border: 1px solid var(--border);
+      background: var(--white);
+      border: 0.5px solid var(--border);
       border-radius: 16px;
       overflow: hidden;
       margin-bottom: 1.5rem;
       position: relative;
+      box-shadow: 0 1px 2px rgba(0,0,0,.03), 0 4px 16px rgba(0,0,0,.04);
     }
     .tier-card::before {
       content: '';
@@ -621,10 +617,10 @@
       border-radius: 999px;
       margin-bottom: .9rem;
     }
-    .tier-card.starter .tier-badge  { background: rgba(59,130,246,.12);  color: var(--blue); }
-    .tier-card.growth .tier-badge   { background: rgba(139,92,246,.12);   color: var(--purple); }
-    .tier-card.scale .tier-badge    { background: rgba(6,182,212,.12);    color: var(--cyan); }
-    .tier-card.enterprise .tier-badge { background: rgba(245,158,11,.12); color: var(--gold); }
+    .tier-card.starter .tier-badge  { background: rgba(59,130,246,.08);  color: var(--blue); }
+    .tier-card.growth .tier-badge   { background: rgba(139,92,246,.08);  color: var(--purple); }
+    .tier-card.scale .tier-badge    { background: rgba(6,182,212,.08);   color: var(--cyan); }
+    .tier-card.enterprise .tier-badge { background: rgba(245,158,11,.08); color: var(--gold); }
 
     .tier-name {
       font-family: var(--display);
@@ -641,7 +637,7 @@
       gap: .3rem;
       margin-bottom: .4rem;
     }
-    .tier-price .per { font-size: .95rem; font-weight: 400; color: var(--w50); }
+    .tier-price .per { font-size: .95rem; font-weight: 400; color: var(--text4); }
     .tier-card.starter .tier-price  { color: var(--blue); }
     .tier-card.growth .tier-price   { color: var(--purple); }
     .tier-card.scale .tier-price    { color: var(--cyan); }
@@ -649,7 +645,7 @@
 
     .tier-desc {
       font-size: .88rem;
-      color: var(--w60);
+      color: var(--text3);
     }
 
     .tier-card-body {
@@ -660,7 +656,7 @@
       font-weight: 700;
       letter-spacing: .1em;
       text-transform: uppercase;
-      color: var(--w40);
+      color: var(--text4);
       margin-bottom: .9rem;
     }
     .tier-features {
@@ -675,7 +671,7 @@
       align-items: flex-start;
       gap: .75rem;
       font-size: .92rem;
-      color: var(--w80);
+      color: var(--text2);
     }
     .feat-icon {
       width: 18px;
@@ -688,10 +684,10 @@
       justify-content: center;
       font-size: .65rem;
     }
-    .tier-card.starter .feat-icon  { background: rgba(59,130,246,.15);  color: var(--blue); }
-    .tier-card.growth .feat-icon   { background: rgba(139,92,246,.15);   color: var(--purple); }
-    .tier-card.scale .feat-icon    { background: rgba(6,182,212,.15);    color: var(--cyan); }
-    .tier-card.enterprise .feat-icon { background: rgba(245,158,11,.15); color: var(--gold); }
+    .tier-card.starter .feat-icon  { background: rgba(59,130,246,.1);  color: var(--blue); }
+    .tier-card.growth .feat-icon   { background: rgba(139,92,246,.1);  color: var(--purple); }
+    .tier-card.scale .feat-icon    { background: rgba(6,182,212,.1);   color: var(--cyan); }
+    .tier-card.enterprise .feat-icon { background: rgba(245,158,11,.1); color: var(--gold); }
 
     /* ── RESULTS ACTIONS ── */
     .results-actions {
@@ -702,18 +698,18 @@
     .results-back-link {
       text-align: center;
       font-size: .85rem;
-      color: var(--w40);
+      color: var(--text4);
       transition: color .2s;
       padding: .5rem;
       cursor: pointer;
     }
-    .results-back-link:hover { color: var(--w70); }
+    .results-back-link:hover { color: var(--text2); }
 
     /* ── SCORE DEBUG (hidden in prod) ── */
     .score-debug {
       font-family: var(--mono);
       font-size: .72rem;
-      color: var(--w30);
+      color: var(--text4);
       text-align: center;
       margin-top: 1rem;
     }
@@ -734,28 +730,29 @@
       font-weight: 700;
       letter-spacing: .12em;
       text-transform: uppercase;
-      color: var(--w40);
+      color: var(--text4);
       margin-bottom: .5rem;
     }
     .section-heading {
       font-family: var(--display);
       font-size: 1.35rem;
       font-weight: 800;
-      color: var(--white);
+      color: var(--text);
       margin-bottom: .45rem;
     }
     .section-sub {
       font-size: .875rem;
-      color: var(--w60);
+      color: var(--text3);
       margin-bottom: 1.25rem;
     }
 
     /* ── COMPARISON TABLE ── */
     .compare-card {
-      background: var(--bg2);
-      border: 1px solid var(--border);
+      background: var(--white);
+      border: 0.5px solid var(--border);
       border-radius: 16px;
       overflow: hidden;
+      box-shadow: 0 1px 2px rgba(0,0,0,.03), 0 4px 16px rgba(0,0,0,.04);
     }
     .compare-hero {
       display: grid;
@@ -763,10 +760,10 @@
     }
     .compare-side { padding: 1.5rem; }
     .compare-side.bizstack {
-      background: rgba(16,185,129,.06);
+      background: rgba(16,185,129,.04);
       border-right: 1px solid var(--border);
     }
-    .compare-side.retail { background: rgba(239,68,68,.04); }
+    .compare-side.retail { background: rgba(239,68,68,.03); }
     .compare-side-label {
       font-size: .7rem;
       font-weight: 700;
@@ -785,17 +782,17 @@
     }
     .compare-side.bizstack .compare-price-big { color: var(--green); }
     .compare-side.retail .compare-price-big {
-      color: var(--w40);
+      color: var(--text4);
       text-decoration: line-through;
       text-decoration-color: #f87171;
       text-decoration-thickness: 2px;
     }
-    .compare-price-sub { font-size: .78rem; color: var(--w50); }
+    .compare-price-sub { font-size: .78rem; color: var(--text4); }
     .compare-side.bizstack .compare-price-sub { color: rgba(16,185,129,.65); }
 
     .savings-banner {
-      background: linear-gradient(90deg, rgba(16,185,129,.1), rgba(59,130,246,.1));
-      border-top: 1px solid rgba(16,185,129,.15);
+      background: linear-gradient(90deg, rgba(16,185,129,.06), rgba(59,130,246,.06));
+      border-top: 1px solid rgba(16,185,129,.12);
       padding: 1rem 1.5rem;
       display: flex;
       align-items: center;
@@ -812,7 +809,7 @@
     .savings-text {
       font-size: .9rem;
       font-weight: 600;
-      color: var(--w80);
+      color: var(--text2);
       max-width: 220px;
     }
     .compare-items {
@@ -824,7 +821,7 @@
       font-weight: 700;
       letter-spacing: .1em;
       text-transform: uppercase;
-      color: var(--w30);
+      color: var(--text4);
       margin-bottom: .85rem;
     }
     .compare-row {
@@ -832,28 +829,29 @@
       justify-content: space-between;
       align-items: center;
       padding: .5rem 0;
-      border-bottom: 1px solid rgba(255,255,255,.04);
+      border-bottom: 1px solid var(--border);
       font-size: .875rem;
       gap: .5rem;
     }
     .compare-row:last-child { border-bottom: none; }
-    .compare-row-label { color: var(--w70); }
+    .compare-row-label { color: var(--text2); }
     .compare-row-cost {
       font-family: var(--mono);
       font-size: .78rem;
-      color: var(--w40);
+      color: var(--text4);
       white-space: nowrap;
       flex-shrink: 0;
     }
 
     /* ── RENT-TO-OWN ── */
     .rto-card {
-      background: var(--bg2);
-      border: 1px solid var(--border);
+      background: var(--white);
+      border: 0.5px solid var(--border);
       border-radius: 16px;
       padding: 2rem;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 1px 2px rgba(0,0,0,.03), 0 4px 16px rgba(0,0,0,.04);
     }
     .rto-card::before {
       content: '';
@@ -874,15 +872,15 @@
       align-items: flex-start;
       gap: .8rem;
       font-size: .9rem;
-      color: var(--w80);
+      color: var(--text2);
       line-height: 1.55;
     }
-    .rto-points li strong { color: var(--white); }
+    .rto-points li strong { color: var(--text); }
     .rto-icon {
       width: 22px;
       height: 22px;
       border-radius: 6px;
-      background: rgba(59,130,246,.12);
+      background: rgba(59,130,246,.08);
       color: var(--blue);
       display: flex;
       align-items: center;
@@ -904,12 +902,12 @@
       border-radius: 10px;
     }
     .rto-phase.building {
-      background: rgba(59,130,246,.1);
-      border: 1px solid rgba(59,130,246,.2);
+      background: rgba(59,130,246,.06);
+      border: 1px solid rgba(59,130,246,.15);
     }
     .rto-phase.owning {
-      background: rgba(16,185,129,.1);
-      border: 1px solid rgba(16,185,129,.2);
+      background: rgba(16,185,129,.06);
+      border: 1px solid rgba(16,185,129,.15);
     }
     .rto-phase-month {
       font-family: var(--mono);
@@ -923,35 +921,36 @@
       font-family: var(--display);
       font-size: .9rem;
       font-weight: 700;
-      color: var(--white);
+      color: var(--text);
       margin-bottom: .2rem;
     }
-    .rto-phase-sub { font-size: .74rem; color: var(--w50); }
-    .rto-arrow { color: var(--w20); font-size: 1.4rem; flex-shrink: 0; }
+    .rto-phase-sub { font-size: .74rem; color: var(--text4); }
+    .rto-arrow { color: var(--border2); font-size: 1.4rem; flex-shrink: 0; }
     .rto-no-lock {
-      background: rgba(16,185,129,.06);
-      border: 1px solid rgba(16,185,129,.15);
+      background: rgba(16,185,129,.04);
+      border: 1px solid rgba(16,185,129,.12);
       border-radius: 10px;
       padding: 1rem 1.25rem;
       display: flex;
       align-items: flex-start;
       gap: .75rem;
       font-size: .875rem;
-      color: var(--w80);
+      color: var(--text2);
       line-height: 1.5;
     }
-    .rto-no-lock strong { color: var(--white); }
+    .rto-no-lock strong { color: var(--text); }
     .rto-lock-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
 
     /* ── NEXT STEPS ── */
     .next-steps-card {
-      background: var(--bg2);
-      border: 1px solid var(--border);
+      background: var(--white);
+      border: 0.5px solid var(--border);
       border-radius: 16px;
       overflow: hidden;
+      box-shadow: 0 1px 2px rgba(0,0,0,.03), 0 4px 16px rgba(0,0,0,.04);
     }
     .next-steps-hd {
-      background: linear-gradient(135deg, rgba(59,130,246,.1), rgba(139,92,246,.1));
+      background: linear-gradient(135deg, rgba(59,130,246,.04), rgba(139,92,246,.04));
       border-bottom: 1px solid var(--border);
       padding: 1.75rem 2rem;
       text-align: center;
@@ -960,47 +959,47 @@
       font-family: var(--display);
       font-size: 1.3rem;
       font-weight: 800;
-      color: var(--white);
+      color: var(--text);
       margin-bottom: .3rem;
     }
-    .next-steps-sub { font-size: .875rem; color: var(--w60); }
+    .next-steps-sub { font-size: .875rem; color: var(--text3); }
     .next-steps-body { padding: 1.75rem 2rem 2rem; }
     .ns-row {
       display: flex;
       align-items: flex-start;
       gap: 1rem;
       padding: .9rem 0;
-      border-bottom: 1px solid rgba(255,255,255,.04);
+      border-bottom: 1px solid var(--border);
     }
     .ns-row:last-of-type { border-bottom: none; }
     .ns-num {
       width: 30px;
       height: 30px;
       border-radius: 50%;
-      background: var(--bg3);
-      border: 1.5px solid var(--w10);
+      background: var(--bg);
+      border: 1.5px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: var(--mono);
       font-size: .78rem;
       font-weight: 700;
-      color: var(--w50);
+      color: var(--text4);
       flex-shrink: 0;
       margin-top: 2px;
     }
     .ns-row.active .ns-num {
-      background: rgba(59,130,246,.15);
-      border-color: rgba(59,130,246,.4);
+      background: rgba(59,130,246,.08);
+      border-color: rgba(59,130,246,.3);
       color: var(--blue);
     }
     .ns-content-title {
       font-size: .92rem;
       font-weight: 700;
-      color: var(--white);
+      color: var(--text);
       margin-bottom: .2rem;
     }
-    .ns-content-sub { font-size: .82rem; color: var(--w50); }
+    .ns-content-sub { font-size: .82rem; color: var(--text4); }
 
     .cta-main-btn {
       display: flex;
@@ -1011,8 +1010,8 @@
       margin-top: 1.5rem;
       padding: 1.1rem 2rem;
       border-radius: 10px;
-      background: linear-gradient(90deg, var(--blue), var(--purple));
-      color: var(--white);
+      background: var(--blue);
+      color: #FFFFFF;
       font-family: var(--display);
       font-size: 1.05rem;
       font-weight: 700;
@@ -1022,9 +1021,9 @@
       transition: all .25s;
     }
     .cta-main-btn:hover {
-      opacity: .9;
+      background: var(--blue2);
       transform: translateY(-2px);
-      box-shadow: 0 10px 32px rgba(100,100,246,.4);
+      box-shadow: 0 10px 32px rgba(59,130,246,.25);
     }
     .divider-or {
       display: flex;
@@ -1037,43 +1036,43 @@
     .divider-or span {
       font-size: .72rem;
       font-weight: 600;
-      color: var(--w30);
+      color: var(--text4);
       letter-spacing: .08em;
       text-transform: uppercase;
       white-space: nowrap;
     }
     .skip-call-box {
-      background: var(--bg3);
+      background: var(--bg);
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 1.25rem;
     }
     .skip-call-label {
       font-size: .82rem;
-      color: var(--w60);
+      color: var(--text3);
       margin-bottom: .75rem;
       text-align: center;
     }
-    .skip-call-label strong { color: var(--w80); }
+    .skip-call-label strong { color: var(--text2); }
     .skip-email-row { display: flex; gap: .5rem; }
     .skip-email-input {
       flex: 1;
-      background: var(--bg2);
-      border: 1.5px solid var(--w10);
+      background: var(--white);
+      border: 1.5px solid var(--border);
       border-radius: 8px;
       padding: .7rem 1rem;
       font-family: var(--body);
       font-size: .875rem;
-      color: var(--white);
+      color: var(--text);
       outline: none;
       transition: border-color .2s;
       min-width: 0;
     }
     .skip-email-input:focus { border-color: var(--blue); }
-    .skip-email-input::placeholder { color: var(--w30); }
+    .skip-email-input::placeholder { color: var(--text4); }
     .skip-email-btn {
       background: var(--blue);
-      color: var(--white);
+      color: #FFFFFF;
       border: none;
       border-radius: 8px;
       padding: .7rem 1.1rem;
@@ -1098,20 +1097,20 @@
       display: block;
       text-align: center;
       font-size: .83rem;
-      color: var(--w30);
+      color: var(--text4);
       margin-top: 1.75rem;
       margin-bottom: .5rem;
       transition: color .2s;
     }
-    .back-home-link:hover { color: var(--w70); }
+    .back-home-link:hover { color: var(--text2); }
 
     /* ── PROPOSAL CONFIRMATION BANNER ── */
     .proposal-banner {
       display: flex;
       align-items: flex-start;
       gap: .85rem;
-      background: rgba(16,185,129,.08);
-      border: 1px solid rgba(16,185,129,.25);
+      background: rgba(16,185,129,.05);
+      border: 1px solid rgba(16,185,129,.2);
       border-radius: 12px;
       padding: 1rem 1.25rem;
       margin-bottom: 1.5rem;
@@ -1120,7 +1119,7 @@
       width: 28px;
       height: 28px;
       border-radius: 50%;
-      background: rgba(16,185,129,.2);
+      background: rgba(16,185,129,.12);
       color: var(--green);
       display: flex;
       align-items: center;
@@ -1139,12 +1138,12 @@
     }
     .proposal-banner-sub {
       font-size: .82rem;
-      color: var(--w60);
+      color: var(--text3);
       line-height: 1.45;
     }
     .proposal-banner-email {
       font-weight: 600;
-      color: var(--w80);
+      color: var(--text2);
     }
 
     /* ── COMPARE OWN-NOTE ── */
@@ -1152,8 +1151,8 @@
       display: flex;
       align-items: center;
       gap: .6rem;
-      background: rgba(59,130,246,.06);
-      border-top: 1px solid rgba(59,130,246,.12);
+      background: rgba(59,130,246,.04);
+      border-top: 1px solid rgba(59,130,246,.1);
       padding: .75rem 1.5rem;
       font-size: .8rem;
       color: var(--blue);
@@ -1190,7 +1189,7 @@
 <!-- NAV -->
 <nav id="nav">
   <div class="nav-inner">
-    <a href="/" class="nav-logo">BizStack<span class="ai">.vip</span></a>
+    <a href="/" class="nav-logo">BizStack<span class="vip">.vip</span></a>
     <a href="/" class="nav-back">
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       Back to Home
@@ -1209,7 +1208,7 @@
     <!-- Progress bar -->
     <div class="progress-header">
       <div class="progress-meta">
-        <span class="progress-label">Free AI Assessment</span>
+        <span class="progress-label">Free Assessment</span>
         <span class="progress-count" id="progress-count">Step 1 of 9</span>
       </div>
       <div class="progress-track">
@@ -1220,7 +1219,7 @@
     <!-- Step card -->
     <div class="step-card">
 
-      <!-- ─ STEP 1: Contact Info ─ -->
+      <!-- STEP 1: Contact Info -->
       <div class="step active" id="step-1">
         <div class="step-eyebrow">Step 1 of 9</div>
         <h2 class="step-title">Let's start with the basics.</h2>
@@ -1249,11 +1248,11 @@
           </div>
         </div>
         <div class="step-actions">
-          <button class="btn btn-primary" onclick="nextStep(1)">Continue →</button>
+          <button class="btn btn-primary" onclick="nextStep(1)">Continue &rarr;</button>
         </div>
       </div>
 
-      <!-- ─ STEP 2: Industry ─ -->
+      <!-- STEP 2: Industry -->
       <div class="step" id="step-2">
         <div class="step-eyebrow">Step 2 of 9</div>
         <h2 class="step-title">What type of business do you run?</h2>
@@ -1290,11 +1289,11 @@
           </div>
         </div>
         <div class="step-actions">
-          <button class="btn btn-back" onclick="prevStep(2)">← Back</button>
+          <button class="btn btn-back" onclick="prevStep(2)">&larr; Back</button>
         </div>
       </div>
 
-      <!-- ─ STEP 3: Website ─ -->
+      <!-- STEP 3: Website -->
       <div class="step" id="step-3">
         <div class="step-eyebrow">Step 3 of 9</div>
         <h2 class="step-title">Do you have a current website?</h2>
@@ -1311,12 +1310,12 @@
           </div>
         </div>
         <div class="step-actions" style="margin-top:1.75rem;">
-          <button class="btn btn-back" onclick="prevStep(3)">← Back</button>
-          <button class="btn btn-primary" id="step3-continue" onclick="nextStep(3)" style="display:none;">Continue →</button>
+          <button class="btn btn-back" onclick="prevStep(3)">&larr; Back</button>
+          <button class="btn btn-primary" id="step3-continue" onclick="nextStep(3)" style="display:none;">Continue &rarr;</button>
         </div>
       </div>
 
-      <!-- ─ STEP 4: CRM ─ -->
+      <!-- STEP 4: CRM -->
       <div class="step" id="step-4">
         <div class="step-eyebrow">Step 4 of 9</div>
         <h2 class="step-title">Are you using a CRM?</h2>
@@ -1343,27 +1342,27 @@
           </div>
         </div>
         <div class="step-actions" style="margin-top:1.75rem;">
-          <button class="btn btn-back" onclick="prevStep(4)">← Back</button>
-          <button class="btn btn-primary" id="step4-continue" onclick="nextStep(4)" style="display:none;">Continue →</button>
+          <button class="btn btn-back" onclick="prevStep(4)">&larr; Back</button>
+          <button class="btn btn-primary" id="step4-continue" onclick="nextStep(4)" style="display:none;">Continue &rarr;</button>
         </div>
       </div>
 
-      <!-- ─ STEP 5: Email Marketing ─ -->
+      <!-- STEP 5: Email Marketing -->
       <div class="step" id="step-5">
         <div class="step-eyebrow">Step 5 of 9</div>
         <h2 class="step-title">Are you running email marketing?</h2>
-        <p class="step-sub">Newsletters, drip campaigns, promotional emails — any of the above count.</p>
+        <p class="step-sub">Newsletters, drip campaigns, promotional emails &mdash; any of the above count.</p>
         <div class="step-error" id="error-5">Please make a selection.</div>
         <div class="yn-group">
           <button class="yn-btn" id="email-yes" onclick="selectYN('email','yes')">Yes, I do</button>
           <button class="yn-btn" id="email-no"  onclick="selectYN('email','no')">No, not yet</button>
         </div>
         <div class="step-actions" style="margin-top:1.75rem;">
-          <button class="btn btn-back" onclick="prevStep(5)">← Back</button>
+          <button class="btn btn-back" onclick="prevStep(5)">&larr; Back</button>
         </div>
       </div>
 
-      <!-- ─ STEP 6: Social Media ─ -->
+      <!-- STEP 6: Social Media -->
       <div class="step" id="step-6">
         <div class="step-eyebrow">Step 6 of 9</div>
         <h2 class="step-title">Where are you active on social media?</h2>
@@ -1412,79 +1411,79 @@
           </div>
         </div>
         <div class="step-actions">
-          <button class="btn btn-back" onclick="prevStep(6)">← Back</button>
-          <button class="btn btn-primary" onclick="nextStep(6)">Continue →</button>
+          <button class="btn btn-back" onclick="prevStep(6)">&larr; Back</button>
+          <button class="btn btn-primary" onclick="nextStep(6)">Continue &rarr;</button>
         </div>
       </div>
 
-      <!-- ─ STEP 7: Pain Point ─ -->
+      <!-- STEP 7: Pain Point -->
       <div class="step" id="step-7">
         <div class="step-eyebrow">Step 7 of 9</div>
         <h2 class="step-title">What's your biggest pain point right now?</h2>
-        <p class="step-sub">Be honest — this helps us recommend the right solution.</p>
+        <p class="step-sub">Be honest &mdash; this helps us recommend the right solution.</p>
         <div class="step-error" id="error-7">Please select a pain point.</div>
         <div class="choices" id="pain-choices">
           <div class="choice-card" onclick="selectChoice('pain','lead-gen',this)">
             <div class="choice-radio"></div>
-            <span class="choice-label">Lead generation — I'm not getting enough new clients</span>
+            <span class="choice-label">Lead generation &mdash; I'm not getting enough new clients</span>
           </div>
           <div class="choice-card" onclick="selectChoice('pain','follow-up',this)">
             <div class="choice-radio"></div>
-            <span class="choice-label">Follow-up — leads slip through the cracks</span>
+            <span class="choice-label">Follow-up &mdash; leads slip through the cracks</span>
           </div>
           <div class="choice-card" onclick="selectChoice('pain','online-presence',this)">
             <div class="choice-radio"></div>
-            <span class="choice-label">Online presence — my website &amp; social look outdated</span>
+            <span class="choice-label">Online presence &mdash; my website &amp; social look outdated</span>
           </div>
           <div class="choice-card" onclick="selectChoice('pain','manual-work',this)">
             <div class="choice-radio"></div>
-            <span class="choice-label">Manual work — too much admin, not enough automation</span>
+            <span class="choice-label">Manual work &mdash; too much admin, not enough automation</span>
           </div>
           <div class="choice-card" onclick="selectChoice('pain','all',this)">
             <div class="choice-radio"></div>
-            <span class="choice-label">All of the above — we need a complete overhaul</span>
+            <span class="choice-label">All of the above &mdash; we need a complete overhaul</span>
             <span class="choice-badge">Most common</span>
           </div>
         </div>
         <div class="step-actions">
-          <button class="btn btn-back" onclick="prevStep(7)">← Back</button>
+          <button class="btn btn-back" onclick="prevStep(7)">&larr; Back</button>
         </div>
       </div>
 
-      <!-- ─ STEP 8: Budget ─ -->
+      <!-- STEP 8: Budget -->
       <div class="step" id="step-8">
         <div class="step-eyebrow">Step 8 of 9</div>
         <h2 class="step-title">What's your monthly budget for this?</h2>
-        <p class="step-sub">No wrong answer — we have plans for every stage of growth.</p>
+        <p class="step-sub">No wrong answer &mdash; we have plans for every stage of growth.</p>
         <div class="step-error" id="error-8">Please select a budget range.</div>
         <div class="choices" id="budget-choices">
           <div class="choice-card" onclick="selectChoice('budget','99-299',this)">
             <div class="choice-radio"></div>
-            <span class="choice-label">$99 – $299 / mo — Getting started</span>
-            <span class="choice-badge" style="background:rgba(16,185,129,.12);color:var(--green);">Starter</span>
+            <span class="choice-label">$99 &ndash; $299 / mo &mdash; Getting started</span>
+            <span class="choice-badge" style="background:rgba(16,185,129,.08);color:var(--green);">Starter</span>
           </div>
           <div class="choice-card" onclick="selectChoice('budget','299-499',this)">
             <div class="choice-radio"></div>
-            <span class="choice-label">$299 – $499 / mo — Ready to grow</span>
-            <span class="choice-badge" style="background:rgba(139,92,246,.12);color:var(--purple);">Growth</span>
+            <span class="choice-label">$299 &ndash; $499 / mo &mdash; Ready to grow</span>
+            <span class="choice-badge" style="background:rgba(139,92,246,.08);color:var(--purple);">Growth</span>
           </div>
           <div class="choice-card" onclick="selectChoice('budget','499-999',this)">
             <div class="choice-radio"></div>
-            <span class="choice-label">$499 – $999 / mo — Serious about scaling</span>
-            <span class="choice-badge" style="background:rgba(6,182,212,.12);color:var(--cyan);">Scale</span>
+            <span class="choice-label">$499 &ndash; $999 / mo &mdash; Serious about scaling</span>
+            <span class="choice-badge" style="background:rgba(6,182,212,.08);color:var(--cyan);">Scale</span>
           </div>
           <div class="choice-card" onclick="selectChoice('budget','999+',this)">
             <div class="choice-radio"></div>
-            <span class="choice-label">$999+ / mo — Full-service, enterprise-grade</span>
-            <span class="choice-badge" style="background:rgba(245,158,11,.12);color:var(--gold);">Enterprise</span>
+            <span class="choice-label">$999+ / mo &mdash; Full-service, enterprise-grade</span>
+            <span class="choice-badge" style="background:rgba(245,158,11,.08);color:var(--gold);">Enterprise</span>
           </div>
         </div>
         <div class="step-actions">
-          <button class="btn btn-back" onclick="prevStep(8)">← Back</button>
+          <button class="btn btn-back" onclick="prevStep(8)">&larr; Back</button>
         </div>
       </div>
 
-      <!-- ─ STEP 9: Timeline ─ -->
+      <!-- STEP 9: Timeline -->
       <div class="step" id="step-9">
         <div class="step-eyebrow">Step 9 of 9</div>
         <h2 class="step-title">How soon do you want to get started?</h2>
@@ -1493,20 +1492,20 @@
         <div class="choices" id="timeline-choices">
           <div class="choice-card" onclick="selectChoice('timeline','asap',this)">
             <div class="choice-radio"></div>
-            <span class="choice-label">ASAP — I need this yesterday</span>
-            <span class="choice-badge" style="background:rgba(239,68,68,.12);color:#f87171;">Urgent</span>
+            <span class="choice-label">ASAP &mdash; I need this yesterday</span>
+            <span class="choice-badge" style="background:rgba(239,68,68,.08);color:#f87171;">Urgent</span>
           </div>
           <div class="choice-card" onclick="selectChoice('timeline','this-month',this)">
             <div class="choice-radio"></div>
-            <span class="choice-label">This month — within the next 30 days</span>
+            <span class="choice-label">This month &mdash; within the next 30 days</span>
           </div>
           <div class="choice-card" onclick="selectChoice('timeline','exploring',this)">
             <div class="choice-radio"></div>
-            <span class="choice-label">Just exploring — researching my options</span>
+            <span class="choice-label">Just exploring &mdash; researching my options</span>
           </div>
         </div>
         <div class="step-actions">
-          <button class="btn btn-back" onclick="prevStep(9)">← Back</button>
+          <button class="btn btn-back" onclick="prevStep(9)">&larr; Back</button>
         </div>
       </div>
 
@@ -1530,7 +1529,7 @@
       <div class="proposal-banner-icon">&#10003;</div>
       <div class="proposal-banner-text">
         <div class="proposal-banner-title">Your full assessment results have been sent to <span class="proposal-banner-email" id="proposal-email-display"></span></div>
-        <div class="proposal-banner-sub">Check your inbox — your complete results and recommended plan are there. Our team will be in touch soon.</div>
+        <div class="proposal-banner-sub">Check your inbox &mdash; your complete results and recommended plan are there. Our team will be in touch soon.</div>
       </div>
     </div>
 
@@ -1548,27 +1547,27 @@
       </div>
     </div>
 
-    <!-- ─ Budget cap upsell message ─ -->
-    <div id="results-budget-upsell" style="display:none;margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:var(--w70);font-size:.9rem;line-height:1.6;"></div>
+    <!-- Budget cap upsell message -->
+    <div id="results-budget-upsell" style="display:none;margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;background:rgba(59,130,246,.04);border:1px solid rgba(59,130,246,.12);color:var(--text2);font-size:.9rem;line-height:1.6;"></div>
 
-    <!-- ─ CTA Buttons ─ -->
+    <!-- CTA Buttons -->
     <div class="results-actions rev-section" id="results-cta-section" style="margin-top:1.75rem;">
       <a id="results-stripe-btn" href="#" target="_blank" rel="noopener" class="cta-main-btn" style="margin-top:0;">
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1l2.5 5 5.5.8-4 3.9.9 5.5L9 13.5 4.1 16.2l.9-5.5L1 6.8l5.5-.8z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
-        Get Started Now — <span id="results-cta-price">$99</span>/mo →
+        Get Started Now &mdash; <span id="results-cta-price">$99</span>/mo &rarr;
       </a>
       <a href="https://calendly.com" target="_blank" rel="noopener"
-        style="display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%;padding:1rem 2rem;border-radius:10px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);color:var(--w70);font-family:var(--display);font-weight:600;font-size:.95rem;text-decoration:none;transition:all .25s;cursor:pointer;">
+        style="display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%;padding:1rem 2rem;border-radius:10px;border:1.5px solid var(--border);background:var(--white);color:var(--text2);font-family:var(--display);font-weight:600;font-size:.95rem;text-decoration:none;transition:all .25s;cursor:pointer;">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="11" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M5 1v3M11 1v3M2 7h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         Schedule a Free Strategy Call
       </a>
     </div>
 
-    <!-- ─ SECTION 1: Price Comparison ─ -->
+    <!-- SECTION 1: Price Comparison -->
     <div class="results-section rev-section" id="compare-section">
       <div class="section-label">The Numbers Don't Lie</div>
       <h3 class="section-heading">What This Would Cost You Separately</h3>
-      <p class="section-sub">Hiring an agency or freelancers to build what BizStack delivers costs a small fortune — and you still pay them monthly forever.</p>
+      <p class="section-sub">Hiring an agency or freelancers to build what BizStack delivers costs a small fortune &mdash; and you still pay them monthly forever.</p>
       <div class="compare-card">
         <div class="compare-hero">
           <div class="compare-side bizstack">
@@ -1595,12 +1594,12 @@
         </div>
         <div class="compare-own-note">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v6l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/></svg>
-          Plus you OWN everything after 24 months — no agency keeps your assets
+          Plus you OWN everything after 24 months &mdash; no agency keeps your assets
         </div>
       </div>
     </div>
 
-    <!-- ─ SECTION 2: Rent-to-Own ─ -->
+    <!-- SECTION 2: Rent-to-Own -->
     <div class="results-section rev-section" id="rto-section">
       <div class="section-label">Built to Last</div>
       <h3 class="section-heading">Own Everything You Build</h3>
@@ -1609,38 +1608,38 @@
         <ul class="rto-points">
           <li>
             <div class="rto-icon">&#9679;</div>
-            <span>After 24 months, you <strong>own every asset we build</strong> — your website, automations, CRM setup, content library, and AI agents. All yours, forever.</span>
+            <span>After 24 months, you <strong>own every asset we build</strong> &mdash; your website, automations, CRM setup, content library, and AI agents. All yours, forever.</span>
           </li>
           <li>
             <div class="rto-icon">&#9679;</div>
-            <span>Once paid off, keep everything running for just <strong>$49–149/mo maintenance</strong>. No inflated retainer fees, ever.</span>
+            <span>Once paid off, keep everything running for just <strong>$49&ndash;149/mo maintenance</strong>. No inflated retainer fees, ever.</span>
           </li>
           <li>
             <div class="rto-icon">&#9679;</div>
-            <span>Most agencies charge recurring fees forever and <strong>own your assets</strong>. We build them for you — not for us.</span>
+            <span>Most agencies charge recurring fees forever and <strong>own your assets</strong>. We build them for you &mdash; not for us.</span>
           </li>
         </ul>
         <div class="rto-timeline">
           <div class="rto-phase building">
-            <div class="rto-phase-month">Month 1–24</div>
+            <div class="rto-phase-month">Month 1&ndash;24</div>
             <div class="rto-phase-title">Building &amp; Growing</div>
             <div class="rto-phase-sub">We build, you scale</div>
           </div>
-          <div class="rto-arrow">&#8594;</div>
+          <div class="rto-arrow">&rarr;</div>
           <div class="rto-phase owning">
             <div class="rto-phase-month">Month 25+</div>
             <div class="rto-phase-title">You Own It All</div>
-            <div class="rto-phase-sub">$49–149/mo to maintain</div>
+            <div class="rto-phase-sub">$49&ndash;149/mo to maintain</div>
           </div>
         </div>
         <div class="rto-no-lock">
           <span class="rto-lock-icon">&#128275;</span>
-          <span><strong>No contracts. No lock-in. Cancel anytime</strong> — and keep everything that's been built so far, even if you leave on day one.</span>
+          <span><strong>No contracts. No lock-in. Cancel anytime</strong> &mdash; and keep everything that's been built so far, even if you leave on day one.</span>
         </div>
       </div>
     </div>
 
-    <!-- ─ SECTION 3: Next Steps ─ -->
+    <!-- SECTION 3: Next Steps -->
     <div class="results-section rev-section" id="next-steps-section">
       <div class="next-steps-card">
         <div class="next-steps-hd">
@@ -1665,19 +1664,19 @@
           <div class="ns-row">
             <div class="ns-num">3</div>
             <div>
-              <div class="ns-content-title">Approve &amp; pay online — we start building immediately</div>
+              <div class="ns-content-title">Approve &amp; pay online &mdash; we start building immediately</div>
               <div class="ns-content-sub">Most businesses are live within 48 hours of approval. We don't waste time.</div>
             </div>
           </div>
 
-          <!-- hidden inputs kept to avoid JS errors from submitSkipEmail references -->
+          <!-- hidden inputs kept to avoid JS errors -->
           <input type="email" id="skip-email-input" style="display:none;">
           <div id="skip-email-confirm" style="display:none;"></div>
         </div>
       </div>
     </div>
 
-    <a href="/" class="back-home-link">&#8592; Back to BizStack.vip</a>
+    <a href="/" class="back-home-link">&larr; Back to BizStack.vip</a>
     <p class="score-debug" id="score-debug"></p>
   </div>
 
@@ -1697,7 +1696,7 @@
     email:         '',
     phone:         '',
     industry:      '',
-    hasWebsite:    null,  // true/false
+    hasWebsite:    null,
     websiteUrl:    '',
     hasCRM:        null,
     crmName:       '',
@@ -1709,7 +1708,6 @@
     timeline:      ''
   };
 
-  // Single-select state per group
   const selections = {};
 
   // ─────────────────────────────────────
@@ -1794,7 +1792,6 @@
       return true;
     }
     if (n === 6) {
-      const hasSocial = answers.socialPlatforms.length > 0 || answers.socialPlatforms.includes('none');
       const noneSelected = document.getElementById('social-none').classList.contains('selected');
       const anySelected = document.querySelectorAll('#social-checkboxes .check-card.selected').length > 0;
       if (!anySelected) { showError(6); return false; }
@@ -1885,7 +1882,6 @@
         answers.hasWebsite = true;
         document.getElementById('website-url-wrap').classList.remove('hidden');
         document.getElementById('step3-continue').style.display = '';
-        // focus URL field for keyboard users
         setTimeout(() => document.getElementById('website-url').focus(), 50);
       }
       if (field === 'crm') {
@@ -1922,7 +1918,6 @@
   }
 
   function toggleCheck(group, value, el) {
-    // If "Not active yet" was selected, deselect it
     const noneEl = document.getElementById('social-none');
     if (noneEl.classList.contains('selected')) {
       noneEl.classList.remove('selected');
@@ -1938,14 +1933,12 @@
       answers.socialPlatforms = answers.socialPlatforms.filter(v => v !== value);
     }
 
-    // Show frequency selector if any platform selected
     const anyPlatform = answers.socialPlatforms.filter(v => v !== 'none').length > 0;
     document.getElementById('freq-wrap').style.display = anyPlatform ? 'block' : 'none';
     clearError(currentStep);
   }
 
   function selectNone(group, el) {
-    // Deselect all other checkboxes
     document.querySelectorAll('#social-checkboxes .check-card').forEach(c => {
       if (c !== el) c.classList.remove('selected');
     });
@@ -1987,22 +1980,19 @@
     return 'starter';
   }
 
-  // Budget cap: prevent recommending a tier the prospect can't afford.
-  // Returns the lower of the score-based tier and the budget ceiling.
   const TIER_ORDER = ['starter', 'growth', 'scale', 'enterprise'];
   function applyBudgetCap(scoredTier, budget) {
     const caps = {
-      '99-299':  'growth',    // $99–$299/mo → max Growth
-      '299-499': 'scale',     // $299–$499/mo → max Scale
-      '499-999': 'enterprise' // $499–$999/mo → no effective cap
-      // '999+' and '0-99' handled below
+      '99-299':  'growth',
+      '299-499': 'scale',
+      '499-999': 'enterprise'
     };
 
     let ceiling;
     if (budget === '0-99') {
       ceiling = 'starter';
     } else if (budget === '999+') {
-      return { tier: scoredTier, originalTier: null }; // no cap
+      return { tier: scoredTier, originalTier: null };
     } else {
       ceiling = caps[budget] || null;
     }
@@ -2013,7 +2003,6 @@
     const ceilingIdx = TIER_ORDER.indexOf(ceiling);
 
     if (scoredIdx > ceilingIdx) {
-      // Prospect scored higher than their budget allows — cap it
       return { tier: ceiling, originalTier: scoredTier };
     }
     return { tier: scoredTier, originalTier: null };
@@ -2075,7 +2064,7 @@
       rows: [
         ['Everything in Scale',                  '$15,500'],
         ['Multi-page animated platform',         '$5,000'],
-        ['Custom integrations',                  '$2,000–5,000'],
+        ['Custom integrations',                  '$2,000\u20135,000'],
         ['Advanced analytics dashboard',         '$2,000'],
       ]
     }
@@ -2122,15 +2111,11 @@
   //  TIER DATA
   // ─────────────────────────────────────
   // TEST MODE — swap back to live links before production launch
-  // Live Starter:    https://buy.stripe.com/3cI3cv0wC2GD2us9mB8so02
-  // Live Growth:     https://buy.stripe.com/28E00j2EK6WT1qobuJ8so04
-  // Live Scale:      https://buy.stripe.com/eVqaEXfrw5SP6KI56l8so03
-  // Live Enterprise: https://buy.stripe.com/cNi6oH0wC4OL9WUgP38so05
   const STRIPE_LINKS = {
-    starter:    'https://buy.stripe.com/test_8x2bJ1gvA4OL9WUaqF8so00', // TEST
-    growth:     'https://buy.stripe.com/test_7sYdR9frw2GDc522Yd8so01', // TEST
-    scale:      'https://buy.stripe.com/test_3cI3cv0wC2GD2us9mB8so02', // TEST
-    enterprise: 'https://buy.stripe.com/test_eVqaEXfrw5SP6KI56l8so03', // TEST
+    starter:    'https://buy.stripe.com/test_8x2bJ1gvA4OL9WUaqF8so00',
+    growth:     'https://buy.stripe.com/test_7sYdR9frw2GDc522Yd8so01',
+    scale:      'https://buy.stripe.com/test_3cI3cv0wC2GD2us9mB8so02',
+    enterprise: 'https://buy.stripe.com/test_eVqaEXfrw5SP6KI56l8so03',
   };
 
   const TIERS = {
@@ -2145,7 +2130,7 @@
         'Email templates + automated lead capture',
         'Google Business Profile setup and optimization',
         '2 content updates per month',
-        'Own everything after 24 months — no contracts'
+        'Own everything after 24 months \u2014 no contracts'
       ]
     },
     growth: {
@@ -2161,7 +2146,7 @@
         'Appointment booking automation',
         'Review generation system',
         'Monthly analytics report',
-        'Own everything after 24 months — no contracts'
+        'Own everything after 24 months \u2014 no contracts'
       ]
     },
     scale: {
@@ -2175,11 +2160,11 @@
         '3 lead capture campaigns',
         'Email + SMS sequences',
         'Appointment booking automation',
-        'LinkedIn content — 20 posts/month',
+        'LinkedIn content \u2014 20 posts/month',
         'Full SEO audit and on-page optimization',
         'Self-healing monitoring',
         'Bi-weekly strategy calls',
-        'Own everything after 24 months — no contracts'
+        'Own everything after 24 months \u2014 no contracts'
       ]
     },
     enterprise: {
@@ -2197,7 +2182,7 @@
         'Weekly strategy sessions',
         'Dedicated support with guaranteed response time',
         'White-glove onboarding and migration',
-        'Own everything after 24 months — no contracts'
+        'Own everything after 24 months \u2014 no contracts'
       ]
     }
   };
@@ -2215,13 +2200,10 @@
     const tier = TIERS[tierKey];
 
     console.log('=== BizStack VIP Assessment Submission ===');
-    console.log('Score:', score, '→ Scored tier:', scoredTier, '→ Final tier:', tierKey, originalTier ? '(capped from ' + originalTier + ')' : '');
+    console.log('Score:', score, '\u2192 Scored tier:', scoredTier, '\u2192 Final tier:', tierKey, originalTier ? '(capped from ' + originalTier + ')' : '');
     console.log('Form Data:', JSON.stringify(answers, null, 2));
 
-    // Fire emails in background — don't block results render
     sendAssessmentEmail(score, tierKey, tier);
-
-    // Show results
     renderResults(tierKey, tier, score, originalTier);
     document.getElementById('assessment-form').style.display = 'none';
     document.getElementById('results').classList.add('active');
@@ -2253,7 +2235,7 @@
   function renderResults(tierKey, tier, score, originalTier) {
     currentTierKey = tierKey;
 
-    // ── Budget cap upsell message ──
+    // Budget cap upsell message
     const upsellEl = document.getElementById('results-budget-upsell');
     if (originalTier) {
       const originalTierName = TIERS[originalTier].name;
@@ -2265,7 +2247,7 @@
       upsellEl.style.display = 'none';
     }
 
-    // ── Tier card ──
+    // Tier card
     const card = document.getElementById('results-tier-card');
     card.className = 'tier-card ' + tierKey;
 
@@ -2287,11 +2269,10 @@
       '<li><div class="feat-icon">&#10003;</div><span>' + f + '</span></li>'
     ).join('');
 
-    // ── Proposal banner ──
-    const firstName = answers.contactName.split(' ')[0] || 'there';
+    // Proposal banner
     document.getElementById('proposal-email-display').textContent = answers.email || 'your email';
 
-    // ── Comparison table ──
+    // Comparison table
     const cmp = COMPARISON_DATA[tierKey];
     document.getElementById('cmp-bizstack-price').textContent  = cmp.bizstackPrice;
     document.getElementById('cmp-retail-price').textContent    = cmp.retailDisplay;
@@ -2305,12 +2286,11 @@
       '</div>'
     ).join('');
 
-    // ── CTA buttons ──
+    // CTA buttons
     const stripeBtn = document.getElementById('results-stripe-btn');
     stripeBtn.href = STRIPE_LINKS[tierKey] || '#';
     document.getElementById('results-cta-price').textContent = tier.price;
 
-    // Save assessment data to localStorage so onboarding form can pre-fill after Stripe payment
     stripeBtn.addEventListener('click', function() {
       const prefill = {
         name:    answers.contactName,
@@ -2323,20 +2303,19 @@
       try { localStorage.setItem('bizstack_stripe_prefill', JSON.stringify(prefill)); } catch(e) {}
     }, { once: true });
 
-    // ── Pre-fill skip-call email ──
+    // Pre-fill skip-call email
     document.getElementById('skip-email-input').value = answers.email || '';
 
-    // ── Score debug ──
+    // Score debug
     document.getElementById('score-debug').textContent = 'Assessment score: ' + score;
 
-    // ── Init scroll reveal after DOM settles ──
+    // Init scroll reveal after DOM settles
     setTimeout(initScrollReveal, 120);
   }
 
   // ─────────────────────────────────────
   //  KEYBOARD NAVIGATION
   // ─────────────────────────────────────
-  // Steps that auto-advance on click — Enter should NOT re-trigger
   const AUTO_ADVANCE_STEPS = [2, 5, 7, 8, 9];
 
   document.addEventListener('keydown', function(e) {
@@ -2344,16 +2323,14 @@
     const id  = document.activeElement ? document.activeElement.id : '';
     const formHidden = document.getElementById('assessment-form').style.display === 'none';
 
-    // ── Enter: advance on text/multi-select steps only ──
     if (e.key === 'Enter') {
       if (tag === 'TEXTAREA') return;
       if (id === 'skip-email-input') return;
       if (formHidden) return;
-      if (AUTO_ADVANCE_STEPS.includes(currentStep)) return; // auto-advance steps handle themselves
+      if (AUTO_ADVANCE_STEPS.includes(currentStep)) return;
       nextStep(currentStep);
     }
 
-    // ── Backspace / ← Arrow: go back (only when NOT typing in an input) ──
     if (e.key === 'Backspace' || e.key === 'ArrowLeft') {
       if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
       if (formHidden) return;
